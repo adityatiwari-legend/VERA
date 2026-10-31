@@ -20,7 +20,7 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 ## Change Log (newest first)
 
 ### [2026-10-31] Login audit in admin portal + mobile contract gaps closed (disputes, votes, legacy org_type, report fields, escrow GET)
-Commit: uncommitted
+Commit: `69846f5`
 Backend changes:
 - **Added — every login is now visible in the admin portal:** new `login_events` table (migration `019_login_audit.sql`) records every web (`POST /api/auth/login`) and mobile (`POST /api/v1/auth/login`) login attempt — success and failure (internal reason: `UNKNOWN_EMAIL` / `INVALID_PASSWORD`), with IP + user agent. New admin page `/admin/logins` (ADMIN only) shows 24h stats + the last 200 events with ALL/SUCCESS/FAILED filters; `users.last_login_at` is stamped on every successful login and shown on `/admin/access`.
 - **Added — `POST /api/milestones/[id]/dispute`** `{reason}` → 201 `{dispute, releaseRequest, message}` (roles ORGANIZATION/AUDITOR/ADMIN; 409 if a dispute is already open). **Added — `POST /api/milestones/[id]/dispute/resolve`** `{resolution_notes}` → `{dispute, releaseRequest, ...}` (roles AUDITOR/ADMIN). While a dispute is OPEN: creating release requests, APPROVED multisig signatures, and release execution all return 409 for that milestone (REJECTED signatures stay allowed — that is the mobile dispute-rejection path). Both responses also carry the milestone's latest `releaseRequest` (may be null) because the mobile dispute flow parses that shape.
