@@ -16,7 +16,15 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN mkdir -p /app/public
 
-ENV NEXT_TELEMETRY_DISABLED 1
+# NEXT_PUBLIC_* vars are inlined into the client bundle at BUILD time.
+# Passed via docker compose build.args (sourced from the .env file).
+ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
+ARG NEXT_PUBLIC_CHAIN_ID=31337
+ARG NEXT_PUBLIC_HISAAB_PROGRAM_ID=
+ENV NEXT_TELEMETRY_DISABLED=1 \
+    NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL \
+    NEXT_PUBLIC_CHAIN_ID=$NEXT_PUBLIC_CHAIN_ID \
+    NEXT_PUBLIC_HISAAB_PROGRAM_ID=$NEXT_PUBLIC_HISAAB_PROGRAM_ID
 RUN npm run build
 
 # Production image, copy all the files and run next

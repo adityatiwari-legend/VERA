@@ -1,0 +1,36 @@
+name: Deploy to VPS
+
+# CI/CD: every push to main ships the latest code to the production VPS.
+#
+# One-time setup (GitHub → Settings → Secrets and variables → Actions):
+#   VPS_HOST     = 139.84.172.55
+#   VPS_USER     = root
+#   VPS_SSH_KEY  = the PRIVATE deploy key (contents of the vera_deploy_ed25519
+#                  file generated during provisioning; its public half is
+#                  installed in /root/.ssh/authorized_keys on the VPS)
+#
+# The VPS-side steps live in deploy/deploy.sh (idempotent, safe to re-run).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-vps
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          command_timeout: 30m
+          script_stop: true
+          script: |
+            bash /opt/vera/deploy/deploy.sh

@@ -22,6 +22,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      # NEXT_PUBLIC_* are inlined at build time — sourced from the project .env
+      args:
+        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+        NEXT_PUBLIC_CHAIN_ID: ${NEXT_PUBLIC_CHAIN_ID:-31337}
+        NEXT_PUBLIC_HISAAB_PROGRAM_ID: ${NEXT_PUBLIC_HISAAB_PROGRAM_ID:-}
     container_name: vera-app
     restart: unless-stopped
     depends_on:
@@ -31,14 +36,30 @@ services:
       - "host.docker.internal:host-gateway"
     environment:
       DATABASE_URL: postgresql://postgres:postgrespassword@vera-db:5432/vera
-      JWT_SECRET: vera-super-secret-jwt-key-for-development-32chars!
-      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      # Values without a default here come from the project .env file
+      # (see .env.example). Locally you can keep the compose defaults.
+      JWT_SECRET: ${JWT_SECRET:-vera-super-secret-jwt-key-for-development-32chars!}
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
       PORT: 3000
       STORAGE_PATH: /app/storage
       MAX_UPLOAD_SIZE_MB: 50
+      DEBUG_SQL: ${DEBUG_SQL:-false}
       CONTRACT_ADDRESS: "0x0B306BF915C4d645ff596e518fAf3F9669b97016"
       BLOCKCHAIN_RPC_URL: "http://host.docker.internal:8545"
-      NEXT_PUBLIC_CHAIN_ID: "31337"
+      NEXT_PUBLIC_CHAIN_ID: ${NEXT_PUBLIC_CHAIN_ID:-31337}
+      BLOCKCHAIN_NETWORK: ${BLOCKCHAIN_NETWORK:-hardhat}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.8-flash}
+      HISAAB_RPC_URL: ${HISAAB_RPC_URL:-https://api.devnet.solana.com}
+      HISAAB_ORACLE_KEYPAIR: ${HISAAB_ORACLE_KEYPAIR:-}
+      HISAAB_FUNDER_KEYPAIR: ${HISAAB_FUNDER_KEYPAIR:-}
+      HISAAB_CONTRACTOR_PUBKEY: ${HISAAB_CONTRACTOR_PUBKEY:-}
+      NEXT_PUBLIC_HISAAB_PROGRAM_ID: ${NEXT_PUBLIC_HISAAB_PROGRAM_ID:-}
+      SOL_INR_RATE: ${SOL_INR_RATE:-20000}
+      ROUGHNESS_THRESHOLD: ${ROUGHNESS_THRESHOLD:-3.0}
+      TIGER_DATABASE_URL: ${TIGER_DATABASE_URL:-}
+      DEMO_MODE: ${DEMO_MODE:-true}
+      ETH_INR_RATE: ${ETH_INR_RATE:-300000}
     ports:
       - "3000:3000"
     volumes:
