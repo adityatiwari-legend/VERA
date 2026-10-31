@@ -19,8 +19,16 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 
 ## Change Log (newest first)
 
-### [2026-10-31] Register validation fix (org_type enum) + audit timeline Date crash fix
+### [2026-10-31] Production HTTPS / SSL configured for vera.adityatiwaridev.xyz
 Commit: uncommitted
+Backend changes:
+- `nginx/nginx.conf`: Configured `server_name vera.adityatiwaridev.xyz`, active Let's Encrypt TLS certificates on port 443 with modern ciphers and HSTS, and 301 permanent redirect from HTTP (port 80) to HTTPS.
+- `docker-compose.yml`: Fixed nginx volume mount from named volume to host bind mount `/etc/letsencrypt:/etc/letsencrypt:ro` so Nginx reads Certbot-generated certificates directly; updated default `NEXT_PUBLIC_APP_URL` to `https://vera.adityatiwaridev.xyz`.
+- `.env.example`: Updated example app URL to `https://vera.adityatiwaridev.xyz`.
+Mobile action needed: Mobile app client base URL for production is now `https://vera.adityatiwaridev.xyz/api`.
+
+### [2026-10-31] Register validation fix (org_type enum) + audit timeline Date crash fix
+Commit: `badb99f`
 Backend changes:
 - **Fixed — `POST /api/auth/register` returned 400 "Validation failed" for valid NGO signups:** `lib/validation.ts` `org_type` enum listed a legacy `'ORGANIZATION'` value no client ever sent, while the web register form sends `'NGO'`. Enum is now `['NGO', 'TRUST', 'CSR', 'SCHOOL', 'RWA', 'OTHER']`. No DB constraint exists (`users.org_type` is free-form TEXT), so no migration needed.
 - **Fixed — `/campaigns/[id]/audit` crashed with "Objects are not valid as a React child (found: [object Date])":** node-postgres parses `timestamptz` into JS `Date` objects, but `lib/audit_timeline.ts` typed them as `string` and `components/domain/AuditTimeline.tsx` rendered `ev.timestamp` raw. All timestamps out of `getCampaignAuditTimeline` / `getDonationJourney` are now normalized to ISO strings via an `iso()` helper (declared types are now honest), and AuditTimeline formats the timestamp with `toLocaleString('en-IN')`.

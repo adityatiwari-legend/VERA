@@ -25,7 +25,7 @@ services:
       target: runner
       # NEXT_PUBLIC_* are inlined at build time — sourced from the project .env
       args:
-        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-https://vera.adityatiwaridev.xyz}
         NEXT_PUBLIC_CHAIN_ID: ${NEXT_PUBLIC_CHAIN_ID:-31337}
         NEXT_PUBLIC_HISAAB_PROGRAM_ID: ${NEXT_PUBLIC_HISAAB_PROGRAM_ID:-}
     container_name: vera-app
@@ -40,7 +40,7 @@ services:
       # Values without a default here come from the project .env file
       # (see .env.example). Locally you can keep the compose defaults.
       JWT_SECRET: ${JWT_SECRET:-vera-super-secret-jwt-key-for-development-32chars!}
-      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-https://vera.adityatiwaridev.xyz}
       PORT: 3000
       STORAGE_PATH: /app/storage
       MAX_UPLOAD_SIZE_MB: 50
