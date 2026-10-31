@@ -50,3 +50,19 @@ ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
 
 CMD ["node", "server.js"]
+
+# Local EVM chain (hardhat node, chainId 31337) with the VERA contract deployed
+# on boot. Deterministic: first hardhat account deploys first → the contract
+# always lands at the same address for a given deploy script.
+FROM base AS hardhat
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY hardhat.config.ts ./
+COPY contracts ./contracts
+COPY scripts/deploy.js ./scripts/
+COPY deploy/hardhat-entrypoint.sh ./entrypoint.sh
+# normalize line endings (dev machines may check out CRLF) then make executable
+RUN sed -i 's/\r$//' ./entrypoint.sh && chmod +x ./entrypoint.sh
+ENV BLOCKCHAIN_RPC_URL=http://127.0.0.1:8545
+EXPOSE 8545
+ENTRYPOINT ["sh", "./entrypoint.sh"]

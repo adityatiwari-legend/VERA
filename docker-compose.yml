@@ -44,10 +44,12 @@ services:
       STORAGE_PATH: /app/storage
       MAX_UPLOAD_SIZE_MB: 50
       DEBUG_SQL: ${DEBUG_SQL:-false}
-      CONTRACT_ADDRESS: "0x0B306BF915C4d645ff596e518fAf3F9669b97016"
-      BLOCKCHAIN_RPC_URL: "http://host.docker.internal:8545"
+      CONTRACT_ADDRESS: ${CONTRACT_ADDRESS:-0x5FbDB2315678afecb367f032d93F642f64180aa3}
+      # Points at the local hardhat-node service (chainId 31337)
+      BLOCKCHAIN_RPC_URL: "http://hardhat-node:8545"
       NEXT_PUBLIC_CHAIN_ID: ${NEXT_PUBLIC_CHAIN_ID:-31337}
       BLOCKCHAIN_NETWORK: ${BLOCKCHAIN_NETWORK:-hardhat}
+      BLOCKCHAIN_PRIVATE_KEY: ${BLOCKCHAIN_PRIVATE_KEY:-0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.8-flash}
       HISAAB_RPC_URL: ${HISAAB_RPC_URL:-https://api.devnet.solana.com}
@@ -64,6 +66,16 @@ services:
       - "3000:3000"
     volumes:
       - vera_storage:/app/storage
+
+  hardhat-node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: hardhat
+    container_name: vera-hardhat
+    restart: unless-stopped
+    ports:
+      - "8545:8545"
 
   nginx:
     image: nginx:alpine
