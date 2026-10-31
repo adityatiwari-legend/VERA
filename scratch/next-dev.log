@@ -1,0 +1,1245 @@
+
+> vera@0.2.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 3s
+ ○ Compiling /api/health ...
+ ✓ Compiled /api/health in 1928ms (353 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 2446ms
+ ✓ Compiled /api/auth/register in 173ms (367 modules)
+ POST /api/auth/register 400 in 239ms
+ POST /api/auth/register 400 in 19ms
+ ✓ Compiled /api/auth/login in 71ms (369 modules)
+ POST /api/auth/login 200 in 199ms
+ POST /api/auth/login 200 in 86ms
+ POST /api/auth/login 200 in 84ms
+ POST /api/auth/login 200 in 92ms
+ POST /api/auth/login 200 in 84ms
+ ✓ Compiled /api/nav in 64ms (371 modules)
+ GET /api/nav 200 in 123ms
+ GET /api/nav 200 in 20ms
+ ✓ Compiled /middleware in 359ms (152 modules)
+ ✓ Compiled /api/hisaab/reports in 118ms (377 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/reports 201 in 152223ms
+ ✓ Compiled /api/auth/wallet/solana in 456ms (288 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/auth/wallet/solana 200 in 627ms
+ ✓ Compiled /api/hisaab/reports/[id]/confirm in 115ms (369 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e/confirm 200 in 1919ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e/confirm 200 in 843ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e/confirm 200 in 829ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e/confirm 400 in 842ms
+ ✓ Compiled /api/hisaab/fund-requests in 105ms (373 modules)
+ POST /api/hisaab/fund-requests 201 in 186ms
+ ✓ Compiled /api/hisaab/fund-requests/[id]/status in 89ms (375 modules)
+ POST /api/hisaab/fund-requests/4c6f1a01-7b8a-448b-b920-cd25c92d2c6c/status 200 in 804ms
+ POST /api/hisaab/fund-requests/4c6f1a01-7b8a-448b-b920-cd25c92d2c6c/status 200 in 43ms
+ POST /api/hisaab/fund-requests/4c6f1a01-7b8a-448b-b920-cd25c92d2c6c/status 200 in 34ms
+ ✓ Compiled /api/hisaab/assignments in 105ms (377 modules)
+ POST /api/hisaab/assignments 201 in 178ms
+ ✓ Compiled /api/hisaab/escrows in 151ms (379 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/escrows 400 in 405ms
+ ✓ Compiled /api/hisaab/assignments/[id]/respond in 127ms (381 modules)
+ POST /api/hisaab/assignments/dfe79fe8-3e31-427f-9bdb-8d2103d2f976/respond 200 in 803ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/escrows 201 in 138ms
+ ✓ Compiled /api/hisaab/roughness in 85ms (384 modules)
+ POST /api/hisaab/roughness 201 in 269ms
+ ✓ Compiled /api/hisaab/repairs in 105ms (386 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Gemini before/after comparison failed: GoogleGenerativeAIFetchError: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent: [503 Service Unavailable] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+    at handleResponseNotOk (webpack-internal:///(rsc)/./node_modules/@google/generative-ai/dist/index.mjs:455:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async makeRequest (webpack-internal:///(rsc)/./node_modules/@google/generative-ai/dist/index.mjs:424:9)
+    at async generateContent (webpack-internal:///(rsc)/./node_modules/@google/generative-ai/dist/index.mjs:888:22)
+    at async compareBeforeAfter (webpack-internal:///(rsc)/./lib/gemini.ts:202:21)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/repairs/route.ts:67:25)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  status: 503,
+  statusText: 'Service Unavailable',
+  errorDetails: undefined
+}
+ POST /api/hisaab/repairs 201 in 10897ms
+ ✓ Compiled /api/hisaab/repairs/[id]/approve in 165ms (388 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Solana release_stage(1) failed (PG ledger keeps state): AnchorError: AnchorError caused by account: report. Error Code: ConstraintMut. Error Number: 2000. Error Message: A mut constraint was violated.
+    at AnchorError.parse (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/error.js:124:20)
+    at translateError (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/error.js:208:37)
+    at MethodsBuilder.rpc [as _rpcFn] (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/program/namespace/rpc.js:22:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async withRpcRetry (webpack-internal:///(rsc)/./lib/solana.ts:229:20)
+    at async onChainReleaseStage (webpack-internal:///(rsc)/./lib/solana.ts:351:16)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/repairs/[id]/approve/route.ts:43:33)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  errorLogs: [
+    'Program log: AnchorError caused by account: report. Error Code: ConstraintMut. Error Number: 2000. Error Message: A mut constraint was violated.'
+  ],
+  logs: [
+    'Program AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw invoke [1]',
+    'Program log: Instruction: ReleaseStage',
+    'Program log: AnchorError caused by account: report. Error Code: ConstraintMut. Error Number: 2000. Error Message: A mut constraint was violated.',
+    'Program AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw consumed 7061 of 200000 compute units',
+    'Program AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw failed: custom program error: 0x7d0'
+  ],
+  error: {
+    errorCode: { code: 'ConstraintMut', number: 2000 },
+    errorMessage: 'A mut constraint was violated',
+    comparedValues: undefined,
+    origin: 'report'
+  },
+  _programErrorStack: ProgramErrorStack {
+    stack: [
+      [PublicKey [PublicKey(AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw)]]
+    ]
+  }
+}
+ POST /api/hisaab/repairs/9d0320f9-4a71-49e1-8377-65a176d07206/approve 200 in 1168ms
+ POST /api/hisaab/repairs 403 in 21ms
+ ✓ Compiled /api/hisaab/escrows/[id]/fast-forward in 136ms (390 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Solana release_stage failed (PG ledger keeps state): AnchorError: AnchorError caused by account: report. Error Code: ConstraintMut. Error Number: 2000. Error Message: A mut constraint was violated.
+    at AnchorError.parse (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/error.js:124:20)
+    at translateError (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/error.js:208:37)
+    at MethodsBuilder.rpc [as _rpcFn] (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/program/namespace/rpc.js:22:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async withRpcRetry (webpack-internal:///(rsc)/./lib/solana.ts:229:20)
+    at async onChainReleaseStage (webpack-internal:///(rsc)/./lib/solana.ts:351:16)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/escrows/[id]/fast-forward/route.ts:62:29)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  errorLogs: [
+    'Program log: AnchorError caused by account: report. Error Code: ConstraintMut. Error Number: 2000. Error Message: A mut constraint was violated.'
+  ],
+  logs: [
+    'Program AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw invoke [1]',
+    'Program log: Instruction: ReleaseStage',
+    'Program log: AnchorError caused by account: report. Error Code: ConstraintMut. Error Number: 2000. Error Message: A mut constraint was violated.',
+    'Program AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw consumed 7061 of 200000 compute units',
+    'Program AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw failed: custom program error: 0x7d0'
+  ],
+  error: {
+    errorCode: { code: 'ConstraintMut', number: 2000 },
+    errorMessage: 'A mut constraint was violated',
+    comparedValues: undefined,
+    origin: 'report'
+  },
+  _programErrorStack: ProgramErrorStack {
+    stack: [
+      [PublicKey [PublicKey(AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw)]]
+    ]
+  }
+}
+ POST /api/hisaab/escrows/3a14bed6-8e77-45fb-a674-ab83dbf55e49/fast-forward 200 in 1255ms
+Solana release_stage failed (PG ledger keeps state): AnchorError: AnchorError caused by account: report. Error Code: ConstraintMut. Error Number: 2000. Error Message: A mut constraint was violated.
+    at AnchorError.parse (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/error.js:124:20)
+    at translateError (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/error.js:208:37)
+    at MethodsBuilder.rpc [as _rpcFn] (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/program/namespace/rpc.js:22:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async withRpcRetry (webpack-internal:///(rsc)/./lib/solana.ts:229:20)
+    at async onChainReleaseStage (webpack-internal:///(rsc)/./lib/solana.ts:351:16)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/escrows/[id]/fast-forward/route.ts:62:29)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  errorLogs: [
+    'Program log: AnchorError caused by account: report. Error Code: ConstraintMut. Error Number: 2000. Error Message: A mut constraint was violated.'
+  ],
+  logs: [
+    'Program AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw invoke [1]',
+    'Program log: Instruction: ReleaseStage',
+    'Program log: AnchorError caused by account: report. Error Code: ConstraintMut. Error Number: 2000. Error Message: A mut constraint was violated.',
+    'Program AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw consumed 7061 of 200000 compute units',
+    'Program AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw failed: custom program error: 0x7d0'
+  ],
+  error: {
+    errorCode: { code: 'ConstraintMut', number: 2000 },
+    errorMessage: 'A mut constraint was violated',
+    comparedValues: undefined,
+    origin: 'report'
+  },
+  _programErrorStack: ProgramErrorStack {
+    stack: [
+      [PublicKey [PublicKey(AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw)]]
+    ]
+  }
+}
+ POST /api/hisaab/escrows/3a14bed6-8e77-45fb-a674-ab83dbf55e49/fast-forward 200 in 79ms
+ ✓ Compiled /api/hisaab/reports/[id] in 156ms (392 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e 200 in 1006ms
+ ○ Compiling /api/campaigns ...
+ ✓ Compiled /api/campaigns in 749ms (548 modules)
+ POST /api/campaigns 201 in 1059ms
+ ✓ Compiled /api/campaigns/[id]/donate in 149ms (551 modules)
+ POST /api/campaigns/2e5340d5-6e4b-4592-80c3-cb10454142b3/donate 201 in 986ms
+ ✓ Compiled /api/campaigns/[id]/milestones in 225ms (555 modules)
+ POST /api/campaigns/2e5340d5-6e4b-4592-80c3-cb10454142b3/milestones 201 in 1473ms
+ ✓ Compiled /api/milestones/[id]/status in 184ms (557 modules)
+ PATCH /api/milestones/28f9b1aa-0acd-4c98-9933-0dd488fea0ca/status 200 in 1043ms
+ ✓ Compiled /api/milestones/[id]/proofs in 184ms (561 modules)
+Gemini document extraction failed: GoogleGenerativeAIFetchError: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent: [503 Service Unavailable] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+    at handleResponseNotOk (webpack-internal:///(rsc)/./node_modules/@google/generative-ai/dist/index.mjs:455:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async makeRequest (webpack-internal:///(rsc)/./node_modules/@google/generative-ai/dist/index.mjs:424:9)
+    at async generateContent (webpack-internal:///(rsc)/./node_modules/@google/generative-ai/dist/index.mjs:888:22)
+    at async extractDocumentData (webpack-internal:///(rsc)/./lib/gemini.ts:141:21)
+    at async extractDocumentMetadata (webpack-internal:///(rsc)/./lib/verification.ts:38:24)
+    at async eval (webpack-internal:///(rsc)/./lib/proofs.ts:141:31)
+    at async withTransaction (webpack-internal:///(rsc)/./lib/db.ts:61:24)
+    at async createProof (webpack-internal:///(rsc)/./lib/proofs.ts:61:16)
+    at async POST (webpack-internal:///(rsc)/./app/api/milestones/[id]/proofs/route.ts:94:23)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  status: 503,
+  statusText: 'Service Unavailable',
+  errorDetails: undefined
+}
+ POST /api/milestones/28f9b1aa-0acd-4c98-9933-0dd488fea0ca/proofs 201 in 10441ms
+ ✓ Compiled /api/proofs/[id]/approve in 243ms (563 modules)
+ POST /api/proofs/d1aeb283-972a-4f36-be38-b43786dbb7dd/approve 200 in 1090ms
+ ✓ Compiled /api/milestones/[id]/release-request in 188ms (565 modules)
+ POST /api/milestones/28f9b1aa-0acd-4c98-9933-0dd488fea0ca/release-request 200 in 1145ms
+ ✓ Compiled /api/release-requests/[id]/sign in 160ms (567 modules)
+ POST /api/release-requests/4414e606-2daf-4138-8ac8-9a512741af7a/sign 200 in 1216ms
+ POST /api/release-requests/4414e606-2daf-4138-8ac8-9a512741af7a/sign 200 in 173ms
+ ✓ Compiled /api/release-requests/[id]/execute in 199ms (569 modules)
+ POST /api/release-requests/4414e606-2daf-4138-8ac8-9a512741af7a/execute 200 in 1316ms
+ ✓ Compiled /api/audit/verify-chain in 147ms (571 modules)
+ GET /api/audit/verify-chain 200 in 208ms
+ ✓ Compiled /api/audit/ledger in 165ms (574 modules)
+ GET /api/audit/ledger 403 in 225ms
+ GET /api/audit/ledger 200 in 3718ms
+ ✓ Compiled /api/notifications in 164ms (576 modules)
+ GET /api/notifications 200 in 217ms
+ ✓ Compiled /api/v1/auth/login in 191ms (579 modules)
+ POST /api/v1/auth/login 200 in 332ms
+ ✓ Compiled /api/v1/hisaab/reports in 174ms (581 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/v1/hisaab/reports 200 in 253ms
+ ✓ Compiled /api/v1/me in 170ms (583 modules)
+ GET /api/v1/me 401 in 210ms
+ ✓ Compiled /api/v1/hisaab/reports/[id] in 170ms (585 modules)
+ GET /api/v1/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e 200 in 1030ms
+ ✓ Compiled /api/blockchain/stats in 291ms (587 modules)
+ GET /api/blockchain/stats 200 in 396ms
+ GET /api/audit/ledger 401 in 43ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 6.1s (1168 modules)
+ GET /login 200 in 6336ms
+ ○ Compiling /api/auth/login ...
+ ✓ Compiled /admin/complaints in 2.9s (847 modules)
+ ✓ Compiled in 572ms (305 modules)
+ GET /api/blockchain/stats 200 in 4170ms
+ POST /api/auth/login 200 in 4015ms
+ GET /api/nav 200 in 4369ms
+ GET /api/auth/me 200 in 4380ms
+ GET /admin/complaints 200 in 2665ms
+ GET /api/blockchain/stats 200 in 63ms
+ GET /api/auth/me 200 in 64ms
+ GET /api/nav 200 in 82ms
+ GET /api/blockchain/stats 200 in 67ms
+ GET /api/auth/me 200 in 69ms
+ GET /api/notifications?unread=true 200 in 63ms
+ GET /api/nav 200 in 77ms
+ GET /api/auth/me 200 in 36ms
+ GET /api/auth/me 200 in 30ms
+ GET /api/notifications?unread=true 200 in 45ms
+ ○ Compiling /hisaab/report/[id] ...
+ ✓ Compiled /hisaab/report/[id] in 841ms (1210 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /hisaab/report/5a15676a-2d78-4006-a6bd-fcac46aba67e 200 in 2313ms
+ ✓ Compiled /api/hisaab/reports/[id]/media in 354ms (897 modules)
+ GET /api/auth/me 200 in 40ms
+ GET /api/nav 200 in 71ms
+ ✓ Compiled /api/health in 309ms (899 modules)
+ GET /api/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e/media?type=before 200 in 1384ms
+ GET /api/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e/media?type=after 200 in 1385ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 778ms
+ GET /api/health 200 in 835ms
+ GET /api/nav 200 in 805ms
+ GET /api/auth/me 200 in 46ms
+ GET /api/health 200 in 61ms
+ GET /api/auth/me 200 in 28ms
+ ✓ Compiled in 1308ms (1180 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /hisaab/report/5a15676a-2d78-4006-a6bd-fcac46aba67e 200 in 136ms
+ GET /api/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e/media?type=before 200 in 86ms
+ GET /api/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e/media?type=after 200 in 81ms
+ GET /api/auth/me 200 in 71ms
+ ⨯ ReferenceError: getCluster is not defined
+    at getSolanaStatus (webpack-internal:///(rsc)/./lib/solana.ts:99:18)
+    at GET (webpack-internal:///(rsc)/./app/api/health/route.ts:32:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ GET /api/health 500 in 95ms
+ GET /api/nav 200 in 144ms
+ GET /api/auth/me 200 in 86ms
+ ⨯ ReferenceError: getCluster is not defined
+    at getSolanaStatus (webpack-internal:///(rsc)/./lib/solana.ts:99:18)
+    at GET (webpack-internal:///(rsc)/./app/api/health/route.ts:32:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ GET /api/health 500 in 58ms
+ GET /api/nav 200 in 77ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/auth/me 200 in 27ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ⨯ ReferenceError: getCluster is not defined
+    at getSolanaStatus (webpack-internal:///(rsc)/./lib/solana.ts:99:18)
+    at GET (webpack-internal:///(rsc)/./app/api/health/route.ts:32:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ GET /api/health 500 in 32ms
+ ✓ Compiled in 643ms (997 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 30ms
+ GET /hisaab/report/5a15676a-2d78-4006-a6bd-fcac46aba67e 200 in 159ms
+ ✓ Compiled /api/hisaab/reports/[id]/media in 318ms (671 modules)
+ GET /api/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e/media?type=after 200 in 407ms
+ GET /api/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e/media?type=before 200 in 427ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ✓ Compiled /api/nav in 191ms (673 modules)
+ ✓ Compiled (675 modules)
+ GET /api/auth/me 200 in 427ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 530ms
+ GET /api/nav 200 in 593ms
+ GET /api/auth/me 200 in 45ms
+ GET /api/health 200 in 60ms
+ GET /api/auth/me 200 in 52ms
+ GET /api/nav 200 in 68ms
+ GET /api/auth/me 200 in 41ms
+ GET /hisaab/report/5a15676a-2d78-4006-a6bd-fcac46aba67e 200 in 301ms
+ GET /api/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e/media?type=before 200 in 88ms
+ GET /api/hisaab/reports/5a15676a-2d78-4006-a6bd-fcac46aba67e/media?type=after 200 in 114ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/health 200 in 59ms
+ GET /api/nav 200 in 104ms
+ GET /api/auth/me 200 in 67ms
+ GET /api/health 200 in 54ms
+ GET /api/auth/me 200 in 54ms
+ GET /api/nav 200 in 77ms
+ GET /api/auth/me 200 in 30ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ✓ Compiled in 863ms (1004 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 36ms
+ ✓ Compiled /api/auth/register in 457ms (689 modules)
+ POST /api/auth/register 400 in 536ms
+ POST /api/auth/register 400 in 21ms
+ ✓ Compiled /api/auth/login in 162ms (691 modules)
+ POST /api/auth/login 200 in 322ms
+ POST /api/auth/login 200 in 105ms
+ POST /api/auth/login 200 in 101ms
+ POST /api/auth/login 200 in 103ms
+ POST /api/auth/login 200 in 102ms
+ GET /api/nav 200 in 45ms
+ GET /api/nav 200 in 23ms
+ ✓ Compiled /api/hisaab/reports in 159ms (694 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/reports 201 in 281229ms
+ ✓ Compiled /api/auth/wallet/solana in 479ms (676 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/auth/wallet/solana 200 in 562ms
+ ✓ Compiled /api/hisaab/reports/[id]/confirm in 140ms (683 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/reports/28d7d05a-b98f-4271-ab06-aa9daa70686d/confirm 200 in 700ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/reports/28d7d05a-b98f-4271-ab06-aa9daa70686d/confirm 200 in 406ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/reports/28d7d05a-b98f-4271-ab06-aa9daa70686d/confirm 200 in 430ms
+ POST /api/hisaab/reports/28d7d05a-b98f-4271-ab06-aa9daa70686d/confirm 400 in 400ms
+ ✓ Compiled /api/hisaab/fund-requests in 141ms (687 modules)
+ POST /api/hisaab/fund-requests 201 in 223ms
+ ✓ Compiled /api/hisaab/fund-requests/[id]/status in 143ms (689 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/fund-requests/c53b76bf-885c-4c4b-8ea2-e54359dc210b/status 200 in 242ms
+ POST /api/hisaab/fund-requests/c53b76bf-885c-4c4b-8ea2-e54359dc210b/status 200 in 50ms
+ POST /api/hisaab/fund-requests/c53b76bf-885c-4c4b-8ea2-e54359dc210b/status 200 in 47ms
+ ✓ Compiled /api/hisaab/assignments in 198ms (691 modules)
+ POST /api/hisaab/assignments 201 in 306ms
+ ✓ Compiled /api/hisaab/escrows in 192ms (693 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/escrows 400 in 781ms
+ ✓ Compiled /api/hisaab/assignments/[id]/respond in 199ms (695 modules)
+ POST /api/hisaab/assignments/3efad385-8475-4bb8-8591-b7f5cd272a76/respond 200 in 287ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/escrows 201 in 202ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ✓ Compiled /api/hisaab/roughness in 206ms (697 modules)
+ POST /api/hisaab/roughness 201 in 501ms
+ ✓ Compiled /api/hisaab/repairs in 180ms (699 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/repairs 200 in 307379ms
+ ✓ Compiled /api/health in 444ms (668 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 681ms
+ ✓ Compiled /api/auth/register in 199ms (682 modules)
+ POST /api/auth/register 400 in 273ms
+ POST /api/auth/register 400 in 21ms
+ ✓ Compiled /api/auth/login in 139ms (684 modules)
+ POST /api/auth/login 200 in 316ms
+ POST /api/auth/login 200 in 81ms
+ POST /api/auth/login 200 in 86ms
+ POST /api/auth/login 200 in 89ms
+ POST /api/auth/login 200 in 85ms
+ ✓ Compiled /api/nav in 113ms (686 modules)
+ GET /api/nav 200 in 172ms
+ GET /api/nav 200 in 19ms
+ ✓ Compiled /api/hisaab/reports in 207ms (690 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Solana release_stage(1) failed (PG ledger keeps state): Error: failed to get recent blockhash: TypeError: fetch failed
+    at Connection.getLatestBlockhash (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:7318:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async AnchorProvider.sendAndConfirm (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/provider.js:94:35)
+    at async MethodsBuilder.rpc [as _rpcFn] (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/program/namespace/rpc.js:19:24)
+    at async withRpcRetry (webpack-internal:///(rsc)/./lib/solana.ts:230:20)
+    at async onChainReleaseStage (webpack-internal:///(rsc)/./lib/solana.ts:352:16)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/repairs/route.ts:94:37)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+Solana init_report failed (report kept off-chain registry): Error: failed to get recent blockhash: TypeError: fetch failed
+    at Connection.getLatestBlockhash (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:7318:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async AnchorProvider.sendAndConfirm (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/provider.js:94:35)
+    at async MethodsBuilder.rpc [as _rpcFn] (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/program/namespace/rpc.js:19:24)
+    at async withRpcRetry (webpack-internal:///(rsc)/./lib/solana.ts:230:20)
+    at async onChainInitReport (webpack-internal:///(rsc)/./lib/solana.ts:254:20)
+    at async createPotholeReportFromForm (webpack-internal:///(rsc)/./lib/hisaab_actions.ts:78:25)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/reports/route.ts:56:55)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ POST /api/hisaab/reports 201 in 167959ms
+ ✓ Compiled /api/auth/wallet/solana in 310ms (676 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/auth/wallet/solana 200 in 453ms
+ ✓ Compiled /api/hisaab/reports/[id]/confirm in 193ms (683 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Solana confirm_report failed (confirmation kept in PG): Error: failed to get balance of account FtEqczjSo9ZBfFbHGih2Tv2LfyPW4WsZETsr6QPjHoDH: TypeError: fetch failed
+    at eval (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:6251:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.getBalance (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:6250:12)
+    at async confirmReportAsUser (webpack-internal:///(rsc)/./lib/hisaab_actions.ts:126:29)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/reports/[id]/confirm/route.ts:25:24)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ POST /api/hisaab/reports/b64ed77e-d081-4037-8edf-b80cd18fea6a/confirm 200 in 2403ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Solana confirm_report failed (confirmation kept in PG): Error: failed to get balance of account C9iPJbFG8E6qXShzGowx27vvNWhjXmDbADKHh6XucCfA: TypeError: fetch failed
+    at eval (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:6251:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.getBalance (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:6250:12)
+    at async confirmReportAsUser (webpack-internal:///(rsc)/./lib/hisaab_actions.ts:126:29)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/reports/[id]/confirm/route.ts:25:24)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ POST /api/hisaab/reports/b64ed77e-d081-4037-8edf-b80cd18fea6a/confirm 200 in 2106ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Solana confirm_report failed (confirmation kept in PG): Error: failed to get balance of account FGt42MC47PzeE5ybDb9HruzLvkr1Ys3pE4wEvG4UwLiW: TypeError: fetch failed
+    at eval (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:6251:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.getBalance (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:6250:12)
+    at async confirmReportAsUser (webpack-internal:///(rsc)/./lib/hisaab_actions.ts:126:29)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/reports/[id]/confirm/route.ts:25:24)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ POST /api/hisaab/reports/b64ed77e-d081-4037-8edf-b80cd18fea6a/confirm 200 in 2096ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Solana confirm_report failed (confirmation kept in PG): Error: failed to get balance of account 8aLDUxqGamqY9fC5WaTZjwokLzsdpdAv7M7oHKHVGEyk: TypeError: fetch failed
+    at eval (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:6251:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.getBalance (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:6250:12)
+    at async confirmReportAsUser (webpack-internal:///(rsc)/./lib/hisaab_actions.ts:126:29)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/reports/[id]/confirm/route.ts:25:24)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ POST /api/hisaab/reports/b64ed77e-d081-4037-8edf-b80cd18fea6a/confirm 400 in 2091ms
+ ✓ Compiled /api/hisaab/fund-requests in 110ms (687 modules)
+ POST /api/hisaab/fund-requests 201 in 182ms
+ ✓ Compiled /api/hisaab/fund-requests/[id]/status in 113ms (689 modules)
+ POST /api/hisaab/fund-requests/c4458c98-5fbf-4b88-beac-bc8f73454ca8/status 200 in 221ms
+ POST /api/hisaab/fund-requests/c4458c98-5fbf-4b88-beac-bc8f73454ca8/status 200 in 37ms
+ POST /api/hisaab/fund-requests/c4458c98-5fbf-4b88-beac-bc8f73454ca8/status 200 in 33ms
+ ✓ Compiled /api/hisaab/assignments in 131ms (691 modules)
+ POST /api/hisaab/assignments 201 in 207ms
+ ✓ Compiled /api/hisaab/escrows in 146ms (693 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Solana init_escrow failed (escrow kept in PG ledger): Error: failed to get recent blockhash: TypeError: fetch failed
+    at Connection.getLatestBlockhash (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:7318:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async AnchorProvider.sendAndConfirm (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/provider.js:94:35)
+    at async MethodsBuilder.rpc [as _rpcFn] (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/program/namespace/rpc.js:19:24)
+    at async withRpcRetry (webpack-internal:///(rsc)/./lib/solana.ts:230:20)
+    at async onChainInitEscrow (webpack-internal:///(rsc)/./lib/solana.ts:320:20)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/escrows/route.ts:63:29)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ POST /api/hisaab/escrows 400 in 10080ms
+ ✓ Compiled /api/hisaab/assignments/[id]/respond in 137ms (695 modules)
+ POST /api/hisaab/assignments/89195280-a79f-4cba-a993-50b7c78665e2/respond 200 in 211ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Solana init_escrow failed (escrow kept in PG ledger): Error: failed to get recent blockhash: TypeError: fetch failed
+    at Connection.getLatestBlockhash (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:7318:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async AnchorProvider.sendAndConfirm (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/provider.js:94:35)
+    at async MethodsBuilder.rpc [as _rpcFn] (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/program/namespace/rpc.js:19:24)
+    at async withRpcRetry (webpack-internal:///(rsc)/./lib/solana.ts:230:20)
+    at async onChainInitEscrow (webpack-internal:///(rsc)/./lib/solana.ts:320:20)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/escrows/route.ts:63:29)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ POST /api/hisaab/escrows 201 in 9869ms
+ ✓ Compiled /api/hisaab/roughness in 164ms (697 modules)
+ POST /api/hisaab/roughness 201 in 387ms
+ ✓ Compiled /api/hisaab/repairs in 135ms (699 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Solana release_stage(1) failed (PG ledger keeps state): Error: failed to get recent blockhash: TypeError: fetch failed
+    at Connection.getLatestBlockhash (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:7318:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async AnchorProvider.sendAndConfirm (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/provider.js:94:35)
+    at async MethodsBuilder.rpc [as _rpcFn] (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/program/namespace/rpc.js:19:24)
+    at async withRpcRetry (webpack-internal:///(rsc)/./lib/solana.ts:230:20)
+    at async onChainReleaseStage (webpack-internal:///(rsc)/./lib/solana.ts:352:16)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/repairs/route.ts:94:37)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ POST /api/hisaab/repairs 201 in 214936ms
+ POST /api/hisaab/repairs 403 in 17ms
+ ✓ Compiled /api/hisaab/escrows/[id]/fast-forward in 356ms (683 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Solana release_stage failed (PG ledger keeps state): Error: failed to get recent blockhash: TypeError: fetch failed
+    at Connection.getLatestBlockhash (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:7318:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async AnchorProvider.sendAndConfirm (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/provider.js:94:35)
+    at async MethodsBuilder.rpc [as _rpcFn] (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/program/namespace/rpc.js:19:24)
+    at async withRpcRetry (webpack-internal:///(rsc)/./lib/solana.ts:230:20)
+    at async onChainReleaseStage (webpack-internal:///(rsc)/./lib/solana.ts:352:16)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/escrows/[id]/fast-forward/route.ts:62:29)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ POST /api/hisaab/escrows/f979d060-d5cf-43c6-bb9f-cde558a171c6/fast-forward 200 in 16470ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Solana release_stage failed (PG ledger keeps state): Error: failed to get recent blockhash: TypeError: fetch failed
+    at Connection.getLatestBlockhash (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:7318:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async AnchorProvider.sendAndConfirm (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/provider.js:94:35)
+    at async MethodsBuilder.rpc [as _rpcFn] (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/program/namespace/rpc.js:19:24)
+    at async withRpcRetry (webpack-internal:///(rsc)/./lib/solana.ts:230:20)
+    at async onChainReleaseStage (webpack-internal:///(rsc)/./lib/solana.ts:352:16)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/escrows/[id]/fast-forward/route.ts:62:29)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ POST /api/hisaab/escrows/f979d060-d5cf-43c6-bb9f-cde558a171c6/fast-forward 200 in 15958ms
+ ✓ Compiled /api/hisaab/reports/[id] in 116ms (685 modules)
+ GET /api/hisaab/reports/b64ed77e-d081-4037-8edf-b80cd18fea6a 200 in 182ms
+ ✓ Compiled /api/campaigns in 352ms (841 modules)
+ POST /api/campaigns 201 in 652ms
+ ✓ Compiled /api/campaigns/[id]/donate in 170ms (844 modules)
+ POST /api/campaigns/15af30ec-4dda-4011-b922-fb48479c3b4c/donate 201 in 298ms
+ ✓ Compiled /api/campaigns/[id]/milestones in 166ms (848 modules)
+ POST /api/campaigns/15af30ec-4dda-4011-b922-fb48479c3b4c/milestones 201 in 429ms
+ ✓ Compiled /api/milestones/[id]/status in 176ms (850 modules)
+ PATCH /api/milestones/9645ade3-e7cb-4247-904b-3fdd44f65609/status 200 in 294ms
+ ✓ Compiled /api/milestones/[id]/proofs in 209ms (854 modules)
+ POST /api/milestones/9645ade3-e7cb-4247-904b-3fdd44f65609/proofs 201 in 141012ms
+ ✓ Compiled /api/proofs/[id]/approve in 199ms (671 modules)
+ POST /api/proofs/68eb70b9-1979-4b1c-899d-52af9670549c/approve 200 in 270ms
+ ✓ Compiled /api/milestones/[id]/release-request in 140ms (826 modules)
+ POST /api/milestones/9645ade3-e7cb-4247-904b-3fdd44f65609/release-request 200 in 396ms
+ ✓ Compiled /api/release-requests/[id]/sign in 135ms (828 modules)
+ POST /api/release-requests/30059b72-9700-4f14-a836-494e04f73ab0/sign 200 in 372ms
+ POST /api/release-requests/30059b72-9700-4f14-a836-494e04f73ab0/sign 200 in 156ms
+ ✓ Compiled /api/release-requests/[id]/execute in 137ms (830 modules)
+ POST /api/release-requests/30059b72-9700-4f14-a836-494e04f73ab0/execute 200 in 378ms
+ ✓ Compiled /api/audit/verify-chain in 194ms (832 modules)
+ GET /api/audit/verify-chain 200 in 277ms
+ ✓ Compiled /api/audit/ledger in 281ms (835 modules)
+ GET /api/audit/ledger 403 in 349ms
+ GET /api/audit/ledger 200 in 3290ms
+ ✓ Compiled /api/notifications in 237ms (838 modules)
+ GET /api/notifications 200 in 290ms
+ ✓ Compiled /api/v1/auth/login in 237ms (853 modules)
+ POST /api/v1/auth/login 200 in 387ms
+ ✓ Compiled /api/v1/hisaab/reports in 233ms (856 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/v1/hisaab/reports 200 in 378ms
+ ✓ Compiled /api/v1/me in 273ms (858 modules)
+ GET /api/v1/me 401 in 369ms
+ ✓ Compiled /api/v1/hisaab/reports/[id] in 178ms (860 modules)
+ GET /api/v1/hisaab/reports/b64ed77e-d081-4037-8edf-b80cd18fea6a 200 in 254ms
+ ✓ Compiled /api/blockchain/stats in 216ms (862 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/blockchain/stats 200 in 293ms
+ GET /api/audit/ledger 401 in 30ms
+ ✓ Compiled in 1651ms (1119 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 3.1s (1828 modules)
+ GET / 200 in 3591ms
+ ○ Compiling /api/auth/me ...
+ ✓ Compiled /api/auth/me in 560ms (1261 modules)
+ ✓ Compiled /api/audit/ledger in 0ms (1265 modules)
+ ✓ Compiled in 1ms (1268 modules)
+ ✓ Compiled in 1ms (1268 modules)
+ GET /api/blockchain/stats 200 in 2181ms
+ ✓ Compiled in 1ms (1268 modules)
+ GET /api/auth/me 200 in 2535ms
+ GET /api/nav 200 in 2569ms
+ ✓ Compiled /api/notifications in 0ms (1268 modules)
+ GET /api/audit/ledger 403 in 2371ms
+ ✓ Compiled in 1ms (1271 modules)
+ ✓ Compiled in 1ms (1271 modules)
+ GET /api/blockchain/stats 200 in 1580ms
+ ✓ Compiled in 1ms (1271 modules)
+ GET /api/auth/me 200 in 1563ms
+ GET /api/nav 200 in 1541ms
+ ✓ Compiled in 1ms (1271 modules)
+ GET /api/audit/ledger 403 in 1516ms
+ GET /api/notifications?unread=true 200 in 1866ms
+ GET /api/auth/me 200 in 628ms
+ GET /api/auth/me 200 in 36ms
+ GET /api/notifications?unread=true 200 in 48ms
+ ○ Compiling /ngos ...
+ ✓ Compiled /ngos in 673ms (2023 modules)
+ GET /api/auth/me 200 in 150ms
+ GET /api/nav 200 in 173ms
+ GET /api/auth/me 200 in 76ms
+ GET /api/notifications?unread=true 200 in 69ms
+ ○ Compiling /hisaab ...
+ ✓ Compiled /hisaab in 1773ms (2149 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 52ms
+ GET /api/nav 200 in 75ms
+ ✓ Compiled /api/health in 465ms (1338 modules)
+ GET /api/auth/me 200 in 791ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 908ms
+ GET /api/auth/me 200 in 129ms
+ GET /api/health 200 in 28ms
+ ✓ Compiled /api/hisaab/reports/[id]/media in 292ms (1341 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 721ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/nav 200 in 751ms
+ GET /api/health 200 in 819ms
+ GET /api/hisaab/reports/b0f5abc5-db5a-45aa-8f96-cdf6529d64f5/media?type=before 200 in 846ms
+ GET /api/auth/me 200 in 40ms
+ GET /api/health 200 in 49ms
+ GET /api/auth/me 200 in 28ms
+ GET /api/health 200 in 64ms
+ GET /api/auth/me 200 in 87ms
+ GET /api/nav 200 in 88ms
+ GET /api/health 200 in 70ms
+ GET /api/auth/me 200 in 55ms
+ GET /api/auth/me 200 in 33ms
+ GET /api/hisaab/reports/b1c6486f-93cd-4abb-a809-b1425200efb0/media?type=before 200 in 66ms
+ GET /api/auth/me 200 in 61ms
+ GET /api/nav 200 in 67ms
+ GET /api/hisaab/reports/b1c6486f-93cd-4abb-a809-b1425200efb0/media?type=after 200 in 78ms
+ GET /api/health 200 in 74ms
+ GET /api/auth/me 200 in 55ms
+ GET /api/health 200 in 50ms
+ GET /api/auth/me 200 in 27ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 52ms
+ GET /api/auth/me 200 in 71ms
+ GET /api/nav 200 in 80ms
+ GET /api/health 200 in 58ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/auth/me 200 in 29ms
+ GET /api/hisaab/reports/b64ed77e-d081-4037-8edf-b80cd18fea6a/media?type=before 200 in 68ms
+ GET /api/hisaab/reports/b64ed77e-d081-4037-8edf-b80cd18fea6a/media?type=after 200 in 73ms
+ GET /api/auth/me 200 in 73ms
+ GET /api/health 200 in 82ms
+ GET /api/nav 200 in 106ms
+ GET /api/auth/me 200 in 37ms
+ GET /api/health 200 in 45ms
+ GET /api/auth/me 200 in 30ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 47ms
+ GET /api/auth/me 200 in 63ms
+ GET /api/nav 200 in 70ms
+ GET /api/health 200 in 60ms
+ GET /api/auth/me 200 in 50ms
+ GET /api/auth/me 200 in 32ms
+ GET /api/auth/me 200 in 110ms
+ GET /api/nav 200 in 113ms
+ GET /api/blockchain/stats 200 in 115ms
+ GET /api/auth/me 200 in 39ms
+ GET /api/blockchain/stats 200 in 74ms
+ GET /api/notifications?unread=true 200 in 71ms
+ GET /api/auth/me 200 in 59ms
+ GET /api/notifications?unread=true 200 in 36ms
+ GET /api/auth/me 200 in 69ms
+ GET /api/nav 200 in 115ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/health 200 in 59ms
+ GET /api/auth/me 200 in 53ms
+ GET /api/health 200 in 57ms
+ GET /api/hisaab/reports/28d7d05a-b98f-4271-ab06-aa9daa70686d/media?type=after 200 in 68ms
+ GET /api/auth/me 200 in 72ms
+ GET /api/health 200 in 76ms
+ GET /api/hisaab/reports/28d7d05a-b98f-4271-ab06-aa9daa70686d/media?type=before 200 in 93ms
+ GET /api/nav 200 in 83ms
+ GET /api/health 200 in 42ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/auth/me 200 in 29ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ○ Compiling /api/hisaab/escrows/[id]/fast-forward ...
+ ✓ Compiled /api/hisaab/escrows/[id]/fast-forward in 789ms (1194 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ POST /api/hisaab/escrows/0e451011-9938-4a12-abba-3d266ba52e8d/fast-forward 403 in 1050ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 154ms
+ GET /api/auth/me 200 in 186ms
+ GET /api/nav 200 in 191ms
+ GET /api/health 200 in 69ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/auth/me 200 in 31ms
+ ✓ Compiled /api/blockchain/stats in 396ms (1328 modules)
+ GET /api/auth/me 200 in 696ms
+ GET /api/blockchain/stats 200 in 708ms
+ GET /api/nav 200 in 727ms
+ ✓ Compiled /api/notifications in 338ms (1331 modules)
+ GET /api/blockchain/stats 200 in 927ms
+ GET /api/auth/me 200 in 942ms
+ GET /api/notifications?unread=true 200 in 995ms
+ GET /api/auth/me 200 in 96ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 2.6s (2144 modules)
+ GET /api/notifications?unread=true 200 in 2750ms
+ GET /api/auth/me 200 in 44ms
+ GET /api/nav 200 in 69ms
+ GET /api/auth/me 200 in 56ms
+ GET /api/notifications?unread=true 200 in 57ms
+ GET /dashboard 200 in 192ms
+ GET /api/nav 200 in 146ms
+ GET /api/blockchain/stats 200 in 152ms
+ GET /api/auth/me 200 in 176ms
+ GET /api/nav 200 in 72ms
+ GET /api/blockchain/stats 200 in 83ms
+ GET /api/auth/me 200 in 80ms
+ GET /api/notifications?unread=true 200 in 75ms
+ GET /api/auth/me 200 in 34ms
+ GET /api/auth/me 200 in 46ms
+ GET /api/notifications?unread=true 200 in 54ms
+ GET / 200 in 251ms
+ GET /api/auth/me 200 in 75ms
+ GET /api/blockchain/stats 200 in 90ms
+ GET /api/nav 200 in 96ms
+ GET /api/auth/me 200 in 73ms
+ GET /api/nav 200 in 108ms
+ GET /api/blockchain/stats 200 in 118ms
+ GET /api/notifications?unread=true 200 in 121ms
+ GET /api/auth/me 200 in 82ms
+ ○ Compiling /api/audit/ledger ...
+ ✓ Compiled /api/audit/ledger in 822ms (1338 modules)
+ GET / 200 in 318ms
+ GET /api/auth/me 200 in 65ms
+ GET /api/blockchain/stats 200 in 86ms
+ GET /api/nav 200 in 116ms
+ GET /api/auth/me 200 in 74ms
+ GET /api/blockchain/stats 200 in 89ms
+ GET /api/nav 200 in 75ms
+ GET /api/auth/me 200 in 53ms
+ GET /api/audit/ledger 403 in 47ms
+ GET /api/auth/me 200 in 46ms
+ GET /api/audit/ledger 403 in 40ms
+ GET /api/notifications?unread=true 200 in 36ms
+ GET /api/notifications?unread=true 200 in 30ms
+ ○ Compiling /campaigns ...
+ ✓ Compiled /campaigns in 1751ms (2146 modules)
+ GET /api/auth/me 200 in 55ms
+ GET /api/nav 200 in 62ms
+ GET /api/auth/me 200 in 29ms
+ GET /api/notifications?unread=true 200 in 37ms
+ ○ Compiling /campaigns/[id] ...
+ ✓ Compiled /campaigns/[id] in 2.1s (2504 modules)
+ GET /api/nav 200 in 70ms
+ GET /api/auth/me 200 in 72ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/notifications?unread=true 200 in 65ms
+ GET /api/blockchain/stats 200 in 49ms
+ ○ Compiling /api/auth/wallet/evm ...
+ ✓ Compiled /api/auth/wallet/evm in 549ms (1554 modules)
+ GET /api/auth/wallet/evm 200 in 667ms
+ POST /api/auth/wallet/evm 200 in 116ms
+ GET /api/blockchain/stats 200 in 92ms
+ ○ Compiling /api/auth/wallet/evm/faucet ...
+ ✓ Compiled /api/auth/wallet/evm/faucet in 529ms (1529 modules)
+ POST /api/auth/wallet/evm/faucet 200 in 1028ms
+ ✓ Compiled /api/campaigns/[id]/donate in 424ms (1088 modules)
+ POST /api/campaigns/15af30ec-4dda-4011-b922-fb48479c3b4c/donate 201 in 748ms
+ GET /api/auth/wallet/evm 200 in 46ms
+ POST /api/auth/wallet/evm 200 in 45ms
+ GET /api/blockchain/stats 200 in 37ms
+ POST /api/campaigns/15af30ec-4dda-4011-b922-fb48479c3b4c/donate 201 in 121ms
+ GET /api/auth/wallet/evm 200 in 18ms
+ POST /api/auth/wallet/evm 200 in 53ms
+ GET /api/blockchain/stats 200 in 50ms
+ POST /api/campaigns/15af30ec-4dda-4011-b922-fb48479c3b4c/donate 201 in 149ms
+ ○ Compiling /donor/donations/[id]/trace ...
+ ✓ Compiled /donor/donations/[id]/trace in 1686ms (2058 modules)
+ ✓ Compiled /api/nav in 391ms (1098 modules)
+ ✓ Compiled (1100 modules)
+ GET /api/auth/me 200 in 728ms
+ GET /api/nav 200 in 727ms
+ GET /api/auth/me 200 in 36ms
+ ✓ Compiled /api/notifications in 291ms (1103 modules)
+ GET /api/notifications?unread=true 200 in 396ms
+ GET /api/auth/me 200 in 44ms
+ GET /api/nav 200 in 66ms
+ GET /api/auth/me 200 in 40ms
+ GET /api/notifications?unread=true 200 in 52ms
+ GET /api/auth/me 200 in 43ms
+ GET /api/nav 200 in 65ms
+ GET /api/auth/me 200 in 39ms
+ GET /api/notifications?unread=true 200 in 32ms
+ GET /api/nav 200 in 239ms
+ GET /api/auth/me 200 in 240ms
+ GET /api/auth/me 200 in 69ms
+ GET /api/notifications?unread=true 200 in 85ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/nav 200 in 42ms
+ GET /api/auth/me 200 in 56ms
+ ○ Compiling /api/health ...
+ ✓ Compiled /api/health in 694ms (1108 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 977ms
+ GET /api/health 200 in 1016ms
+ GET /api/auth/me 200 in 37ms
+ GET /api/health 200 in 46ms
+ GET /api/auth/me 200 in 108ms
+ GET /api/blockchain/stats 200 in 114ms
+ GET /api/nav 200 in 110ms
+ GET /api/auth/me 200 in 55ms
+ GET /api/notifications?unread=true 200 in 62ms
+ GET /api/blockchain/stats 200 in 70ms
+ GET /api/auth/me 200 in 32ms
+ GET /api/notifications?unread=true 200 in 31ms
+ GET /api/health 200 in 45ms
+ GET /api/auth/me 200 in 64ms
+ GET /api/nav 200 in 69ms
+ GET /api/health 200 in 65ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/auth/me 200 in 28ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/blockchain/stats 200 in 46ms
+ GET /api/nav 200 in 49ms
+ GET /api/auth/me 200 in 33ms
+ GET /api/blockchain/stats 200 in 58ms
+ GET /api/notifications?unread=true 200 in 57ms
+ GET /api/auth/me 200 in 56ms
+ GET /api/notifications?unread=true 200 in 35ms
+ GET /api/auth/me 200 in 77ms
+ GET /api/nav 200 in 95ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/notifications?unread=true 200 in 55ms
+ GET /api/health 200 in 58ms
+ GET /api/auth/me 200 in 77ms
+ GET /api/nav 200 in 86ms
+ GET /api/health 200 in 68ms
+ GET /api/auth/me 200 in 53ms
+ GET /api/auth/me 200 in 28ms
+ GET /api/blockchain/stats 200 in 64ms
+ GET /api/nav 200 in 65ms
+ GET /api/auth/me 200 in 66ms
+ GET /api/auth/me 200 in 69ms
+ GET /api/blockchain/stats 200 in 71ms
+ GET /api/notifications?unread=true 200 in 65ms
+ GET /api/auth/me 200 in 36ms
+ GET /api/notifications?unread=true 200 in 34ms
+ ○ Compiling /hisaab/report/new ...
+ ✓ Compiled /hisaab/report/new in 1174ms (2090 modules)
+ GET /api/auth/me 200 in 66ms
+ GET /api/nav 200 in 70ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 99ms
+ GET /api/auth/me 200 in 104ms
+ GET /api/health 200 in 24ms
+ GET /api/auth/me 200 in 23ms
+ GET /api/auth/me 200 in 96ms
+ GET /api/blockchain/stats 200 in 105ms
+ GET /api/nav 200 in 113ms
+ GET /api/auth/me 200 in 55ms
+ GET /api/blockchain/stats 200 in 73ms
+ GET /api/notifications?unread=true 200 in 79ms
+ GET /api/auth/me 200 in 33ms
+ GET /api/notifications?unread=true 200 in 22ms
+ ✓ Compiled /donor/donations in 383ms (2094 modules)
+ GET /api/auth/me 200 in 32ms
+ GET /api/nav 200 in 55ms
+ GET /api/auth/me 200 in 65ms
+ GET /api/notifications?unread=true 200 in 55ms
+ GET /api/auth/me 200 in 128ms
+ GET /api/nav 200 in 130ms
+ GET /api/auth/me 200 in 40ms
+ GET /api/notifications?unread=true 200 in 47ms
+ GET /api/auth/me 200 in 37ms
+ GET /api/nav 200 in 56ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/notifications?unread=true 200 in 52ms
+ GET /api/nav 200 in 31ms
+ GET /api/auth/me 200 in 35ms
+ GET /api/auth/me 200 in 27ms
+ GET /api/notifications?unread=true 200 in 30ms
+ GET /api/auth/me 200 in 36ms
+ GET /api/nav 200 in 60ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/notifications?unread=true 200 in 49ms
+ ✓ Compiled /donor/donations/[id] in 361ms (2084 modules)
+ GET /api/auth/me 200 in 38ms
+ GET /api/nav 200 in 55ms
+ GET /api/auth/me 200 in 44ms
+ GET /api/notifications?unread=true 200 in 51ms
+ ○ Compiling /explorer/tx/[hash] ...
+ ✓ Compiled /explorer/tx/[hash] in 871ms (2103 modules)
+ GET /explorer/tx/0x0576c973eea318469987b98c3ffcec05f4946f33eac893985e34f3a402fb7e8c 200 in 1507ms
+ GET /api/blockchain/stats 200 in 71ms
+ GET /api/auth/me 200 in 73ms
+ GET /api/nav 200 in 75ms
+ GET /api/auth/me 200 in 43ms
+ GET /api/nav 200 in 58ms
+ GET /api/blockchain/stats 200 in 63ms
+ GET /api/notifications?unread=true 200 in 68ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/auth/me 200 in 36ms
+ GET /api/notifications?unread=true 200 in 48ms
+ ○ Compiling /campaigns/[id]/audit ...
+ ✓ Compiled /campaigns/[id]/audit in 687ms (2100 modules)
+ GET /api/auth/me 200 in 90ms
+ GET /api/nav 200 in 125ms
+ GET /api/auth/me 200 in 126ms
+ GET /api/notifications?unread=true 200 in 150ms

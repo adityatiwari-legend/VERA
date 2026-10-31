@@ -1,0 +1,62 @@
+
+> vera@0.2.0 start
+> next start
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.
+ ✓ Ready in 521ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+[onChainDonate] Error: execution reverted: "VERA: campaign not found" (action="estimateGas", data="0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000018564552413a2063616d706169676e206e6f7420666f756e640000000000000000", reason="VERA: campaign not found", transaction={ "data": "0xc37067faeed4d6bc8c73d50a4818479979f2819243d5783539073294ccc36413b4155a63", "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266", "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3" }, invocation=null, revert={ "args": [ "VERA: campaign not found" ], "name": "Error", "signature": "Error(string)" }, code=CALL_EXCEPTION, version=6.17.0)
+Database query error: {
+  text: 'SELECT * FROM milestones WHERE id = $1 AND campaign_id = $2',
+  error: error: invalid input syntax for type uuid: "mmmmmmmm-mmmm-mmmm-mmmm-mmmmmmmm0001"
+      at D:\HackXxMUJ\node_modules\pg-pool\index.js:45:11
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async i (D:\HackXxMUJ\.next\server\chunks\2509.js:1:842)
+      at async u (D:\HackXxMUJ\.next\server\app\ngo\campaigns\[id]\milestones\[milestoneId]\proof\page.js:1:11743) {
+    length: 168,
+    severity: 'ERROR',
+    code: '22P02',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $1 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'uuid.c',
+    line: '133',
+    routine: 'string_to_uuid'
+  }
+}
+error: invalid input syntax for type uuid: "mmmmmmmm-mmmm-mmmm-mmmm-mmmmmmmm0001"
+    at D:\HackXxMUJ\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async i (D:\HackXxMUJ\.next\server\chunks\2509.js:1:842)
+    at async u (D:\HackXxMUJ\.next\server\app\ngo\campaigns\[id]\milestones\[milestoneId]\proof\page.js:1:11743) {
+  length: 168,
+  severity: 'ERROR',
+  code: '22P02',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: "unnamed portal parameter $1 = '...'",
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'uuid.c',
+  line: '133',
+  routine: 'string_to_uuid',
+  digest: '1175340633'
+}

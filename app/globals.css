@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   VERA — editorial design system (docs/design-system.md)
+   Light, typographic, financial-accountability product.
+   Dark "technical" surfaces (.panel-night) are accents only.
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+  --paper: #FFFFFF;
+  --ink: #111111;
+  --mute: #737373;
+  --line: #E5E7EB;
+  --accent: #2563EB;
+  --lav: #C4B5FD;
+  --night: #0B0B10;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+  background-color: #FFFFFF;
+  color: #111111;
+  /* overflow-x lives on <html> ONLY — putting it on <body> too turns body
+     into its own scroll container, which silently kills position:sticky
+     for the dashboard sidebars. */
+  overflow-x: hidden;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+body {
+  color-scheme: light;
+  background-color: #FFFFFF;
+  color: #111111;
+}
+
+::selection {
+  background: #2563EB;
+  color: #FFFFFF;
+}
+
+/* Scrollbar — precision hairline */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563EB;
+}
+
+/* Dark technical panels scope their own scrollbar/selection */
+.theme-night {
+  color-scheme: dark;
+}
+.theme-night ::selection {
+  background: #2563EB;
+  color: #FFFFFF;
+}
+.theme-night ::-webkit-scrollbar-track {
+  background: #0B0B10;
+}
+.theme-night ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================
+   Component classes (use these everywhere)
+   ========================================== */
+@layer components {
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-accent;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply block h-[7px] w-[7px] bg-accent;
+  }
+
+  .card {
+    @apply rounded-xl border border-line bg-white shadow-card;
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:border-line-strong hover:shadow-lift;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-150 hover:bg-accent-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-colors duration-150 hover:border-line-strong hover:bg-mist focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-mute transition-colors duration-150 hover:bg-mist hover:text-ink;
+  }
+  .btn-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/[0.06] px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-150 hover:border-white/30 hover:bg-white/[0.1];
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-faint outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/10;
+  }
+  .label-text {
+    @apply block text-[13px] font-medium text-ink;
+  }
+
+  /* Small mono chip used for metadata (hashes, ids, versions) */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-md border border-line bg-mist px-2 py-0.5 font-mono text-[10.5px] text-mute;
+  }
+
+  /* Dark technical panel (Aeye-style) — accents only, never whole app */
+  .panel-night {
+    @apply theme-night relative bg-night text-white;
+  }
+}
+
+/* ==========================================
+   Backgrounds: grids, dots, washes
+   ========================================== */
+.bg-grid-fine {
+  background-size: 44px 44px;
+  background-image:
+    linear-gradient(to right, rgba(17, 17, 17, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 17, 17, 0.045) 1px, transparent 1px);
+}
+
+.bg-grid-night {
+  background-size: 44px 44px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+.bg-dots-night {
+  background-size: 22px 22px;
+  background-image: radial-gradient(rgba(96, 165, 250, 0.22) 1px, transparent 1.4px);
+}
+
+.bg-grid-blueprint {
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+  background-image:
+    linear-gradient(to right, rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+    linear-gradient(to right, rgba(17, 17, 17, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 17, 17, 0.03) 1px, transparent 1px);
+}
+
+/* Lavender → blue editorial wash (TARS-inspired, restrained) */
+.wash-hero {
+  background-image:
+    radial-gradient(52rem 30rem at 82% -10%, rgba(196, 181, 253, 0.42), transparent 62%),
+    radial-gradient(44rem 26rem at 12% 8%, rgba(219, 234, 254, 0.75), transparent 60%),
+    radial-gradient(38rem 24rem at 55% 110%, rgba(196, 181, 253, 0.22), transparent 65%);
+}
+
+/* Hairline borders (light) */
+.border-hairline { border: 1px solid #E5E7EB; }
+.border-b-hairline { border-bottom: 1px solid #E5E7EB; }
+.border-t-hairline { border-top: 1px solid #E5E7EB; }
+.border-r-hairline { border-right: 1px solid #E5E7EB; }
+.border-l-hairline { border-left: 1px solid #E5E7EB; }
+
+/* Crosshair registration marks (light) */
+.crosshair-corner {
+  position: relative;
+}
+.crosshair-corner::before {
+  content: "+";
+  position: absolute;
+  top: -9px;
+  left: -7px;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  color: #A3A3A3;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ==========================================
+   Motion — restrained, reduced-motion aware
+   ========================================== */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-rise {
+  animation: rise 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.26s; }
+.delay-4 { animation-delay: 0.36s; }
+.delay-5 { animation-delay: 0.48s; }
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+.animate-floaty { animation: floaty 6s ease-in-out infinite; }
+.animate-floaty-slow { animation: floaty 9s ease-in-out infinite; }
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.45); }
+  50% { opacity: 0.65; box-shadow: 0 0 0 5px rgba(37, 99, 235, 0); }
+}
+.animate-pulse-dot { animation: pulseDot 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 35s linear infinite;
+}
+.animate-ticker:hover { animation-play-state: paused; }
+
+/* Scroll-reveal (driven by components/landing/Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Skeleton shimmer (light) */
+@keyframes vera-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.vera-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(17, 24, 39, 0.04) 25%,
+    rgba(17, 24, 39, 0.08) 37%,
+    rgba(17, 24, 39, 0.04) 63%
+  );
+  background-size: 200% 100%;
+  animation: vera-shimmer 1.6s ease-in-out infinite;
+}
+
+/* Journey-node pulse (kept name; recolored blue) */
+@keyframes vera-node-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+  50% { box-shadow: 0 0 0 7px rgba(37, 99, 235, 0); }
+}
+.animate-vera-node-pulse { animation: vera-node-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-floaty,
+  .animate-floaty-slow,
+  .animate-pulse-dot,
+  .animate-ticker,
+  .animate-vera-node-pulse,
+  .vera-skeleton {
+    animation: none !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  * {
+    scroll-behavior: auto !important;
+  }
+}

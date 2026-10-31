@@ -1,0 +1,17 @@
+{
+  "name": "VERA \u2014 Proof-Gated Money",
+  "short_name": "VERA",
+  "description": "Civic trust network: audited donation escrows + road-repair escrow (Hisaab).",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#4F46E5",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

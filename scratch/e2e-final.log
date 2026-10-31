@@ -1,0 +1,81 @@
+
+=== VERA E2E against http://localhost:3000 ===
+
+1. Platform health
+  ✅ health ok
+  ✅ database connected
+  ✅ gemini configured
+  ✅ solana configured
+
+2. Registration security
+  ✅ ADMIN self-registration rejected
+  ✅ AUDITOR self-registration rejected
+
+3. Role logins + nav
+  ✅ admin login
+  ✅ organization login
+  ✅ auditor login
+  ✅ user login
+  ✅ contractor login
+  ✅ admin nav has console + complaints
+  ✅ user nav has street register
+  ✅ anon /admin redirected to login
+  ✅ USER bounced from /admin
+
+4. Hisaab citizen → government → contractor loop
+  ✅ report created
+  ✅ report id returned
+  ✅ contractor payout wallet bound
+  ✅ confirmation 2 accepted
+  ✅ confirmation 3 accepted
+  ✅ confirmation 4 flips to CONFIRMED
+  ✅ self-confirm blocked
+  ✅ fund request drafted
+  ✅ fund request submitted
+  ✅ fund request approved
+  ✅ fund request sanctioned
+  ✅ contractor assigned (OFFERED)
+  ✅ escrow blocked before acceptance
+  ✅ contractor accepted job
+  ✅ escrow funded after acceptance
+     ↳ escrow 8dae20ae-49a3-41c3-b1ab-7363b7c5eb16 · on-chain tx: YES
+  ✅ roughness telemetry stored
+  ✅ repair submitted
+     ↳ gemini: ERROR · roughness ok: true
+  ✅ stage 1 released via admin manual approval
+  ✅ repair by non-contractor rejected
+  ✅ stage 2 released (demo fast-forward)
+  ✅ stage 3 released → report PAID
+  ✅ report reached PAID
+  ✅ assignment completed
+
+5. VERA Core donation → proof → multisig release loop
+  ✅ campaign created
+     ↳ campaign 81f99f67-c76c-4f62-ad10-017835476d3a · chain status: CONFIRMED
+  ✅ demo donation recorded
+  ✅ milestone created
+  ✅ milestone started
+  ✅ proof submitted
+     ↳ gemini OCR status: undefined · extracted amount: undefined
+  ✅ auditor approved proof
+  ✅ release requested
+  ✅ auditor signed release
+  ✅ 2-of-3 threshold reached
+  ✅ release executed honestly
+     ↳ execute message: "Funds released on-chain and confirmed in ledger." · tx: 0xf352d45fd0a948a8b10862ae074318ca666bc8c26ffecf267678c9e0875d905a
+  ✅ audit hash chain verifies
+  ✅ audit ledger gated from USER
+  ✅ audit ledger open to ADMIN
+
+6. Notifications + mobile /api/v1
+  ✅ contractor has notifications
+  ✅ v1 login issues token
+  ✅ v1 reports list with token
+  ✅ v1 /me rejects anonymous
+  ✅ v1 single report works
+
+7. Honesty checks (no fabricated telemetry)
+  ✅ chain stats real (connected)
+  ✅ audit ledger requires auth
+
+=== RESULT: 58 passed, 0 failed ===
