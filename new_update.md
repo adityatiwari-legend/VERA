@@ -19,6 +19,14 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 
 ## Change Log (newest first)
 
+### [2026-10-31] Solana integration now ships configured in production (was reporting Off)
+Commit: uncommitted
+Backend changes:
+- **Fixed — `/api/health` reported `solana_program: false` on the VPS (sidebar "Solana: Off"):** two deployment defects, no app logic changed. (1) `lib/solana.ts` loads the Anchor IDL from `contracts/hisaab/target/idl/hisaab.json`, but the Docker **runner** stage only copied `public` + `.next` — the file never existed in the `vera-app` container. The Dockerfile now COPYs the IDL into the runner image. (2) `/contracts/hisaab/target/` was fully gitignored, so the VPS clone never had the IDL, the built `hisaab.so`, or the program keypair; `.gitignore` now tracks exactly `target/idl/hisaab.json`, `target/deploy/hisaab.so`, `target/deploy/hisaab-keypair.json` (everything else under `target/` stays ignored).
+- **Changed — `NEXT_PUBLIC_HISAAB_PROGRAM_ID` now defaults to the real program id `AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw`** (the committed deploy keypair's pubkey — stable across rebuilds). Env override still wins. The old default was the `Hisaab111…` placeholder, which forced `isSolanaProgramConfigured()` false on any fresh deployment.
+- Note: this flips the integration to **configured/enabled**. Actual on-chain transactions additionally require the program to be deployed on devnet + the oracle/funder keypairs funded (graceful PG-ledger degrade until then, unchanged).
+Mobile action needed: none — no route, endpoint, or contract change; base URL and endpoints unchanged.
+
 ### [2026-10-31] Portal shells redesigned (premium night sidebars + sticky-offset fix) — frontend only, no API change
 Commit: `3ff5f14`
 Backend changes: **none** — zero `app/api/**`, schema, or contract changes. Presentation only:

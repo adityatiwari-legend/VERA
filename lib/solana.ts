@@ -29,8 +29,13 @@ export const REQUIRED_CONFIRMATIONS = 3;
 export const HOLD_DAYS = 30;
 
 const RPC_URL = process.env.HISAAB_RPC_URL || 'https://api.devnet.solana.com';
+// Default = the committed deploy keypair's program id (contracts/hisaab/target/
+// deploy/hisaab-keypair.json), so a fresh deployment reports the Solana
+// integration as configured without extra env wiring. Override via env if you
+// redeploy the program under a different id.
 const PROGRAM_ID_STR =
-  process.env.NEXT_PUBLIC_HISAAB_PROGRAM_ID || 'Hisaab11111111111111111111111111111111111';
+  process.env.NEXT_PUBLIC_HISAAB_PROGRAM_ID ||
+  'AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw';
 const PLACEHOLDER_ID = 'Hisaab11111111111111111111111111111111111';
 
 const IDL_PATH = path.resolve(process.cwd(), 'contracts', 'hisaab', 'target', 'idl', 'hisaab.json');

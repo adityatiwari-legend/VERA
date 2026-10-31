@@ -1,0 +1,652 @@
+{
+  "version": "0.1.0",
+  "name": "hisaab",
+  "instructions": [
+    {
+      "name": "initReport",
+      "docs": [],
+      "accounts": [
+        {
+          "name": "report",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "reporter",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "systemProgram",
+          "writable": false,
+          "signer": false
+        }
+      ],
+      "args": [
+        {
+          "name": "seed",
+          "type": {
+            "array": [
+              "u8",
+              16
+            ]
+          }
+        },
+        {
+          "name": "latMicro",
+          "type": "i64"
+        },
+        {
+          "name": "lngMicro",
+          "type": "i64"
+        },
+        {
+          "name": "severity",
+          "type": "u8"
+        },
+        {
+          "name": "mediaHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ],
+      "discriminator": [
+        112,
+        37,
+        166,
+        214,
+        97,
+        182,
+        72,
+        14
+      ]
+    },
+    {
+      "name": "confirmReport",
+      "docs": [],
+      "accounts": [
+        {
+          "name": "report",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "confirmation",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "confirmer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "systemProgram",
+          "writable": false,
+          "signer": false
+        }
+      ],
+      "args": [
+        {
+          "name": "seed",
+          "type": {
+            "array": [
+              "u8",
+              16
+            ]
+          }
+        }
+      ],
+      "discriminator": [
+        101,
+        127,
+        230,
+        187,
+        210,
+        234,
+        190,
+        176
+      ]
+    },
+    {
+      "name": "initEscrow",
+      "docs": [],
+      "accounts": [
+        {
+          "name": "report",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "escrow",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "funder",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "contractor",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "systemProgram",
+          "writable": false,
+          "signer": false
+        }
+      ],
+      "args": [
+        {
+          "name": "seed",
+          "type": {
+            "array": [
+              "u8",
+              16
+            ]
+          }
+        },
+        {
+          "name": "oracle",
+          "type": "pubkey"
+        },
+        {
+          "name": "stageAmounts",
+          "type": {
+            "array": [
+              "u64",
+              3
+            ]
+          }
+        },
+        {
+          "name": "holdUntil",
+          "type": "i64"
+        }
+      ],
+      "discriminator": [
+        70,
+        46,
+        40,
+        23,
+        6,
+        11,
+        81,
+        139
+      ]
+    },
+    {
+      "name": "releaseStage",
+      "docs": [],
+      "accounts": [
+        {
+          "name": "report",
+          "writable": false,
+          "signer": false
+        },
+        {
+          "name": "escrow",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "oracle",
+          "writable": false,
+          "signer": true
+        },
+        {
+          "name": "contractor",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "systemProgram",
+          "writable": false,
+          "signer": false
+        }
+      ],
+      "args": [
+        {
+          "name": "stage",
+          "type": "u8"
+        }
+      ],
+      "discriminator": [
+        171,
+        190,
+        144,
+        50,
+        212,
+        170,
+        119,
+        85
+      ]
+    },
+    {
+      "name": "refund",
+      "docs": [],
+      "accounts": [
+        {
+          "name": "report",
+          "writable": false,
+          "signer": false
+        },
+        {
+          "name": "escrow",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "funder",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "systemProgram",
+          "writable": false,
+          "signer": false
+        }
+      ],
+      "args": [],
+      "discriminator": [
+        2,
+        96,
+        183,
+        251,
+        63,
+        208,
+        46,
+        46
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Report",
+      "docs": [],
+      "kind": {
+        "struct": {
+          "fields": [
+            {
+              "name": "reporter",
+              "type": "pubkey"
+            },
+            {
+              "name": "seed",
+              "type": {
+                "array": [
+                  "u8",
+                  16
+                ]
+              }
+            },
+            {
+              "name": "latMicro",
+              "type": "i64"
+            },
+            {
+              "name": "lngMicro",
+              "type": "i64"
+            },
+            {
+              "name": "severity",
+              "type": "u8"
+            },
+            {
+              "name": "mediaHash",
+              "type": {
+                "array": [
+                  "u8",
+                  32
+                ]
+              }
+            },
+            {
+              "name": "confirmations",
+              "type": "u8"
+            },
+            {
+              "name": "status",
+              "type": "u8"
+            },
+            {
+              "name": "createdAt",
+              "type": "i64"
+            },
+            {
+              "name": "bump",
+              "type": "u8"
+            }
+          ]
+        }
+      },
+      "discriminator": [
+        232,
+        246,
+        229,
+        227,
+        242,
+        105,
+        190,
+        2
+      ]
+    },
+    {
+      "name": "Confirmation",
+      "docs": [],
+      "kind": {
+        "struct": {
+          "fields": [
+            {
+              "name": "confirmer",
+              "type": "pubkey"
+            },
+            {
+              "name": "report",
+              "type": "pubkey"
+            },
+            {
+              "name": "createdAt",
+              "type": "i64"
+            },
+            {
+              "name": "bump",
+              "type": "u8"
+            }
+          ]
+        }
+      },
+      "discriminator": [
+        74,
+        221,
+        241,
+        85,
+        251,
+        70,
+        57,
+        151
+      ]
+    },
+    {
+      "name": "Escrow",
+      "docs": [],
+      "kind": {
+        "struct": {
+          "fields": [
+            {
+              "name": "funder",
+              "type": "pubkey"
+            },
+            {
+              "name": "contractor",
+              "type": "pubkey"
+            },
+            {
+              "name": "oracle",
+              "type": "pubkey"
+            },
+            {
+              "name": "seed",
+              "type": {
+                "array": [
+                  "u8",
+                  16
+                ]
+              }
+            },
+            {
+              "name": "stageAmounts",
+              "type": {
+                "array": [
+                  "u64",
+                  3
+                ]
+              }
+            },
+            {
+              "name": "releasedStage",
+              "type": "u8"
+            },
+            {
+              "name": "holdUntil",
+              "type": "i64"
+            },
+            {
+              "name": "createdAt",
+              "type": "i64"
+            },
+            {
+              "name": "bump",
+              "type": "u8"
+            },
+            {
+              "name": "vaultBump",
+              "type": "u8"
+            }
+          ]
+        }
+      },
+      "discriminator": [
+        31,
+        213,
+        123,
+        187,
+        186,
+        22,
+        218,
+        155
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "Report",
+      "docs": [],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "reporter",
+            "type": "pubkey"
+          },
+          {
+            "name": "seed",
+            "type": {
+              "array": [
+                "u8",
+                16
+              ]
+            }
+          },
+          {
+            "name": "latMicro",
+            "type": "i64"
+          },
+          {
+            "name": "lngMicro",
+            "type": "i64"
+          },
+          {
+            "name": "severity",
+            "type": "u8"
+          },
+          {
+            "name": "mediaHash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "confirmations",
+            "type": "u8"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "createdAt",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Confirmation",
+      "docs": [],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "confirmer",
+            "type": "pubkey"
+          },
+          {
+            "name": "report",
+            "type": "pubkey"
+          },
+          {
+            "name": "createdAt",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Escrow",
+      "docs": [],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "funder",
+            "type": "pubkey"
+          },
+          {
+            "name": "contractor",
+            "type": "pubkey"
+          },
+          {
+            "name": "oracle",
+            "type": "pubkey"
+          },
+          {
+            "name": "seed",
+            "type": {
+              "array": [
+                "u8",
+                16
+              ]
+            }
+          },
+          {
+            "name": "stageAmounts",
+            "type": {
+              "array": [
+                "u64",
+                3
+              ]
+            }
+          },
+          {
+            "name": "releasedStage",
+            "type": "u8"
+          },
+          {
+            "name": "createdAt",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "vaultBump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "SeedMismatch",
+      "msg": "Seed does not match the report account"
+    },
+    {
+      "code": 6001,
+      "name": "UnauthorizedOracle",
+      "msg": "Caller is not the escrow oracle"
+    },
+    {
+      "code": 6002,
+      "name": "UnauthorizedContractor",
+      "msg": "Caller is not the escrow contractor"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidStage",
+      "msg": "Invalid or out-of-order stage"
+    },
+    {
+      "code": 6004,
+      "name": "HoldActive",
+      "msg": "Durability hold is still active for this stage"
+    },
+    {
+      "code": 6005,
+      "name": "NothingToRefund",
+      "msg": "Nothing left to refund"
+    },
+    {
+      "code": 6006,
+      "name": "Overflow",
+      "msg": "Arithmetic overflow"
+    }
+  ],
+  "metadata": {
+    "address": "AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw",
+    "origin": "hisaab",
+    "version": "0.2.0-hold"
+  },
+  "address": "AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw"
+}

@@ -48,8 +48,18 @@ next-env.d.ts
 # OS
 Thumbs.db
 
-# anchor / solana build artifacts + devnet keys
-/contracts/hisaab/target/
+# anchor / solana build artifacts + devnet keys.
+# The built program (.so), its keypair (stable devnet program id) and the IDL
+# ARE tracked — the Docker runner image needs the IDL at runtime and deploys
+# need the .so + keypair for a reproducible program id. Everything else
+# inside target/ stays ignored.
+/contracts/hisaab/target/*
+!/contracts/hisaab/target/idl/
+/contracts/hisaab/target/idl/*
+!/contracts/hisaab/target/idl/hisaab.json
+/contracts/hisaab/target/deploy/*
+!/contracts/hisaab/target/deploy/hisaab.so
+!/contracts/hisaab/target/deploy/hisaab-keypair.json
 /contracts/hisaab/keys/
 .cache/
 

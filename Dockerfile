@@ -41,6 +41,10 @@ RUN adduser --system --uid 1001 nextjs
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Hisaab Anchor IDL — required at runtime: lib/solana.ts reports the Solana
+# integration as configured only when contracts/hisaab/target/idl/hisaab.json
+# exists next to the process cwd.
+COPY --from=builder --chown=nextjs:nodejs /app/contracts/hisaab/target/idl ./contracts/hisaab/target/idl
 RUN mkdir -p /app/storage && chown -R nextjs:nodejs /app/storage
 
 USER nextjs
