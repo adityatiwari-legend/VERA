@@ -2,15 +2,17 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   MapPin,
   Plus,
   ShieldCheck,
   LogIn,
+  LogOut,
+  Compass,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
-import { card } from './ui';
-import RibbonField from '@/components/ui/ribbon-field';
 
 interface Health {
   integrations: Record<string, boolean>;
@@ -51,6 +53,44 @@ function Dot({ ok, label }: { ok: boolean; label: string }) {
   );
 }
 
+function NavItem({
+  href,
+  name,
+  icon: Icon,
+  active,
+  collapsed,
+}: {
+  href: string;
+  name: string;
+  icon: React.ComponentType<{ className?: string }>;
+  active: boolean;
+  collapsed: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      title={collapsed ? name : undefined}
+      className={`group relative flex items-center gap-3 rounded-lg font-mono text-[11.5px] tracking-wide transition-all duration-150 ${
+        collapsed ? 'justify-center px-0 py-2.5' : 'px-3 py-2'
+      } ${
+        active
+          ? 'bg-white/[0.08] font-semibold text-white ring-1 ring-inset ring-white/[0.07]'
+          : 'text-night-mute hover:bg-white/[0.05] hover:text-white'
+      }`}
+    >
+      {active && (
+        <span className="nav-bar-accent absolute left-0 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-full bg-accent" />
+      )}
+      <Icon
+        className={`h-4 w-4 shrink-0 transition-colors ${
+          active ? 'text-blue-400' : 'text-night-dim group-hover:text-blue-300'
+        }`}
+      />
+      {!collapsed && <span className="truncate">{name}</span>}
+    </Link>
+  );
+}
+
 export default function ConsoleShell({
   title,
   subtitle,
@@ -65,8 +105,10 @@ export default function ConsoleShell({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [health, setHealth] = useState<Health | null>(null);
   const [user, setUser] = useState<{ name: string; role: string } | null>(null);
+  const [collapsed, setCollapsed] = useState(false);
 
   useEffect(() => {
     fetch('/api/health')
@@ -79,100 +121,172 @@ export default function ConsoleShell({
       .catch(() => setUser(null));
   }, [pathname]);
 
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      setUser(null);
+      router.push('/login');
+      router.refresh();
+    } catch (err) {
+      console.error('Logout error:', err);
+    }
+  };
+
   const i = health?.integrations ?? {};
+  const userInitial = (user?.name ?? 'V').trim().charAt(0).toUpperCase();
+
+  const sidebarWidth = collapsed ? 68 : 244;
 
   const sidebar = (
-    <aside className="theme-night fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r border-white/[0.08] bg-night px-4 py-5 lg:flex">
-      {/* Ribbon Field ambient — the platform's signature gradient, fading out
-          down the sidebar. Painted behind all content (z -1; the fixed aside
-          creates the stacking context). */}
-      <div aria-hidden className="pointer-events-none absolute inset-0" style={{ zIndex: -1 }}>
-        <RibbonField
-          className="h-full w-full opacity-40"
-          style={{
-            maskImage: 'radial-gradient(ellipse 130% 42% at 50% 0%, black 30%, transparent 92%)',
-            WebkitMaskImage: 'radial-gradient(ellipse 130% 42% at 50% 0%, black 30%, transparent 92%)',
-          }}
-        />
-      </div>
-      <Link href="/" className="flex items-center gap-2.5 px-2">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-bold text-white">
+    <aside
+      className="theme-night sidebar-night fixed inset-y-0 left-0 z-30 hidden flex-col border-r border-white/[0.08] transition-[width] duration-200 lg:flex"
+      style={{ width: sidebarWidth }}
+    >
+      {/* Brand + console label + collapse */}
+      <div
+        className={`flex items-center gap-2.5 border-b border-white/[0.06] px-3.5 py-3.5 ${
+          collapsed ? 'flex-col gap-2 px-2' : ''
+        }`}
+      >
+        <Link
+          href="/"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent text-sm font-bold text-white shadow-[0_0_18px_rgba(37,99,235,0.35)]"
+        >
           V
-        </span>
-        <span>
-          <span className="block text-sm font-semibold text-white">VERA</span>
-          <span className="block text-[10px] text-night-dim">Proof-gated money</span>
-        </span>
-      </Link>
+        </Link>
+        {!collapsed && (
+          <Link href="/" className="min-w-0 flex-1 leading-none">
+            <span className="block text-sm font-semibold tracking-tight text-white">VERA</span>
+            <span className="mt-1 block font-mono text-[9px] font-semibold uppercase tracking-[0.2em] text-night-dim">
+              Hisaab console
+            </span>
+          </Link>
+        )}
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          className={`shrink-0 rounded-lg p-1.5 text-night-mute transition-colors hover:bg-white/[0.06] hover:text-white ${
+            collapsed ? '' : 'ml-auto'
+          }`}
+          title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+        >
+          {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+        </button>
+      </div>
 
-      <nav className="mt-8 flex-1 space-y-6">
+      <nav className={`flex-1 space-y-5 overflow-y-auto py-4 ${collapsed ? 'px-2' : 'px-3'}`}>
         {NAV.map((group) => (
           <div key={group.section}>
-            <p className="px-3 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-night-dim">
-              {group.section}
-            </p>
-            <div className="mt-2 space-y-1">
-              {group.items.map((item) => {
-                const active = item.exact
-                  ? pathname === item.href
-                  : pathname.startsWith(item.href);
-                const Icon = item.icon;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`flex items-center gap-3 rounded-lg px-3 py-2 font-mono text-[11.5px] transition-all ${
-                      active
-                        ? 'bg-white/[0.09] font-semibold text-white'
-                        : 'text-night-mute hover:bg-white/[0.05] hover:text-white'
-                    }`}
-                  >
-                    <span className="relative flex shrink-0 items-center">
-                      <Icon className={`h-4 w-4 ${active ? 'text-blue-400' : ''}`} />
-                      {active && (
-                        <span className="absolute -left-3 h-4 w-[2px] rounded-r bg-accent" />
-                      )}
-                    </span>
-                    <span className="truncate">{item.name}</span>
-                  </Link>
-                );
-              })}
+            {!collapsed && (
+              <p className="mb-2 px-3 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-night-dim">
+                {group.section}
+              </p>
+            )}
+            <div className="space-y-0.5">
+              {group.items.map((item) => (
+                <NavItem
+                  key={item.href}
+                  href={item.href}
+                  name={item.name}
+                  icon={item.icon}
+                  active={item.exact ? pathname === item.href : pathname.startsWith(item.href)}
+                  collapsed={collapsed}
+                />
+              ))}
             </div>
           </div>
         ))}
+
+        {/* Cross-module links into VERA Core */}
+        <div>
+          {!collapsed && (
+            <p className="mb-2 px-3 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-night-dim">
+              VERA Core
+            </p>
+          )}
+          <div className="space-y-0.5">
+            <NavItem
+              href="/campaigns"
+              name="Browse campaigns"
+              icon={Compass}
+              active={pathname.startsWith('/campaigns')}
+              collapsed={collapsed}
+            />
+            {user?.role === 'ADMIN' && (
+              <NavItem
+                href="/admin"
+                name="Admin console"
+                icon={ShieldCheck}
+                active={pathname.startsWith('/admin')}
+                collapsed={collapsed}
+              />
+            )}
+          </div>
+        </div>
       </nav>
 
-      <div className="space-y-2 rounded-xl border border-white/[0.08] bg-white/[0.03] p-3.5">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-night-dim">
-          Network status
-        </p>
-        <Dot ok={Boolean(i.solana_program)} label={solanaLabel(health)} />
-        <Dot ok={Boolean(i.gemini_vision)} label="Gemini vision" />
-        <Dot ok={Boolean(i.tiger_data)} label="Tiger Data" />
-      </div>
-
-      {user ? (
-        <div className="mt-3 flex items-center gap-2.5 rounded-xl border border-white/[0.08] bg-white/[0.03] p-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-400/15 text-xs font-semibold text-blue-300">
-            {user.name.slice(0, 1).toUpperCase()}
-          </span>
-          <span className="min-w-0">
-            <span className="block truncate text-[13px] font-medium text-white">
-              {user.name}
-            </span>
-            <span className="block font-mono text-[10px] uppercase tracking-wider text-night-dim">
-              {user.role}
-            </span>
-          </span>
+      {!collapsed && (
+        <div className="mx-3 mb-3 space-y-2 rounded-xl border border-white/[0.07] bg-white/[0.03] p-3.5">
+          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-night-dim">
+            Network status
+          </p>
+          <Dot ok={Boolean(i.solana_program)} label={solanaLabel(health)} />
+          <Dot ok={Boolean(i.gemini_vision)} label="Gemini vision" />
+          <Dot ok={Boolean(i.tiger_data)} label="Tiger Data" />
         </div>
-      ) : (
-        <Link
-          href="/login"
-          className="mt-3 flex items-center justify-center gap-2 rounded-lg border border-white/[0.08] px-3 py-2 font-mono text-[11.5px] text-night-mute transition hover:bg-white/[0.05] hover:text-white"
-        >
-          <LogIn className="h-4 w-4" /> Sign in
-        </Link>
       )}
+
+      <div className="border-t border-white/[0.06] p-3">
+        {user ? (
+          collapsed ? (
+            <div className="flex flex-col items-center gap-2">
+              <span
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/15 text-xs font-bold text-blue-300 ring-1 ring-accent/25"
+                title={user.name}
+              >
+                {userInitial}
+              </span>
+              <button
+                onClick={handleLogout}
+                className="rounded-lg p-1.5 text-night-mute transition-colors hover:bg-rose-500/10 hover:text-rose-400"
+                title="Sign out"
+              >
+                <LogOut className="h-4 w-4" />
+              </button>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2.5 rounded-xl border border-white/[0.07] bg-white/[0.04] p-2.5">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/15 text-xs font-bold text-blue-300 ring-1 ring-accent/25">
+                {userInitial}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-[13px] font-medium text-white">
+                  {user.name}
+                </span>
+                <span className="block font-mono text-[9.5px] uppercase tracking-wider text-night-dim">
+                  {user.role}
+                </span>
+              </span>
+              <button
+                onClick={handleLogout}
+                className="shrink-0 rounded-lg p-1.5 text-night-mute transition-colors hover:bg-rose-500/10 hover:text-rose-400"
+                title="Sign out"
+              >
+                <LogOut className="h-4 w-4" />
+              </button>
+            </div>
+          )
+        ) : (
+          <Link
+            href="/login"
+            className={`flex items-center justify-center gap-2 rounded-lg border border-white/[0.08] px-3 py-2 font-mono text-[11.5px] text-night-mute transition hover:bg-white/[0.05] hover:text-white ${
+              collapsed ? 'px-0' : ''
+            }`}
+            title={collapsed ? 'Sign in' : undefined}
+          >
+            <LogIn className="h-4 w-4" /> {!collapsed && 'Sign in'}
+          </Link>
+        )}
+      </div>
     </aside>
   );
 
@@ -199,10 +313,16 @@ export default function ConsoleShell({
           >
             Hisaab
           </Link>
+          <Link
+            href="/campaigns"
+            className="rounded-lg border border-line bg-white px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-mute transition-colors hover:border-line-strong hover:text-ink"
+          >
+            Campaigns
+          </Link>
         </div>
       </div>
 
-      <main className="lg:pl-60">
+      <main className={collapsed ? 'lg:pl-[68px]' : 'lg:pl-60'}>
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-8 lg:px-10">
           {/* keyed by route so the entrance animation replays on every navigation */}
           <div key={pathname} className="animate-fade-in">

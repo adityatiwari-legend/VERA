@@ -17,9 +17,10 @@ import {
 import { User } from "@/types";
 import { LiquidNavbar, type LiquidNavItem } from "@/components/ui/liquid-glass-navbar";
 
-export function Navbar() {
+export function Navbar({ onStickyHeight }: { onStickyHeight?: (h: number) => void }) {
   const router = useRouter();
   const pathname = usePathname();
+  const headerRef = React.useRef<HTMLElement | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [unread, setUnread] = useState(0);
@@ -66,6 +67,18 @@ export function Navbar() {
       .catch(() => setUser(null))
       .finally(() => setLoadingUser(false));
   }, [pathname]);
+
+  // Report the sticky header's live height so dashboard sidebars can offset
+  // against it (the header condenses on scroll — a fixed offset would leak a gap).
+  useEffect(() => {
+    if (!onStickyHeight || !headerRef.current) return;
+    const el = headerRef.current;
+    const report = () => onStickyHeight(Math.round(el.getBoundingClientRect().height));
+    report();
+    const ro = new ResizeObserver(report);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [onStickyHeight]);
 
   const handleLogout = async () => {
     try {
@@ -138,6 +151,7 @@ export function Navbar() {
       {/* 2. Main sticky navigation — frosted bar; border, shadow and padding
           condense once the page scrolls (the single scroll animation) */}
       <header
+        ref={headerRef}
         className={`sticky top-0 z-30 w-full border-b bg-white/85 backdrop-blur-md transition-all duration-300 ${
           isScrolled ? 'border-line shadow-sm' : 'border-transparent'
         }`}
@@ -177,7 +191,7 @@ export function Navbar() {
           {/* Right actions */}
           <div className="hidden items-center gap-2 sm:flex">
             {user ? (
-              <div className="flex items-center gap-3 pl-3">
+              <div className="flex items-center gap-2.5 border-l border-line pl-3">
                 <Link
                   href="/notifications"
                   className="relative rounded-lg p-1.5 text-mute transition-colors hover:bg-mist hover:text-ink"
@@ -190,6 +204,9 @@ export function Navbar() {
                     </span>
                   )}
                 </Link>
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 text-xs font-bold text-accent-deep ring-1 ring-accent/20">
+                  {(user.name ?? 'V').trim().charAt(0).toUpperCase()}
+                </span>
                 <div className="text-right leading-none">
                   <p className="text-xs font-semibold text-ink">{user.name}</p>
                   <span className="mt-0.5 block font-mono text-[9px] uppercase tracking-wider text-accent">

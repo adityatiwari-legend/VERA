@@ -19,6 +19,15 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 
 ## Change Log (newest first)
 
+### [2026-10-31] Portal shells redesigned (premium night sidebars + sticky-offset fix) — frontend only, no API change
+Commit: uncommitted
+Backend changes: **none** — zero `app/api/**`, schema, or contract changes. Presentation only:
+- `app/globals.css`: new `.sidebar-night` surface (deterministic deep-night gradient + faint blue/violet top spotlight + 2px accent hairline) replacing the canvas RibbonField inside sidebars — at 240px scale the canvas muddied into a blotchy smear with a hard mask edge. Adds `.nav-bar-accent` (active-item glow) and `.animate-slide-in` (mobile drawer, reduced-motion safe).
+- `components/DashboardShell.tsx`: sidebar rebuilt — brand block (V + VERA + `{ROLE} PORTAL`), refined active state (soft ring + glowing accent bar), soft count chips, elevated user card with avatar/initial + sign out, collapse states for every block. The sidebar and mobile menu bar now track the live sticky-header height via a ResizeObserver (the navbar condenses on scroll; the old fixed `top-[57px]` leaked an 8px gap once it shrank). Mobile drawer gets the slide-in animation, brand header, notifications link, and user card.
+- `components/console/ConsoleShell.tsx` (Hisaab console): same premium surface; gains a collapse toggle (68px icon rail, content padding follows), a **VERA Core** section (Browse campaigns; Admin console for admins), and a **sign out** button (was missing entirely); collapsed user card stacks vertically.
+- `components/Navbar.tsx`: optional `onStickyHeight` callback (ResizeObserver on the sticky header) consumed by DashboardShell; right-side user cluster gains an avatar initial + hairline divider. All nav destinations unchanged.
+Mobile action needed: none — no route, endpoint, or contract change.
+
 ### [2026-10-31] Login audit in admin portal + mobile contract gaps closed (disputes, votes, legacy org_type, report fields, escrow GET)
 Commit: `69846f5`
 Backend changes:
