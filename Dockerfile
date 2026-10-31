@@ -62,10 +62,12 @@ COPY . .
 # Local EVM chain (hardhat node, chainId 31337) with the VERA contract deployed
 # on boot. Deterministic: first hardhat account deploys first → the contract
 # always lands at the same address for a given deploy script.
+# NOTE: compose always builds this stage with an explicit `target: hardhat`.
 FROM base AS hardhat
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY hardhat.config.ts ./
+COPY deploy/tsconfig.hardhat.json ./tsconfig.json
 COPY contracts ./contracts
 COPY scripts/deploy.js ./scripts/
 COPY deploy/hardhat-entrypoint.sh ./entrypoint.sh
