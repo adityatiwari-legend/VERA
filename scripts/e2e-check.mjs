@@ -44,6 +44,7 @@ function ok(name, cond, extra = '') {
 }
 
 const jars = new Map();
+let v1token = null;
 async function api(jar, path, opts = {}) {
   const headers = { ...(opts.headers || {}) };
   const cookie = jars.get(jar);
@@ -145,6 +146,9 @@ let reportId = null;
   fd.append('longitude', '75.7891');
   fd.append('address_label', `E2E Test Road ${stamp}, Jaipur`);
   fd.append('description', 'Deep dangerous pothole created by the automated E2E check');
+  fd.append('severity', 'HIGH');
+  fd.append('size_estimate_cm', '30');
+  fd.append('client_submission_id', `e2e-${stamp}`);
   const img = readFileSync('scratch/e2e-before.jpg');
   fd.append('photo', new Blob([img], { type: 'image/jpeg' }), 'e2e-before.jpg');
 
@@ -152,6 +156,7 @@ let reportId = null;
   ok('report created', create.status === 201, JSON.stringify(create.body).slice(0, 120));
   reportId = create.body?.report?.id;
   ok('report id returned', Boolean(reportId));
+  ok('client severity accepted (fallback live)', ['LOW', 'MEDIUM', 'HIGH'].includes(create.body?.report?.severity), `severity=${create.body?.report?.severity}`);
 
   // contractor binds payout wallet (must exist before escrow)
   const wallet = await api('contractor', '/api/auth/wallet/solana', {
@@ -404,6 +409,7 @@ console.log('\n6. Notifications + mobile /api/v1');
     body: JSON.stringify({ email: 'aarav@vera.org', password: 'Password123!' }),
   });
   ok('v1 login issues token', v1login.status === 200 && String(v1login.body?.token || '').startsWith('vera_'));
+  v1token = v1login.body?.token ?? null;
 
   jars.set('v1auth', undefined);
   const reports = await api('v1', '/api/v1/hisaab/reports', {
@@ -432,6 +438,172 @@ console.log('\n7. Honesty checks (no fabricated telemetry)');
   }
   const anonLedger = await api('anon', '/api/audit/ledger');
   ok('audit ledger requires auth', anonLedger.status === 401 || anonLedger.status === 307);
+}
+
+// ------------------------------- 8. Login audit, disputes, votes, tolerance
+console.log('\n8. Login audit + disputes + citizen votes + mobile tolerance');
+{
+  // 8.1 failed + successful logins land in the audit trail
+  const badLogin = await api('anon', '/api/auth/login', {
+    method: 'POST',
+    body: JSON.stringify({ email: `ghost${Date.now()}@x.com`, password: 'wrong-password' }),
+  });
+  ok('failed login rejected', badLogin.status === 401);
+  const reAdmin = await login('admin', 'admin@fundtrail.org');
+  ok('admin re-login ok', reAdmin.status === 200);
+  const auditPage = await api('admin', '/admin/logins');
+  ok(
+    'admin logins page lists events',
+    auditPage.status === 200 && String(auditPage.body).includes('admin@fundtrail.org')
+  );
+  const userLogins = await api('user', '/admin/logins');
+  ok('logins page gated from USER', userLogins.status === 307);
+
+  // 8.2 register with the legacy mobile org_type value
+  const legacy = await api('anon', '/api/auth/register', {
+    method: 'POST',
+    body: JSON.stringify({
+      name: 'Legacy Org',
+      email: `legacy${Date.now()}@x.com`,
+      password: 'password123',
+      role: 'ORGANIZATION',
+      org_type: 'ORGANIZATION',
+    }),
+  });
+  ok('legacy org_type accepted → NGO', legacy.status === 201, JSON.stringify(legacy.body).slice(0, 140));
+
+  // 8.3 citizen votes: REJECT/FLAG recorded (tallies only, no status change)
+  if (reportId) {
+    const rej = await api('user', `/api/hisaab/reports/${reportId}/vote`, {
+      method: 'POST',
+      body: JSON.stringify({ vote_type: 'REJECT', reason: 'e2e: still visible' }),
+    });
+    ok('REJECT vote recorded', rej.status === 200 && (rej.body?.votes?.REJECT ?? 0) >= 1, JSON.stringify(rej.body).slice(0, 120));
+    const flag = await api('org', `/api/hisaab/reports/${reportId}/vote`, {
+      method: 'POST',
+      body: JSON.stringify({ vote_type: 'FLAG' }),
+    });
+    ok('FLAG vote recorded (cookie auth)', flag.status === 200 && (flag.body?.votes?.FLAG ?? 0) >= 1);
+    if (v1token) {
+      const v1flag = await api('anon', `/api/hisaab/reports/${reportId}/vote`, {
+        method: 'POST',
+        headers: { authorization: `Bearer ${v1token}` },
+        body: JSON.stringify({ vote_type: 'FLAG', reason: 'e2e bearer vote' }),
+      });
+      ok('FLAG vote recorded (bearer auth)', v1flag.status === 200 && (v1flag.body?.votes?.FLAG ?? 0) >= 2);
+    }
+  }
+
+  // 8.4 dispute freezes the money flow until resolved (full mini-loop)
+  const stamp = Date.now();
+  const camp = await api('org', '/api/campaigns', {
+    method: 'POST',
+    body: JSON.stringify({
+      title: `E2E Dispute Drill ${stamp}`,
+      description: 'Automated E2E dispute-freeze verification campaign.',
+      target_amount: 100000,
+      beneficiary: 'E2E Dispute Beneficiaries',
+      status: 'ACTIVE',
+    }),
+  });
+  const campaignId = camp.body?.campaign?.id ?? camp.body?.id;
+  ok('dispute drill campaign created', camp.status === 201 && Boolean(campaignId), JSON.stringify(camp.body).slice(0, 120));
+
+  if (campaignId) {
+    await api('user', `/api/campaigns/${campaignId}/donate`, {
+      method: 'POST',
+      body: JSON.stringify({ amount: 50000, purpose: 'E2E dispute drill donation' }),
+    });
+    const ms = await api('org', `/api/campaigns/${campaignId}/milestones`, {
+      method: 'POST',
+      body: JSON.stringify({
+        title: 'Disputed works package',
+        description: 'Works package used to verify the dispute freeze behaviour.',
+        amount: 40000,
+        proof_required: true,
+      }),
+    });
+    const milestoneId = ms.body?.milestone?.id ?? ms.body?.id;
+    await api('org', `/api/milestones/${milestoneId}/status`, {
+      method: 'PATCH',
+      body: JSON.stringify({ status: 'IN_PROGRESS' }),
+    });
+    const inv = readFileSync('scratch/e2e-invoice.jpg');
+    const fd4 = new FormData();
+    fd4.append('claimed_amount', '40000');
+    fd4.append('description', 'Invoice submitted for the dispute drill milestone');
+    fd4.append('files', new Blob([inv], { type: 'image/jpeg' }), 'dispute-invoice.jpg');
+    const proof = await api('org', `/api/milestones/${milestoneId}/proofs`, { method: 'POST', body: fd4 });
+    const proofId = proof.body?.proof?.id;
+    await api('auditor', `/api/proofs/${proofId}/approve`, {
+      method: 'POST',
+      body: JSON.stringify({ decision: 'APPROVE', comment: 'E2E dispute drill' }),
+    });
+
+    const rr = await api('org', `/api/milestones/${milestoneId}/release-request`, {
+      method: 'POST',
+      body: JSON.stringify({ requested_amount: 40000, notes: 'E2E dispute drill release' }),
+    });
+    const rrId = rr.body?.releaseRequest?.id ?? rr.body?.id;
+    ok('dispute drill release requested', (rr.status === 200 || rr.status === 201) && Boolean(rrId), JSON.stringify(rr.body).slice(0, 140));
+
+    if (rrId) {
+      const disp = await api('auditor', `/api/milestones/${milestoneId}/dispute`, {
+        method: 'POST',
+        body: JSON.stringify({ reason: 'E2E: invoice vendor does not match milestone scope' }),
+      });
+      ok(
+        'dispute raised',
+        disp.status === 201 && disp.body?.dispute?.status === 'OPEN',
+        JSON.stringify(disp.body).slice(0, 140)
+      );
+      ok('dispute response carries releaseRequest', disp.body && 'releaseRequest' in disp.body);
+
+      const dup = await api('org', `/api/milestones/${milestoneId}/dispute`, {
+        method: 'POST',
+        body: JSON.stringify({ reason: 'E2E duplicate dispute attempt' }),
+      });
+      ok('second open dispute blocked', dup.status === 409);
+
+      const blockedSign = await api('org', `/api/release-requests/${rrId}/sign`, {
+        method: 'POST',
+        body: JSON.stringify({ comment: 'E2E should be blocked during dispute' }),
+      });
+      ok('APPROVED sign blocked during dispute', blockedSign.status === 409, JSON.stringify(blockedSign.body).slice(0, 120));
+
+      const rejSign = await api('admin', `/api/release-requests/${rrId}/sign`, {
+        method: 'POST',
+        body: JSON.stringify({ comment: '[DISPUTE]: E2E rejection path', status: 'REJECTED' }),
+      });
+      ok('REJECTED sign allowed during dispute', rejSign.status === 200, JSON.stringify(rejSign.body).slice(0, 120));
+
+      const resolve = await api('auditor', `/api/milestones/${milestoneId}/dispute/resolve`, {
+        method: 'POST',
+        body: JSON.stringify({ resolution_notes: 'E2E: vendor clarified, evidence valid' }),
+      });
+      ok('dispute resolved', resolve.status === 200 && resolve.body?.dispute?.status === 'RESOLVED');
+
+      const sign1 = await api('auditor', `/api/release-requests/${rrId}/sign`, {
+        method: 'POST',
+        body: JSON.stringify({ comment: 'E2E auditor sign post-dispute' }),
+      });
+      ok('sign unfrozen after resolve (1/2)', sign1.status === 200, JSON.stringify(sign1.body).slice(0, 120));
+      const sign2 = await api('org', `/api/release-requests/${rrId}/sign`, {
+        method: 'POST',
+        body: JSON.stringify({ comment: 'E2E org sign post-dispute' }),
+      });
+      ok('threshold reached post-dispute (2/2)', sign2.status === 200 && (sign2.body?.releaseRequest?.current_approvals ?? 0) >= 2);
+
+      const exec = await api('org', `/api/release-requests/${rrId}/execute`, { method: 'POST' });
+      ok('release executes after dispute resolved', exec.status === 200, JSON.stringify(exec.body).slice(0, 120));
+    }
+  }
+
+  // 8.5 escrow ledger GET (admin-only)
+  const escList = await api('admin', '/api/hisaab/escrows');
+  ok('escrow GET (admin)', escList.status === 200 && Array.isArray(escList.body?.escrows), JSON.stringify(escList.body).slice(0, 100));
+  const escUser = await api('user', '/api/hisaab/escrows');
+  ok('escrow GET gated from USER', escUser.status === 403);
 }
 
 console.log(`\n=== RESULT: ${pass} passed, ${fail} failed ===`);

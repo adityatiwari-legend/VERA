@@ -6,6 +6,7 @@ import {
   Lock,
   FileCheck,
   ArrowRight,
+  LogIn,
 } from 'lucide-react';
 import { StatCard } from '@/components/StatCard';
 import { query } from '@/lib/db';
@@ -58,10 +59,16 @@ export default async function AdminConsolePage() {
             Triage citizen complaints, secure government funds, engage contractors — every rupee on the ledger
           </p>
         </div>
-        <Link href="/admin/complaints" className="btn-primary self-start !text-xs sm:self-auto">
-          Open complaint queue
-          <ArrowRight className="h-3.5 w-3.5" />
-        </Link>
+        <div className="flex shrink-0 items-center gap-2">
+          <Link href="/admin/logins" className="btn-secondary self-start !text-xs sm:self-auto">
+            <LogIn className="h-3.5 w-3.5" />
+            Login audit
+          </Link>
+          <Link href="/admin/complaints" className="btn-primary self-start !text-xs sm:self-auto">
+            Open complaint queue
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">

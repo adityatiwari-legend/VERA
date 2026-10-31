@@ -402,6 +402,26 @@ curl -s http://localhost:3000/api/health | jq .
 - `solana_program: true` — `NEXT_PUBLIC_HISAAB_PROGRAM_ID` is set and devnet RPC is responsive.
 - `tiger_data: true` — TimescaleDB hypertables are connected. (If `false`, time-series gracefully falls back to local PostgreSQL).
 
+### Operational Requirements Checklist
+
+Run the automated version of this checklist on the VPS at any time (idempotent, safe to re-run):
+
+```bash
+bash /opt/vera/deploy/verify-ops.sh
+```
+
+Manual mapping of each operational requirement to the real mechanism in this stack (**note:** this project does **not** use Prisma — it uses raw SQL migrations in `db/migrations/` applied by `scripts/migrate.ts`):
+
+| Requirement | How it is fulfilled / verified |
+|---|---|
+| Database tables & migrations | `docker compose run --rm migrate` (runs `npm run db:migrate`, tracked in `schema_migrations`). `deploy/deploy.sh` runs it automatically on every deploy. Verify: `docker compose exec vera-db psql -U postgres -d vera -tAc "SELECT COUNT(*) FROM schema_migrations"` equals the number of files in `db/migrations/`. |
+| Seed data (campaigns, milestones, contractor assignments) | `docker compose run --rm migrate npm run db:seed` then `docker compose run --rm migrate npm run seed:hisaab` (one-time; already applied on the live VPS). Seeds demo accounts (`admin@vera.org` etc., password `Password123!`), campaigns, milestones, proofs, escrow flow, pothole reports. |
+| File upload storage permissions | Uploads write to `STORAGE_PATH` (`/app/storage` in the `vera-app` container) backed by the named volume `vera_storage`. Directories are created on demand by `lib/storage.ts`; the Dockerfile pre-creates/chowns `/app/storage` for the `nextjs` user. Verify writability: `docker compose exec vera-app touch /app/storage/.write-test` (then remove it). |
+| Session cookie forwarding in Nginx | `nginx/nginx.conf` sets no `proxy_cookie_*` / `proxy_hide_header` directives, so `Set-Cookie` for the HTTP-only `fundtrail_session` cookie passes through untouched (cookies are issued `Secure` because the app runs with `NODE_ENV=production`). Verify: log in over HTTPS and confirm `Set-Cookie: fundtrail_session=...` appears in the response headers. |
+| `JWT_SECRET` | Must be set in `/opt/vera/.env` (compose substitutes it into the `vera-app` container). If unset, compose falls back to a hardcoded dev string — never ship that. Changing it invalidates existing sessions (users just log in again). Generate: `openssl rand -hex 32`. |
+| `GEMINI_API_KEY` | Set in `/opt/vera/.env` for real-time AI triage of pothole photos (`lib/gemini.ts`). Without it, reports fall back to `MANUAL_REVIEW`. |
+| `DEMO_MODE=true` | Set in `/opt/vera/.env` (compose default is `true`). Enables the fast-forward 30-day durability hold (`/api/hisaab/escrows/[id]/fast-forward`, shown in `/admin/escrows`). |
+
 ---
 
 ## 11. Maintenance, Backups & Disaster Recovery

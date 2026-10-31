@@ -19,6 +19,18 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 
 ## Change Log (newest first)
 
+### [2026-10-31] Login audit in admin portal + mobile contract gaps closed (disputes, votes, legacy org_type, report fields, escrow GET)
+Commit: uncommitted
+Backend changes:
+- **Added — every login is now visible in the admin portal:** new `login_events` table (migration `019_login_audit.sql`) records every web (`POST /api/auth/login`) and mobile (`POST /api/v1/auth/login`) login attempt — success and failure (internal reason: `UNKNOWN_EMAIL` / `INVALID_PASSWORD`), with IP + user agent. New admin page `/admin/logins` (ADMIN only) shows 24h stats + the last 200 events with ALL/SUCCESS/FAILED filters; `users.last_login_at` is stamped on every successful login and shown on `/admin/access`.
+- **Added — `POST /api/milestones/[id]/dispute`** `{reason}` → 201 `{dispute, releaseRequest, message}` (roles ORGANIZATION/AUDITOR/ADMIN; 409 if a dispute is already open). **Added — `POST /api/milestones/[id]/dispute/resolve`** `{resolution_notes}` → `{dispute, releaseRequest, ...}` (roles AUDITOR/ADMIN). While a dispute is OPEN: creating release requests, APPROVED multisig signatures, and release execution all return 409 for that milestone (REJECTED signatures stay allowed — that is the mobile dispute-rejection path). Both responses also carry the milestone's latest `releaseRequest` (may be null) because the mobile dispute flow parses that shape.
+- **Added — `POST /api/hisaab/reports/[id]/vote`** `{vote_type: 'CONFIRM'|'REJECT'|'FLAG', reason?}` — accepts the cookie session OR a bearer token. CONFIRM delegates to the existing confirmation flow (`pothole_confirmations`, 3-confirmation escalation); REJECT/FLAG are recorded in a new `pothole_votes` table (tallies returned; no automatic report-status change).
+- **Changed — `POST /api/auth/register`:** the legacy `org_type: "ORGANIZATION"` the mobile app sends is now accepted and normalized to `"NGO"` instead of 400ing.
+- **Changed — report creation** (`POST /api/hisaab/reports` and `POST /api/v1/hisaab/reports`) now accepts optional `severity` (`LOW|MEDIUM|HIGH`), `size_estimate_cm`, and `client_submission_id` multipart fields. Client values act as a fallback when Gemini triage is unavailable or returns nothing (Gemini result wins when present); `client_submission_id` is accepted for idempotency-key compatibility and ignored.
+- **Added — `GET /api/hisaab/escrows?status=`** (ADMIN) — escrow ledger list (was POST-only).
+- Migrations: `019_login_audit.sql` (`login_events` + `users.last_login_at`), `020_disputes_and_votes.sql` (`milestone_disputes` + `pothole_votes`).
+Mobile action needed: (1) The dispute flow works end-to-end now — `POST /milestones/$id/dispute` returns 201 with `dispute` + `releaseRequest`; keep the existing REJECTED-sign fallback path. (2) REJECT/FLAG votes no longer 404 — remove the "route missing" exception handling in citizen_reporting and surface the returned tallies. (3) `org_type: "ORGANIZATION"` is accepted but switch to the real enum (`NGO | TRUST | CSR | SCHOOL | RWA | OTHER`) when convenient. (4) `severity` / `size_estimate_cm` are now honored as fallbacks — no change required. (5) Login audit is transparent to clients — no action.
+
 ### [2026-10-31] Production HTTPS / SSL configured for vera.adityatiwaridev.xyz
 Commit: uncommitted
 Backend changes:

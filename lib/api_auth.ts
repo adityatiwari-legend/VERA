@@ -75,16 +75,19 @@ export async function requireApiRole(req: NextRequest, roles: string[]): Promise
 export async function loginAndIssueToken(
   email: string,
   password: string
-): Promise<{ token: string; user: User } | null> {
+): Promise<
+  | { ok: true; token: string; user: User }
+  | { ok: false; reason: 'UNKNOWN_EMAIL' | 'INVALID_PASSWORD' }
+> {
   const res = await query<User & { password_hash: string }>(
     `SELECT * FROM users WHERE email = $1 AND (account_status IS NULL OR account_status = 'ACTIVE')`,
     [email.toLowerCase()]
   );
   const user = res.rows[0];
-  if (!user) return null;
+  if (!user) return { ok: false, reason: 'UNKNOWN_EMAIL' };
   const ok = await verifyPassword(password, user.password_hash);
-  if (!ok) return null;
+  if (!ok) return { ok: false, reason: 'INVALID_PASSWORD' };
   const { token } = await issueApiToken(user.id);
   delete (user as any).password_hash;
-  return { token, user };
+  return { ok: true, token, user };
 }

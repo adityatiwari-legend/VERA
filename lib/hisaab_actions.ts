@@ -39,6 +39,18 @@ export async function createPotholeReportFromForm(
   const addressLabel = (form.get('address_label') as string) || null;
   const description = String(form.get('description') || '');
 
+  // Optional client-supplied triage hints (mobile sends these). Used only as a
+  // fallback — the Gemini result wins when present.
+  const severityInput = String(form.get('severity') || '').trim().toUpperCase();
+  const severityFallback: 'LOW' | 'MEDIUM' | 'HIGH' | null = (
+    ['LOW', 'MEDIUM', 'HIGH'] as const
+  ).includes(severityInput as any)
+    ? (severityInput as 'LOW' | 'MEDIUM' | 'HIGH')
+    : null;
+  const sizeInput = Number(form.get('size_estimate_cm'));
+  const sizeFallback = Number.isFinite(sizeInput) && sizeInput > 0 ? sizeInput : null;
+  const clientSubmissionId = String(form.get('client_submission_id') || '').trim() || null;
+
   if (!Number.isFinite(lat) || lat < -90 || lat > 90) throw new AppError('Valid latitude is required', 400);
   if (!Number.isFinite(lng) || lng < -180 || lng > 180) throw new AppError('Valid longitude is required', 400);
   if (!description || description.trim().length < 5) throw new AppError('Description must be at least 5 characters', 400);
@@ -67,8 +79,8 @@ export async function createPotholeReportFromForm(
     longitude: lng,
     addressLabel,
     description: description.trim(),
-    severity: gemini.result?.severity ?? null,
-    sizeEstimateCm: gemini.result?.size_estimate_cm ?? null,
+    severity: gemini.result?.severity ?? severityFallback,
+    sizeEstimateCm: gemini.result?.size_estimate_cm ?? sizeFallback,
     geminiResult: gemini.result,
     geminiStatus: gemini.status,
     media: {
@@ -87,7 +99,7 @@ export async function createPotholeReportFromForm(
         reportId,
         latitude: lat,
         longitude: lng,
-        severity: SEVERITY_INDEX[gemini.result?.severity ?? 'MEDIUM'] ?? 1,
+        severity: SEVERITY_INDEX[gemini.result?.severity ?? severityFallback ?? 'MEDIUM'] ?? 1,
         mediaSha256: media.sha256Hash,
       });
       if (res) {
@@ -110,6 +122,7 @@ export async function createPotholeReportFromForm(
       gemini_status: gemini.status,
       solana_configured: isSolanaProgramConfigured(),
       gemini_configured: isGeminiConfigured(),
+      client_submission_id: clientSubmissionId,
     },
   });
 

@@ -9,7 +9,13 @@ export const registerSchema = z
     // Self-serve roles only. AUDITOR is invite-only and ADMIN is seed-only;
     // privileged roles must never be registrable from the public API.
     role: z.enum(['USER', 'ORGANIZATION', 'CONTRACTOR'] as const).default('USER'),
-    org_type: z.enum(['NGO', 'TRUST', 'CSR', 'SCHOOL', 'RWA', 'OTHER']).optional(),
+    org_type: z
+      .union([
+        z.enum(['NGO', 'TRUST', 'CSR', 'SCHOOL', 'RWA', 'OTHER']),
+        // Legacy value the mobile app still sends — normalized to NGO.
+        z.literal('ORGANIZATION').transform(() => 'NGO' as const),
+      ])
+      .optional(),
     org_registration_no: z.string().trim().max(80).optional().nullable(),
     service_area: z.string().trim().max(160).optional().nullable(),
   })
@@ -200,6 +206,12 @@ export const createReportSchema = z.object({
   longitude: z.coerce.number().min(-180).max(180),
   address_label: z.string().trim().max(255).optional().nullable(),
   description: z.string().trim().min(5).max(2000),
+  // Client-supplied triage hints; used as fallback when Gemini triage is
+  // unavailable or returns nothing (Gemini result wins when present).
+  severity: z.enum(['LOW', 'MEDIUM', 'HIGH']).optional().nullable(),
+  size_estimate_cm: z.coerce.number().positive().max(10000).optional().nullable(),
+  // Idempotency key from mobile clients; accepted and ignored.
+  client_submission_id: z.string().trim().max(120).optional().nullable(),
 });
 
 export const createEscrowSchema = z.object({

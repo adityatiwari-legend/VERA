@@ -9,6 +9,7 @@ import {
   FundTransaction
 } from '@/types';
 import { recordAuditLog } from './audit_log';
+import { assertNoOpenDispute } from './disputes';
 import { AppError, NotFoundError, ForbiddenError } from './permissions';
 import {
   onChainRequestRelease,
@@ -78,6 +79,9 @@ export async function createReleaseRequest(
         400
       );
     }
+
+    // An open dispute freezes the money flow for this milestone.
+    await assertNoOpenDispute(input.milestoneId, client);
 
     // Check if an active release request already exists
     const existingReq = await client.query<ReleaseRequest>(
@@ -256,6 +260,12 @@ export async function signReleaseRequest(
 
     if (relReq.status === 'REJECTED' || relReq.status === 'FAILED') {
       throw new AppError(`Cannot sign a ${relReq.status} release request.`, 400);
+    }
+
+    // An open dispute blocks approving signatures (REJECTED signatures stay
+    // allowed — the mobile dispute flow uses them to reject an in-flight release).
+    if ((input?.status || 'APPROVED') === 'APPROVED') {
+      await assertNoOpenDispute(relReq.milestone_id, client);
     }
 
     // 2. Lookup signer identity and role
@@ -452,6 +462,9 @@ export async function executeRelease(
       400
     );
   }
+
+  // Final guard: an open dispute freezes execution even if approvals slipped through.
+  await assertNoOpenDispute(relReq.milestone_id);
 
   const availableBalance = Number(relReq.campaign_raised) - Number(relReq.campaign_released);
   if (Number(relReq.requested_amount) > availableBalance) {

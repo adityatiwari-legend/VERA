@@ -7,12 +7,12 @@ export const dynamic = 'force-dynamic';
 export default async function AdminAccessPage() {
   const [orgsRes, auditorsRes] = await Promise.all([
     query(
-      `SELECT id, name, email, org_type, org_status, org_registration_no, created_at
+      `SELECT id, name, email, org_type, org_status, org_registration_no, created_at, last_login_at
        FROM users WHERE role = 'ORGANIZATION' ORDER BY
        CASE org_status WHEN 'PENDING' THEN 0 ELSE 1 END, created_at DESC LIMIT 100`
     ),
     query(
-      `SELECT id, name, email, created_at FROM users WHERE role = 'AUDITOR'
+      `SELECT id, name, email, created_at, last_login_at FROM users WHERE role = 'AUDITOR'
        ORDER BY created_at DESC LIMIT 50`
     ),
   ]);
@@ -42,7 +42,8 @@ export default async function AdminAccessPage() {
               <p className="text-sm font-semibold text-ink">{o.name}</p>
               <p className="font-mono text-[10px] text-mute">
                 {o.email} · {o.org_type ?? '—'}
-                {o.org_registration_no ? ` · ${o.org_registration_no}` : ''}
+                {o.org_registration_no ? ` · ${o.org_registration_no}` : ''} · last login{' '}
+                {o.last_login_at ? new Date(o.last_login_at).toLocaleString('en-IN', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', hour12: false }) : 'never'}
               </p>
             </div>
             <AccessActions userId={o.id} status={o.org_status} />
@@ -83,7 +84,8 @@ export default async function AdminAccessPage() {
                 <p className="font-mono text-[10px] text-mute">{a.email}</p>
               </div>
               <span className="font-mono text-[10px] text-mute">
-                since {new Date(a.created_at).toLocaleDateString('en-IN')}
+                last login{' '}
+                {a.last_login_at ? new Date(a.last_login_at).toLocaleString('en-IN', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', hour12: false }) : 'never'}
               </span>
             </div>
           ))}

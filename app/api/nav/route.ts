@@ -50,6 +50,7 @@ export async function GET() {
         { label: 'Contractors', href: '/admin/contractors', icon: 'contractors', count: pendingContractors },
         { label: 'Organizations', href: '/admin/access', icon: 'directory', count: pendingOrgs },
         { label: 'Escrows', href: '/admin/escrows', icon: 'funds', count: activeEscrows },
+        { label: 'Login Audit', href: '/admin/logins', icon: 'audit' },
         { label: 'VERA Review Queue', href: '/auditor/dashboard', icon: 'review', count: pendingProofs },
         { label: 'Campaigns', href: '/campaigns', icon: 'campaigns' },
       ];

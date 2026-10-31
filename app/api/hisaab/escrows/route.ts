@@ -15,6 +15,35 @@ import {
 
 export const dynamic = 'force-dynamic';
 
+/** GET /api/hisaab/escrows?status= (ADMIN) — escrow ledger list for admin tooling. */
+export async function GET(req: NextRequest) {
+  try {
+    await requireRole(['ADMIN']);
+    const { searchParams } = new URL(req.url);
+    const status = searchParams.get('status');
+
+    const res = await query(
+      `SELECT e.*, r.address_label, r.severity, r.status AS report_status,
+              u.name AS contractor_name, u.email AS contractor_email
+       FROM hisaab_escrows e
+       JOIN pothole_reports r ON r.id = e.report_id
+       LEFT JOIN users u ON u.id = e.contractor_user_id
+       WHERE ($1::text IS NULL OR e.status = $1::text)
+       ORDER BY e.created_at DESC
+       LIMIT 200`,
+      [status]
+    );
+
+    return NextResponse.json({ escrows: res.rows, count: res.rowCount ?? 0 });
+  } catch (error: any) {
+    if (error?.statusCode) {
+      return NextResponse.json({ error: error.message }, { status: error.statusCode });
+    }
+    console.error('GET /api/hisaab/escrows error:', error);
+    return NextResponse.json({ error: 'Failed to load escrows' }, { status: 500 });
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const user = await requireRole(['ADMIN']);
