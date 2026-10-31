@@ -51,6 +51,14 @@ ENV HOSTNAME "0.0.0.0"
 
 CMD ["node", "server.js"]
 
+# Tools image: full source + all node_modules (incl. devDeps) for one-off
+# tasks (migrations, seeds) run via `docker compose run --rm migrate`.
+# No client build — DATABASE_URL is injected at runtime by compose.
+FROM base AS tools
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
 # Local EVM chain (hardhat node, chainId 31337) with the VERA contract deployed
 # on boot. Deterministic: first hardhat account deploys first → the contract
 # always lands at the same address for a given deploy script.

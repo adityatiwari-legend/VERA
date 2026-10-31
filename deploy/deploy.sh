@@ -47,7 +47,9 @@ for i in $(seq 1 30); do
 done
 
 log "Running database migrations"
-docker compose exec -T "$SERVICE_APP" npm run db:migrate
+# The runtime image is Next.js standalone (no npm/tsx) — migrations run in a
+# dedicated tools container instead (see the `migrate` service in compose).
+docker compose run --rm migrate
 
 log "Restarting app to pick up any env changes"
 docker compose up -d --no-deps "$SERVICE_APP"

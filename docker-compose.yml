@@ -67,6 +67,23 @@ services:
     volumes:
       - vera_storage:/app/storage
 
+  # One-off migration/seed runner — NOT started by `up -d` (profile-gated).
+  # Usage: docker compose run --rm migrate           (db:migrate)
+  #        docker compose run --rm migrate npm run db:seed
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: tools
+    container_name: vera-migrate
+    profiles: ["tools"]
+    depends_on:
+      vera-db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://postgres:postgrespassword@vera-db:5432/vera
+    command: npm run db:migrate
+
   hardhat-node:
     build:
       context: .

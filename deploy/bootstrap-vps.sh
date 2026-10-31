@@ -22,7 +22,7 @@ log() { printf '\n\033[1;34m[vera-bootstrap]\033[0m %s\n' "$*"; }
 log "Installing base packages (docker, git, curl)"
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -y
-apt-get install -y ca-certificates curl git docker.io docker-compose-plugin
+apt-get install -y ca-certificates curl git docker.io docker-compose-v2
 systemctl enable --now docker
 
 log "Cloning / updating $REPO → $APP_DIR"
