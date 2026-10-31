@@ -340,7 +340,7 @@ export default async function ReportDetailPage({ params }: { params: { id: strin
                     </span>
                     {c.solana_tx_hash && (
                       <a
-                        href={explorerTxUrl(c.solana_tx_hash)}
+                        href={explorerTxUrl(c.solana_tx_hash ?? undefined)}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center gap-0.5 font-mono text-xs font-medium text-accent hover:text-accent-deep"
