@@ -10,6 +10,7 @@ import {
     MotionValue,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import RibbonField from "@/components/ui/ribbon-field";
 
 /**
  * PerspectiveTunnelHero — VERA reveal hero.
@@ -370,7 +371,14 @@ export default function PerspectiveTunnelHero() {
                 transformStyle: "preserve-3d",
             }}
         >
-            {/* Immersive background: fine grid, blue pixel dust, accent glow */}
+            {/* Immersive background: ribbon field, fine grid, blue pixel dust, accent glow */}
+            <RibbonField
+                className="absolute inset-0 opacity-40"
+                style={{
+                    maskImage: "radial-gradient(ellipse 75% 70% at 50% 45%, black 30%, transparent 88%)",
+                    WebkitMaskImage: "radial-gradient(ellipse 75% 70% at 50% 45%, black 30%, transparent 88%)",
+                }}
+            />
             <div
                 aria-hidden
                 className="bg-grid-night pointer-events-none absolute inset-0 opacity-80"

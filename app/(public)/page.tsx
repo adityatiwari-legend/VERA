@@ -27,6 +27,7 @@ import { StatusBadge } from '@/components/StatusBadge';
 import { StatCard } from '@/components/StatCard';
 import AuditLedger from '@/components/AuditLedger';
 import PerspectiveTunnelHero from '@/components/ui/perspective-tunnel-hero';
+import RibbonField from '@/components/ui/ribbon-field';
 import { GlobeCdn } from '@/components/ui/cobe-globe-cdn';
 import Reveal from '@/components/landing/Reveal';
 import { formatRupees, formatRupeesShort } from '@/lib/utils';
@@ -332,11 +333,18 @@ export default async function HomePage() {
             WebkitMaskImage: 'linear-gradient(to left, black 30%, transparent 95%)',
           }}
         />
+        {/* Ribbon Field aurora — animated gradient crest along the band's top edge
+            (the "globe" glow above Featured verified campaigns, now alive) */}
         <div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 rounded-full opacity-25 blur-[140px]"
-          style={{ background: 'radial-gradient(closest-side, #2563EB, transparent)' }}
-        />
+          className="pointer-events-none absolute inset-x-0 top-0 h-[460px]"
+          style={{
+            maskImage: 'radial-gradient(ellipse 90% 130% at 50% -15%, black 45%, transparent 90%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 90% 130% at 50% -15%, black 45%, transparent 90%)',
+          }}
+        >
+          <RibbonField className="h-full w-full" opacity={0.5} />
+        </div>
 
         <div className="relative mx-auto max-w-7xl space-y-12 px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
           <Reveal>
@@ -457,7 +465,71 @@ export default async function HomePage() {
       </section>
 
       {/* ============================================
-          6. FEATURED CAMPAIGNS — bento
+          6. TRUST NETWORK GLOBE — escrow hubs + corridors
+      ============================================ */}
+      <section className="w-full border-b border-line py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+            <Reveal className="lg:col-span-5">
+              <div className="space-y-4">
+                <span className="eyebrow">A public trust network</span>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-5xl">
+                  Escrow hubs on every meridian
+                </h2>
+                <p className="max-w-lg text-sm leading-relaxed text-mute sm:text-base">
+                  VERA escrows are anchored where the money works — citizen reports
+                  from Jaipur to Bengaluru, auditors in London, settlement rails in
+                  Singapore. Drag the globe. Every hub, corridor, and locked volume
+                  is the same public ledger the rest of this page streams.
+                </p>
+                <ul className="space-y-2 text-xs text-mute">
+                  <li className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                    Escrow hubs — where campaign and repair funds sit locked
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-lav-deep" />
+                    Corridors — cross-border donation and settlement paths
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-ink/40" />
+                    Hover a marker or corridor for live volume, straight from the ledger
+                  </li>
+                </ul>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <Link href="/campaigns" className="btn-secondary !text-sm">
+                    <Compass className="h-4 w-4 text-accent" />
+                    <span>Fund a verified campaign</span>
+                  </Link>
+                  <Link href="/hisaab" className="btn-secondary !text-sm">
+                    <MapPin className="h-4 w-4 text-accent" />
+                    <span>Open the street register</span>
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal className="lg:col-span-7">
+              <div className="relative mx-auto w-full max-w-xl">
+                {/* Ribbon Field wash — the same animated gradient, tuned light,
+                    so the globe sits inside the platform's signature field */}
+                <RibbonField
+                  className="absolute -inset-8 sm:-inset-12"
+                  backdrop="#FFFFFF"
+                  opacity={0.35}
+                  style={{
+                    maskImage: 'radial-gradient(ellipse 55% 55% at 50% 50%, black 35%, transparent 75%)',
+                    WebkitMaskImage: 'radial-gradient(ellipse 55% 55% at 50% 50%, black 35%, transparent 75%)',
+                  }}
+                />
+                <GlobeCdn />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================
+          7. FEATURED CAMPAIGNS — bento
       ============================================ */}
       <section className="w-full border-b border-line py-20 sm:py-24">
         <div className="mx-auto max-w-7xl space-y-10 px-4 sm:px-6 lg:px-8">
@@ -599,7 +671,7 @@ export default async function HomePage() {
       </section>
 
       {/* ============================================
-          7. PUBLIC AUDIT EXPLAINER — numbered editorial rows
+          8. PUBLIC AUDIT EXPLAINER — numbered editorial rows
       ============================================ */}
       <section className="w-full border-b border-line bg-mist/60 py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -672,7 +744,7 @@ export default async function HomePage() {
       </section>
 
       {/* ============================================
-          8. DONOR TRACEABILITY
+          9. DONOR TRACEABILITY
       ============================================ */}
       <section className="w-full border-b border-line py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
@@ -754,7 +826,7 @@ export default async function HomePage() {
       </section>
 
       {/* ============================================
-          9. NGO REPUTATION — deterministic formula
+          10. NGO REPUTATION — deterministic formula
       ============================================ */}
       <section className="w-full border-b border-line bg-mist/60 py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -827,59 +899,6 @@ export default async function HomePage() {
                     </span>
                   ))}
                 </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================
-          10. TRUST NETWORK GLOBE — escrow hubs + corridors
-      ============================================ */}
-      <section className="w-full border-b border-line py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-            <Reveal className="lg:col-span-5">
-              <div className="space-y-4">
-                <span className="eyebrow">A public trust network</span>
-                <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-5xl">
-                  Escrow hubs on every meridian
-                </h2>
-                <p className="max-w-lg text-sm leading-relaxed text-mute sm:text-base">
-                  VERA escrows are anchored where the money works — citizen reports
-                  from Jaipur to Bengaluru, auditors in London, settlement rails in
-                  Singapore. Drag the globe. Every hub, corridor, and locked volume
-                  is the same public ledger the rest of this page streams.
-                </p>
-                <ul className="space-y-2 text-xs text-mute">
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                    Escrow hubs — where campaign and repair funds sit locked
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-lav-deep" />
-                    Corridors — cross-border donation and settlement paths
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-ink/40" />
-                    Hover a marker or corridor for live volume, straight from the ledger
-                  </li>
-                </ul>
-                <div className="flex flex-wrap gap-2 pt-1">
-                  <Link href="/campaigns" className="btn-secondary !text-sm">
-                    <Compass className="h-4 w-4 text-accent" />
-                    <span>Fund a verified campaign</span>
-                  </Link>
-                  <Link href="/hisaab" className="btn-secondary !text-sm">
-                    <MapPin className="h-4 w-4 text-accent" />
-                    <span>Open the street register</span>
-                  </Link>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal className="lg:col-span-7">
-              <div className="mx-auto w-full max-w-xl">
-                <GlobeCdn />
               </div>
             </Reveal>
           </div>

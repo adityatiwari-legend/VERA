@@ -19,6 +19,33 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 
 ## Change Log (newest first)
 
+### [2026-10-31] Console shells themed (ribbon sidebar ambient + fade-in) — frontend only, no API change
+Commit: uncommitted
+Backend changes: **none** — presentation only. All app/console pages get the site's signature theme:
+- `components/DashboardShell.tsx` (user/org/admin/auditor/contractor portals) and `components/console/ConsoleShell.tsx` (Hisaab console): the dark sidebar now carries the RibbonField ambient gradient at its top (painted behind nav content via the sidebar's stacking context, masked so it fades before the nav items).
+- Content area gets a minimal opacity-only entrance (`.animate-fade-in`, new in `globals.css`, replays per route, reduced-motion safe). Chosen over `.animate-rise` deliberately: pages like `/hisaab` use `position: fixed` overlays, and a transform-based wrapper animation would re-anchor them.
+Mobile action needed: none — no route, endpoint, or contract change.
+
+### [2026-10-31] Navbar rebuilt around the liquid water pill — frontend only, no API change
+Commit: uncommitted
+Backend changes: **none**. Frontend only:
+- New `components/ui/liquid-glass-navbar.tsx` — the Nimbus "Waterline" liquid navbar (WebGL water surface inside the pill, droplet transitions, zero npm dependencies). Adapted for this codebase: anchors render via `next/link`, `useEffect` instead of `useLayoutEffect` (SSR-safe), and a controlled `active` of -1 renders the pill without a drop (home page has no active section).
+- `components/Navbar.tsx` — desktop links are now the water pill (lucide icons + labels, active item derived from `usePathname`); the single scroll animation condenses the frosted header (border + shadow + reduced padding past 20px scroll). All existing behavior preserved: chain micro-bar, auth session, notification badge, role-based link, mobile hamburger menu (pill is hidden below `lg`).
+Mobile action needed: none — no route, endpoint, or contract change.
+
+### [2026-10-31] Landing-page section reorder — globe moved above Featured campaigns
+Commit: uncommitted
+Backend changes: **none** — frontend only. The "Trust Network Globe" section (escrow hubs, cobe globe + RibbonField wash) moved from section 10 to **directly above "Featured verified campaigns"** in `app/(public)/page.tsx`; section comments renumbered accordingly (globe=6, campaigns=7, explainer=8, donor=9, ngo=10). New page order: Hero → Trust → Metrics → How it works → Dark two-chain band → **Globe** → Featured campaigns → Audit explainer → Donor traceability → NGO reputation → Live ledger → Final CTA.
+Mobile action needed: none — no route, endpoint, or contract change.
+
+### [2026-10-31] Landing-page premium gradient (RibbonField) — frontend only, no API change
+Commit: uncommitted
+Backend changes: **none** — no `app/api/**`, contract, schema, or env changes. Frontend only:
+- New `components/ui/ribbon-field.tsx` — live canvas recreation of the 21st.dev "Ribbon Field" gradient (White/Sky blue/Ultramarine/Iris, angle 32°, wave 14, animated via rAF; pauses offscreen; reduced-motion safe; no new npm dependencies).
+- Integrated in three places on `app/(public)/page.tsx`: hero background layer (`perspective-tunnel-hero.tsx`), the dark two-chain band directly above "Featured verified campaigns" (replaces the static radial glow), and a light-mode wash halo behind the trust-network globe.
+- `docs/design-system.md` §3 updated: RibbonField usage rules documented.
+Mobile action needed: none — this does not touch the HTTP contract, auth, or any endpoint.
+
 ### [2026-10-31] Full mobile-app review delivered — no backend contract change
 Commit: uncommitted
 Backend changes: none to `app/api/**`. Added a repo-root doc: **`android_app_review.md`** — a prioritized (P0/P1/P2) review of the Flutter app with file:line references, based on 4 full review passes cross-checked against the live backend routes.

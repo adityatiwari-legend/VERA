@@ -10,6 +10,7 @@ import {
   LogIn,
 } from 'lucide-react';
 import { card } from './ui';
+import RibbonField from '@/components/ui/ribbon-field';
 
 interface Health {
   integrations: Record<string, boolean>;
@@ -82,6 +83,18 @@ export default function ConsoleShell({
 
   const sidebar = (
     <aside className="theme-night fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r border-white/[0.08] bg-night px-4 py-5 lg:flex">
+      {/* Ribbon Field ambient — the platform's signature gradient, fading out
+          down the sidebar. Painted behind all content (z -1; the fixed aside
+          creates the stacking context). */}
+      <div aria-hidden className="pointer-events-none absolute inset-0" style={{ zIndex: -1 }}>
+        <RibbonField
+          className="h-full w-full opacity-40"
+          style={{
+            maskImage: 'radial-gradient(ellipse 130% 42% at 50% 0%, black 30%, transparent 92%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 130% 42% at 50% 0%, black 30%, transparent 92%)',
+          }}
+        />
+      </div>
       <Link href="/" className="flex items-center gap-2.5 px-2">
         <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-bold text-white">
           V
@@ -191,6 +204,8 @@ export default function ConsoleShell({
 
       <main className="lg:pl-60">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-8 lg:px-10">
+          {/* keyed by route so the entrance animation replays on every navigation */}
+          <div key={pathname} className="animate-fade-in">
           {/* Header */}
           <header className="flex flex-wrap items-start justify-between gap-4">
             <div>
@@ -220,6 +235,7 @@ export default function ConsoleShell({
               <ShieldCheck className="h-3.5 w-3.5" /> Hash-chained audit trail
             </span>
           </footer>
+          </div>
         </div>
       </main>
     </div>

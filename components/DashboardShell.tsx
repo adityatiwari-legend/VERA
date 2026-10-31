@@ -26,6 +26,7 @@ import {
 import { User, NavCounts } from '@/types';
 import { Navbar } from './Navbar';
 import Footer from './Footer';
+import RibbonField from '@/components/ui/ribbon-field';
 
 interface DashboardShellProps {
   children: React.ReactNode;
@@ -161,6 +162,18 @@ export function DashboardShell({ children }: DashboardShellProps) {
             collapsed ? 'w-16' : 'w-60'
           }`}
         >
+          {/* Ribbon Field ambient — the platform's signature gradient, fading
+              out down the sidebar. Painted behind all content (z -1; the
+              sticky aside creates the stacking context). */}
+          <div aria-hidden className="pointer-events-none absolute inset-0" style={{ zIndex: -1 }}>
+            <RibbonField
+              className="h-full w-full opacity-40"
+              style={{
+                maskImage: 'radial-gradient(ellipse 130% 42% at 50% 0%, black 30%, transparent 92%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 130% 42% at 50% 0%, black 30%, transparent 92%)',
+              }}
+            />
+          </div>
           <div className="flex items-center justify-between border-b border-white/[0.08] p-3.5">
             {!collapsed && (
               <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-night-mute">
@@ -284,7 +297,8 @@ export function DashboardShell({ children }: DashboardShellProps) {
 
         {/* Main workspace area */}
         <main className="w-full flex-1 overflow-x-hidden p-4 pt-16 sm:p-6 md:pt-6 lg:p-8">
-          <div className="mx-auto max-w-7xl">{children}</div>
+          {/* keyed by route so the entrance animation replays on every navigation */}
+          <div key={pathname} className="mx-auto max-w-7xl animate-fade-in">{children}</div>
         </main>
       </div>
     </div>

@@ -6,7 +6,6 @@ import { usePathname, useRouter } from "next/navigation";
 import {
   Compass,
   ShieldCheck,
-  LayoutDashboard,
   LogOut,
   Building2,
   Menu,
@@ -16,6 +15,7 @@ import {
   Bell,
 } from "lucide-react";
 import { User } from "@/types";
+import { LiquidNavbar, type LiquidNavItem } from "@/components/ui/liquid-glass-navbar";
 
 export function Navbar() {
   const router = useRouter();
@@ -42,7 +42,8 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -79,11 +80,6 @@ export function Navbar() {
 
   const isPublicPage = pathname === '/';
 
-  const linkClass = (active: boolean) =>
-    `relative rounded-md px-2.5 py-1.5 text-[11.5px] font-mono font-medium uppercase tracking-wider transition-colors ${
-      active ? 'text-accent' : 'text-mute hover:text-ink'
-    }`;
-
   const roleLink =
     user?.role === 'ADMIN'
       ? { href: '/admin', label: 'Admin console' }
@@ -94,6 +90,26 @@ export function Navbar() {
           : user?.role === 'CONTRACTOR'
             ? { href: '/contractor', label: 'Contractor desk' }
             : { href: '/dashboard', label: 'My VERA' };
+
+  /* Desktop water-pill nav — same destinations as the mobile menu. */
+  const navItems: LiquidNavItem[] = React.useMemo(() => {
+    const base: LiquidNavItem[] = [
+      { label: 'Campaigns', href: '/campaigns', icon: <Compass className="h-[18px] w-[18px]" />, fx: 'glow' },
+      ...(isPublicPage
+        ? [{ label: 'How it works', href: '/#pipeline', icon: <Layers className="h-[18px] w-[18px]" />, fx: 'wave' } as LiquidNavItem]
+        : []),
+      { label: 'Organizations', href: '/ngos', icon: <Building2 className="h-[18px] w-[18px]" />, fx: 'spin' },
+      { label: 'Hisaab', href: '/hisaab', icon: <MapPin className="h-[18px] w-[18px]" />, fx: 'drop' },
+    ];
+    if (user) {
+      base.push({ label: roleLink.label, href: roleLink.href, icon: <ShieldCheck className="h-[18px] w-[18px]" />, fx: 'pop' });
+    }
+    return base;
+  }, [isPublicPage, user, roleLink.href, roleLink.label]);
+
+  const activeIndex = navItems.findIndex(
+    (it) => it.href !== '/#pipeline' && pathname.startsWith(it.href ?? '###')
+  );
 
   return (
     <>
@@ -119,13 +135,18 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* 2. Main sticky navigation */}
+      {/* 2. Main sticky navigation — frosted bar; border, shadow and padding
+          condense once the page scrolls (the single scroll animation) */}
       <header
-        className={`sticky top-0 z-30 w-full border-b bg-white/90 backdrop-blur-md transition-all duration-200 ${
-          isScrolled ? 'border-line shadow-sm py-2' : 'border-transparent py-3.5'
+        className={`sticky top-0 z-30 w-full border-b bg-white/85 backdrop-blur-md transition-all duration-300 ${
+          isScrolled ? 'border-line shadow-sm' : 'border-transparent'
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div
+          className={`mx-auto flex max-w-7xl items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-8 ${
+            isScrolled ? 'py-2' : 'py-3'
+          }`}
+        >
           {/* Brand */}
           <Link href="/" className="group flex items-center gap-2.5">
             <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-bold text-white transition-colors group-hover:bg-accent-deep">
@@ -144,28 +165,14 @@ export function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop links */}
-          <nav className="hidden items-center gap-1 lg:flex">
-            <Link href="/campaigns" className={linkClass(pathname.startsWith('/campaigns'))}>
-              Campaigns
-            </Link>
-            {isPublicPage && (
-              <Link href="/#pipeline" className={linkClass(false)}>
-                How it works
-              </Link>
-            )}
-            <Link href="/ngos" className={linkClass(pathname.startsWith('/ngos'))}>
-              Organizations
-            </Link>
-            <Link href="/hisaab" className={linkClass(pathname.startsWith('/hisaab'))}>
-              Hisaab
-            </Link>
-            {user && (
-              <Link href={roleLink.href} className={linkClass(pathname.startsWith(roleLink.href))}>
-                {roleLink.label}
-              </Link>
-            )}
-          </nav>
+          {/* Desktop water-pill nav */}
+          <div className="hidden lg:block">
+            <LiquidNavbar
+              items={navItems}
+              active={activeIndex}
+              tone="light"
+            />
+          </div>
 
           {/* Right actions */}
           <div className="hidden items-center gap-2 sm:flex">

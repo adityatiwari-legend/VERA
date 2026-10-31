@@ -46,7 +46,28 @@ NOT be used in new code — replace them when encountered.
 - `.chip` — small mono metadata chip (hashes, counts, versions).
 - `.panel-night` + `.theme-night` — dark technical section wrapper (bg #0B0B10, white text). Inside dark panels use `text-white`, `text-night-mute`, `text-night-dim`, `border-white/[0.08]`, `bg-white/[0.03]`, `text-blue-300/400`.
 - `.bg-grid-fine` (light), `.bg-grid-night` (dark), `.bg-dots-night` (blue pixels), `.wash-hero` (lavender/blue wash).
-- Animations: `.animate-rise` (+`.delay-1..5`), `.animate-floaty`, `.reveal`/`.is-visible` via `<Reveal>` (`components/landing/Reveal.tsx`), `.vera-skeleton`, `.animate-pulse-dot`. All reduced-motion safe.
+- **RibbonField** (`components/ui/ribbon-field.tsx`) — the platform's signature animated
+  gradient (21st.dev "Ribbon Field": White @18 / Sky blue #78B8F9 @57 / Ultramarine
+  #5667FF @60 / Iris #4D2FF9 @100, angle 32, wave 14, grain). Canvas-rendered, rAF-driven,
+  pauses offscreen, reduced-motion safe. Use it as an **ambient layer on dark panels**
+  (`backdrop #0B1220`, opacity 0.3–0.5, radial mask) or as a **light wash behind featured
+  visuals** (`backdrop #FFFFFF`, opacity ≤0.35, radial mask) — never behind body copy on
+  white, never as a button/banner fill. In app shells, mount it inside the dark sidebar
+  with `zIndex: -1` (the sticky/fixed aside creates the stacking context) and a
+  top-anchored mask. Live exemplars: hero + two-chain band + globe section of
+  `app/(public)/page.tsx`, and the console sidebars (`DashboardShell.tsx`,
+  `console/ConsoleShell.tsx`).
+- Animations: `.animate-rise` (+`.delay-1..5`), `.animate-fade-in` (opacity-only — use
+  this for wrappers that contain `position:fixed` overlays; a transform-based animation
+  would make the wrapper a containing block and break them), `.animate-floaty`,
+  `.reveal`/`.is-visible` via `<Reveal>` (`components/landing/Reveal.tsx`),
+  `.vera-skeleton`, `.animate-pulse-dot`. All reduced-motion safe.
+- **LiquidNavbar** (`components/ui/liquid-glass-navbar.tsx`) — the desktop nav pill
+  (WebGL water surface, no dependencies; adapted to `next/link`). Active item is derived
+  from `usePathname` (controlled `active`), sound off, `tone="light"` (the header is
+  always frosted white — the transparent-over-hero variant was rejected: the sticky
+  header sits above main in flow, so it never overlays the hero). Hidden below `lg`;
+  the mobile hamburger menu is unchanged.
 
 ## 4. Mechanical dark→light dictionary
 
