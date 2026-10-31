@@ -24,6 +24,20 @@ log "Fetching latest $BRANCH from origin"
 git fetch origin "$BRANCH"
 git reset --hard "origin/$BRANCH"
 
+# Disk guard — repeated image builds leave gigabytes of BuildKit cache behind
+# (docker image prune does NOT touch it). A full disk passes the health check
+# and then kills Postgres/app minutes later, so fail loudly BEFORE building.
+free_mb() { df -Pm / | awk 'NR==2{print $4}'; }
+if [ "$(free_mb)" -lt 2048 ]; then
+  log "Low disk ($(( $(free_mb) / 1024 ))GB free) — pruning Docker build cache"
+  docker builder prune -af >/dev/null || true
+  docker image prune -af >/dev/null || true
+fi
+if [ "$(free_mb)" -lt 1024 ]; then
+  log "ERROR: only $(( $(free_mb) / 1024 ))GB free on / — refusing to build. Reclaim space with: docker builder prune -af && docker image prune -af"
+  exit 1
+fi
+
 # The compose file references an externally-created volume (kept from the
 # original local setup). Create it once if this is a fresh server.
 docker volume inspect hackxxmuj_postgres_data >/dev/null 2>&1 \
@@ -54,8 +68,13 @@ docker compose run --rm migrate
 log "Restarting app to pick up any env changes"
 docker compose up -d --no-deps "$SERVICE_APP"
 
-log "Pruning dangling images from previous builds"
+log "Pruning dangling images + BuildKit cache from this build"
 docker image prune -f >/dev/null
+# The npm run build layer is ~1-2GB per push; without this the disk fills
+# after a handful of deploys and takes the whole stack down.
+docker builder prune -f >/dev/null
+
+log "Disk after deploy: $(df -h / | awk 'NR==2{print $3 " used, " $4 " free (" $5 ")"}')"
 
 log "Health check"
 sleep 3
