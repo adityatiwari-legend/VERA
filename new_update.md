@@ -19,6 +19,12 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 
 ## Change Log (newest first)
 
+### [2026-10-31] Full mobile-app review delivered — no backend contract change
+Commit: uncommitted
+Backend changes: none to `app/api/**`. Added a repo-root doc: **`android_app_review.md`** — a prioritized (P0/P1/P2) review of the Flutter app with file:line references, based on 4 full review passes cross-checked against the live backend routes.
+Mobile action needed: read `android_app_review.md` before the next build. Start with its "TL;DR top 10" table and "Suggested fix order" — Wave 1 items are small diffs that unblock live mode (role enum mapping, router `refreshListenable`, cleartext network config, route role gating, `recipientAddress` casing, mock-id hardcoding).
+Open backend decisions (Aditya will decide; endpoints may be added later): roughness scoring formula, `/milestones/[id]/dispute` route, REJECT/FLAG vote route, report severity/size fields, seeded demo credentials rotation.
+
 ### [2026-10-31] Baseline — mobile repo cloned, backend contract snapshot
 Commit: `19ae340` (web repo is a single squashed "initial commit"; this file becomes the record from here on)
 
