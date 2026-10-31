@@ -3,7 +3,7 @@ name: Deploy to VPS
 # CI/CD: every push to main ships the latest code to the production VPS.
 #
 # One-time setup (GitHub → Settings → Secrets and variables → Actions):
-#   VPS_HOST     = 139.84.172.55
+#   VPS_HOST     = 139.84.163.150
 #   VPS_USER     = root
 #   VPS_SSH_KEY  = the PRIVATE deploy key (contents of the vera_deploy_ed25519
 #                  file generated during provisioning; its public half is

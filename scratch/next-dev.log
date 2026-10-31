@@ -1243,3 +1243,1975 @@ bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
  GET /api/nav 200 in 125ms
  GET /api/auth/me 200 in 126ms
  GET /api/notifications?unread=true 200 in 150ms
+ ○ Compiling / ...
+ ✓ Compiled / in 6.8s (1475 modules)
+ GET / 200 in 7864ms
+ ✓ Compiled in 2.7s (2615 modules)
+ GET / 200 in 418ms
+ ✓ Compiled /api/audit/ledger in 460ms (1503 modules)
+ ✓ Compiled (1509 modules)
+ GET /api/auth/me 200 in 2366ms
+ GET /api/audit/ledger 403 in 2173ms
+ GET /api/nav 200 in 2395ms
+ GET /api/auth/me 200 in 116ms
+ GET /api/blockchain/stats 200 in 2498ms
+ ○ Compiling /api/notifications ...
+ ✓ Compiled /api/notifications in 992ms (1512 modules)
+ GET /api/audit/ledger 403 in 1900ms
+ GET /api/auth/me 200 in 1855ms
+ GET /api/nav 200 in 1964ms
+ GET /api/blockchain/stats 200 in 1865ms
+ GET /api/notifications?unread=true 200 in 1993ms
+ GET /api/auth/me 200 in 64ms
+ GET /api/notifications?unread=true 200 in 76ms
+ ✓ Compiled in 769ms (988 modules)
+ ✓ Compiled in 1406ms (988 modules)
+ ✓ Compiled in 641ms (988 modules)
+ ✓ Compiled in 2.9s (2249 modules)
+ ✓ Compiled in 1546ms (2251 modules)
+ ✓ Compiled in 1154ms (2251 modules)
+ ✓ Compiled in 1478ms (2238 modules)
+ ✓ Compiled in 940ms (2252 modules)
+ GET / 200 in 681ms
+ GET / 200 in 122ms
+ ○ Compiling /api/nav ...
+ ✓ Compiled /api/audit/ledger in 877ms (1291 modules)
+ ✓ Compiled (1297 modules)
+ GET /api/auth/me 200 in 1922ms
+ GET /api/blockchain/stats 200 in 1949ms
+ GET /api/nav 200 in 1974ms
+ GET /api/auth/me 200 in 78ms
+ ○ Compiling /api/notifications ...
+ ✓ Compiled /api/notifications in 719ms (1300 modules)
+ GET /api/blockchain/stats 200 in 1313ms
+ GET /api/auth/me 200 in 1295ms
+ GET /api/notifications?unread=true 200 in 1386ms
+ GET /api/nav 200 in 1353ms
+ GET /api/auth/me 200 in 74ms
+ GET /api/notifications?unread=true 200 in 67ms
+ GET /api/audit/ledger 200 in 6322ms
+ GET /api/audit/ledger 200 in 3377ms
+ ✓ Compiled in 3s (2252 modules)
+ GET / 200 in 601ms
+ ✓ Compiled /api/nav in 486ms (1291 modules)
+ ✓ Compiled /api/audit/ledger in 1ms (1295 modules)
+ ✓ Compiled in 1ms (1297 modules)
+ ✓ Compiled in 2ms (1297 modules)
+ GET /api/blockchain/stats 200 in 2459ms
+ ✓ Compiled in 1ms (1297 modules)
+ GET /api/auth/me 200 in 3064ms
+ GET /api/nav 200 in 3091ms
+ ✓ Compiled /api/notifications in 2ms (1297 modules)
+ ✓ Compiled in 2ms (1300 modules)
+ ✓ Compiled in 1ms (1300 modules)
+ GET /api/blockchain/stats 200 in 3741ms
+ ✓ Compiled in 1ms (1300 modules)
+ GET /api/auth/me 200 in 3745ms
+ GET /api/nav 200 in 3748ms
+ ✓ Compiled in 0ms (1300 modules)
+ GET /api/notifications?unread=true 200 in 4334ms
+ GET /api/auth/me 200 in 1172ms
+ GET /api/auth/me 200 in 86ms
+ GET /api/notifications?unread=true 200 in 98ms
+ GET /api/audit/ledger 200 in 12615ms
+ GET /api/audit/ledger 200 in 5575ms
+ ✓ Compiled in 4.9s (2289 modules)
+ GET / 200 in 350ms
+ GET /api/blockchain/stats 200 in 168ms
+ GET /api/auth/me 200 in 201ms
+ GET /api/auth/me 200 in 58ms
+ GET /api/blockchain/stats 200 in 94ms
+ GET /api/nav 200 in 278ms
+ GET /api/auth/me 200 in 43ms
+ GET /api/nav 200 in 54ms
+ GET /api/auth/me 200 in 43ms
+ GET /api/notifications?unread=true 200 in 39ms
+ GET /api/notifications?unread=true 200 in 32ms
+ GET /api/audit/ledger 200 in 4031ms
+ GET /api/audit/ledger 200 in 3711ms
+ GET / 200 in 128ms
+ GET /api/blockchain/stats 200 in 74ms
+ GET /api/nav 200 in 96ms
+ GET /api/auth/me 200 in 104ms
+ GET /api/blockchain/stats 200 in 58ms
+ GET /api/nav 200 in 58ms
+ GET /api/auth/me 200 in 58ms
+ GET /api/auth/me 200 in 34ms
+ GET /api/auth/me 200 in 32ms
+ GET /api/audit/ledger 403 in 35ms
+ GET /api/audit/ledger 403 in 31ms
+ GET /api/notifications?unread=true 200 in 46ms
+ GET /api/notifications?unread=true 200 in 44ms
+ ✓ Compiled in 2.3s (2252 modules)
+ ✓ Compiled in 1350ms (2252 modules)
+ GET / 200 in 464ms
+ ○ Compiling /api/nav ...
+ ✓ Compiled /api/nav in 748ms (1291 modules)
+ ✓ Compiled /api/audit/ledger in 1ms (1295 modules)
+ ✓ Compiled in 1ms (1297 modules)
+ ✓ Compiled in 0ms (1297 modules)
+ GET /api/blockchain/stats 200 in 3805ms
+ ✓ Compiled in 0ms (1297 modules)
+ GET /api/auth/me 200 in 4432ms
+ GET /api/nav 200 in 4445ms
+ ✓ Compiled /api/notifications in 1ms (1297 modules)
+ ✓ Compiled in 2ms (1300 modules)
+ ✓ Compiled in 1ms (1300 modules)
+ GET /api/blockchain/stats 200 in 3026ms
+ ✓ Compiled in 1ms (1300 modules)
+ GET /api/auth/me 200 in 2957ms
+ GET /api/nav 200 in 2956ms
+ ✓ Compiled in 1ms (1300 modules)
+ GET /api/notifications?unread=true 200 in 3471ms
+ GET /api/audit/ledger 200 in 7228ms
+ GET / 200 in 325ms
+ GET /api/auth/me 200 in 56ms
+ GET /api/blockchain/stats 200 in 63ms
+ GET /api/nav 200 in 57ms
+ GET /api/auth/me 200 in 71ms
+ GET /api/nav 200 in 89ms
+ GET /api/blockchain/stats 200 in 92ms
+ GET /api/notifications?unread=true 200 in 90ms
+ GET /api/auth/me 200 in 50ms
+ GET /api/auth/me 200 in 32ms
+ GET /api/notifications?unread=true 200 in 40ms
+ GET /api/audit/ledger 200 in 3708ms
+ GET /api/audit/ledger 200 in 3422ms
+ ✓ Compiled in 1912ms (2289 modules)
+ GET / 200 in 283ms
+ GET /api/blockchain/stats 200 in 164ms
+ GET /api/auth/me 200 in 167ms
+ GET /api/nav 200 in 182ms
+ GET /api/auth/me 200 in 52ms
+ GET /api/blockchain/stats 200 in 55ms
+ GET /api/nav 200 in 50ms
+ GET /api/auth/me 200 in 28ms
+ GET /api/auth/me 200 in 22ms
+ GET /api/notifications?unread=true 200 in 49ms
+ GET /api/notifications?unread=true 200 in 41ms
+ GET /api/audit/ledger 200 in 3629ms
+ GET /api/audit/ledger 200 in 3515ms
+ ✓ Compiled in 1777ms (2280 modules)
+ GET / 200 in 281ms
+ ✓ Compiled /api/auth/me in 271ms (1291 modules)
+ ✓ Compiled /api/audit/ledger in 0ms (1295 modules)
+ ✓ Compiled in 1ms (1297 modules)
+ ✓ Compiled in 1ms (1297 modules)
+ GET /api/blockchain/stats 200 in 1489ms
+ ✓ Compiled in 1ms (1297 modules)
+ GET /api/auth/me 200 in 1866ms
+ GET /api/nav 200 in 1941ms
+ ✓ Compiled /api/notifications in 1ms (1297 modules)
+ ✓ Compiled in 1ms (1300 modules)
+ ✓ Compiled in 1ms (1300 modules)
+ GET /api/blockchain/stats 200 in 1954ms
+ ✓ Compiled in 1ms (1300 modules)
+ GET /api/auth/me 200 in 1893ms
+ GET /api/nav 200 in 1833ms
+ ✓ Compiled in 1ms (1300 modules)
+ GET /api/notifications?unread=true 200 in 2211ms
+ GET /api/auth/me 200 in 624ms
+ GET /api/auth/me 200 in 39ms
+ GET /api/notifications?unread=true 200 in 51ms
+ GET /api/audit/ledger 200 in 6879ms
+ GET /api/audit/ledger 200 in 3774ms
+ ⨯ ./components/ui/ribbon-field.tsx
+Error: 
+  [31mx[0m Expected a semicolon
+     ,-[[36;1;4mD:\HackXxMUJ\components\ui\ribbon-field.tsx[0m:211:1]
+ [2m211[0m |       ctx.imageSmoothingQuality = 'high';
+ [2m212[0m |       ctx.clearRect(0, 0, canvas.width, canvas.height);
+ [2m213[0m |       ctx.drawImage(buf, 0, 0, canvas.width, canvas.height);
+ [2m214[0m |     };
+     : [31;1m     ^[0m
+ [2m215[0m | 
+ [2m216[0m |     const loop = (now: number) => {
+ [2m217[0m |       raf = requestAnimationFrame(loop);
+     `----
+
+  [31mx[0m 'const' declarations must be initialized
+     ,-[[36;1;4mD:\HackXxMUJ\components\ui\ribbon-field.tsx[0m:249:1]
+ [2m249[0m |       cancelAnimationFrame(raf);
+ [2m250[0m |       ro.disconnect();
+ [2m251[0m |     };
+ [2m252[0m |   }, [angle, backdrop, bufferWidth, clockPhase, clockRate, motionAmount, softness, speed, staticFrame, wave]);
+     : [31;1m     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m253[0m | 
+ [2m254[0m |   // Positioning: when the consumer places the field with `absolute`/`fixed`
+ [2m255[0m |   // (in className), let their class win — Tailwind emits `.relative` after
+     `----
+
+  [31mx[0m Expected a semicolon
+     ,-[[36;1;4mD:\HackXxMUJ\components\ui\ribbon-field.tsx[0m:249:1]
+ [2m249[0m |       cancelAnimationFrame(raf);
+ [2m250[0m |       ro.disconnect();
+ [2m251[0m |     };
+ [2m252[0m |   }, [angle, backdrop, bufferWidth, clockPhase, clockRate, motionAmount, softness, speed, staticFrame, wave]);
+     : [31;1m                                                                                                            ^[0m
+ [2m253[0m | 
+ [2m254[0m |   // Positioning: when the consumer places the field with `absolute`/`fixed`
+ [2m255[0m |   // (in className), let their class win — Tailwind emits `.relative` after
+     `----
+
+  [31mx[0m Expected ',', got 'export'
+     ,-[[36;1;4mD:\HackXxMUJ\components\ui\ribbon-field.tsx[0m:282:1]
+ [2m282[0m |   );
+ [2m283[0m | }
+ [2m284[0m | 
+ [2m285[0m | export default RibbonField;
+     : [31;1m^^^^^^[0m
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/ui/ribbon-field.tsx
+./components/ui/perspective-tunnel-hero.tsx
+ ✓ Compiled in 1519ms (2238 modules)
+ GET / 200 in 271ms
+ ✓ Compiled /api/nav in 295ms (1291 modules)
+ ✓ Compiled /api/audit/ledger in 1ms (1295 modules)
+ ✓ Compiled in 1ms (1297 modules)
+ ✓ Compiled in 1ms (1297 modules)
+ GET /api/blockchain/stats 200 in 1970ms
+ ✓ Compiled in 0ms (1297 modules)
+ GET /api/auth/me 200 in 2404ms
+ GET /api/nav 200 in 2421ms
+ ✓ Compiled /api/notifications in 0ms (1297 modules)
+ ✓ Compiled in 2ms (1300 modules)
+ ✓ Compiled in 0ms (1300 modules)
+ GET /api/blockchain/stats 200 in 2017ms
+ ✓ Compiled in 1ms (1300 modules)
+ GET /api/auth/me 200 in 2005ms
+ GET /api/nav 200 in 2015ms
+ ✓ Compiled in 1ms (1300 modules)
+ GET /api/notifications?unread=true 200 in 2421ms
+ GET /api/auth/me 200 in 783ms
+ GET /api/auth/me 200 in 62ms
+ GET /api/notifications?unread=true 200 in 72ms
+ GET /api/audit/ledger 200 in 7998ms
+ GET /api/audit/ledger 200 in 3828ms
+ ⨯ ./components/ui/ribbon-field.tsx
+Error: 
+  [31mx[0m Expected a semicolon
+     ,-[[36;1;4mD:\HackXxMUJ\components\ui\ribbon-field.tsx[0m:208:1]
+ [2m208[0m |       ctx.imageSmoothingQuality = 'high';
+ [2m209[0m |       ctx.clearRect(0, 0, canvas.width, canvas.height);
+ [2m210[0m |       ctx.drawImage(buf, 0, 0, canvas.width, canvas.height);
+ [2m211[0m |       } catch (e) {
+     : [31;1m        ^^^^^[0m
+ [2m212[0m |         if (typeof document !== 'undefined') document.title = `RF-ERR: ${e instanceof Error ? e.message : String(e)}`;
+ [2m213[0m |       }
+ [2m214[0m |     };
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/ui/ribbon-field.tsx
+./components/ui/perspective-tunnel-hero.tsx
+ ⨯ ./components/ui/ribbon-field.tsx
+Error: 
+  [31mx[0m 'const' declarations must be initialized
+     ,-[[36;1;4mD:\HackXxMUJ\components\ui\ribbon-field.tsx[0m:246:1]
+ [2m246[0m |       cancelAnimationFrame(raf);
+ [2m247[0m |       ro.disconnect();
+ [2m248[0m |     };
+ [2m249[0m |   }, [angle, backdrop, bufferWidth, clockPhase, clockRate, motionAmount, softness, speed, staticFrame, wave]);
+     : [31;1m     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m250[0m | 
+ [2m251[0m |   // Positioning: when the consumer places the field with `absolute`/`fixed`
+ [2m252[0m |   // (in className), let their class win — Tailwind emits `.relative` after
+     `----
+
+  [31mx[0m Expected a semicolon
+     ,-[[36;1;4mD:\HackXxMUJ\components\ui\ribbon-field.tsx[0m:246:1]
+ [2m246[0m |       cancelAnimationFrame(raf);
+ [2m247[0m |       ro.disconnect();
+ [2m248[0m |     };
+ [2m249[0m |   }, [angle, backdrop, bufferWidth, clockPhase, clockRate, motionAmount, softness, speed, staticFrame, wave]);
+     : [31;1m                                                                                                            ^[0m
+ [2m250[0m | 
+ [2m251[0m |   // Positioning: when the consumer places the field with `absolute`/`fixed`
+ [2m252[0m |   // (in className), let their class win — Tailwind emits `.relative` after
+     `----
+
+  [31mx[0m Expected ',', got 'export'
+     ,-[[36;1;4mD:\HackXxMUJ\components\ui\ribbon-field.tsx[0m:279:1]
+ [2m279[0m |   );
+ [2m280[0m | }
+ [2m281[0m | 
+ [2m282[0m | export default RibbonField;
+     : [31;1m^^^^^^[0m
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/ui/ribbon-field.tsx
+./components/ui/perspective-tunnel-hero.tsx
+ ✓ Compiled in 1312ms (2275 modules)
+ GET / 200 in 292ms
+ GET /api/blockchain/stats 200 in 284ms
+ GET /api/auth/me 200 in 286ms
+ GET /api/nav 200 in 346ms
+ GET /api/blockchain/stats 200 in 68ms
+ GET /api/auth/me 200 in 75ms
+ GET /api/auth/me 200 in 100ms
+ GET /api/nav 200 in 119ms
+ GET /api/notifications?unread=true 200 in 84ms
+ GET /api/auth/me 200 in 53ms
+ GET /api/notifications?unread=true 200 in 63ms
+ GET /api/audit/ledger 200 in 3684ms
+ GET /api/audit/ledger 200 in 3476ms
+ ✓ Compiled in 1794ms (2252 modules)
+ GET / 200 in 282ms
+ ✓ Compiled /api/auth/me in 278ms (1291 modules)
+ ✓ Compiled /api/audit/ledger in 1ms (1295 modules)
+ ✓ Compiled in 0ms (1297 modules)
+ ✓ Compiled in 0ms (1297 modules)
+ GET /api/blockchain/stats 200 in 1456ms
+ ✓ Compiled in 1ms (1297 modules)
+ GET /api/auth/me 200 in 1838ms
+ GET /api/nav 200 in 1901ms
+ ✓ Compiled /api/notifications in 1ms (1297 modules)
+ ✓ Compiled in 1ms (1300 modules)
+ ✓ Compiled in 0ms (1300 modules)
+ GET /api/blockchain/stats 200 in 1871ms
+ ✓ Compiled in 0ms (1300 modules)
+ GET /api/auth/me 200 in 1864ms
+ GET /api/nav 200 in 1822ms
+ ✓ Compiled in 1ms (1300 modules)
+ GET /api/notifications?unread=true 200 in 2198ms
+ GET /api/auth/me 200 in 634ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/notifications?unread=true 200 in 60ms
+ GET /api/audit/ledger 200 in 6750ms
+ GET /api/audit/ledger 200 in 3973ms
+ ✓ Compiled in 1741ms (2252 modules)
+ ✓ Compiled in 2.1s (2246 modules)
+ ✓ Compiled in 512ms (987 modules)
+ ✓ Compiled in 1286ms (2252 modules)
+ ✓ Compiled in 1785ms (2252 modules)
+ GET / 200 in 510ms
+ ○ Compiling /api/audit/ledger ...
+ ✓ Compiled /api/audit/ledger in 1021ms (1291 modules)
+ ✓ Compiled (1297 modules)
+ GET /api/blockchain/stats 200 in 2003ms
+ GET /api/auth/me 200 in 2014ms
+ GET /api/nav 200 in 2033ms
+ GET /api/blockchain/stats 200 in 90ms
+ ✓ Compiled /api/notifications in 421ms (1300 modules)
+ GET /api/auth/me 200 in 945ms
+ GET /api/nav 200 in 925ms
+ GET /api/notifications?unread=true 200 in 971ms
+ GET /api/auth/me 200 in 52ms
+ GET /api/auth/me 200 in 58ms
+ GET /api/notifications?unread=true 200 in 63ms
+ GET /api/audit/ledger 200 in 6099ms
+ GET /api/audit/ledger 200 in 3624ms
+ ✓ Compiled in 1807ms (989 modules)
+ ✓ Compiled in 2.3s (2254 modules)
+ GET / 200 in 532ms
+ ✓ Compiled /api/auth/me in 323ms (1292 modules)
+ ✓ Compiled /api/audit/ledger in 0ms (1296 modules)
+ ✓ Compiled in 1ms (1298 modules)
+ ✓ Compiled in 0ms (1298 modules)
+ GET /api/blockchain/stats 200 in 1667ms
+ ✓ Compiled in 0ms (1298 modules)
+ GET /api/auth/me 200 in 2051ms
+ GET /api/nav 200 in 2129ms
+ ✓ Compiled /api/notifications in 0ms (1298 modules)
+ ✓ Compiled in 0ms (1301 modules)
+ ✓ Compiled in 1ms (1301 modules)
+ GET /api/blockchain/stats 200 in 2150ms
+ ✓ Compiled in 0ms (1301 modules)
+ GET /api/auth/me 200 in 2264ms
+ GET /api/nav 200 in 2277ms
+ ✓ Compiled in 1ms (1301 modules)
+ GET /api/notifications?unread=true 200 in 2834ms
+ GET /api/auth/me 200 in 875ms
+ GET /api/auth/me 200 in 52ms
+ GET /api/notifications?unread=true 200 in 59ms
+ GET /api/audit/ledger 200 in 7949ms
+ GET /api/audit/ledger 200 in 3449ms
+ ✓ Compiled in 1735ms (2254 modules)
+ GET / 200 in 291ms
+ ✓ Compiled /api/nav in 290ms (1292 modules)
+ ✓ Compiled /api/audit/ledger in 0ms (1296 modules)
+ ✓ Compiled in 0ms (1298 modules)
+ ✓ Compiled in 1ms (1298 modules)
+ GET /api/blockchain/stats 200 in 1543ms
+ ✓ Compiled in 0ms (1298 modules)
+ GET /api/auth/me 200 in 1906ms
+ GET /api/nav 200 in 1977ms
+ ✓ Compiled /api/notifications in 0ms (1298 modules)
+ ✓ Compiled in 1ms (1301 modules)
+ ✓ Compiled in 1ms (1301 modules)
+ GET /api/blockchain/stats 200 in 1861ms
+ ✓ Compiled in 1ms (1301 modules)
+ GET /api/auth/me 200 in 1987ms
+ GET /api/nav 200 in 1998ms
+ ✓ Compiled in 1ms (1301 modules)
+ GET /api/notifications?unread=true 200 in 2507ms
+ GET /api/auth/me 200 in 856ms
+ GET /api/auth/me 200 in 46ms
+ GET /api/notifications?unread=true 200 in 56ms
+ GET /api/audit/ledger 200 in 7364ms
+ GET /api/audit/ledger 200 in 3940ms
+ ○ Compiling /campaigns ...
+ ✓ Compiled /campaigns in 1572ms (1306 modules)
+ GET /campaigns 200 in 2101ms
+ GET /api/auth/me 200 in 362ms
+ GET /api/blockchain/stats 200 in 378ms
+ GET /api/nav 200 in 387ms
+ GET /api/auth/me 200 in 75ms
+ GET /api/blockchain/stats 200 in 94ms
+ GET /api/notifications?unread=true 200 in 97ms
+ GET /api/nav 200 in 95ms
+ GET /api/auth/me 200 in 43ms
+ GET /api/auth/me 200 in 45ms
+ GET /api/notifications?unread=true 200 in 51ms
+ GET / 200 in 216ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/blockchain/stats 200 in 54ms
+ GET /api/nav 200 in 53ms
+ GET /api/auth/me 200 in 61ms
+ GET /api/blockchain/stats 200 in 80ms
+ GET /api/nav 200 in 80ms
+ GET /api/notifications?unread=true 200 in 78ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/auth/me 200 in 43ms
+ GET /api/notifications?unread=true 200 in 44ms
+ GET /api/audit/ledger 200 in 3883ms
+ GET /api/audit/ledger 200 in 3464ms
+ GET /api/auth/me 200 in 183ms
+ GET /api/nav 200 in 207ms
+ GET /api/auth/me 200 in 87ms
+ GET /api/notifications?unread=true 200 in 100ms
+ ○ Compiling /ngos ...
+ ✓ Compiled /ngos in 1543ms (1305 modules)
+ GET /api/auth/me 200 in 225ms
+ GET /api/nav 200 in 380ms
+ GET /api/auth/me 200 in 89ms
+ GET /api/notifications?unread=true 200 in 128ms
+ ○ Compiling /hisaab ...
+ ✓ Compiled /hisaab in 2.4s (1517 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/nav 200 in 822ms
+ GET /api/auth/me 200 in 827ms
+ ○ Compiling /api/health ...
+ ✓ Compiled /api/health in 1965ms (1522 modules)
+ GET /api/auth/me 200 in 2757ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 3026ms
+ GET /api/auth/me 200 in 482ms
+ GET /api/health 200 in 405ms
+ GET / 200 in 687ms
+ ○ Compiling /api/blockchain/stats ...
+ ✓ Compiled /api/audit/ledger in 669ms (1524 modules)
+ ✓ Compiled (1526 modules)
+ GET /api/audit/ledger 403 in 1080ms
+ GET /api/auth/me 200 in 1339ms
+ GET /api/nav 200 in 1360ms
+ GET /api/blockchain/stats 200 in 1368ms
+ GET /api/audit/ledger 403 in 82ms
+ GET /api/auth/me 200 in 89ms
+ GET /api/nav 200 in 89ms
+ GET /api/blockchain/stats 200 in 92ms
+ GET /api/notifications?unread=true 200 in 96ms
+ GET /api/auth/me 200 in 36ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/notifications?unread=true 200 in 52ms
+ GET /api/auth/me 200 in 133ms
+ GET /api/nav 200 in 155ms
+ GET /api/auth/me 200 in 53ms
+ GET /api/notifications?unread=true 200 in 63ms
+ GET /api/auth/me 200 in 218ms
+ GET /api/nav 200 in 240ms
+ GET /api/auth/me 200 in 56ms
+ GET /api/notifications?unread=true 200 in 68ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 60ms
+ GET /api/nav 200 in 73ms
+ GET /api/health 200 in 42ms
+ GET /api/auth/me 200 in 56ms
+ GET /api/health 200 in 41ms
+ GET /api/auth/me 200 in 44ms
+ GET /api/auth/me 200 in 50ms
+ GET /api/blockchain/stats 200 in 51ms
+ GET /api/nav 200 in 52ms
+ GET /api/auth/me 200 in 62ms
+ GET /api/blockchain/stats 200 in 85ms
+ GET /api/auth/me 200 in 45ms
+ GET /api/notifications?unread=true 200 in 50ms
+ GET /api/notifications?unread=true 200 in 34ms
+ GET /api/health 200 in 46ms
+ GET /api/auth/me 200 in 55ms
+ GET /api/nav 200 in 59ms
+ GET /api/health 200 in 51ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/auth/me 200 in 31ms
+ GET /api/auth/me 200 in 63ms
+ GET /api/nav 200 in 65ms
+ GET /api/blockchain/stats 200 in 70ms
+ GET /api/auth/me 200 in 55ms
+ GET /api/blockchain/stats 200 in 80ms
+ GET /api/notifications?unread=true 200 in 59ms
+ GET /api/auth/me 200 in 58ms
+ GET /api/notifications?unread=true 200 in 38ms
+ GET /api/health 200 in 57ms
+ GET /api/auth/me 200 in 79ms
+ GET /api/nav 200 in 87ms
+ GET /api/health 200 in 66ms
+ GET /api/auth/me 200 in 55ms
+ GET /api/auth/me 200 in 37ms
+ GET /api/nav 200 in 53ms
+ GET /api/auth/me 200 in 54ms
+ GET /api/blockchain/stats 200 in 57ms
+ GET /api/auth/me 200 in 46ms
+ GET /api/blockchain/stats 200 in 71ms
+ GET /api/auth/me 200 in 57ms
+ GET /api/notifications?unread=true 200 in 52ms
+ GET /api/notifications?unread=true 200 in 34ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/nav 200 in 75ms
+ GET /api/auth/me 200 in 58ms
+ GET /api/notifications?unread=true 200 in 37ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/nav 200 in 67ms
+ GET /api/auth/me 200 in 50ms
+ GET /api/notifications?unread=true 200 in 55ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/nav 200 in 61ms
+ GET /api/auth/me 200 in 39ms
+ GET /api/notifications?unread=true 200 in 33ms
+ GET /api/auth/me 200 in 33ms
+ GET /api/nav 200 in 52ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/notifications?unread=true 200 in 67ms
+ GET /api/auth/me 200 in 37ms
+ GET /api/nav 200 in 55ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/notifications?unread=true 200 in 62ms
+ GET /api/auth/me 200 in 31ms
+ GET /api/audit/ledger 403 in 42ms
+ GET /api/auth/me 200 in 65ms
+ GET /api/nav 200 in 71ms
+ GET /api/audit/ledger 403 in 63ms
+ GET /api/notifications?unread=true 200 in 51ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/nav 200 in 54ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/notifications?unread=true 200 in 44ms
+ GET /api/auth/me 200 in 34ms
+ GET /api/audit/ledger 403 in 48ms
+ GET /api/nav 200 in 68ms
+ GET /api/auth/me 200 in 71ms
+ GET /api/audit/ledger 403 in 65ms
+ GET /api/notifications?unread=true 200 in 48ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/nav 200 in 51ms
+ GET /api/auth/me 200 in 28ms
+ GET /api/notifications?unread=true 200 in 35ms
+ GET /api/auth/me 200 in 86ms
+ GET /api/nav 200 in 91ms
+ GET /api/auth/me 200 in 45ms
+ GET /api/notifications?unread=true 200 in 56ms
+ GET /api/audit/ledger 403 in 26ms
+ GET /api/audit/ledger 403 in 33ms
+ GET /api/auth/me 200 in 148ms
+ GET /api/nav 200 in 195ms
+ GET /api/auth/me 200 in 61ms
+ GET /api/notifications?unread=true 200 in 73ms
+ GET /api/auth/me 200 in 113ms
+ GET /api/nav 200 in 168ms
+ GET /api/auth/me 200 in 179ms
+ GET /api/notifications?unread=true 200 in 186ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/nav 200 in 62ms
+ GET /api/auth/me 200 in 55ms
+ GET /api/notifications?unread=true 200 in 51ms
+ GET /api/auth/me 200 in 45ms
+ GET /api/nav 200 in 51ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/notifications?unread=true 200 in 58ms
+ GET /api/auth/me 200 in 43ms
+ GET /api/nav 200 in 54ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/notifications?unread=true 200 in 47ms
+ GET /api/auth/me 200 in 36ms
+ GET /api/nav 200 in 52ms
+ GET /api/auth/me 200 in 46ms
+ GET /api/notifications?unread=true 200 in 53ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/nav 200 in 65ms
+ GET /api/health 200 in 70ms
+ GET /api/auth/me 200 in 56ms
+ GET /api/health 200 in 52ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/auth/me 200 in 50ms
+ GET /api/nav 200 in 51ms
+ GET /api/blockchain/stats 200 in 57ms
+ GET /api/auth/me 200 in 52ms
+ GET /api/blockchain/stats 200 in 70ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/notifications?unread=true 200 in 57ms
+ GET /api/notifications?unread=true 200 in 41ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 1616ms (1351 modules)
+ GET /api/auth/me 200 in 103ms
+ GET /api/nav 200 in 128ms
+ GET /api/auth/me 200 in 62ms
+ GET /api/notifications?unread=true 200 in 75ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 359ms
+ GET /api/nav 200 in 374ms
+ GET /api/auth/me 200 in 53ms
+ GET /api/health 200 in 86ms
+ GET /api/auth/me 200 in 70ms
+ GET /api/health 200 in 51ms
+ ✓ Compiled in 2.5s (2279 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ✓ Compiled in 941ms (2279 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ✓ Compiled in 1207ms (2279 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ✓ Compiled in 3.4s (2279 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ✓ Compiled in 3.3s (2279 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ✓ Compiled in 1505ms (2279 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ✓ Compiled in 2.3s (2279 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ✓ Compiled in 1607ms (2279 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ⨯ ./components/console/ConsoleShell.tsx
+Error: 
+  [31mx[0m Unexpected token `div`. Expected jsx identifier
+     ,-[[36;1;4mD:\HackXxMUJ\components\console\ConsoleShell.tsx[0m:177:1]
+ [2m177[0m |   );
+ [2m178[0m | 
+ [2m179[0m |   return (
+ [2m180[0m |     <div className="min-h-screen bg-mist font-sans text-ink">
+     : [31;1m     ^^^[0m
+ [2m181[0m |       {sidebar}
+ [2m182[0m | 
+ [2m183[0m |       {/* Mobile top bar */}
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/console/ConsoleShell.tsx
+ ✓ Compiled in 1832ms (2265 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /hisaab 200 in 402ms
+ ○ Compiling /api/nav ...
+ ✓ Compiled /api/health in 1442ms (1317 modules)
+ ✓ Compiled (1324 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 2384ms
+ GET /api/auth/me 200 in 2702ms
+ GET /api/nav 200 in 2706ms
+ GET /api/health 200 in 64ms
+ GET /api/auth/me 200 in 87ms
+ GET /api/nav 200 in 91ms
+ GET /api/auth/me 200 in 46ms
+ GET /api/auth/me 200 in 45ms
+ GET /hisaab 200 in 357ms
+ GET /api/auth/me 200 in 61ms
+ GET /api/nav 200 in 138ms
+ GET /api/auth/me 200 in 100ms
+ GET /api/health 200 in 105ms
+ GET /api/nav 200 in 126ms
+ GET /api/auth/me 200 in 135ms
+ GET /api/health 200 in 122ms
+ GET /api/auth/me 200 in 65ms
+ GET /dashboard 200 in 81ms
+ ○ Compiling /api/blockchain/stats ...
+ ✓ Compiled /admin in 874ms (1326 modules)
+ ✓ Compiled in 1194ms (976 modules)
+ GET /api/auth/me 200 in 5032ms
+ GET /api/blockchain/stats 200 in 5078ms
+ GET /admin 200 in 3877ms
+ GET /api/nav 200 in 5161ms
+ ○ Compiling /api/notifications ...
+ GET /api/auth/me 200 in 996ms
+ ✓ Compiled /api/notifications in 4.5s (1337 modules)
+ GET /api/blockchain/stats 200 in 5530ms
+ GET /api/auth/me 200 in 4639ms
+ GET /api/notifications?unread=true 200 in 5678ms
+ GET /api/nav 200 in 5614ms
+ GET /api/auth/me 200 in 149ms
+ GET /admin 200 in 5775ms
+ GET /api/blockchain/stats 200 in 500ms
+ GET /api/auth/me 200 in 502ms
+ GET /api/nav 200 in 519ms
+ GET /api/blockchain/stats 200 in 119ms
+ GET /api/auth/me 200 in 134ms
+ GET /api/nav 200 in 129ms
+ GET /api/notifications?unread=true 200 in 135ms
+ GET /api/auth/me 200 in 63ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/notifications?unread=true 200 in 56ms
+ GET /api/auth/me 200 in 50ms
+ GET /api/nav 200 in 49ms
+ GET /api/blockchain/stats 200 in 72ms
+ GET /api/auth/me 200 in 72ms
+ GET /api/notifications?unread=true 200 in 85ms
+ GET /api/blockchain/stats 200 in 88ms
+ GET /api/auth/me 200 in 50ms
+ GET /api/notifications?unread=true 200 in 30ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 149ms
+ GET /api/nav 200 in 159ms
+ GET /api/health 200 in 63ms
+ GET /api/auth/me 200 in 84ms
+ GET /api/health 200 in 53ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/auth/me 200 in 44ms
+ GET /api/blockchain/stats 200 in 72ms
+ GET /api/nav 200 in 63ms
+ GET /api/auth/me 200 in 66ms
+ GET /api/blockchain/stats 200 in 64ms
+ GET /api/notifications?unread=true 200 in 70ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/notifications?unread=true 200 in 32ms
+ ○ Compiling /ngos ...
+ ✓ Compiled /ngos in 1018ms (1329 modules)
+ GET /api/auth/me 200 in 83ms
+ GET /api/nav 200 in 107ms
+ GET /api/auth/me 200 in 69ms
+ GET /api/notifications?unread=true 200 in 82ms
+ GET /api/auth/me 200 in 72ms
+ GET /api/nav 200 in 62ms
+ GET /api/auth/me 200 in 33ms
+ GET /api/notifications?unread=true 200 in 35ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/nav 200 in 61ms
+ GET /api/auth/me 200 in 54ms
+ GET /api/notifications?unread=true 200 in 52ms
+ GET /api/auth/me 200 in 155ms
+ GET /api/nav 200 in 174ms
+ GET /api/auth/me 200 in 58ms
+ GET /api/notifications?unread=true 200 in 67ms
+ GET /api/auth/me 200 in 44ms
+ GET /api/nav 200 in 41ms
+ GET /api/auth/me 200 in 35ms
+ GET /api/notifications?unread=true 200 in 38ms
+ GET /api/auth/me 200 in 39ms
+ GET /api/nav 200 in 49ms
+ GET /api/auth/me 200 in 36ms
+ GET /api/notifications?unread=true 200 in 30ms
+ GET /api/auth/me 200 in 34ms
+ GET /api/nav 200 in 48ms
+ GET /api/auth/me 200 in 44ms
+ GET /api/notifications?unread=true 200 in 36ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 256ms
+ GET /api/auth/me 200 in 284ms
+ GET /api/nav 200 in 289ms
+ GET /api/health 200 in 57ms
+ GET /api/auth/me 200 in 45ms
+ GET /api/auth/me 200 in 33ms
+ GET /api/auth/me 200 in 83ms
+ GET /api/nav 200 in 76ms
+ GET /api/blockchain/stats 200 in 90ms
+ GET /api/auth/me 200 in 60ms
+ GET /api/notifications?unread=true 200 in 63ms
+ GET /api/blockchain/stats 200 in 75ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/notifications?unread=true 200 in 30ms
+ GET /admin 200 in 99ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/blockchain/stats 200 in 45ms
+ GET /api/auth/me 200 in 39ms
+ GET /api/nav 200 in 55ms
+ GET /api/blockchain/stats 200 in 62ms
+ GET /api/auth/me 200 in 74ms
+ GET /api/nav 200 in 73ms
+ GET /api/auth/me 200 in 69ms
+ GET /api/notifications?unread=true 200 in 102ms
+ GET /api/health 200 in 93ms
+ GET /api/nav 200 in 95ms
+ GET /api/auth/me 200 in 102ms
+ GET /api/auth/me 200 in 71ms
+ GET /api/notifications?unread=true 200 in 79ms
+ GET /api/health 200 in 79ms
+ GET /api/auth/me 200 in 44ms
+ GET /api/auth/me 200 in 58ms
+ GET /api/blockchain/stats 200 in 60ms
+ GET /api/nav 200 in 53ms
+ GET /api/auth/me 200 in 61ms
+ GET /api/blockchain/stats 200 in 90ms
+ GET /api/notifications?unread=true 200 in 73ms
+ GET /api/auth/me 200 in 56ms
+ GET /api/notifications?unread=true 200 in 32ms
+ ○ Compiling /donor/donations ...
+ ✓ Compiled /donor/donations in 689ms (1334 modules)
+ GET /api/auth/me 200 in 45ms
+ GET /api/nav 200 in 73ms
+ GET /api/auth/me 200 in 71ms
+ GET /api/notifications?unread=true 200 in 67ms
+ GET /api/auth/me 200 in 35ms
+ GET /api/nav 200 in 65ms
+ GET /api/auth/me 200 in 54ms
+ GET /api/notifications?unread=true 200 in 49ms
+ GET /api/auth/me 200 in 129ms
+ GET /api/nav 200 in 151ms
+ GET /api/auth/me 200 in 183ms
+ GET /api/notifications?unread=true 200 in 177ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/nav 200 in 55ms
+ GET /api/auth/me 200 in 59ms
+ GET /api/health 200 in 51ms
+ GET /api/auth/me 200 in 64ms
+ GET /api/health 200 in 49ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/auth/me 200 in 72ms
+ GET /api/nav 200 in 73ms
+ GET /api/blockchain/stats 200 in 78ms
+ GET /api/auth/me 200 in 45ms
+ GET /api/blockchain/stats 200 in 67ms
+ GET /api/auth/me 200 in 55ms
+ GET /api/notifications?unread=true 200 in 60ms
+ GET /api/notifications?unread=true 200 in 32ms
+ GET /api/auth/me 200 in 67ms
+ GET /api/nav 200 in 61ms
+ GET /api/auth/me 200 in 38ms
+ GET /api/notifications?unread=true 200 in 37ms
+ GET /api/auth/me 200 in 52ms
+ GET /api/nav 200 in 69ms
+ GET /api/auth/me 200 in 54ms
+ GET /api/notifications?unread=true 200 in 66ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/nav 200 in 48ms
+ GET /api/auth/me 200 in 33ms
+ GET /api/notifications?unread=true 200 in 34ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/nav 200 in 47ms
+ GET /api/auth/me 200 in 32ms
+ GET /api/notifications?unread=true 200 in 29ms
+ ○ Compiling /api/auth/logout ...
+ ✓ Compiled /api/auth/logout in 679ms (902 modules)
+ POST /api/auth/logout 200 in 778ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 856ms (907 modules)
+ GET /api/auth/me 401 in 37ms
+ GET /api/nav 401 in 48ms
+ GET /api/auth/me 401 in 30ms
+ ○ Compiling /api/auth/login ...
+ ✓ Compiled /api/auth/login in 530ms (921 modules)
+ POST /api/auth/login 200 in 785ms
+ GET /api/auth/me 200 in 38ms
+ GET /api/nav 200 in 73ms
+ GET /api/auth/me 200 in 72ms
+ GET /api/notifications?unread=true 200 in 73ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/nav 200 in 58ms
+ GET /api/auth/me 200 in 34ms
+ GET /api/notifications?unread=true 200 in 35ms
+ ○ Compiling /admin/complaints ...
+ ✓ Compiled /admin/complaints in 694ms (924 modules)
+ GET /api/auth/me 200 in 43ms
+ GET /api/nav 200 in 68ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/notifications?unread=true 200 in 39ms
+ ○ Compiling /admin/fund-requests ...
+ ✓ Compiled /admin/fund-requests in 1450ms (1923 modules)
+ GET /api/auth/me 200 in 76ms
+ GET /api/nav 200 in 84ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/notifications?unread=true 200 in 48ms
+ ○ Compiling /admin/contractors ...
+ ✓ Compiled /admin/contractors in 1221ms (1936 modules)
+ GET /api/nav 200 in 74ms
+ GET /api/auth/me 200 in 76ms
+ GET /api/auth/me 200 in 36ms
+ GET /api/notifications?unread=true 200 in 39ms
+ ○ Compiling /admin/escrows ...
+ ✓ Compiled /admin/escrows in 1009ms (1936 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 67ms
+ GET /api/nav 200 in 97ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/notifications?unread=true 200 in 44ms
+ ○ Compiling /auditor/dashboard ...
+ ✓ Compiled /auditor/dashboard in 1255ms (1943 modules)
+ GET /api/nav 200 in 71ms
+ GET /api/auth/me 200 in 71ms
+ GET /api/auth/me 200 in 37ms
+ GET /api/notifications?unread=true 200 in 40ms
+ GET /api/auth/me 200 in 52ms
+ GET /api/nav 200 in 68ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/notifications?unread=true 200 in 55ms
+ GET /api/auth/me 200 in 34ms
+ GET /api/nav 200 in 52ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/notifications?unread=true 200 in 32ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/nav 200 in 59ms
+ GET /api/auth/me 200 in 39ms
+ GET /api/notifications?unread=true 200 in 36ms
+ GET /api/auth/me 200 in 34ms
+ GET /api/nav 200 in 56ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/notifications?unread=true 200 in 47ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 54ms
+ GET /api/nav 200 in 65ms
+ ○ Compiling /api/health ...
+ ✓ Compiled /api/health in 873ms (803 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 1478ms
+ GET /api/health 200 in 1554ms
+ ✓ Compiled /api/blockchain/stats in 465ms (957 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 1143ms
+ GET /api/auth/me 200 in 1147ms
+ GET /api/nav 200 in 1152ms
+ GET /api/blockchain/stats 200 in 1278ms
+ GET /api/auth/me 200 in 148ms
+ GET /api/blockchain/stats 200 in 54ms
+ GET /api/auth/me 200 in 52ms
+ GET /api/notifications?unread=true 200 in 64ms
+ GET /api/auth/me 200 in 50ms
+ GET /api/notifications?unread=true 200 in 29ms
+ GET /api/auth/me 200 in 80ms
+ GET /api/nav 200 in 84ms
+ GET /api/auth/me 200 in 35ms
+ GET /api/notifications?unread=true 200 in 35ms
+ GET /api/auth/me 200 in 38ms
+ GET /api/nav 200 in 49ms
+ GET /api/auth/me 200 in 32ms
+ GET /api/notifications?unread=true 200 in 41ms
+ GET /api/auth/me 200 in 38ms
+ GET /api/nav 200 in 41ms
+ GET /api/auth/me 200 in 40ms
+ GET /api/notifications?unread=true 200 in 35ms
+ GET /api/auth/me 200 in 92ms
+ GET /api/nav 200 in 98ms
+ GET /api/health 200 in 42ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/health 200 in 49ms
+ GET /api/auth/me 200 in 46ms
+ ✓ Compiled in 6.7s (1003 modules)
+ ✓ Compiled in 1333ms (1003 modules)
+ ✓ Compiled in 891ms (1003 modules)
+ ✓ Compiled in 1976ms (1858 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /hisaab 200 in 742ms
+ ○ Compiling /api/health ...
+ ✓ Compiled /api/health in 690ms (731 modules)
+ ✓ Compiled (736 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 1310ms
+ GET /api/health 200 in 1357ms
+ GET /api/nav 200 in 1425ms
+ GET /api/auth/me 200 in 148ms
+ GET /api/health 200 in 64ms
+ GET /api/auth/me 200 in 52ms
+ GET /api/nav 200 in 90ms
+ GET /api/auth/me 200 in 35ms
+ GET /admin 200 in 223ms
+ ✓ Compiled /api/blockchain/stats in 300ms (890 modules)
+ GET /api/auth/me 200 in 855ms
+ GET /api/nav 200 in 844ms
+ GET /api/blockchain/stats 200 in 878ms
+ GET /api/auth/me 200 in 69ms
+ GET /api/nav 200 in 97ms
+ ○ Compiling /api/notifications ...
+ ✓ Compiled /api/notifications in 518ms (893 modules)
+ GET /api/blockchain/stats 200 in 995ms
+ GET /api/auth/me 200 in 985ms
+ GET /api/notifications?unread=true 200 in 1013ms
+ GET /api/auth/me 200 in 30ms
+ GET /api/notifications?unread=true 200 in 34ms
+ ○ Compiling /ngos ...
+ ✓ Compiled /ngos in 853ms (899 modules)
+ GET /api/auth/me 200 in 217ms
+ GET /api/nav 200 in 241ms
+ GET /api/auth/me 200 in 65ms
+ GET /api/notifications?unread=true 200 in 79ms
+ ○ Compiling /campaigns ...
+ ✓ Compiled /campaigns in 675ms (907 modules)
+ GET /api/auth/me 200 in 141ms
+ GET /api/nav 200 in 163ms
+ GET /api/auth/me 200 in 58ms
+ GET /api/notifications?unread=true 200 in 70ms
+ GET /api/auth/me 200 in 36ms
+ GET /api/nav 200 in 50ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/notifications?unread=true 200 in 57ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/nav 200 in 51ms
+ GET /api/auth/me 200 in 45ms
+ GET /api/notifications?unread=true 200 in 52ms
+ GET /api/auth/me 200 in 36ms
+ GET /api/nav 200 in 52ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/notifications?unread=true 200 in 51ms
+ GET /api/auth/me 200 in 46ms
+ GET /api/nav 200 in 62ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/notifications?unread=true 200 in 58ms
+ GET /api/auth/me 200 in 45ms
+ GET /api/nav 200 in 57ms
+ GET /api/auth/me 200 in 44ms
+ GET /api/notifications?unread=true 200 in 50ms
+ GET /api/auth/me 200 in 38ms
+ GET /api/nav 200 in 54ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/notifications?unread=true 200 in 52ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/nav 200 in 51ms
+ GET /api/auth/me 200 in 40ms
+ GET /api/notifications?unread=true 200 in 47ms
+ GET /api/auth/me 200 in 46ms
+ GET /api/nav 200 in 61ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/notifications?unread=true 200 in 56ms
+ GET /api/auth/me 200 in 35ms
+ GET /api/nav 200 in 50ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/notifications?unread=true 200 in 54ms
+ GET /api/auth/me 200 in 40ms
+ GET /api/nav 200 in 51ms
+ GET /api/auth/me 200 in 39ms
+ GET /api/notifications?unread=true 200 in 44ms
+ GET /api/auth/me 200 in 61ms
+ GET /api/nav 200 in 79ms
+ GET /api/auth/me 200 in 56ms
+ GET /api/notifications?unread=true 200 in 50ms
+ ○ Compiling /api/auth/logout ...
+ ✓ Compiled /api/auth/logout in 531ms (898 modules)
+ POST /api/auth/logout 200 in 608ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 852ms (904 modules)
+ GET /api/auth/me 401 in 41ms
+ GET /api/nav 401 in 54ms
+ GET /api/auth/me 401 in 31ms
+ GET /api/auth/me 401 in 127ms
+ GET /api/nav 401 in 130ms
+ GET /api/auth/me 401 in 36ms
+ GET /api/auth/me 401 in 36ms
+ GET /api/nav 401 in 44ms
+ GET /api/auth/me 401 in 27ms
+ ○ Compiling / ...
+ ✓ Compiled / in 873ms (1336 modules)
+ GET /api/auth/me 401 in 28ms
+ GET /api/nav 401 in 61ms
+ ○ Compiling /api/audit/ledger ...
+ ✓ Compiled /api/audit/ledger in 755ms (1339 modules)
+ GET /api/auth/me 401 in 1439ms
+ GET /api/audit/ledger 401 in 1547ms
+ GET /api/audit/ledger 401 in 32ms
+ GET /api/auth/me 401 in 39ms
+ GET /api/nav 401 in 53ms
+ GET /api/auth/me 401 in 31ms
+ GET /api/auth/me 401 in 35ms
+ GET /api/nav 401 in 49ms
+ GET /api/auth/me 401 in 30ms
+ GET /api/auth/me 401 in 30ms
+ GET /api/audit/ledger 401 in 42ms
+ GET /api/nav 401 in 44ms
+ GET /api/auth/me 401 in 49ms
+ GET /api/audit/ledger 401 in 38ms
+ GET / 200 in 527ms
+ GET /api/auth/me 401 in 63ms
+ GET /api/nav 401 in 71ms
+ GET /api/blockchain/stats 200 in 84ms
+ GET /api/auth/me 401 in 101ms
+ GET /api/nav 401 in 114ms
+ GET /api/blockchain/stats 200 in 129ms
+ GET /api/audit/ledger 401 in 110ms
+ GET /api/auth/me 401 in 69ms
+ GET /api/audit/ledger 401 in 53ms
+ GET /api/auth/me 401 in 44ms
+ GET /api/auth/me 401 in 64ms
+ GET /api/nav 401 in 78ms
+ GET /api/auth/me 401 in 39ms
+ ○ Compiling /api/auth/login ...
+ ✓ Compiled /api/auth/login in 1434ms (1159 modules)
+ POST /api/auth/login 200 in 2026ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 1027ms (1177 modules)
+ GET /api/auth/me 200 in 46ms
+ GET /api/nav 200 in 64ms
+ GET /api/auth/me 200 in 57ms
+ ✓ Compiled /api/notifications in 356ms (1180 modules)
+ GET /api/notifications?unread=true 200 in 443ms
+ ○ Compiling /hisaab/report/new ...
+ ✓ Compiled /hisaab/report/new in 596ms (951 modules)
+ GET /api/auth/me 200 in 52ms
+ GET /api/nav 200 in 72ms
+ ○ Compiling /api/health ...
+ ✓ Compiled /api/health in 968ms (1138 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 1630ms
+ GET /api/health 200 in 1711ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/health 200 in 57ms
+ ○ Compiling /api/hisaab/reports ...
+ ✓ Compiled /api/hisaab/reports in 522ms (1122 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Gemini pothole analysis failed: GoogleGenerativeAIFetchError: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent: [503 Service Unavailable] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+    at handleResponseNotOk (webpack-internal:///(rsc)/./node_modules/@google/generative-ai/dist/index.mjs:455:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async makeRequest (webpack-internal:///(rsc)/./node_modules/@google/generative-ai/dist/index.mjs:424:9)
+    at async generateContent (webpack-internal:///(rsc)/./node_modules/@google/generative-ai/dist/index.mjs:888:22)
+    at async analyzePotholePhoto (webpack-internal:///(rsc)/./lib/gemini.ts:79:21)
+    at async createPotholeReportFromForm (webpack-internal:///(rsc)/./lib/hisaab_actions.ts:55:20)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/reports/route.ts:56:55)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  status: 503,
+  statusText: 'Service Unavailable',
+  errorDetails: undefined
+}
+Solana init_report failed (report kept off-chain registry): Error: failed to get recent blockhash: TypeError: fetch failed
+    at Connection.getLatestBlockhash (webpack-internal:///(rsc)/./node_modules/@solana/web3.js/lib/index.esm.js:7318:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async AnchorProvider.sendAndConfirm (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/provider.js:94:35)
+    at async MethodsBuilder.rpc [as _rpcFn] (webpack-internal:///(rsc)/./node_modules/@coral-xyz/anchor/dist/esm/program/namespace/rpc.js:19:24)
+    at async withRpcRetry (webpack-internal:///(rsc)/./lib/solana.ts:230:20)
+    at async onChainInitReport (webpack-internal:///(rsc)/./lib/solana.ts:254:20)
+    at async createPotholeReportFromForm (webpack-internal:///(rsc)/./lib/hisaab_actions.ts:78:25)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/reports/route.ts:56:55)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13)
+ POST /api/hisaab/reports 201 in 21065ms
+ GET /api/health 200 in 44ms
+ GET /api/auth/me 200 in 62ms
+ GET /api/health 200 in 64ms
+ GET /api/auth/me 200 in 56ms
+ ○ Compiling /api/nav ...
+ ✓ Compiled /api/nav in 1615ms (1274 modules)
+ ✓ Compiled (1276 modules)
+ GET /api/auth/me 200 in 2452ms
+ GET /api/blockchain/stats 200 in 2457ms
+ GET /api/nav 200 in 2470ms
+ GET /api/auth/me 200 in 64ms
+ GET /api/blockchain/stats 200 in 94ms
+ ✓ Compiled /api/notifications in 360ms (1279 modules)
+ GET /api/auth/me 200 in 796ms
+ GET /api/notifications?unread=true 200 in 845ms
+ GET /api/notifications?unread=true 200 in 35ms
+ ○ Compiling /ngos ...
+ ✓ Compiled /ngos in 1247ms (1284 modules)
+ GET /api/auth/me 200 in 63ms
+ GET /api/nav 200 in 93ms
+ GET /api/auth/me 200 in 65ms
+ GET /api/notifications?unread=true 200 in 55ms
+ ○ Compiling /api/auth/logout ...
+ ✓ Compiled /api/auth/logout in 671ms (1286 modules)
+ POST /api/auth/logout 200 in 763ms
+ GET /api/auth/me 401 in 48ms
+ GET /api/nav 401 in 66ms
+ GET /api/auth/me 401 in 44ms
+ ○ Compiling /api/auth/login ...
+ ✓ Compiled /api/auth/login in 696ms (1293 modules)
+ POST /api/auth/login 200 in 1132ms
+ GET /api/auth/me 200 in 50ms
+ GET /api/nav 200 in 78ms
+ GET /api/auth/me 200 in 70ms
+ ○ Compiling /admin ...
+ ✓ Compiled /admin in 868ms (1301 modules)
+ GET /api/notifications?unread=true 200 in 1615ms
+ GET /api/auth/me 200 in 52ms
+ GET /api/nav 200 in 73ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/notifications?unread=true 200 in 39ms
+ ✓ Compiled /admin/complaints in 479ms (1304 modules)
+ GET /api/auth/me 200 in 45ms
+ GET /api/nav 200 in 64ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/notifications?unread=true 200 in 43ms
+ ○ Compiling /hisaab/report/[id] ...
+ ✓ Compiled /hisaab/report/[id] in 1113ms (1333 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 47ms
+ GET /api/nav 200 in 59ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ○ Compiling /api/hisaab/reports/[id]/media ...
+ ✓ Compiled /api/hisaab/reports/[id]/media in 829ms (1335 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 1818ms
+ GET /api/auth/me 200 in 1820ms
+ GET /api/hisaab/reports/8468e6d1-360f-449f-8d79-6941a091f690/media?type=before 200 in 1855ms
+ GET /api/health 200 in 77ms
+ GET /api/auth/me 200 in 87ms
+ GET /api/blockchain/stats 200 in 211ms
+ GET /api/auth/me 200 in 212ms
+ GET /api/nav 200 in 242ms
+ GET /api/auth/me 200 in 66ms
+ GET /api/blockchain/stats 200 in 72ms
+ ○ Compiling /api/audit/ledger ...
+ ✓ Compiled /api/audit/ledger in 1578ms (1333 modules)
+ GET /api/auth/me 200 in 2372ms
+ GET /api/notifications?unread=true 200 in 2292ms
+ GET /api/notifications?unread=true 200 in 68ms
+ GET /api/audit/ledger 200 in 6368ms
+ GET /api/audit/ledger 200 in 3691ms
+ ○ Compiling /campaigns ...
+ ✓ Compiled /campaigns in 1509ms (1112 modules)
+ ✓ Compiled /api/nav in 393ms (1140 modules)
+ ✓ Compiled (1142 modules)
+ GET /api/auth/me 200 in 1064ms
+ GET /api/nav 200 in 1132ms
+ ✓ Compiled /api/notifications in 352ms (1145 modules)
+ GET /api/auth/me 200 in 782ms
+ GET /api/notifications?unread=true 200 in 810ms
+ GET /api/auth/me 200 in 180ms
+ GET /api/nav 200 in 280ms
+ GET /api/auth/me 200 in 57ms
+ GET /api/notifications?unread=true 200 in 70ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/nav 200 in 64ms
+ GET /api/auth/me 200 in 37ms
+ GET /api/notifications?unread=true 200 in 34ms
+ ○ Compiling /hisaab ...
+ ✓ Compiled /hisaab in 817ms (1203 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 72ms
+ GET /api/nav 200 in 91ms
+ ○ Compiling /api/health ...
+ ✓ Compiled /api/health in 1194ms (1207 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 1847ms
+ GET /api/health 200 in 1936ms
+ GET /api/auth/me 200 in 52ms
+ GET /api/health 200 in 66ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ ○ Compiling /api/hisaab/reports/[id]/media ...
+ ✓ Compiled /api/hisaab/reports/[id]/media in 1617ms (1186 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 2478ms
+ GET /api/health 200 in 2563ms
+ GET /api/nav 200 in 2600ms
+ GET /api/hisaab/reports/8468e6d1-360f-449f-8d79-6941a091f690/media?type=before 200 in 2652ms
+ GET /api/health 200 in 66ms
+ GET /api/auth/me 200 in 74ms
+ GET /api/auth/me 200 in 54ms
+ GET /api/health 200 in 54ms
+ GET /api/auth/me 200 in 63ms
+ GET /api/nav 200 in 72ms
+ GET /api/health 200 in 60ms
+ GET /api/auth/me 200 in 59ms
+ GET /api/auth/me 200 in 36ms
+ ○ Compiling /api/blockchain/stats ...
+ ✓ Compiled /api/blockchain/stats in 981ms (1340 modules)
+ GET /api/auth/me 200 in 1798ms
+ GET /api/nav 200 in 1798ms
+ GET /api/blockchain/stats 200 in 1808ms
+ GET /api/auth/me 200 in 67ms
+ GET /api/blockchain/stats 200 in 90ms
+ GET /api/notifications?unread=true 200 in 98ms
+ GET /api/auth/me 200 in 56ms
+ GET /api/notifications?unread=true 200 in 38ms
+ ○ Compiling /admin ...
+ ✓ Compiled /admin in 907ms (1349 modules)
+ GET /api/auth/me 200 in 82ms
+ GET /api/nav 200 in 106ms
+ GET /api/auth/me 200 in 60ms
+ GET /api/notifications?unread=true 200 in 54ms
+ ○ Compiling /admin/complaints ...
+ ✓ Compiled /admin/complaints in 818ms (1352 modules)
+ GET /api/auth/me 200 in 89ms
+ GET /api/nav 200 in 113ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/notifications?unread=true 200 in 39ms
+ ○ Compiling /admin/fund-requests ...
+ ✓ Compiled /admin/fund-requests in 809ms (1366 modules)
+ GET /api/auth/me 200 in 84ms
+ GET /api/nav 200 in 103ms
+ GET /api/auth/me 200 in 43ms
+ GET /api/notifications?unread=true 200 in 35ms
+ ○ Compiling /admin/contractors ...
+ ✓ Compiled /admin/contractors in 872ms (1374 modules)
+ GET /api/auth/me 200 in 77ms
+ GET /api/nav 200 in 99ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/notifications?unread=true 200 in 36ms
+ ○ Compiling /admin/access ...
+ ✓ Compiled /admin/access in 2.6s (2389 modules)
+ GET /api/auth/me 200 in 46ms
+ GET /api/nav 200 in 68ms
+ GET /api/auth/me 200 in 52ms
+ GET /api/notifications?unread=true 200 in 51ms
+ ○ Compiling /admin/escrows ...
+ ✓ Compiled /admin/escrows in 782ms (1387 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 73ms
+ GET /api/nav 200 in 93ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/notifications?unread=true 200 in 49ms
+ ○ Compiling /auditor/dashboard ...
+ ✓ Compiled /auditor/dashboard in 2.5s (1389 modules)
+ GET /api/auth/me 200 in 75ms
+ GET /api/nav 200 in 101ms
+ GET /api/auth/me 200 in 61ms
+ GET /api/notifications?unread=true 200 in 53ms
+ ○ Compiling /auditor/reviews/[id] ...
+ ✓ Compiled /auditor/reviews/[id] in 2.3s (1967 modules)
+ GET /api/auth/me 200 in 87ms
+ GET /api/nav 200 in 108ms
+ GET /api/auth/me 200 in 64ms
+ GET /api/notifications?unread=true 200 in 57ms
+ GET /api/auth/me 200 in 70ms
+ GET /api/nav 200 in 91ms
+ GET /api/auth/me 200 in 50ms
+ GET /api/notifications?unread=true 200 in 45ms
+ GET /api/auth/me 200 in 59ms
+ GET /api/nav 200 in 86ms
+ GET /api/auth/me 200 in 65ms
+ GET /api/notifications?unread=true 200 in 79ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/nav 200 in 59ms
+ GET /api/auth/me 200 in 50ms
+ GET /api/notifications?unread=true 200 in 38ms
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/auth/me 200 in 77ms
+ GET /api/nav 200 in 92ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/notifications?unread=true 200 in 34ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/nav 200 in 72ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/notifications?unread=true 200 in 37ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/nav 200 in 66ms
+ GET /api/auth/me 200 in 53ms
+ GET /api/notifications?unread=true 200 in 49ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/nav 200 in 61ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/notifications?unread=true 200 in 48ms
+ GET /api/auth/me 200 in 53ms
+ GET /api/nav 200 in 63ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/notifications?unread=true 200 in 40ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/nav 200 in 64ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/notifications?unread=true 200 in 43ms
+ GET /api/auth/me 200 in 50ms
+ GET /api/nav 200 in 62ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/notifications?unread=true 200 in 38ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/nav 200 in 68ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/notifications?unread=true 200 in 48ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/nav 200 in 68ms
+ GET /api/auth/me 200 in 59ms
+ GET /api/notifications?unread=true 200 in 55ms
+ GET /api/auth/me 200 in 50ms
+ GET /api/nav 200 in 67ms
+ GET /api/auth/me 200 in 61ms
+ GET /api/notifications?unread=true 200 in 57ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/nav 200 in 65ms
+ GET /api/auth/me 200 in 65ms
+ GET /api/notifications?unread=true 200 in 60ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/nav 200 in 68ms
+ GET /api/auth/me 200 in 44ms
+ GET /api/notifications?unread=true 200 in 38ms
+ GET /api/auth/me 200 in 54ms
+ GET /api/nav 200 in 69ms
+ GET /api/auth/me 200 in 46ms
+ GET /api/notifications?unread=true 200 in 39ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/nav 200 in 60ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/notifications?unread=true 200 in 42ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/nav 200 in 62ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/notifications?unread=true 200 in 39ms
+ GET /api/nav 200 in 51ms
+ GET /api/auth/me 200 in 54ms
+ GET /api/auth/me 200 in 40ms
+ GET /api/notifications?unread=true 200 in 38ms
+ GET /api/auth/me 200 in 49ms
+ GET /api/nav 200 in 71ms
+ GET /api/auth/me 200 in 51ms
+ GET /api/notifications?unread=true 200 in 48ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/nav 200 in 65ms
+ GET /api/auth/me 200 in 52ms
+ GET /api/notifications?unread=true 200 in 48ms
+ GET /api/auth/me 200 in 61ms
+ GET /api/nav 200 in 76ms
+ GET /api/auth/me 200 in 54ms
+ GET /api/notifications?unread=true 200 in 51ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/nav 200 in 63ms
+ GET /api/auth/me 200 in 54ms
+ GET /api/notifications?unread=true 200 in 52ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/nav 200 in 67ms
+ GET /api/auth/me 200 in 65ms
+ GET /api/notifications?unread=true 200 in 70ms
+ GET /api/auth/me 200 in 48ms
+ GET /api/nav 200 in 73ms
+ GET /api/auth/me 200 in 63ms
+ GET /api/notifications?unread=true 200 in 56ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/nav 200 in 53ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/notifications?unread=true 200 in 39ms
+ GET /api/auth/me 200 in 70ms
+ GET /api/nav 200 in 93ms
+ GET /api/auth/me 200 in 46ms
+ GET /api/notifications?unread=true 200 in 39ms
+ GET /api/auth/me 200 in 60ms
+ GET /api/nav 200 in 82ms
+ GET /api/auth/me 200 in 45ms
+ GET /api/notifications?unread=true 200 in 39ms
+ GET /api/auth/me 200 in 70ms
+ GET /api/nav 200 in 94ms
+ GET /api/auth/me 200 in 47ms
+ GET /api/notifications?unread=true 200 in 35ms
+ GET /api/auth/me 200 in 64ms
+ GET /api/nav 200 in 82ms
+ GET /api/auth/me 200 in 42ms
+ GET /api/notifications?unread=true 200 in 41ms
+ ○ Compiling /api/auth/logout ...
+ ✓ Compiled /api/auth/logout in 1228ms (716 modules)
+ POST /api/auth/logout 200 in 1386ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 1329ms (722 modules)
+ GET /api/auth/me 401 in 62ms
+ GET /api/nav 401 in 88ms
+ GET /api/auth/me 401 in 49ms
+ ○ Compiling /register ...
+ ✓ Compiled /register in 2.1s (1741 modules)
+ GET /api/auth/me 401 in 62ms
+ GET /api/nav 401 in 79ms
+ GET /api/auth/me 401 in 42ms
+ ○ Compiling /api/auth/register ...
+ ✓ Compiled /api/auth/register in 744ms (733 modules)
+ POST /api/auth/register 400 in 883ms
+ POST /api/auth/register 400 in 34ms
+ POST /api/auth/register 400 in 34ms
+ POST /api/auth/register 400 in 34ms
+ POST /api/auth/register 400 in 33ms
+Registration error: AppError: Too many requests — retry in 56s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 37ms
+Registration error: AppError: Too many requests — retry in 56s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 34ms
+Registration error: AppError: Too many requests — retry in 56s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 32ms
+Registration error: AppError: Too many requests — retry in 55s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 32ms
+Registration error: AppError: Too many requests — retry in 55s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 33ms
+Registration error: AppError: Too many requests — retry in 55s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 33ms
+Registration error: AppError: Too many requests — retry in 55s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 30ms
+Registration error: AppError: Too many requests — retry in 55s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 34ms
+Registration error: AppError: Too many requests — retry in 55s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 34ms
+Registration error: AppError: Too many requests — retry in 55s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 30ms
+Registration error: AppError: Too many requests — retry in 54s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 34ms
+Registration error: AppError: Too many requests — retry in 54s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 34ms
+Registration error: AppError: Too many requests — retry in 54s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 36ms
+Registration error: AppError: Too many requests — retry in 54s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 36ms
+Registration error: AppError: Too many requests — retry in 54s
+    at rateLimit (webpack-internal:///(rsc)/./lib/rate_limit.ts:28:15)
+    at POST (webpack-internal:///(rsc)/./app/api/auth/register/route.ts:22:67)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57234
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\HackXxMUJ\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (D:\HackXxMUJ\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:48896
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:40958)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47472
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Object.wrap (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:38293)
+    at D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:47434
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46881)
+    at eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58771)
+    at doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:60)
+    at cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:34)
+    at ResponseCache.get (D:\HackXxMUJ\node_modules\next\dist\server\response-cache\index.js:49:26)
+    at DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:53) {
+  statusCode: 429
+}
+ POST /api/auth/register 500 in 34ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1739ms (1685 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 2097ms
+ GET /_next/static/chunks/app/(public)/LayoutGroupContext.mjs.map 404 in 449ms
+ POST /api/auth/register 400 in 82ms
+ POST /api/auth/register 201 in 198ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 55ms
+ ✓ Compiled /api/nav in 290ms (687 modules)
+ ✓ Compiled (689 modules)
+ GET /api/nav 401 in 710ms
+ GET /api/auth/me 401 in 721ms
+ GET /api/auth/me 401 in 37ms
+ GET /api/auth/me 401 in 43ms
+ GET /api/nav 401 in 54ms
+ GET /api/auth/me 401 in 36ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 147ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1840ms (1128 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 57ms
+ GET /api/auth/me 401 in 42ms
+ ○ Compiling /api/audit/ledger ...
+ ✓ Compiled /api/audit/ledger in 1617ms (1283 modules)
+ GET /api/auth/me 401 in 2379ms
+ GET /api/nav 401 in 2376ms
+ GET /api/audit/ledger 401 in 2516ms
+ GET /api/audit/ledger 401 in 38ms
