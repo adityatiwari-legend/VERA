@@ -72,13 +72,15 @@ Postgres comes up on host port **5433** (user `postgres`, password `postgrespass
 
 ---
 
-## Step 4 — Migrate and seed
+## Step 4 — Migrate and bootstrap the admin
 
 ```bash
-npm run db:migrate        # applies all 18 SQL migrations in db/migrations/
-npm run db:seed           # demo users, campaigns, ledger
-npm run seed:hisaab       # Hisaab demo: pothole report + roughness readings
+npm run db:migrate        # applies all SQL migrations in db/migrations/
+ADMIN_EMAIL=you@example.com ADMIN_PASSWORD=strong-password npm run admin:bootstrap
 ```
+
+The app starts completely empty — no demo campaigns, users, or reports. You
+create everything through the UI (Step 6 below).
 
 ---
 
@@ -114,25 +116,28 @@ Copy the printed contract address into `CONTRACT_ADDRESS`, then restart the dev 
 
 ---
 
-## Step 6 — Log in
+## Step 6 — Create your accounts
 
-Open http://localhost:3000 and sign in with a seeded demo account (password for all: **`Password123!`**):
+Open http://localhost:3000. There are no demo accounts — start from what you
+bootstrapped in Step 4, then register the rest at `/register`:
 
-| Email | Role | Lands on |
+| Account | Role | Lands on |
 |---|---|---|
-| `admin@fundtrail.org` | ADMIN | `/admin` — complaint queue, fund requests, escrows, contractor directory |
-| `ngo@fundtrail.org` | ORGANIZATION | `/org/campaigns` — campaigns, milestones, proofs, refunds |
-| `donor@fundtrail.org` | USER | `/dashboard` — donate, report potholes, trace money |
-| `auditor@fundtrail.org` | AUDITOR | `/auditor/dashboard` — review proofs, sign releases |
-| `thaker@vera.org` | CONTRACTOR | `/contractor` — accept jobs, submit repairs |
-| `aarav@vera.org` / `priya@vera.org` / `rohan@vera.org` | USER (citizens) | the three distinct confirmers for Hisaab reports |
+| your `ADMIN_EMAIL` | ADMIN | `/admin` — approve organizations/contractors, invite auditors, complaint queue, fund requests, escrows |
+| `/register` → ORGANIZATION | ORGANIZATION (admin-approved at `/admin/access`) | `/org/campaigns` — create campaigns, milestones, proofs |
+| `/register` → USER | USER | `/dashboard` — donate, report potholes, trace money |
+| admin-invited | AUDITOR | `/auditor/dashboard` — review proofs, sign releases |
+| `/register` → CONTRACTOR (admin-approved) | CONTRACTOR | `/contractor` — accept jobs, submit repairs |
+
+Hisaab confirmations need three distinct USER accounts — register as many
+citizens as you need.
 
 ---
 
 ## Step 7 — Verify everything (optional)
 
 ```bash
-node scripts/e2e-check.mjs      # 58 end-to-end checks across both product loops
+node scripts/e2e-check.mjs      # 80 end-to-end checks across both product loops
 ```
 
 Other suites:

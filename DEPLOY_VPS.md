@@ -36,8 +36,9 @@ Fill in `.env`:
 ```bash
 docker compose up -d --build
 docker compose exec web npm run db:migrate
-docker compose exec web npm run db:seed
-docker compose exec web npm run seed:hisaab
+# create the first ADMIN (the database starts empty — no demo data):
+docker compose exec \
+  -e ADMIN_EMAIL=... -e ADMIN_PASSWORD=... web npm run admin:bootstrap
 ```
 
 Services: `web` (Next.js, port 3000), `vera-db` (Postgres 16, internal),
@@ -91,7 +92,7 @@ curl localhost:3000/api/health   # all integrations should read true
 
 Then open:
 - `/hisaab` — public street register (map)
-- `/hisaab/report/<seeded-id>` — full escrow demo
+- `/register` — create your organization, contractor and citizen accounts
 
 ## Demo-day note
 

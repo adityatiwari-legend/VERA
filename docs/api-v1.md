@@ -12,7 +12,7 @@ Base URL (dev): `http://<machine-ip>:3000` (phone and laptop on the same Wi-Fi).
 ## POST /api/v1/auth/login
 
 ```json
-{ "email": "aarav@vera.org", "password": "Password123!" }
+{ "email": "user@example.com", "password": "your-password" }
 ```
 → `200 { "token": "vera_…", "user": { "id", "name", "email", "role", … } }`
 Roles: `USER` (citizen), `ORGANIZATION`, `CONTRACTOR`, `AUDITOR`, `ADMIN`.

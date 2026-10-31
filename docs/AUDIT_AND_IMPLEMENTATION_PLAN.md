@@ -95,7 +95,7 @@ Current blockers:
 | `ORGANIZATION` | Self-serve → **admin/KYB verification** (org_status: PENDING→VERIFIED) | After verification: create campaigns, milestones, submit proofs (VERA Core); `org_type`: NGO / TRUST / CSR / SCHOOL / RWA / OTHER |
 | `CONTRACTOR` | Self-serve → admin approval | See assigned jobs, accept, submit repair evidence, see staged payouts, payout wallet setup |
 | `AUDITOR` | **Invite-only** (admin creates / invite token) | Assigned campaigns only: review proofs, approve/reject, sign releases, refunds |
-| `ADMIN` | Seed only (never self-registered) | **Hisaab admin console**: complaint queue, verify/escalate, apply for government funds, sanction → escrow, assign contractors, monitor; also org verification, auditor invites, platform config |
+| `ADMIN` | `admin:bootstrap` script only (never self-registered) | **Hisaab admin console**: complaint queue, verify/escalate, apply for government funds, sanction → escrow, assign contractors, monitor; also org verification, auditor invites, platform config |
 
 One `/login` page, one `/register` page (role tabs: User / Organization / Contractor). Post-login redirect map by role → dedicated console. Auditor/admin never in the public register form.
 

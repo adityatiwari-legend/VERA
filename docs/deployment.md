@@ -196,18 +196,15 @@ You should see:
 - `vera-app` (running on port 3000)
 - `vera-nginx` (running on port 80/443)
 
-### Step 5: Run Database Migrations & Seeds
+### Step 5: Run Database Migrations & Bootstrap the Admin
 Because the production container `vera-app` is a minimal Next.js standalone runner, migrations run using the `migrate` service profile (Dockerfile `tools` stage):
 
 ```bash
-# 1. Run migrations
+# 1. Run migrations (the database starts empty — no demo data ships)
 docker compose run --rm migrate
 
-# 2. Seed default demo data (Jaipur School, Admin/Auditor accounts)
-docker compose run --rm migrate npm run db:seed
-
-# 3. Seed Hisaab of the Road road data (C-Scheme, Tonk Road, Vaishali Nagar)
-docker compose run --rm migrate npm run seed:hisaab
+# 2. Create the first ADMIN account (only non-self-serve role)
+docker compose run --rm -e ADMIN_EMAIL=... -e ADMIN_PASSWORD=... migrate npm run admin:bootstrap
 ```
 
 ---
@@ -415,7 +412,7 @@ Manual mapping of each operational requirement to the real mechanism in this sta
 | Requirement | How it is fulfilled / verified |
 |---|---|
 | Database tables & migrations | `docker compose run --rm migrate` (runs `npm run db:migrate`, tracked in `schema_migrations`). `deploy/deploy.sh` runs it automatically on every deploy. Verify: `docker compose exec vera-db psql -U postgres -d vera -tAc "SELECT COUNT(*) FROM schema_migrations"` equals the number of files in `db/migrations/`. |
-| Seed data (campaigns, milestones, contractor assignments) | `docker compose run --rm migrate npm run db:seed` then `docker compose run --rm migrate npm run seed:hisaab` (one-time; already applied on the live VPS). Seeds demo accounts (`admin@vera.org` etc., password `Password123!`), campaigns, milestones, proofs, escrow flow, pothole reports. |
+| Admin account (never self-registered) | `docker compose run --rm -e ADMIN_EMAIL=... -e ADMIN_PASSWORD=... migrate npm run admin:bootstrap` (idempotent — re-running resets that account's password). No demo data exists; create organizations/contractors via `/register` and approve at `/admin/access`. |
 | File upload storage permissions | Uploads write to `STORAGE_PATH` (`/app/storage` in the `vera-app` container) backed by the named volume `vera_storage`. Directories are created on demand by `lib/storage.ts`; the Dockerfile pre-creates/chowns `/app/storage` for the `nextjs` user. Verify writability: `docker compose exec vera-app touch /app/storage/.write-test` (then remove it). |
 | Session cookie forwarding in Nginx | `nginx/nginx.conf` sets no `proxy_cookie_*` / `proxy_hide_header` directives, so `Set-Cookie` for the HTTP-only `fundtrail_session` cookie passes through untouched (cookies are issued `Secure` because the app runs with `NODE_ENV=production`). Verify: log in over HTTPS and confirm `Set-Cookie: fundtrail_session=...` appears in the response headers. |
 | `JWT_SECRET` | Must be set in `/opt/vera/.env` (compose substitutes it into the `vera-app` container). If unset, compose falls back to a hardcoded dev string — never ship that. Changing it invalidates existing sessions (users just log in again). Generate: `openssl rand -hex 32`. |

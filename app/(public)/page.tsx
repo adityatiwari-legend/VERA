@@ -35,12 +35,12 @@ import { formatRupees, formatRupeesShort } from '@/lib/utils';
 export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
-  // Query live platform stats
+  // Query live platform stats; start from honest zeros if the DB is unreachable
   let platformStats = {
-    total_campaigns: 3,
-    total_raised: 1075000,
-    total_released: 285000,
-    total_milestones: 7,
+    total_campaigns: 0,
+    total_raised: 0,
+    total_released: 0,
+    total_milestones: 0,
   };
 
   try {
@@ -63,52 +63,15 @@ export default async function HomePage() {
       platformStats = statsRes.rows[0];
     }
   } catch (err) {
-    // Graceful fallback to default stats
+    // DB unreachable — the zeros above are shown rather than fabricated numbers
   }
 
-  // Query Jaipur demo campaign
-  let demoCampaign: any = {
-    id: 'cccccccc-cccc-cccc-cccc-cccccccccccc',
-    title: 'Government School Classroom — Jaipur',
-    description: 'Comprehensive infrastructure modernization for 6 rural primary classrooms at Government Secondary School, Jaipur.',
-    target_amount: 1000000,
-    raised_amount: 750000,
-    released_amount: 285000,
-    beneficiary: 'Jaipur Primary School Students (250+ children)',
-    ngo_name: 'Rajasthan Education Foundation',
-  };
-
-  try {
-    const demoRes = await query<{
-      id: string;
-      title: string;
-      description: string;
-      target_amount: number;
-      raised_amount: number;
-      released_amount: number;
-      beneficiary: string;
-      ngo_name: string;
-    }>(`
-      SELECT c.id, c.title, c.description, c.target_amount::numeric, c.raised_amount::numeric, c.released_amount::numeric, c.beneficiary, u.name as ngo_name
-      FROM campaigns c
-      JOIN users u ON c.ngo_id = u.id
-      WHERE c.title ILIKE '%Jaipur%'
-      ORDER BY (c.id = 'cccccccc-cccc-cccc-cccc-cccccccccccc') DESC, c.created_at DESC
-      LIMIT 1
-    `);
-    if (demoRes.rows[0]) {
-      demoCampaign = demoRes.rows[0];
-    }
-  } catch (err) {
-    // Fallback to demo default
-  }
-
-  // Query additional active campaigns for featured discovery
+  // Query featured campaigns for discovery (real data only — no fallback objects)
   let featuredCampaigns: any[] = [];
   try {
     const featRes = await query(`
-      SELECT 
-        c.id, c.title, c.description, c.target_amount::numeric, c.raised_amount::numeric, 
+      SELECT
+        c.id, c.title, c.description, c.target_amount::numeric, c.raised_amount::numeric,
         c.released_amount::numeric, c.beneficiary, c.status, u.name as ngo_name,
         COUNT(DISTINCT m.id)::int as milestones_count
       FROM campaigns c
@@ -116,12 +79,12 @@ export default async function HomePage() {
       LEFT JOIN milestones m ON c.id = m.campaign_id
       WHERE c.status IN ('ACTIVE', 'COMPLETED')
       GROUP BY c.id, u.name
-      ORDER BY (c.id = 'cccccccc-cccc-cccc-cccc-cccccccccccc') DESC, c.raised_amount DESC
+      ORDER BY c.created_at DESC
       LIMIT 3
     `);
     featuredCampaigns = featRes.rows;
   } catch (err) {
-    featuredCampaigns = [demoCampaign];
+    featuredCampaigns = [];
   }
 
   const totalRaised = Number(platformStats.total_raised);
@@ -474,26 +437,27 @@ export default async function HomePage() {
               <div className="space-y-4">
                 <span className="eyebrow">A public trust network</span>
                 <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-5xl">
-                  Escrow hubs on every meridian
+                  Every rupee, verifiable from anywhere
                 </h2>
                 <p className="max-w-lg text-sm leading-relaxed text-mute sm:text-base">
-                  VERA escrows are anchored where the money works — citizen reports
-                  from Jaipur to Bengaluru, auditors in London, settlement rails in
-                  Singapore. Drag the globe. Every hub, corridor, and locked volume
-                  is the same public ledger the rest of this page streams.
+                  VERA is built to be inspected, not just trusted. Campaigns register
+                  on-chain the moment an organization creates them, funds sit locked in
+                  escrow, and every release is signed against proof. The network visual
+                  beside this text is decoration — the ledger it stands for is the real,
+                  public record streaming through this page.
                 </p>
                 <ul className="space-y-2 text-xs text-mute">
                   <li className="flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                    Escrow hubs — where campaign and repair funds sit locked
+                    Campaigns — registered on-chain, owned by verified organizations
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-lav-deep" />
-                    Corridors — cross-border donation and settlement paths
+                    Escrow — funds stay locked until milestone proofs pass review
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-ink/40" />
-                    Hover a marker or corridor for live volume, straight from the ledger
+                    Audit — every movement shown here comes from the public ledger
                   </li>
                 </ul>
                 <div className="flex flex-wrap gap-2 pt-1">
@@ -529,8 +493,9 @@ export default async function HomePage() {
       </section>
 
       {/* ============================================
-          7. FEATURED CAMPAIGNS — bento
+          7. FEATURED CAMPAIGNS — bento (only once real campaigns exist)
       ============================================ */}
+      {featuredCampaigns.length > 0 && (
       <section className="w-full border-b border-line py-20 sm:py-24">
         <div className="mx-auto max-w-7xl space-y-10 px-4 sm:px-6 lg:px-8">
           <Reveal>
@@ -559,7 +524,7 @@ export default async function HomePage() {
                   <div className="space-y-5">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <StatusBadge status={featured.status || 'ACTIVE'} />
-                      <span className="chip">{featured.milestones_count || 3} milestone tranches</span>
+                      <span className="chip">{featured.milestones_count} milestone tranches</span>
                     </div>
 
                     <div>
@@ -634,7 +599,7 @@ export default async function HomePage() {
                       <div className="space-y-3">
                         <div className="flex items-center justify-between gap-2">
                           <StatusBadge status={camp.status || 'ACTIVE'} />
-                          <span className="chip">{camp.milestones_count || 3} tranches</span>
+                          <span className="chip">{camp.milestones_count} tranches</span>
                         </div>
                         <Link
                           href={`/campaigns/${camp.id}`}
@@ -669,6 +634,7 @@ export default async function HomePage() {
           )}
         </div>
       </section>
+      )}
 
       {/* ============================================
           8. PUBLIC AUDIT EXPLAINER — numbered editorial rows
@@ -688,7 +654,7 @@ export default async function HomePage() {
                   allowing independent verification of every receipt, signature, and transaction.
                 </p>
                 <Link
-                  href={`/campaigns/${demoCampaign.id}/audit`}
+                  href={featured ? `/campaigns/${featured.id}/audit` : '/campaigns'}
                   className="btn-secondary !mt-4 !text-sm"
                 >
                   <ShieldCheck className="h-4 w-4 text-accent" />

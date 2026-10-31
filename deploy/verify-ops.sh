@@ -9,8 +9,8 @@
 # default/not-default verdicts.
 #
 # Optional env overrides:
-#   OPS_LOGIN_EMAIL / OPS_LOGIN_PASSWORD  (defaults: admin@vera.org / Password123!)
-#     used only for the Set-Cookie passthrough probe.
+#   OPS_LOGIN_EMAIL / OPS_LOGIN_PASSWORD  (no defaults — the app ships no demo
+#     accounts; provide a real admin login to enable the cookie probe)
 
 set -u
 
@@ -54,17 +54,18 @@ else
 fi
 
 # ---------------------------------------------------------------------------
-# 3. Seed data present (users/campaigns/milestones/contractors/reports)
+# 3. Schema readiness (the app starts empty — operators create all content)
 # ---------------------------------------------------------------------------
-seed_count() {
-  docker compose exec -T vera-db psql -U postgres -d vera -tAc "SELECT COUNT(*) FROM $1" 2>/dev/null | tr -d '[:space:]'
+table_exists() {
+  docker compose exec -T vera-db psql -U postgres -d vera -tAc \
+    "SELECT to_regclass('public.$1') IS NOT NULL" 2>/dev/null | tr -d '[:space:]'
 }
 for tbl in users campaigns milestones contractor_assignments pothole_reports hisaab_escrows; do
-  C=$(seed_count "$tbl")
-  if [ -n "$C" ] && [ "$C" -gt 0 ] 2>/dev/null; then
-    ok "seed data: $tbl has $C rows"
+  E=$(table_exists "$tbl")
+  if [ "$E" = "t" ]; then
+    ok "schema: table $tbl exists"
   else
-    bad "seed data: $tbl is empty or missing — run: docker compose run --rm migrate npm run db:seed && docker compose run --rm migrate npm run seed:hisaab"
+    bad "schema: table $tbl missing — run: docker compose run --rm migrate"
   fi
 done
 
@@ -123,16 +124,18 @@ fi
 # ---------------------------------------------------------------------------
 # 7. Session cookie passthrough (nginx must not strip Set-Cookie)
 # ---------------------------------------------------------------------------
-LOGIN_EMAIL="${OPS_LOGIN_EMAIL:-admin@vera.org}"
-LOGIN_PASSWORD="${OPS_LOGIN_PASSWORD:-Password123!}"
-COOKIE_HEADER=$(curl -si -X POST "https://vera.adityatiwaridev.xyz/api/auth/login" \
-  -H 'Content-Type: application/json' \
-  -d "{\"email\":\"$LOGIN_EMAIL\",\"password\":\"$LOGIN_PASSWORD\"}" 2>/dev/null \
-  | grep -i '^set-cookie:' | head -1)
-case "$COOKIE_HEADER" in
-  *fundtrail_session*) ok "Set-Cookie passthrough: fundtrail_session reaches the client over HTTPS" ;;
-  *) bad "no fundtrail_session Set-Cookie observed over HTTPS (check nginx / credentials)" ;;
-esac
+if [ -n "${OPS_LOGIN_EMAIL:-}" ] && [ -n "${OPS_LOGIN_PASSWORD:-}" ]; then
+  COOKIE_HEADER=$(curl -si -X POST "https://vera.adityatiwaridev.xyz/api/auth/login" \
+    -H 'Content-Type: application/json' \
+    -d "{\"email\":\"$OPS_LOGIN_EMAIL\",\"password\":\"$OPS_LOGIN_PASSWORD\"}" 2>/dev/null \
+    | grep -i '^set-cookie:' | head -1)
+  case "$COOKIE_HEADER" in
+    *fundtrail_session*) ok "Set-Cookie passthrough: fundtrail_session reaches the client over HTTPS" ;;
+    *) bad "no fundtrail_session Set-Cookie observed over HTTPS (check nginx / credentials)" ;;
+  esac
+else
+  echo "[SKIP] Set-Cookie probe: set OPS_LOGIN_EMAIL / OPS_LOGIN_PASSWORD to enable"
+fi
 
 echo
 echo "== $PASS passed, $FAIL failed =="

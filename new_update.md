@@ -19,6 +19,15 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 
 ## Change Log (newest first)
 
+### [2026-11-01] ALL mock/demo data removed — database starts empty
+Commit: uncommitted
+Verification: `npm run type-check` clean; `node scripts/e2e-check.mjs` **80/80 passed** against a freshly purged DB (the suite bootstraps its own test accounts).
+Backend changes:
+- **Removed — all seed scripts and demo data.** `scripts/seed.ts` and `scripts/seed-hisaab.ts` are **deleted**, along with `npm run db:seed` / `npm run seed:hisaab`. The seeded demo accounts (`ngo@fundtrail.org`, `donor@fundtrail.org`, `auditor@fundtrail.org`, `admin@fundtrail.org`, `admin@vera.org`, `thaker@vera.org`, `aarav@`/`priya@`/`rohan@vera.org` — all password `Password123!`), the fake "Government School Classroom — Jaipur" campaign, its milestones/proofs/donations/multisig rows, and the MI Road Jaipur pothole report **no longer exist in any database that runs `npm run db:purge`**. The landing page no longer falls back to a hardcoded fake campaign or fake platform stats — it shows real (possibly zero) numbers and hides the featured section when there are no campaigns yet.
+- **Added — `npm run admin:bootstrap`** (`scripts/create-admin.ts`): the only way to create an `ADMIN` (it was previously seed-only). Env-driven: `ADMIN_EMAIL=… ADMIN_PASSWORD=… npm run admin:bootstrap` (idempotent; re-running resets that account's password/role). Also added `npm run db:purge` (`scripts/db-purge.ts`) — wipes ALL data rows, keeps schema (`-- --yes` to execute).
+- **Unchanged — API contracts.** No route, request, or response shape changed: `/api/auth/register` still self-serves `USER`/`ORGANIZATION`/`CONTRACTOR` and rejects `ADMIN`/`AUDITOR`; auditors are still admin-invited via `/api/admin/users` (`action: 'create-auditor'`); org/contractor approval still via `/api/admin/users`.
+Mobile action needed: **yes — demo credentials are dead.** If the app has any hard-coded/logged-in demo accounts (e.g. `aarav@vera.org` / `Password123!` for the v1 API walkthrough), remove them and use real registration: `POST /api/auth/register` then `POST /api/v1/auth/login` as before. On a purged environment the app must handle empty states (no campaigns, no reports). Any docs/screenshots referencing seeded accounts or the Jaipur demo data are stale.
+
 ### [2026-10-31] Solana integration now ships configured in production (was reporting Off)
 Commit: uncommitted
 Backend changes:

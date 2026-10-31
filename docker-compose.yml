@@ -68,9 +68,9 @@ services:
     volumes:
       - vera_storage:/app/storage
 
-  # One-off migration/seed runner — NOT started by `up -d` (profile-gated).
+  # One-off migration/admin-bootstrap runner — NOT started by `up -d` (profile-gated).
   # Usage: docker compose run --rm migrate           (db:migrate)
-  #        docker compose run --rm migrate npm run db:seed
+  #        docker compose run --rm migrate npm run admin:bootstrap
   migrate:
     build:
       context: .

@@ -82,6 +82,56 @@ async function login(jar, email, password = 'Password123!') {
   return r;
 }
 
+// --------------------------------------------------- 0. Fixture bootstrap
+// The app ships no seeds. The suite upserts its own test accounts (idempotent,
+// wiped by `npm run db:purge`) so it runs against a clean database.
+console.log('0. Fixture bootstrap');
+{
+  const { default: dotenv } = await import('dotenv');
+  dotenv.config({ path: '.env.local' });
+  dotenv.config();
+  const { default: bcrypt } = await import('bcryptjs');
+  const ethersMod = await import('ethers');
+  // ethers ships both ESM (named exports) and CJS (default) builds
+  const ethers = ethersMod.HDNodeWallet ? ethersMod : ethersMod.default;
+  const { default: pg } = await import('pg');
+
+  const passwordHash = await bcrypt.hash('Password123!', 10);
+  const mnemonic =
+    process.env.HARDHAT_MNEMONIC ||
+    'test test test test test test test test test test test junk';
+  const evmAddress = (i) =>
+    ethers.HDNodeWallet.fromPhrase(mnemonic, undefined, `m/44'/60'/0'/0/${i}`).address;
+
+  const client = new pg.Client({ connectionString: process.env.DATABASE_URL });
+  await client.connect();
+  try {
+    await client.query(
+      `INSERT INTO users (name, email, password_hash, role, wallet_address, org_status)
+       VALUES ('VERA Admin', 'admin@fundtrail.org', $1, 'ADMIN', $2, NULL),
+              ('VERA Test Organization', 'ngo@fundtrail.org', $1, 'ORGANIZATION', $3, 'VERIFIED'),
+              ('Test Auditor', 'auditor@fundtrail.org', $1, 'AUDITOR', $4, NULL),
+              ('Test Donor', 'donor@fundtrail.org', $1, 'USER', $5, NULL),
+              ('Test Citizen', 'aarav@vera.org', $1, 'USER', NULL, NULL)
+       ON CONFLICT (email) DO UPDATE
+         SET password_hash = EXCLUDED.password_hash, role = EXCLUDED.role,
+             wallet_address = EXCLUDED.wallet_address, org_status = EXCLUDED.org_status`,
+      [passwordHash, evmAddress(0), evmAddress(1), evmAddress(3), evmAddress(4)]
+    );
+    // Fixed UUID — the Hisaab loop addresses this contractor directly.
+    await client.query(
+      `INSERT INTO users (id, name, email, password_hash, role, contractor_status, service_area, solana_pubkey)
+       VALUES ('d4d4d4d4-d4d4-d4d4-d4d4-d4d4d4d4d4d4', 'Test Contractor', 'thaker@vera.org', $1, 'CONTRACTOR', 'APPROVED', 'Jaipur — Zone 3', $2)
+       ON CONFLICT (id) DO UPDATE SET password_hash = EXCLUDED.password_hash, role = 'CONTRACTOR',
+         contractor_status = 'APPROVED', service_area = EXCLUDED.service_area, solana_pubkey = EXCLUDED.solana_pubkey`,
+      [passwordHash, process.env.HISAAB_CONTRACTOR_PUBKEY || null]
+    );
+  } finally {
+    await client.end();
+  }
+  console.log('  ✅ fixtures ready');
+}
+
 console.log(`\n=== VERA E2E against ${BASE} ===\n`);
 
 // ---------------------------------------------------------------- 1. Health

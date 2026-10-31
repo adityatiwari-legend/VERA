@@ -1,12 +1,11 @@
 "use client"
 
-import { useEffect, useRef, useCallback, useState, useMemo } from "react"
+import { useEffect, useRef, useCallback, useMemo } from "react"
 import createGlobe from "cobe"
 
 interface CdnMarker {
   id: string
   location: [number, number]
-  region: string
 }
 
 interface CdnArc {
@@ -20,12 +19,12 @@ interface GlobeCdnProps {
   arcs?: CdnArc[]
   className?: string
   speed?: number
-  /** Format the live traffic chip; default renders VERA escrow volume (₹ lakh). */
-  formatTraffic?: (value: number) => string
 }
 
 /**
- * VERA trust-network globe (cobe v2 + CSS anchor-positioned labels).
+ * VERA decorative globe (cobe v2). Abstract network dots and arcs — it
+ * intentionally renders NO data; every real figure on the page comes from
+ * the ledger queries.
  *
  * Performance notes (60fps):
  *  - The WebGL globe is initialized once; effect deps are stable JSON keys, so
@@ -35,18 +34,18 @@ interface GlobeCdnProps {
  *  - Rotation pauses while the user drags; devicePixelRatio is capped at 2.
  */
 
-// VERA trust network: escrow hubs and settlement corridors (illustrative).
+// Decorative network geometry — markers and arcs carry no data claims.
 const defaultMarkers: CdnMarker[] = [
-  { id: "vera-jai", location: [26.91, 75.79], region: "JAI·HQ" },
-  { id: "vera-del", location: [28.61, 77.21], region: "DEL·ESC" },
-  { id: "vera-bom", location: [19.08, 72.88], region: "BOM·ESC" },
-  { id: "vera-blr", location: [12.97, 77.59], region: "BLR·ESC" },
-  { id: "vera-sin", location: [1.35, 103.82], region: "SIN·SETTLE" },
-  { id: "vera-dxb", location: [25.2, 55.27], region: "DXB·ESC" },
-  { id: "vera-lon", location: [51.5, -0.12], region: "LON·AUDIT" },
-  { id: "vera-nyc", location: [40.71, -74.01], region: "NYC·ESC" },
-  { id: "vera-sfo", location: [37.62, -122.38], region: "SFO·DEV" },
-  { id: "vera-syd", location: [-33.87, 151.21], region: "SYD·ESC" },
+  { id: "vera-jai", location: [26.91, 75.79] },
+  { id: "vera-del", location: [28.61, 77.21] },
+  { id: "vera-bom", location: [19.08, 72.88] },
+  { id: "vera-blr", location: [12.97, 77.59] },
+  { id: "vera-sin", location: [1.35, 103.82] },
+  { id: "vera-dxb", location: [25.2, 55.27] },
+  { id: "vera-lon", location: [51.5, -0.12] },
+  { id: "vera-nyc", location: [40.71, -74.01] },
+  { id: "vera-sfo", location: [37.62, -122.38] },
+  { id: "vera-syd", location: [-33.87, 151.21] },
 ]
 
 const defaultArcs: CdnArc[] = [
@@ -58,18 +57,11 @@ const defaultArcs: CdnArc[] = [
   { id: "vera-arc-6", from: [1.35, 103.82], to: [-33.87, 151.21] },
 ]
 
-const defaultTrafficSeed = [420, 380, 290, 185, 156, 134]
-
-function formatEscrowVolume(value: number): string {
-  return `₹${(value / 100).toFixed(1)}L in escrow`
-}
-
 export function GlobeCdn({
   markers = defaultMarkers,
   arcs = defaultArcs,
   className = "",
   speed = 0.003,
-  formatTraffic = formatEscrowVolume,
 }: GlobeCdnProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const pointerInteracting = useRef<{ x: number; y: number } | null>(null)
@@ -184,33 +176,8 @@ export function GlobeCdn({
     }
   }, [memoMarkers, memoArcs, speed])
 
-  const pyramidFaceStyle = (nth: number): React.CSSProperties => {
-    const transforms = [
-      "rotateY(0deg) translateZ(4px) rotateX(19.5deg)",
-      "rotateY(120deg) translateZ(4px) rotateX(19.5deg)",
-      "rotateY(240deg) translateZ(4px) rotateX(19.5deg)",
-      "rotateX(-90deg) rotateZ(60deg) translateY(4px)",
-    ]
-    const colors = ["#1E40AF", "#2563EB", "#7C3AED", "#312E81"]
-    return {
-      position: "absolute", left: -0.5, top: 0,
-      width: 0, height: 0,
-      borderLeft: "6.5px solid transparent",
-      borderRight: "6.5px solid transparent",
-      borderBottom: `13px solid ${colors[nth]}`,
-      transformOrigin: "center bottom",
-      transform: transforms[nth],
-    }
-  }
-
   return (
     <div className={`relative aspect-square select-none ${className}`}>
-      <style>{`
-        @keyframes pyramid-spin {
-          0% { transform: rotateX(20deg) rotateY(0deg); }
-          100% { transform: rotateX(20deg) rotateY(360deg); }
-        }
-      `}</style>
       <canvas
         ref={canvasRef}
         onPointerDown={handlePointerDown}
@@ -219,107 +186,7 @@ export function GlobeCdn({
           transition: "opacity 1.2s ease", borderRadius: "50%", touchAction: "none",
         }}
       />
-      {memoMarkers.map((m) => (
-        <div
-          key={m.id}
-          style={{
-            position: "absolute",
-            positionAnchor: `--cobe-${m.id}`,
-            bottom: "anchor(top)",
-            left: "anchor(center)",
-            translate: "-50% 0",
-            display: "flex",
-            flexDirection: "column" as const,
-            alignItems: "center",
-            gap: 6,
-            pointerEvents: "none" as const,
-            opacity: `var(--cobe-visible-${m.id}, 0)`,
-            filter: `blur(calc((1 - var(--cobe-visible-${m.id}, 0)) * 8px))`,
-            transition: "opacity 0.3s, filter 0.3s",
-          }}
-        >
-          <div style={{
-            width: 12, height: 12, position: "relative",
-            transformStyle: "preserve-3d" as const,
-            animation: "pyramid-spin 4s linear infinite",
-          }}>
-            {[0, 1, 2, 3].map((n) => (
-              <div key={n} style={pyramidFaceStyle(n)} />
-            ))}
-          </div>
-          <span style={{
-            fontFamily: "var(--font-mono, monospace)", fontSize: "0.55rem", color: "#1E40AF",
-            background: "#fff", padding: "2px 6px", borderRadius: 3,
-            border: "1px solid #DBEAFE",
-            letterSpacing: "0.05em", whiteSpace: "nowrap" as const,
-            boxShadow: "0 1px 3px rgba(37,99,235,0.15)",
-          }}>{m.region}</span>
-        </div>
-      ))}
-      <TrafficLabels arcs={memoArcs} format={formatTraffic} />
     </div>
-  )
-}
-
-/**
- * Live escrow-volume chips. Isolated so its 250ms interval never re-renders
- * the globe subtree — the canvas keeps a clean 60fps frame loop.
- */
-function TrafficLabels({
-  arcs,
-  format,
-}: {
-  arcs: CdnArc[]
-  format: (value: number) => string
-}) {
-  const [traffic, setTraffic] = useState(() =>
-    arcs.map((a, i) => ({ id: a.id, value: defaultTrafficSeed[i] || 100 }))
-  )
-
-  useEffect(() => {
-    setTraffic(arcs.map((a, i) => ({ id: a.id, value: defaultTrafficSeed[i] || 100 })))
-  }, [arcs])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTraffic((data) =>
-        data.map((t) => ({
-          ...t,
-          value: Math.max(50, t.value + Math.floor(Math.random() * 21) - 10),
-        }))
-      )
-    }, 250)
-    return () => clearInterval(interval)
-  }, [])
-
-  return (
-    <>
-      {traffic.map((t) => (
-        <div
-          key={t.id}
-          style={{
-            position: "absolute",
-            positionAnchor: `--cobe-arc-${t.id}`,
-            bottom: "anchor(top)",
-            left: "anchor(center)",
-            translate: "-50% 0",
-            fontFamily: "var(--font-mono, monospace)",
-            fontSize: "0.5rem",
-            color: "#fff",
-            background: "linear-gradient(135deg, #1E40AF, #7C3AED)",
-            padding: "3px 8px",
-            borderRadius: 4,
-            whiteSpace: "nowrap" as const,
-            pointerEvents: "none" as const,
-            opacity: `var(--cobe-visible-arc-${t.id}, 0)`,
-            filter: `blur(calc((1 - var(--cobe-visible-arc-${t.id}, 0)) * 8px))`,
-            transition: "opacity 0.3s, filter 0.3s",
-          }}
-        >
-          {format(t.value)}
-        </div>
-      ))}
-    </>
   )
 }
 

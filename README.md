@@ -46,7 +46,7 @@
 - **Hisaab** — Anchor program compiled (`hisaab.so`, program id `AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw`); report → Gemini analysis → 3 distinct citizen confirmations (on-chain dedupe via confirmation PDAs) → escrow creation → repair submission → before/after comparison → stage release, verified live through the API. Public street register with map at `/hisaab`.
 - **SaaS console UI** — dark sidebar shell, light content, stat cards, dark escrow feature panel; visually verified across all pages.
 - **Citizen accounts** — `CITIZEN` role with per-user devnet wallets; confirmations are signed by distinct keypairs and deduped on-chain.
-- **Infra** — migrations, seed data, WSL Anchor toolchain scripts (with edition2024/MSRV dependency pins), `DEPLOY_VPS.md` for Ubuntu VPS (DigitalOcean/Vultr).
+- **Infra** — migrations, admin bootstrap, WSL Anchor toolchain scripts (with edition2024/MSRV dependency pins), `DEPLOY_VPS.md` for Ubuntu VPS (DigitalOcean/Vultr).
 
 ### ⏳ Pending — three setup steps (owner actions)
 
@@ -107,10 +107,9 @@ Five completed, production-structured phases: RBAC foundation, donation & fund l
 npm install
 docker compose up -d vera-db
 
-# 2. Migrations + demo data (VERA core + Hisaab)
+# 2. Migrations + first admin account (the app starts empty — no demo data)
 npm run db:migrate
-npm run db:seed
-npm run seed:hisaab
+ADMIN_EMAIL=you@example.com ADMIN_PASSWORD=strong-password npm run admin:bootstrap
 
 # 3. EVM contract (start hardhat node first)
 npx hardhat node            # terminal 1
@@ -133,7 +132,9 @@ All scripts:
 
 | Script | Purpose |
 |---|---|
-| `db:migrate` / `db:seed` / `seed:hisaab` | Schema + demo data |
+| `db:migrate` | SQL schema migrations |
+| `admin:bootstrap` | Create/reset an ADMIN account (`ADMIN_EMAIL` / `ADMIN_PASSWORD` / `ADMIN_NAME`) |
+| `db:purge` | Wipe all data rows, keep schema (`-- --yes` to execute) |
 | `deploy:contract` | EVM deploy |
 | `solana:setup` | Oracle/funder/contractor keypairs, airdrops, prints env lines |
 | `build:hisaab` / `deploy:hisaab` | Anchor build/deploy via WSL (dependency pins handled) |
@@ -143,17 +144,19 @@ All scripts:
 
 ---
 
-## Demo Accounts (password `Password123!`)
+## First Accounts (no demo data ships with the app)
 
-| Role | Email | Purpose |
-|---|---|---|
-| **NGO** | `ngo@fundtrail.org` / `ngo@vera.org` | Campaigns, proof upload; `thaker@vera.org` plays the road contractor |
-| **Donor** | `donor@fundtrail.org` / `donor@vera.org` | Donate, trace funds |
-| **Auditor** | `auditor@fundtrail.org` / `auditor@vera.org` | Review proofs, sign multisig |
-| **Admin** | `admin@fundtrail.org` / `admin@vera.org` | Create Hisaab escrows, DEMO fast-forward |
-| **Citizens** | `aarav@` / `priya@` / `rohan@vera.org` | Report + confirm potholes (3 distinct confirmers) |
+The database starts empty — you create every account and campaign. The flow:
 
-Seeded demo data: a HIGH-severity pothole on MI Road, Jaipur at `/hisaab/report/e0e0e0e0-e0e0-e0e0-e0e0-e0e0e0e0e0e0` with drive-by roughness readings.
+1. **Bootstrap the admin** (the only role that cannot self-register):
+   ```bash
+   ADMIN_EMAIL=admin@example.com ADMIN_PASSWORD=... npm run admin:bootstrap
+   ```
+2. **Register** real accounts at `/register` — `USER`, `ORGANIZATION` (needs admin
+   approval at `/admin/access` before it can publish campaigns) or `CONTRACTOR`
+   (also admin-approved). `AUDITOR` is invited by the admin from the same page.
+3. **Create content** — campaigns (`/org/campaigns/new`), donations, Hisaab
+   reports — all real data from that point on.
 
 ---
 
@@ -189,7 +192,7 @@ Seeded demo data: a HIGH-severity pothole on MI Road, Jaipur at `/hisaab/report/
 ```bash
 npm install
 cp .env.example .env.local        # fill DATABASE_URL / JWT_SECRET / GEMINI_API_KEY
-npm run db:migrate && npm run db:seed && npm run seed:hisaab
+npm run db:migrate
 
 # boots Solana localnet (program deployed) + Hardhat node + Next dev
 npm run demo:stack
@@ -197,13 +200,10 @@ npm run demo:stack
 # in another shell — deploy the VERA contract to the local Hardhat node
 npx hardhat run scripts/deploy.js
 
-# end-to-end verification of both product loops (58 checks)
+# end-to-end verification of both product loops (80 checks; the suite
+# bootstraps its own throwaway test accounts — no seeds needed)
 node scripts/e2e-check.mjs
 ```
-
-Demo accounts (password `Password123!`): `admin@fundtrail.org` (ADMIN),
-`ngo@fundtrail.org` (ORGANIZATION), `donor@fundtrail.org` (USER),
-`auditor@fundtrail.org` (AUDITOR), `thaker@vera.org` (CONTRACTOR).
 
 Roles: `USER` (citizen) · `ORGANIZATION` (any org type) · `CONTRACTOR` ·
 `AUDITOR` · `ADMIN` (Hisaab admin console at `/admin`).

@@ -126,26 +126,17 @@ The local environment is currently running and verified with the following confi
 
 ---
 
-## 6. Demo Accounts & Seeded Presentation Scenario
+## 6. Accounts & Content — no demo data
 
-The database contains pre-seeded demo accounts and the official presentation campaign.
+The database starts **empty**: all seed/demo accounts, campaigns, donations,
+proofs and Hisaab fixtures were removed (2026-11-01). Every account and
+campaign is created by the owner through the real flows.
 
-### Demo User Accounts (Password: `Password123!`):
-- **NGO Lead:** `ngo@fundtrail.org` / `ngo@vera.org` (Rajasthan Education Foundation)
-- **Verified Donor:** `donor@fundtrail.org` / `donor@vera.org` (Ananya Patel)
-- **Certified Auditor:** `auditor@fundtrail.org` / `auditor@vera.org` (Priya Sharma, Auditor ID: `AUD-JP-2026`)
-- **Platform Admin:** `admin@fundtrail.org` / `admin@vera.org` (Vikram Malhotra)
-
-### Featured Presentation Initiative:
-- **Campaign Title:** `Government School Classroom — Jaipur`
-- **Target Goal:** ₹10,00,000
-- **Raised & Earmarked:** ₹7,50,000
-- **Locked in Escrow:** ₹4,65,000
-- **Released to Beneficiary:** ₹2,85,000
-- **Milestone 1 (Released):** *Electrical Work* — Allocated: ₹3,00,000. Claimed: ₹3,00,000. AI detected invoice subtotal: ₹2,85,000 (Discrepancy: ₹15,000). Approved by Auditor at ₹2,85,000. Authorized by 2-of-3 multisig. Released on-chain with confirmed tx hash `0xb4c840107fee6507a4af99e1e4bbed49db339f383aa244fc55ff9f2bde08420e`.
-- **Milestone 2 (In Progress):** *Furniture & Ergonomic Desks* — Allocated: ₹2,50,000 (Awaiting vendor proof upload).
-- **Milestone 3 (Locked):** *Classroom Renovation & Painting* — Allocated: ₹4,50,000 (Locked in escrow).
-- **Public Audit Route:** `/campaigns/cccccccc-cccc-cccc-cccc-cccccccccccc/audit`
+- **ADMIN** — bootstrapped from env, the only non-self-serve role:
+  `ADMIN_EMAIL=… ADMIN_PASSWORD=… npm run admin:bootstrap`
+- **USER / ORGANIZATION / CONTRACTOR** — self-register at `/register`
+  (organizations and contractors are admin-approved at `/admin/access`)
+- **AUDITOR** — invited by the admin at `/admin/access`
 
 ---
 
@@ -200,9 +191,9 @@ npm run test:phase4     # Blockchain & Multisig tests (81 tests)
 npm run test:phase5     # Public Audit & Reputation tests (78 tests)
 npm run test:tampering  # Anti-Tampering & Security tests (18 tests)
 
-# Database migration & seeding
+# Database migration & admin bootstrap
 npm run db:migrate      # Apply PostgreSQL schema migrations
-npm run db:seed         # Seed demo presentation dataset
+npm run admin:bootstrap # Create the first ADMIN (ADMIN_EMAIL / ADMIN_PASSWORD)
 
 # Static type check & production build
 npm run type-check      # TypeScript validation (0 errors)
