@@ -19,6 +19,16 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 
 ## Change Log (newest first)
 
+### [2026-10-31] CI/CD pipeline for VPS deployment — infra only, no API change
+Commit: `af3cfb1`
+Backend changes: deployment infrastructure only, zero app/API code changes:
+- `.github/workflows/deploy.yml` — on every push to `main`, SSHes into the VPS and runs `deploy/deploy.sh` (secrets required: `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`).
+- `deploy/deploy.sh` — idempotent VPS deploy: git pull → `docker compose up -d --build` (app + Postgres + nginx) → wait for DB → `db:migrate` → restart → health check.
+- `deploy/bootstrap-vps.sh` — one-time server bootstrap (installs Docker + git, clones repo to `/opt/vera`, creates the data volume, installs the CI/CD SSH deploy key).
+- `Dockerfile` — build args for `NEXT_PUBLIC_APP_URL` / `NEXT_PUBLIC_CHAIN_ID` / `NEXT_PUBLIC_HISAAB_PROGRAM_ID` (these are inlined into the client bundle at build time — runtime env alone never set them).
+- `docker-compose.yml` — all app env vars now flow through compose substitution from the project `.env` (GEMINI key, HISAAB keypairs, JWT, etc.) with safe local defaults.
+Mobile action needed: none — no route, endpoint, or contract change.
+
 ### [2026-10-31] Console shells themed (ribbon sidebar ambient + fade-in) — frontend only, no API change
 Commit: uncommitted
 Backend changes: **none** — presentation only. All app/console pages get the site's signature theme:
