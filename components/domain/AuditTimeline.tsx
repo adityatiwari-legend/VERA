@@ -93,7 +93,10 @@ export function AuditTimeline({ events, className }: AuditTimelineProps) {
                     <Badge variant={meta.variant} size="xs" label={ev.type} />
                   </div>
                   <div className="mt-0.5 font-mono text-[10px] text-faint">
-                    {ev.timestamp}
+                    {new Date(ev.timestamp).toLocaleString('en-IN', {
+                      dateStyle: 'medium',
+                      timeStyle: 'short',
+                    })}
                     {ev.actor && <span> · {ev.actor}</span>}
                   </div>
                 </div>

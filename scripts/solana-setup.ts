@@ -33,18 +33,35 @@ function ensureKeypair(name: string): Keypair {
 
 async function airdropWithRetry(pubkey: PublicKey, sol = 1, attempts = 5): Promise<number> {
   for (let i = 0; i < attempts; i++) {
-    const bal = await connection.getBalance(pubkey);
+    let bal = 0;
+    try {
+      bal = await connection.getBalance(pubkey);
+    } catch (e) {
+      console.log(`  ⚠️ Could not reach ${RPC} to check balance (${(e as Error).message}).`);
+      return 0;
+    }
     if (bal >= sol * LAMPORTS_PER_SOL) return bal;
     try {
       const sig = await connection.requestAirdrop(pubkey, sol * LAMPORTS_PER_SOL);
       const latest = await connection.getLatestBlockhash();
       await connection.confirmTransaction({ signature: sig, ...latest }, 'confirmed');
+      return await connection.getBalance(pubkey);
     } catch (err) {
-      console.log(`  airdrop attempt ${i + 1} failed (${(err as Error).message}) — retrying in 6s`);
+      const msg = (err as Error).message || '';
+      if (msg.includes('410') || msg.includes('faucet is closed') || msg.includes('The RPC faucet is closed')) {
+        console.log(`  ℹ️  Public RPC faucet is closed on ${RPC} (410 Gone).`);
+        console.log(`     Use the web faucet to fund this address: https://faucet.solana.com`);
+        break;
+      }
+      console.log(`  airdrop attempt ${i + 1} failed (${msg}) — retrying in 6s`);
       await new Promise((r) => setTimeout(r, 6000));
     }
   }
-  return connection.getBalance(pubkey);
+  try {
+    return await connection.getBalance(pubkey);
+  } catch {
+    return 0;
+  }
 }
 
 async function main() {

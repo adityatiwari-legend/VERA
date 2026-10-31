@@ -9,7 +9,7 @@ export const registerSchema = z
     // Self-serve roles only. AUDITOR is invite-only and ADMIN is seed-only;
     // privileged roles must never be registrable from the public API.
     role: z.enum(['USER', 'ORGANIZATION', 'CONTRACTOR'] as const).default('USER'),
-    org_type: z.enum(['ORGANIZATION', 'TRUST', 'CSR', 'SCHOOL', 'RWA', 'OTHER']).optional(),
+    org_type: z.enum(['NGO', 'TRUST', 'CSR', 'SCHOOL', 'RWA', 'OTHER']).optional(),
     org_registration_no: z.string().trim().max(80).optional().nullable(),
     service_area: z.string().trim().max(160).optional().nullable(),
   })

@@ -19,6 +19,13 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 
 ## Change Log (newest first)
 
+### [2026-10-31] Register validation fix (org_type enum) + audit timeline Date crash fix
+Commit: uncommitted
+Backend changes:
+- **Fixed — `POST /api/auth/register` returned 400 "Validation failed" for valid NGO signups:** `lib/validation.ts` `org_type` enum listed a legacy `'ORGANIZATION'` value no client ever sent, while the web register form sends `'NGO'`. Enum is now `['NGO', 'TRUST', 'CSR', 'SCHOOL', 'RWA', 'OTHER']`. No DB constraint exists (`users.org_type` is free-form TEXT), so no migration needed.
+- **Fixed — `/campaigns/[id]/audit` crashed with "Objects are not valid as a React child (found: [object Date])":** node-postgres parses `timestamptz` into JS `Date` objects, but `lib/audit_timeline.ts` typed them as `string` and `components/domain/AuditTimeline.tsx` rendered `ev.timestamp` raw. All timestamps out of `getCampaignAuditTimeline` / `getDonationJourney` are now normalized to ISO strings via an `iso()` helper (declared types are now honest), and AuditTimeline formats the timestamp with `toLocaleString('en-IN')`.
+Mobile action needed: none — the register request/response contract is unchanged; the only behavioral change is that `org_type: "NGO"` (the value the web form always sent) now passes validation. If the app ever sends `org_type: "ORGANIZATION"`, switch it to one of `NGO | TRUST | CSR | SCHOOL | RWA | OTHER`.
+
 ### [2026-10-31] CI/CD pipeline for VPS deployment — infra only, no API change
 Commit: `af3cfb1`
 Backend changes: deployment infrastructure only, zero app/API code changes:

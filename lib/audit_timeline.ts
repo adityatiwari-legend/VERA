@@ -1,6 +1,11 @@
 import { query } from './db';
 import { getExplorerTxUrl } from './blockchain';
 
+// node-postgres parses timestamptz into Date objects, but AuditTimelineEvent
+// declares timestamps as strings (they cross the RSC boundary into client
+// components that render them as text). Normalize every timestamp to ISO.
+const iso = (value: any): string => new Date(value).toISOString();
+
 export interface AuditTimelineEvent {
   id: string;
   timestamp: string;
@@ -106,7 +111,7 @@ export async function getCampaignAuditTimeline(
       case 'CREATE_CAMPAIGN':
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'CAMPAIGN_CREATED',
           title: 'Campaign Created',
           description: `Campaign launched with target goal of ₹${Number(meta.target_amount || 0).toLocaleString('en-IN')}.`,
@@ -123,7 +128,7 @@ export async function getCampaignAuditTimeline(
       case 'DONATION_CONFIRMED':
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'DONATION_RECEIVED',
           title: 'Donation Received',
           description: `Contribution of ₹${Number(meta.amount || 0).toLocaleString('en-IN')} received and registered in escrow.`,
@@ -139,7 +144,7 @@ export async function getCampaignAuditTimeline(
       case 'FUNDS_LOCKED':
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'FUNDS_LOCKED',
           title: 'Funds Locked in Escrow',
           description: `₹${Number(meta.amount_locked || meta.amount || 0).toLocaleString('en-IN')} locked into accounting escrow. Cannot be disbursed without verified milestone proof.`,
@@ -154,7 +159,7 @@ export async function getCampaignAuditTimeline(
       case 'MILESTONE_CREATED':
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'MILESTONE_CREATED',
           title: 'Milestone Defined',
           description: `Milestone "${meta.title || milestoneTitle || 'Milestone'}" allocated ₹${Number(meta.amount || 0).toLocaleString('en-IN')}.`,
@@ -172,7 +177,7 @@ export async function getCampaignAuditTimeline(
       case 'PROOF_SUBMITTED_FOR_REVIEW':
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'PROOF_SUBMITTED',
           title: 'Evidence Proof Submitted',
           description: `NGO submitted invoices, receipts, and photographic evidence claiming ₹${Number(meta.claimed_amount || 0).toLocaleString('en-IN')}.`,
@@ -188,7 +193,7 @@ export async function getCampaignAuditTimeline(
         const disc = Number(meta.discrepancy_amount || 0);
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'AI_VERIFICATION_COMPLETED',
           title: 'Automated Verification Completed',
           description:
@@ -206,7 +211,7 @@ export async function getCampaignAuditTimeline(
       case 'PROOF_APPROVED_OVERRIDE':
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'PROOF_APPROVED',
            title: log.action === 'PROOF_APPROVED_OVERRIDE'
              ? 'Flagged Evidence Approved by Auditor Override'
@@ -224,7 +229,7 @@ export async function getCampaignAuditTimeline(
       case 'PROOF_REJECTED':
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'PROOF_REJECTED',
           title: 'Evidence Rejected by Auditor',
           description: `Auditor rejected submission. Reason: ${meta.reason || 'Insufficient documentation'}.`,
@@ -238,7 +243,7 @@ export async function getCampaignAuditTimeline(
       case 'RELEASE_REQUEST_CREATED':
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'RELEASE_REQUESTED',
           title: 'Release Authorization Initiated',
           description: `Disbursement request for ₹${Number(meta.amount || meta.requested_amount || 0).toLocaleString('en-IN')} initiated. Requires 2-of-3 multisig approval.`,
@@ -256,7 +261,7 @@ export async function getCampaignAuditTimeline(
       case 'MULTISIG_APPROVAL':
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'MULTISIG_APPROVAL',
           title: 'Multisig Signer Authorized',
           description: `Authorized signer (${meta.signer_role || log.actor_role}) confirmed approval (${meta.current_approvals || 1}/2 threshold met).`,
@@ -272,7 +277,7 @@ export async function getCampaignAuditTimeline(
       case 'FUNDS_RELEASED':
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'FUNDS_RELEASED',
           title: 'Funds Released to Beneficiary',
           description: `₹${Number(meta.amount || 0).toLocaleString('en-IN')} successfully released and anchored on smart contract.`,
@@ -289,7 +294,7 @@ export async function getCampaignAuditTimeline(
       case 'REFUND_ISSUED':
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'REFUND_ISSUED',
           title: 'Refund Disbursed to Donor',
           description: `₹${Number(meta.amount || 0).toLocaleString('en-IN')} returned to donor due to milestone failure.`,
@@ -306,7 +311,7 @@ export async function getCampaignAuditTimeline(
       case 'CHANGE_CAMPAIGN_STATUS':
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'STATUS_CHANGED',
           title: `Campaign Status Updated to ${meta.new_status || 'Updated'}`,
           description: `Status changed from ${meta.old_status || 'Unknown'} to ${meta.new_status}.`,
@@ -319,7 +324,7 @@ export async function getCampaignAuditTimeline(
       default:
         events.push({
           id: log.id,
-          timestamp: log.created_at,
+          timestamp: iso(log.created_at),
           type: 'GENERIC_AUDIT',
           title: log.action.replace(/_/g, ' '),
           description: `Action recorded on ${log.entity_type}.`,
@@ -358,7 +363,7 @@ export async function getCampaignAuditTimeline(
       const milestoneTitle = ft.milestone_id ? milestoneMap.get(ft.milestone_id) : undefined;
       events.push({
         id: ft.id,
-        timestamp: ft.created_at,
+        timestamp: iso(ft.created_at),
         type: ft.type === 'RELEASE' ? 'FUNDS_RELEASED' : ft.type === 'REFUND' ? 'REFUND_ISSUED' : 'GENERIC_AUDIT',
         title: `Blockchain Settlement (${ft.type})`,
         description: `On-chain confirmation of ₹${Number(ft.amount).toLocaleString('en-IN')} (${ft.type}).`,
@@ -457,7 +462,7 @@ export async function getDonationJourney(donationId: string, donorId: string) {
       title: 'Donation Received & Confirmed',
       description: `₹${Number(donation.amount).toLocaleString('en-IN')} contribution validated and received via reference ${donation.reference}.`,
       status: 'COMPLETED' as const,
-      timestamp: donation.created_at,
+      timestamp: iso(donation.created_at),
       txHash: donationTxHash,
       explorerUrl: donationTxHash ? getExplorerTxUrl(chainId, donationTxHash) : undefined,
     },
@@ -466,7 +471,7 @@ export async function getDonationJourney(donationId: string, donorId: string) {
       title: 'Earmarked to Campaign Escrow',
       description: `Funds bound exclusively to "${donation.campaign_title}". Locked in PostgreSQL accounting escrow.`,
       status: 'COMPLETED' as const,
-      timestamp: donation.created_at,
+      timestamp: iso(donation.created_at),
     },
     {
       step: 3,
