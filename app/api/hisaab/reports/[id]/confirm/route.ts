@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { requireAuth, AppError } from '@/lib/permissions';
+import { AppError } from '@/lib/permissions';
+import { requireAnyAuth } from '@/lib/api_auth';
 import { confirmReportAsUser } from '@/lib/hisaab_actions';
 import { explorerTxUrl } from '@/lib/solana';
 import { rateLimit } from '@/lib/rate_limit';
@@ -8,7 +9,7 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const user = await requireAuth(); // any member can confirm; self-confirm blocked in lib
+    const user = await requireAnyAuth(req); // cookie (web) or bearer (mobile); self-confirm blocked in lib
     rateLimit(`web-confirm:${user.id}`, 30, 60_000);
     const reportId = params.id;
 

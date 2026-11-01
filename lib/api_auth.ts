@@ -3,7 +3,7 @@ import { NextRequest } from 'next/server';
 import { query } from './db';
 import { User } from '../types';
 import { UnauthorizedError } from './permissions';
-import { verifyPassword } from './auth';
+import { getCurrentUser, verifyPassword } from './auth';
 
 /**
  * Bearer-token auth for mobile clients (/api/v1/*).
@@ -65,6 +65,26 @@ export async function requireApiAuth(req: NextRequest): Promise<User> {
 
 export async function requireApiRole(req: NextRequest, roles: string[]): Promise<User> {
   const user = await requireApiAuth(req);
+  if (!roles.includes(user.role)) {
+    throw new UnauthorizedError(`Requires role: ${roles.join(', ')}`);
+  }
+  return user;
+}
+
+/**
+ * Dual-stack auth for shared /api routes the Flutter app also calls:
+ * web session cookie first (browser), then Bearer token (mobile).
+ */
+export async function requireAnyAuth(req: NextRequest): Promise<User> {
+  const bearerUser = await userFromBearer(req);
+  if (bearerUser) return bearerUser;
+  const cookieUser = await getCurrentUser();
+  if (cookieUser) return cookieUser;
+  throw new UnauthorizedError('Authorization: Bearer <token> or session cookie required');
+}
+
+export async function requireAnyRole(req: NextRequest, roles: string[]): Promise<User> {
+  const user = await requireAnyAuth(req);
   if (!roles.includes(user.role)) {
     throw new UnauthorizedError(`Requires role: ${roles.join(', ')}`);
   }

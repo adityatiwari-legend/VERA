@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { requireAuth, AppError } from '@/lib/permissions';
-import { requireApiAuth } from '@/lib/api_auth';
+import { AppError } from '@/lib/permissions';
+import { requireAnyAuth } from '@/lib/api_auth';
 import { confirmReportAsUser } from '@/lib/hisaab_actions';
 import { getPotholeReport } from '@/lib/hisaab';
 import { query } from '@/lib/db';
@@ -15,15 +15,6 @@ const voteSchema = z.object({
   citizen_id: z.string().uuid().optional().nullable(),
   reason: z.string().trim().max(1000).optional().nullable(),
 });
-
-/** Cookie session first (web), then bearer token (mobile). */
-async function requireAnyAuth(req: NextRequest) {
-  try {
-    return await requireAuth();
-  } catch {
-    return await requireApiAuth(req);
-  }
-}
 
 /**
  * POST /api/hisaab/reports/[id]/vote  { vote_type, reason? }

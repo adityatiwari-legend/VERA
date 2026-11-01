@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { requireRole } from '@/lib/permissions';
+import { requireAnyRole } from '@/lib/api_auth';
 import { listPotholeReports } from '@/lib/hisaab';
 import { createPotholeReportFromForm } from '@/lib/hisaab_actions';
 import { rateLimit, clientIp } from '@/lib/rate_limit';
@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const user = await requireRole(['USER', 'ADMIN']);
+    const user = await requireAnyRole(req, ['USER', 'ADMIN']);
     rateLimit(`web-report:${user.id}:${clientIp(req)}`, 10, 60_000);
 
     const form = await req.formData();

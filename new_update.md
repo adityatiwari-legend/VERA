@@ -19,6 +19,22 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 
 ## Change Log (newest first)
 
+### [2026-11-01] App ↔ web data flow FIXED — app switched to the /api/v1 Bearer stack; shared routes now accept cookie OR bearer
+Commit: uncommitted (web: `lib/api_auth.ts` + 4 route files + `app/admin/complaints/page.tsx`; mobile: this change was applied **inside `MLH-RoadProofxVera/` with the owner's explicit go-ahead — the "never touch the app" rule is lifted as of today**)
+Verification: `npx tsc --noEmit` clean; simulated mobile flow E2E **7/7 PASS** against a local dev server (register → v1 login → bearer → multipart report POST → report rendered on `/hisaab` → REJECT vote with bearer → roughness telemetry with bearer → `/admin/complaints` query returns the row with dispute tallies).
+Backend changes:
+- **Added — dual-stack auth helper** (`lib/api_auth.ts`): `requireAnyAuth(req)` (web session cookie first, then `Authorization: Bearer vera_…`) and `requireAnyRole(req, roles)`. The old `requireApiAuth` doc-comment *claimed* a cookie fallback that never existed — now both directions really work.
+- **Changed — every shared route the app calls now accepts both auth dialects:** `POST /api/hisaab/reports`, `POST /api/hisaab/reports/[id]/confirm`, `POST /api/hisaab/reports/[id]/vote` (was already dual), `POST /api/hisaab/roughness`. Role rules unchanged (`USER`/`ADMIN` for reports; self-confirm still blocked; rate limits unchanged).
+- **Changed — `/admin/complaints` now surfaces `pothole_votes`:** new "Disputes" column with `n REJ` / `n FLAG` badges per row (REJECT/FLAG votes were being written but no page ever read them).
+Mobile changes (applied in `MLH-RoadProofxVera/`):
+- Auth now uses the documented mobile stack: `POST /api/v1/auth/login` → `{ token, user }`, token stored in secure storage, sent as `Authorization: Bearer`; `GET /api/v1/me` for session restore; register auto-login **fails loudly** instead of faking a sessionless login.
+- Report submission now POSTs to `/api/v1/hisaab/reports` (bearer) with the web cookie route as fallback; the old "retry same finalized FormData" bug is gone.
+- Defaults: dev → `http://10.0.2.2:3000/api` (emulator→`npm run dev`), staging/prod → `https://vera.adityatiwaridev.xyz/api`. The persisted-URL migration that rewrote everything to the dead Cloudflare quick-tunnel is removed; any saved `trycloudflare.com` URL is auto-dropped (quick tunnels are ephemeral).
+- Android `network_security_config.xml` now permits cleartext to any host (dev posture) — pointing a real phone at your PC's Wi-Fi IP works without the old single-IP allowlist.
+- New app-wide orange **"MOCK MODE — NOT SYNCED"** banner whenever mock mode is on (mock mode previously looked identical to a live sync — the #1 way to think the app "works" while sending zero traffic).
+- Bearer token survives config changes: rebuilt `ApiClient`s lazily reload the token from secure storage (`tokenProvider`) instead of silently dropping it.
+Mobile action needed: **rebuild + reinstall the app** (`flutter pub get && flutter run`). On the emulator it now targets `http://10.0.2.2:3000/api` out of the box — start `npm run dev` first. On a physical phone open **Settings → Backend API URL** and enter `http://<your-PC-WiFi-IP>:3000/api`. If the orange MOCK MODE banner shows, turn off **Settings → Mock Data Mode**. Old logins are invalidated once (token era begins) — just sign in again. Note: the local Flutter on PATH is 3.44.5/Dart 3.12.2, older than the pubspec's `^3.13.4` — build with a Flutter that ships Dart ≥ 3.13.
+
 ### [2026-11-01] ALL mock/demo data removed — database starts empty
 Commit: uncommitted
 Verification: `npm run type-check` clean; `node scripts/e2e-check.mjs` **80/80 passed** against a freshly purged DB (the suite bootstraps its own test accounts).

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { requireAuth, AppError } from '@/lib/permissions';
+import { AppError } from '@/lib/permissions';
+import { requireAnyAuth } from '@/lib/api_auth';
 import { submitRoughnessSchema } from '@/lib/validation';
 import { recordRoughnessReadings, getRoughnessReadings } from '@/lib/tiger';
 
@@ -12,7 +13,7 @@ export const dynamic = 'force-dynamic';
  */
 export async function POST(req: NextRequest) {
   try {
-    await requireAuth();
+    await requireAnyAuth(req);
 
     const parsed = submitRoughnessSchema.safeParse(await req.json());
     if (!parsed.success) {

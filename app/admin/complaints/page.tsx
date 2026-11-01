@@ -19,6 +19,8 @@ export default async function AdminComplaintsPage({
     `SELECT r.id, r.address_label, r.severity, r.status, r.description, r.created_at, r.updated_at,
             u.name AS reporter_name,
             (SELECT COUNT(*)::int FROM pothole_confirmations c WHERE c.report_id = r.id) AS confirmations,
+            (SELECT COUNT(*)::int FROM pothole_votes v WHERE v.report_id = r.id AND v.vote_type = 'REJECT') AS rejects,
+            (SELECT COUNT(*)::int FROM pothole_votes v WHERE v.report_id = r.id AND v.vote_type = 'FLAG') AS flags,
             e.id AS escrow_id,
             (SELECT COUNT(*)::int FROM fund_request_reports frr
               JOIN fund_requests fr ON fr.id = frr.fund_request_id
@@ -78,6 +80,7 @@ export default async function AdminComplaintsPage({
               <th className="px-4 py-3 font-medium">Location</th>
               <th className="px-4 py-3 font-medium">Severity</th>
               <th className="px-4 py-3 font-medium">Confirmations</th>
+              <th className="px-4 py-3 font-medium">Disputes</th>
               <th className="px-4 py-3 font-medium">Status</th>
               <th className="px-4 py-3 font-medium">Age</th>
               <th className="px-4 py-3 font-medium">Action</th>
@@ -111,6 +114,24 @@ export default async function AdminComplaintsPage({
                     </span>
                   </td>
                   <td className="px-4 py-3 font-mono text-xs text-mute">{r.confirmations}/3</td>
+                  <td className="px-4 py-3 font-mono text-xs">
+                    {r.rejects > 0 || r.flags > 0 ? (
+                      <span className="inline-flex gap-1">
+                        {r.rejects > 0 && (
+                          <span className="rounded-full border border-bad/25 bg-bad-soft px-2 py-0.5 text-[10px] font-semibold text-bad">
+                            {r.rejects} REJ
+                          </span>
+                        )}
+                        {r.flags > 0 && (
+                          <span className="rounded-full border border-warn/25 bg-warn-soft px-2 py-0.5 text-[10px] font-semibold text-warn">
+                            {r.flags} FLAG
+                          </span>
+                        )}
+                      </span>
+                    ) : (
+                      <span className="text-mute">—</span>
+                    )}
+                  </td>
                   <td className="px-4 py-3">
                     <span className={`rounded-full border px-2 py-0.5 font-mono text-[10px] font-semibold ${statusTone[r.status] ?? 'border-line bg-mist text-mute'}`}>
                       {r.status}
@@ -147,7 +168,7 @@ export default async function AdminComplaintsPage({
             })}
             {rows.length === 0 && (
               <tr>
-                <td colSpan={6} className="px-4 py-12 text-center text-sm text-mute">
+                <td colSpan={7} className="px-4 py-12 text-center text-sm text-mute">
                   No complaints in this bucket.
                 </td>
               </tr>
