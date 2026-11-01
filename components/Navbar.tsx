@@ -15,6 +15,7 @@ import {
   Bell,
 } from "lucide-react";
 import { User } from "@/types";
+import { BrandMark } from "@/components/BrandMark";
 import { LiquidNavbar, type LiquidNavItem } from "@/components/ui/liquid-glass-navbar";
 
 export function Navbar({ onStickyHeight }: { onStickyHeight?: (h: number) => void }) {
@@ -163,9 +164,7 @@ export function Navbar({ onStickyHeight }: { onStickyHeight?: (h: number) => voi
         >
           {/* Brand */}
           <Link href="/" className="group flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-bold text-white transition-colors group-hover:bg-accent-deep">
-              V
-            </span>
+            <BrandMark size={32} className="transition-transform group-hover:scale-105" />
             <span className="flex flex-col leading-none">
               <span className="flex items-center gap-1.5">
                 <span className="font-sans text-lg font-bold tracking-tight text-ink">

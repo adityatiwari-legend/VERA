@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { BrandMark } from '@/components/BrandMark';
 import {
   MapPin,
   Plus,
@@ -148,11 +149,8 @@ export default function ConsoleShell({
           collapsed ? 'flex-col gap-2 px-2' : ''
         }`}
       >
-        <Link
-          href="/"
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent text-sm font-bold text-white shadow-[0_0_18px_rgba(37,99,235,0.35)]"
-        >
-          V
+        <Link href="/" className="shrink-0 rounded-lg shadow-[0_0_18px_rgba(37,99,235,0.35)]" title="VERA">
+          <BrandMark size={32} />
         </Link>
         {!collapsed && (
           <Link href="/" className="min-w-0 flex-1 leading-none">
@@ -297,9 +295,7 @@ export default function ConsoleShell({
       {/* Mobile top bar */}
       <div className="sticky top-0 z-30 flex items-center gap-3 border-b border-line bg-white/95 px-4 py-3 backdrop-blur lg:hidden">
         <Link href="/" className="flex items-center gap-2">
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent text-xs font-bold text-white">
-            V
-          </span>
+          <BrandMark size={28} />
           <span className="text-sm font-semibold text-ink">VERA</span>
         </Link>
         <div className="ml-auto flex gap-1.5 overflow-x-auto">

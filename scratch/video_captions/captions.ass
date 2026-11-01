@@ -1,0 +1,51 @@
+[Script Info]
+; VERA demo — instructional captions
+ScriptType: v4.00+
+PlayResX: 2100
+PlayResY: 1080
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV
+Style: Cap,Segoe UI,44,&H00FFFFFF,&H00FFFFFF,&H00000000,&H59000000,0,0,0,0,100,100,0,0,3,12,0,2,150,150,44
+Style: CapSmall,Segoe UI,34,&H00FFFFFF,&H00FFFFFF,&H00000000,&H59000000,0,0,0,0,100,100,0,0,3,10,0,2,150,150,44
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:05.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}VERA — every rupee traceable, audited before it moves.
+Dialogue: 0,0:00:05.00,0:00:10.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Live platform stats lead into the core idea: the 9-stage verifiable fund trail.
+Dialogue: 0,0:00:10.00,0:00:15.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Two modules, one standard of proof — VERA Core on Ethereum escrow, Hisaab of the Road on Solana.
+Dialogue: 0,0:00:15.00,0:00:20.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}A public trust network — campaigns register on-chain and every release is created against proof.
+Dialogue: 0,0:00:20.00,0:00:25.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Featured verified campaigns — live on-chain status, funding progress and audit access.
+Dialogue: 0,0:00:25.00,0:00:30.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}NGO trust scoring is deterministic — a transparent 100-point formula, not star reviews.
+Dialogue: 0,0:00:30.00,0:00:35.00,Cap,,0,0,0,,{\b1\c&HFDC593&}STEP 0 · SIGN IN{\b0\c&HFFFFFF&}\NOne account for the citizen portal, org hub, contractor desk and auditor workspace.
+Dialogue: 0,0:00:35.00,0:00:40.00,Cap,,0,0,0,,{\b1\c&HFDC593&}STEP 1 · BIND A WALLET{\b0\c&HFFFFFF&}\NMetaMask signs a one-time message to unlock real on-chain value.
+Dialogue: 0,0:00:40.00,0:00:45.00,Cap,,0,0,0,,{\b1\c&HFDC593&}STEP 2 · DONATE{\b0\c&HFFFFFF&}\NPick an amount and confirm with the wallet — the donation lands on-chain.
+Dialogue: 0,0:00:45.00,0:00:50.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Donation confirmed & earmarked — reference ID issued, ring-fenced, locked in escrow.
+Dialogue: 0,0:00:50.00,0:00:55.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Dashboard update: ₹1,000 donated, one active escrow. "Trace" opens the full journey.
+Dialogue: 0,0:00:55.00,0:01:00.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Receipt — Confirmed → Earmarked → Locked in Escrow. Released only against verified milestones.
+Dialogue: 0,0:01:00.00,0:01:05.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}The audit timeline — every event carries its actor and timestamp.
+Dialogue: 0,0:01:05.00,0:01:10.00,Cap,,0,0,0,,{\b1\c&HFDC593&}STEP 3 · REPORT A POTHOLE{\b0\c&HFFFFFF&}\NA photo becomes public evidence in under a minute.
+Dialogue: 0,0:01:10.00,0:01:20.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Capture photo, GPS and description — then Gemini analyzes severity, size and surface type.
+Dialogue: 0,0:01:20.00,0:01:25.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Verdict: HIGH severity · 85 cm · asphalt · 95% confidence. Three citizen confirmations required to fund.
+Dialogue: 0,0:01:25.00,0:01:30.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Street Register — the public ledger of road defects: open, in repair, escrowed, fully paid.
+Dialogue: 0,0:01:30.00,0:01:35.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Anyone can confirm a pothole — three independent confirmations lock money into escrow.
+Dialogue: 0,0:01:35.00,0:01:40.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Organizations — every campaign runs through a verified NGO with a public audit trail.
+Dialogue: 0,0:01:40.00,0:01:50.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Campaign audit timeline — created, activated, funded, escrowed. Actors and timestamps throughout.
+Dialogue: 0,0:01:50.00,0:01:55.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}On-chain block explorer — donation created → confirmed → locked, every block hash-anchored.
+Dialogue: 0,0:01:55.00,0:02:05.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Every rupee passes a 9-stage pipeline: milestone capping → evidence → AI verification → auditor sign-off → 2-of-3 multisig → blockchain release.
+Dialogue: 0,0:02:05.00,0:02:10.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Admin console — Hisaab operations: complaints, escrows, fund requests and contractors at a glance.
+Dialogue: 0,0:02:10.00,0:02:15.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Inspecting a complaint — the Gemini verdict, citizen confirmations and the trust model.
+Dialogue: 0,0:02:15.00,0:02:25.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Complaint queue — confirm → attach a government fund request → assign a contractor → the escrow locks.
+Dialogue: 0,0:02:25.00,0:02:30.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Fund requests — apply to government repair budgets; once sanctioned, they can back an escrow.
+Dialogue: 0,0:02:30.00,0:02:35.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Verification gates: organizations must be VERIFIED before raising campaigns; auditors are invite-only.
+Dialogue: 0,0:02:35.00,0:02:40.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Login audit — every sign-in attempt across web console and mobile API is recorded.
+Dialogue: 0,0:02:40.00,0:02:45.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Auditor workspace — independent review of milestone evidence. Queue currently clear.
+Dialogue: 0,0:02:45.00,0:02:55.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Switching to the organization portal — the NGO's workspace for campaigns, milestones and proofs.
+Dialogue: 0,0:02:55.00,0:03:10.00,Cap,,0,0,0,,{\b1\c&HFDC593&}STEP 4 · DEFINE MILESTONES{\b0\c&HFFFFFF&}\NEach phase gets an allocated amount and verification criteria. Money releases per milestone — never as a lump.
+Dialogue: 0,0:03:10.00,0:03:20.00,Cap,,0,0,0,,{\b1\c&HFDC593&}STEP 5 · SUBMIT PROOF{\b0\c&HFFFFFF&}\NClaimed utilization plus invoices — AI OCR cross-checks and flags discrepancies (₹0 here).
+Dialogue: 0,0:03:20.00,0:03:35.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Proof submitted — milestone now under review; every file is SHA-256 hashed into the immutable audit trail.
+Dialogue: 0,0:03:35.00,0:03:40.00,Cap,,0,0,0,,{\b1\c&HFDC593&}STEP 6 · CREATE CAMPAIGN{\b0\c&HFFFFFF&}\NTitle, funding goal, beneficiary and milestone plan — publish as active.
+Dialogue: 0,0:03:40.00,0:03:48.00,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Finally, the contractor desk — jobs assigned by the admin, paid in stages from on-chain escrow.
+Dialogue: 0,0:03:48.00,0:03:56.10,Cap,,0,0,0,,{\c&HFAA560&}▸ {\c&HFFFFFF&}Payout rules: stage 1 (~40%) releases on AI verification pass; the rest after the 30-day durability hold — after-photo + drive-over roughness score.

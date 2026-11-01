@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import { User, NavCounts } from '@/types';
 import { Navbar } from './Navbar';
+import { BrandMark } from './BrandMark';
 import Footer from './Footer';
 
 interface DashboardShellProps {
@@ -180,9 +181,7 @@ export function DashboardShell({ children }: DashboardShellProps) {
               collapsed ? 'flex-col gap-2 px-2' : ''
             }`}
           >
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent text-sm font-bold text-white shadow-[0_0_18px_rgba(37,99,235,0.35)]">
-              V
-            </span>
+            <BrandMark size={32} className="shadow-[0_0_18px_rgba(37,99,235,0.35)]" />
             {!collapsed && (
               <div className="min-w-0 flex-1 leading-none">
                 <p className="text-sm font-semibold tracking-tight text-white">VERA</p>
@@ -282,9 +281,7 @@ export function DashboardShell({ children }: DashboardShellProps) {
             />
             <div className="theme-night sidebar-night animate-slide-in relative z-10 flex h-full w-72 max-w-[80vw] flex-col border-r border-white/[0.08]">
               <div className="flex items-center gap-2.5 border-b border-white/[0.06] px-4 py-3.5">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent text-sm font-bold text-white">
-                  V
-                </span>
+                <BrandMark size={32} />
                 <div className="min-w-0 flex-1 leading-none">
                   <p className="text-sm font-semibold tracking-tight text-white">VERA</p>
                   <p className="mt-1 font-mono text-[9px] font-semibold uppercase tracking-[0.2em] text-night-dim">

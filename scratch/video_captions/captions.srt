@@ -1,0 +1,150 @@
+﻿1
+00:00:00,000 --> 00:00:05,000
+▸ VERA — every rupee traceable, audited before it moves.
+
+2
+00:00:05,000 --> 00:00:10,000
+▸ Live platform stats lead into the core idea: the 9-stage verifiable fund trail.
+
+3
+00:00:10,000 --> 00:00:15,000
+▸ Two modules, one standard of proof — VERA Core on Ethereum escrow, Hisaab of the Road on Solana.
+
+4
+00:00:15,000 --> 00:00:20,000
+▸ A public trust network — campaigns register on-chain and every release is created against proof.
+
+5
+00:00:20,000 --> 00:00:25,000
+▸ Featured verified campaigns — live on-chain status, funding progress and audit access.
+
+6
+00:00:25,000 --> 00:00:30,000
+▸ NGO trust scoring is deterministic — a transparent 100-point formula, not star reviews.
+
+7
+00:00:30,000 --> 00:00:35,000
+STEP 0 · SIGN IN
+One account for the citizen portal, org hub, contractor desk and auditor workspace.
+
+8
+00:00:35,000 --> 00:00:40,000
+STEP 1 · BIND A WALLET
+MetaMask signs a one-time message to unlock real on-chain value.
+
+9
+00:00:40,000 --> 00:00:45,000
+STEP 2 · DONATE
+Pick an amount and confirm with the wallet — the donation lands on-chain.
+
+10
+00:00:45,000 --> 00:00:50,000
+▸ Donation confirmed & earmarked — reference ID issued, ring-fenced, locked in escrow.
+
+11
+00:00:50,000 --> 00:00:55,000
+▸ Dashboard update: ₹1,000 donated, one active escrow. "Trace" opens the full journey.
+
+12
+00:00:55,000 --> 00:01:00,000
+▸ Receipt — Confirmed → Earmarked → Locked in Escrow. Released only against verified milestones.
+
+13
+00:01:00,000 --> 00:01:05,000
+▸ The audit timeline — every event carries its actor and timestamp.
+
+14
+00:01:05,000 --> 00:01:10,000
+STEP 3 · REPORT A POTHOLE
+A photo becomes public evidence in under a minute.
+
+15
+00:01:10,000 --> 00:01:20,000
+▸ Capture photo, GPS and description — then Gemini analyzes severity, size and surface type.
+
+16
+00:01:20,000 --> 00:01:25,000
+▸ Verdict: HIGH severity · 85 cm · asphalt · 95% confidence. Three citizen confirmations required to fund.
+
+17
+00:01:25,000 --> 00:01:30,000
+▸ Street Register — the public ledger of road defects: open, in repair, escrowed, fully paid.
+
+18
+00:01:30,000 --> 00:01:35,000
+▸ Anyone can confirm a pothole — three independent confirmations lock money into escrow.
+
+19
+00:01:35,000 --> 00:01:40,000
+▸ Organizations — every campaign runs through a verified NGO with a public audit trail.
+
+20
+00:01:40,000 --> 00:01:50,000
+▸ Campaign audit timeline — created, activated, funded, escrowed. Actors and timestamps throughout.
+
+21
+00:01:50,000 --> 00:01:55,000
+▸ On-chain block explorer — donation created → confirmed → locked, every block hash-anchored.
+
+22
+00:01:55,000 --> 00:02:05,000
+▸ Every rupee passes a 9-stage pipeline: milestone capping → evidence → AI verification → auditor sign-off → 2-of-3 multisig → blockchain release.
+
+23
+00:02:05,000 --> 00:02:10,000
+▸ Admin console — Hisaab operations: complaints, escrows, fund requests and contractors at a glance.
+
+24
+00:02:10,000 --> 00:02:15,000
+▸ Inspecting a complaint — the Gemini verdict, citizen confirmations and the trust model.
+
+25
+00:02:15,000 --> 00:02:25,000
+▸ Complaint queue — confirm → attach a government fund request → assign a contractor → the escrow locks.
+
+26
+00:02:25,000 --> 00:02:30,000
+▸ Fund requests — apply to government repair budgets; once sanctioned, they can back an escrow.
+
+27
+00:02:30,000 --> 00:02:35,000
+▸ Verification gates: organizations must be VERIFIED before raising campaigns; auditors are invite-only.
+
+28
+00:02:35,000 --> 00:02:40,000
+▸ Login audit — every sign-in attempt across web console and mobile API is recorded.
+
+29
+00:02:40,000 --> 00:02:45,000
+▸ Auditor workspace — independent review of milestone evidence. Queue currently clear.
+
+30
+00:02:45,000 --> 00:02:55,000
+▸ Switching to the organization portal — the NGO's workspace for campaigns, milestones and proofs.
+
+31
+00:02:55,000 --> 00:03:10,000
+STEP 4 · DEFINE MILESTONES
+Each phase gets an allocated amount and verification criteria. Money releases per milestone — never as a lump.
+
+32
+00:03:10,000 --> 00:03:20,000
+STEP 5 · SUBMIT PROOF
+Claimed utilization plus invoices — AI OCR cross-checks and flags discrepancies (₹0 here).
+
+33
+00:03:20,000 --> 00:03:35,000
+▸ Proof submitted — milestone now under review; every file is SHA-256 hashed into the immutable audit trail.
+
+34
+00:03:35,000 --> 00:03:40,000
+STEP 6 · CREATE CAMPAIGN
+Title, funding goal, beneficiary and milestone plan — publish as active.
+
+35
+00:03:40,000 --> 00:03:48,000
+▸ Finally, the contractor desk — jobs assigned by the admin, paid in stages from on-chain escrow.
+
+36
+00:03:48,000 --> 00:03:56,100
+▸ Payout rules: stage 1 (~40%) releases on AI verification pass; the rest after the 30-day durability hold — after-photo + drive-over roughness score.
