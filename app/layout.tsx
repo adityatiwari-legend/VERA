@@ -37,6 +37,13 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'VERA Core Architecture' }],
   manifest: '/manifest.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/icons/icon-192.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     title: 'VERA — Proof-Gated Money',
     description: 'Every rupee traceable. Audited before it moves.',

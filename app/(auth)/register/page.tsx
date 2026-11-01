@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { UserPlus, AlertCircle, Loader2, ShieldCheck, FileCheck, Eye } from 'lucide-react';
+import { BrandMark } from '@/components/BrandMark';
 
 type RegisterRole = 'USER' | 'ORGANIZATION' | 'CONTRACTOR';
 
@@ -85,9 +86,7 @@ export default function RegisterPage() {
         {/* Brand band */}
         <div className="wash-hero bg-grid-fine relative hidden flex-col justify-between gap-10 p-10 lg:flex">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-sm font-bold text-white">
-              V
-            </span>
+            <BrandMark size={36} />
             <div className="leading-none">
               <span className="font-sans text-lg font-bold tracking-tight text-ink">VERA</span>
               <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.22em] text-mute">
@@ -125,9 +124,7 @@ export default function RegisterPage() {
         {/* Form panel */}
         <div className="space-y-6 p-6 sm:p-10">
           <div className="flex items-center gap-2.5 lg:hidden">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-sm font-bold text-white">
-              V
-            </span>
+            <BrandMark size={36} />
             <span className="font-sans text-lg font-bold tracking-tight text-ink">VERA</span>
           </div>
 
