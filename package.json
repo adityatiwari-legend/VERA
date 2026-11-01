@@ -25,7 +25,8 @@
     "build:hisaab": "wsl -d Ubuntu -u root -- bash /mnt/d/HackXxMUJ/scripts/hisaab-build.sh",
     "deploy:hisaab": "wsl -d Ubuntu -u root -- bash /mnt/d/HackXxMUJ/scripts/hisaab-build.sh --deploy",
     "solana:localnet": "wsl -d Ubuntu -u root -- bash /mnt/d/HackXxMUJ/scripts/hisaab-localnet.sh",
-    "demo:stack": "node scripts/demo-stack.mjs"
+    "demo:stack": "node scripts/demo-stack.mjs",
+    "stop:web": "node scripts/stop-web.mjs"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.30.1",

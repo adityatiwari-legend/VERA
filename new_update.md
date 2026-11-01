@@ -23,7 +23,7 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 Commit: uncommitted
 Backend changes:
 - **Changed — `scripts/demo-stack.mjs` now boots the ENTIRE stack**, not just chains + web: starts Postgres (`docker compose vera-db`) if down, applies migrations (idempotent), starts Solana localnet + Hardhat as before, **redeploys VERA.sol automatically when the Hardhat node was restarted and lost the contract** (checks `eth_getCode` at `CONTRACT_ADDRESS`; `scripts/deploy.js` updates `.env.local`), then starts the Next dev server. Every stage is skipped when already up, so re-running is safe.
-- **Added — `VERA.bat`** (repo root): double-click launcher for the same command on Windows.
+- **Added — `VERA.bat`** (repo root): double-click launcher for the same command on Windows. **`npm run stop:web`** stops the web app (kills whatever listens on :3000) without touching the chains or Postgres.
 Mobile action needed: none — no route, endpoint, or contract change.
 
 ### [2026-11-01] App ↔ web data flow FIXED — app switched to the /api/v1 Bearer stack; shared routes now accept cookie OR bearer
