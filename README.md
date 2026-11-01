@@ -194,8 +194,10 @@ npm install
 cp .env.example .env.local        # fill DATABASE_URL / JWT_SECRET / GEMINI_API_KEY
 npm run db:migrate
 
-# boots Solana localnet (program deployed) + Hardhat node + Next dev
-npm run demo:stack
+npm run demo:stack                # boots EVERYTHING: Postgres + migrations +
+                                  # Solana localnet (program deployed) + Hardhat
+                                  # node + VERA.sol (auto-redeploy) + next dev
+                                  # (Windows: just double-click VERA.bat)
 
 # in another shell — deploy the VERA contract to the local Hardhat node
 npx hardhat run scripts/deploy.js

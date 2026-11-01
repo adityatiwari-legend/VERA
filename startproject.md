@@ -90,11 +90,14 @@ create everything through the UI (Step 6 below).
 npm run demo:stack
 ```
 
+On Windows you can simply **double-click `VERA.bat`** in the repo root.
+
 This orchestrator boots everything in order, skipping anything already running:
 
-1. **Solana localnet** (WSL `solana-test-validator` on :8899) + deploys the Hisaab program + airdrops the app keypairs
-2. **Hardhat EVM node** on :8545 (chain id 31337)
-3. **Next dev server** on :3000
+1. **Postgres** (docker compose `vera-db` on :5433) + **migrations** (idempotent)
+2. **Solana localnet** (WSL `solana-test-validator` on :8899) + deploys the Hisaab program + airdrops the app keypairs
+3. **Hardhat EVM node** on :8545 (chain id 31337) — and **redeploys VERA.sol automatically** if the node was restarted and lost the contract
+4. **Next dev server** on :3000
 
 When it prints ✅ you're live:
 

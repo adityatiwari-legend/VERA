@@ -19,6 +19,13 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 
 ## Change Log (newest first)
 
+### [2026-11-01] One-command full-stack boot (`npm run demo:stack` / VERA.bat)
+Commit: uncommitted
+Backend changes:
+- **Changed — `scripts/demo-stack.mjs` now boots the ENTIRE stack**, not just chains + web: starts Postgres (`docker compose vera-db`) if down, applies migrations (idempotent), starts Solana localnet + Hardhat as before, **redeploys VERA.sol automatically when the Hardhat node was restarted and lost the contract** (checks `eth_getCode` at `CONTRACT_ADDRESS`; `scripts/deploy.js` updates `.env.local`), then starts the Next dev server. Every stage is skipped when already up, so re-running is safe.
+- **Added — `VERA.bat`** (repo root): double-click launcher for the same command on Windows.
+Mobile action needed: none — no route, endpoint, or contract change.
+
 ### [2026-11-01] App ↔ web data flow FIXED — app switched to the /api/v1 Bearer stack; shared routes now accept cookie OR bearer
 Commit: uncommitted (web: `lib/api_auth.ts` + 4 route files + `app/admin/complaints/page.tsx`; mobile: this change was applied **inside `MLH-RoadProofxVera/` with the owner's explicit go-ahead — the "never touch the app" rule is lifted as of today**)
 Verification: `npx tsc --noEmit` clean; simulated mobile flow E2E **7/7 PASS** against a local dev server (register → v1 login → bearer → multipart report POST → report rendered on `/hisaab` → REJECT vote with bearer → roughness telemetry with bearer → `/admin/complaints` query returns the row with dispute tallies).
