@@ -10,6 +10,8 @@
 [![Solidity](https://img.shields.io/badge/Solidity-EVM%20Escrow-363636?logo=solidity&logoColor=white)](#-dual-blockchain-architecture)
 [![Solana](https://img.shields.io/badge/Solana-Anchor%20Devnet-9945FF?logo=solana&logoColor=white)](#-dual-blockchain-architecture)
 [![Gemini](https://img.shields.io/badge/Google-Gemini%20Vision-4285F4?logo=googlegemini&logoColor=white)](#-ai-verification-engine)
+[![TigerData](https://img.shields.io/badge/TigerData-Hackathon-3043C6?logo=tigerdata&logoColor=white)](#-tech-stack)
+[![Vultr](https://img.shields.io/badge/Vultr-Cloud-00B0F4?logo=vultr&logoColor=white)](#-tech-stack)
 
 <br/>
 
@@ -17,7 +19,6 @@
 |:---:|:---:|:---:|
 | [**➡️ RoadProof Mobile Repo**](https://github.com/vineetm1204-m/MLH-RoadProofxVera) <br/> *(Flutter — click to open)* | [**▶️ View Slides**](https://YOUR_PRESENTATION_LINK) | [**🚀 Try it Live**](https://YOUR_DEMO_LINK) |
 
-<sub>👆 Replace the three placeholder links above with your real URLs.</sub>
 
 </div>
 
