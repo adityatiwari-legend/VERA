@@ -1,15 +1,11 @@
-import { NextResponse } from 'next/server';
-import { getCurrentUser } from '@/lib/auth';
+import { NextRequest, NextResponse } from 'next/server';
+import { requireAnyAuth } from '@/lib/api_auth';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
-    const user = await getCurrentUser();
-    if (!user) {
-      return NextResponse.json({ user: null }, { status: 401 });
-    }
+    const user = await requireAnyAuth(req);
     return NextResponse.json({ user });
-  } catch (error: any) {
-    console.error('Error fetching current user:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  } catch {
+    return NextResponse.json({ user: null }, { status: 401 });
   }
 }

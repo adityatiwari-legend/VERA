@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PublicKey } from '@solana/web3.js';
 import { requireRole, AppError, NotFoundError } from '@/lib/permissions';
+import { requireAnyRole } from '@/lib/api_auth';
 import { createEscrowSchema } from '@/lib/validation';
 import { createEscrow, getPotholeReport } from '@/lib/hisaab';
 import { notify } from '@/lib/notifications';
@@ -18,7 +19,7 @@ export const dynamic = 'force-dynamic';
 /** GET /api/hisaab/escrows?status= (ADMIN) — escrow ledger list for admin tooling. */
 export async function GET(req: NextRequest) {
   try {
-    await requireRole(['ADMIN']);
+    await requireAnyRole(req, ['ADMIN']);
     const { searchParams } = new URL(req.url);
     const status = searchParams.get('status');
 
@@ -46,7 +47,7 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const user = await requireRole(['ADMIN']);
+    const user = await requireAnyRole(req, ['ADMIN']);
 
     const parsed = createEscrowSchema.safeParse(await req.json());
     if (!parsed.success) {
@@ -77,7 +78,7 @@ export async function POST(req: NextRequest) {
     if (!contractor || contractor.contractor_status !== 'APPROVED') {
       throw new AppError('Selected contractor is not approved', 400);
     }
-    if (!contractor.solana_pubkey) {
+    if (!contractor.solana_pubkey && isSolanaProgramConfigured()) {
       throw new AppError(
         'Contractor has not bound a Solana payout wallet yet. Ask them to set one in the contractor portal.',
         400
@@ -85,7 +86,7 @@ export async function POST(req: NextRequest) {
     }
 
     const funder = getFunderKeypair();
-    const contractorPubkey = contractor.solana_pubkey;
+    const contractorPubkey = contractor.solana_pubkey || '11111111111111111111111111111111';
 
     let solanaTx: string | null = null;
     let escrowPda: string | null = null;

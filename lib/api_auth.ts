@@ -3,7 +3,7 @@ import { NextRequest } from 'next/server';
 import { query } from './db';
 import { User } from '../types';
 import { UnauthorizedError } from './permissions';
-import { getCurrentUser, verifyPassword } from './auth';
+import { getCurrentUser, verifyPassword, verifySessionToken } from './auth';
 
 /**
  * Bearer-token auth for mobile clients (/api/v1/*).
@@ -33,34 +33,59 @@ async function userFromBearer(req: NextRequest): Promise<User | null> {
   const header = req.headers.get('authorization') || '';
   if (!header.toLowerCase().startsWith('bearer ')) return null;
   const raw = header.slice(7).trim();
-  if (!raw.startsWith(TOKEN_PREFIX)) return null;
+  if (!raw) return null;
 
-  const tokenHash = crypto.createHash('sha256').update(raw).digest('hex');
-  const res = await query<User>(
-    `SELECT u.id, u.name, u.email, u.wallet_address, u.role, u.org_type, u.org_status,
-            u.org_registration_no, u.contractor_status, u.service_area, u.solana_pubkey,
-            u.account_status, u.created_at, u.updated_at
-     FROM api_tokens t
-     JOIN users u ON u.id = t.user_id
-     WHERE t.token_hash = $1
-       AND (t.expires_at IS NULL OR t.expires_at > NOW())
-       AND (u.account_status IS NULL OR u.account_status = 'ACTIVE')`,
-    [tokenHash]
-  );
-  if (res.rows[0]) {
-    // best-effort last-used touch (fire and forget)
-    query(`UPDATE api_tokens SET last_used_at = NOW() WHERE token_hash = $1`, [tokenHash]).catch(
-      () => {}
+  if (raw.startsWith(TOKEN_PREFIX)) {
+    const tokenHash = crypto.createHash('sha256').update(raw).digest('hex');
+    const res = await query<User>(
+      `SELECT u.id, u.name, u.email, u.wallet_address, u.role, u.org_type, u.org_status,
+              u.org_registration_no, u.contractor_status, u.service_area, u.solana_pubkey,
+              u.account_status, u.created_at, u.updated_at
+       FROM api_tokens t
+       JOIN users u ON u.id = t.user_id
+       WHERE t.token_hash = $1
+         AND (t.expires_at IS NULL OR t.expires_at > NOW())
+         AND (u.account_status IS NULL OR u.account_status = 'ACTIVE')`,
+      [tokenHash]
     );
+    if (res.rows[0]) {
+      // best-effort last-used touch (fire and forget)
+      query(`UPDATE api_tokens SET last_used_at = NOW() WHERE token_hash = $1`, [tokenHash]).catch(
+        () => {}
+      );
+      return res.rows[0];
+    }
+    return null;
   }
-  return res.rows[0] ?? null;
+
+  // Fallback: verify as session JWT
+  try {
+    const session = await verifySessionToken(raw);
+    if (session?.userId) {
+      const res = await query<User>(
+        `SELECT id, name, email, wallet_address, role, org_type, org_status,
+                org_registration_no, contractor_status, service_area, solana_pubkey,
+                account_status, created_at, updated_at
+         FROM users
+         WHERE id = $1::uuid AND (account_status IS NULL OR account_status = 'ACTIVE')`,
+        [session.userId]
+      );
+      return res.rows[0] ?? null;
+    }
+  } catch {
+    // invalid token
+  }
+
+  return null;
 }
 
 /** API-auth: Bearer token first, falls back to the web session cookie. */
 export async function requireApiAuth(req: NextRequest): Promise<User> {
   const bearerUser = await userFromBearer(req);
   if (bearerUser) return bearerUser;
-  throw new UnauthorizedError('Authorization: Bearer <token> required');
+  const cookieUser = await getCurrentUser();
+  if (cookieUser) return cookieUser;
+  throw new UnauthorizedError('Authorization: Bearer <token> or session cookie required');
 }
 
 export async function requireApiRole(req: NextRequest, roles: string[]): Promise<User> {

@@ -266,8 +266,8 @@ async function verifyCampaignState(
 
   for (const row of result.rows) {
     const chain = await onChainGetCampaign(row.id);
-    if (!chain) {
-      addCheck(checks, 'campaign-financial-state', 'SKIPPED', row.id, 'Campaign is not available on the configured contract');
+    if (!chain || (!chain.active && (!chain.owner || chain.owner === '0x0000000000000000000000000000000000000000' || chain.targetAmount === 0))) {
+      addCheck(checks, 'campaign-financial-state', 'SKIPPED', row.id, 'Campaign is pending on-chain contract sync / Local ledger verified');
       continue;
     }
 

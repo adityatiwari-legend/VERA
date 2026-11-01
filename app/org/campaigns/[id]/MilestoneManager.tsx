@@ -77,7 +77,14 @@ export const MilestoneManager: React.FC<MilestoneManagerProps> = ({
 
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || 'Failed to create milestone');
+        let msg = data.error || 'Failed to create milestone';
+        if (data.details) {
+          const detailMsgs = Object.entries(data.details)
+            .map(([field, errs]) => `${field}: ${Array.isArray(errs) ? errs.join(', ') : errs}`)
+            .join('; ');
+          if (detailMsgs) msg += ` — ${detailMsgs}`;
+        }
+        throw new Error(msg);
       }
 
       setTitle('');
@@ -300,15 +307,24 @@ export const MilestoneManager: React.FC<MilestoneManagerProps> = ({
                 </div>
 
                 {isEditable && ms.status === 'LOCKED' && (
-                  <button
-                    onClick={() => handleStartMilestone(ms.id)}
-                    disabled={loading}
-                    title="Start Milestone (Transition to IN_PROGRESS)"
-                    className="inline-flex items-center gap-1 rounded-lg border border-warn/30 bg-warn-soft px-3 py-1.5 font-mono text-xs font-semibold text-warn transition-colors hover:border-warn/60 disabled:opacity-50"
-                  >
-                    <Play className="h-3 w-3" />
-                    Start
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => handleStartMilestone(ms.id)}
+                      disabled={loading}
+                      title="Start Milestone (Transition to IN_PROGRESS)"
+                      className="inline-flex items-center gap-1 rounded-lg border border-warn/30 bg-warn-soft px-3 py-1.5 font-mono text-xs font-semibold text-warn transition-colors hover:border-warn/60 disabled:opacity-50"
+                    >
+                      <Play className="h-3 w-3" />
+                      Start
+                    </button>
+                    <a
+                      href={`/org/campaigns/${campaignId}/milestones/${ms.id}/proof`}
+                      className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white transition-colors hover:bg-accent-deep"
+                    >
+                      <FileCheck className="h-3.5 w-3.5" />
+                      Submit Proof
+                    </a>
+                  </div>
                 )}
 
                 {isEditable && (ms.status === 'IN_PROGRESS' || ms.status === 'REJECTED') && (

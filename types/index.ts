@@ -374,6 +374,21 @@ export interface ContractorAssignment {
   report_status?: PotholeReportStatus;
   assigned_by_name?: string;
   escrow_id?: string | null;
+  location?: string | null;
+  title?: string;
+  scope?: string | null;
+  defect_latitude?: number | null;
+  defect_longitude?: number | null;
+  before_photo_url?: string | null;
+  before_photo_hash?: string | null;
+  escrow_status?: string | null;
+  stage1_amount?: number;
+  stage2_amount?: number;
+  stage3_amount?: number;
+  allocated_amount?: number;
+  released_stage?: number;
+  stage1_tx?: string | null;
+  solana_escrow_pda?: string | null;
 }
 
 export interface Notification {

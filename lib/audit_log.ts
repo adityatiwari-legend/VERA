@@ -184,12 +184,15 @@ export async function getAuditLogsForCampaign(campaignId: string): Promise<Audit
       a.entity_id,
       a.metadata,
       a.created_at,
+      a.prev_hash,
+      a.entry_hash,
+      a.chain_position,
       u.name as actor_name,
       u.role as actor_role
     FROM audit_logs a
     LEFT JOIN users u ON a.actor_id = u.id
     WHERE a.campaign_id = $1
-    ORDER BY a.created_at DESC
+    ORDER BY a.chain_position DESC NULLS LAST, a.created_at DESC
   `;
 
   const res = await query<AuditLog>(sql, [campaignId]);

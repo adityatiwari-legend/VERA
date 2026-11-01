@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { requireRole, AppError } from '@/lib/permissions';
+import { requireApiRole } from '@/lib/api_auth';
+import { AppError } from '@/lib/permissions';
 import { respondToAssignment } from '@/lib/hisaab';
 import { notify } from '@/lib/notifications';
 
@@ -12,7 +13,7 @@ const respondSchema = z.object({
 
 export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const user = await requireRole(['CONTRACTOR']);
+    const user = await requireApiRole(req, ['CONTRACTOR', 'ADMIN']);
     const parsed = respondSchema.safeParse(await req.json());
     if (!parsed.success) {
       return NextResponse.json(
@@ -21,7 +22,7 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
       );
     }
 
-    const assignment = await respondToAssignment(params.id, user.id, parsed.data.decision);
+    const assignment = await respondToAssignment(params.id, user.id, parsed.data.decision, user.role === 'ADMIN');
 
     await notify(
       assignment.assigned_by,
@@ -32,8 +33,8 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     );
 
     return NextResponse.json({ assignment });
-  } catch (error) {
-    if (error instanceof AppError) {
+  } catch (error: any) {
+    if (error instanceof AppError || error?.statusCode) {
       return NextResponse.json({ error: error.message }, { status: error.statusCode });
     }
     console.error('POST /api/hisaab/assignments/[id]/respond error:', error);

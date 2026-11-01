@@ -80,10 +80,10 @@ export async function createProof(
         throw new ForbiddenError('You can only submit proof for your own campaign milestones');
       }
 
-      // Status check: Proof can only be submitted for IN_PROGRESS or previously REJECTED milestones
-      if (milestone.status !== 'IN_PROGRESS' && milestone.status !== 'REJECTED') {
+      // Status check: Proof can be submitted for LOCKED, IN_PROGRESS or previously REJECTED milestones
+      if (milestone.status !== 'IN_PROGRESS' && milestone.status !== 'REJECTED' && milestone.status !== 'LOCKED') {
         throw new AppError(
-          `Cannot submit proof for milestone in "${milestone.status}" status. Milestone must be IN_PROGRESS or REJECTED.`,
+          `Cannot submit proof for milestone in "${milestone.status}" status. Milestone must be LOCKED, IN_PROGRESS or REJECTED.`,
           400
         );
       }

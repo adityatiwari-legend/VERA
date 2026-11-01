@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import { getCampaignAuditDetails } from '@/lib/campaigns';
 import { getCampaignAuditTimeline } from '@/lib/audit_timeline';
 import { runIntegrityChecks } from '@/lib/integrity';
+import { getAuditLogsForCampaign } from '@/lib/audit_log';
+import { BlockchainAuditViewer } from '@/components/BlockchainAuditViewer';
 import {
   ShieldCheck,
   Building2,
@@ -32,10 +34,11 @@ export default async function PublicAuditDashboardPage({
 }: {
   params: { id: string };
 }) {
-  const [details, timeline, integrity] = await Promise.all([
+  const [details, timeline, integrity, auditLogs] = await Promise.all([
     getCampaignAuditDetails(params.id),
     getCampaignAuditTimeline(params.id),
     runIntegrityChecks(params.id),
+    getAuditLogsForCampaign(params.id),
   ]);
 
   if (!details) {
@@ -734,6 +737,13 @@ export default async function PublicAuditDashboardPage({
           </div>
         )}
       </div>
+
+      {/* On-Chain Cryptographic Block Explorer */}
+      <BlockchainAuditViewer
+        logs={auditLogs}
+        title="On-Chain Block Explorer & Cryptographic Verification"
+        subtitle="SHA-256 state hashing, Merkle parent linkage, and multi-party cryptographic signatures"
+      />
 
       {/* Legal & Regulatory Integrity Footer */}
       <div className="card space-y-1 border-line bg-mist p-4 font-mono text-xs text-mute">

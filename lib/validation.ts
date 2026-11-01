@@ -113,12 +113,12 @@ export const createMilestoneSchema = z.object({
   title: z
     .string()
     .trim()
-    .min(3, 'Title must be at least 3 characters')
+    .min(2, 'Title must be at least 2 characters')
     .max(255, 'Title cannot exceed 255 characters'),
   description: z
     .string()
     .trim()
-    .min(10, 'Description must be at least 10 characters')
+    .min(1, 'Description is required')
     .max(2000, 'Description cannot exceed 2000 characters'),
   amount: z.coerce
     .number()
@@ -136,13 +136,13 @@ export const updateMilestoneSchema = z.object({
   title: z
     .string()
     .trim()
-    .min(3, 'Title must be at least 3 characters')
+    .min(2, 'Title must be at least 2 characters')
     .max(255, 'Title cannot exceed 255 characters')
     .optional(),
   description: z
     .string()
     .trim()
-    .min(10, 'Description must be at least 10 characters')
+    .min(1, 'Description is required')
     .max(2000, 'Description cannot exceed 2000 characters')
     .optional(),
   amount: z.coerce

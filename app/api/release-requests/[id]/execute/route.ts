@@ -8,7 +8,7 @@ interface RouteParams {
 
 export async function POST(request: Request, { params }: RouteParams) {
   try {
-    const user = await requireRole(['ORGANIZATION', 'ADMIN']);
+    const user = await requireRole(['ORGANIZATION', 'ADMIN', 'AUDITOR']);
     const { id: releaseRequestId } = await params;
 
     let recipientAddress: string | undefined;

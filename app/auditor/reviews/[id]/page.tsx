@@ -4,6 +4,9 @@ import { notFound, redirect } from 'next/navigation';
 import { getCurrentUser } from '@/lib/auth';
 import { getProofById } from '@/lib/proofs';
 import { getAuditLogsForCampaign } from '@/lib/audit_log';
+import { getMilestoneById } from '@/lib/milestones';
+import { MilestoneReleaseTracker } from '@/components/MilestoneReleaseTracker';
+import { BlockchainAuditViewer } from '@/components/BlockchainAuditViewer';
 import { formatRupees } from '@/lib/utils';
 import {
   ArrowLeft,
@@ -14,6 +17,7 @@ import {
   ExternalLink,
   History,
   ShieldAlert,
+  Coins,
 } from 'lucide-react';
 import { AuditorActionForm } from './AuditorActionForm';
 
@@ -55,7 +59,10 @@ export default async function AuditorReviewDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const auditLogs = proof.campaign_id ? await getAuditLogsForCampaign(proof.campaign_id) : [];
+  const [auditLogs, milestone] = await Promise.all([
+    proof.campaign_id ? getAuditLogsForCampaign(proof.campaign_id) : Promise.resolve([]),
+    proof.milestone_id ? getMilestoneById(proof.milestone_id) : Promise.resolve(null),
+  ]);
 
   const ver = proof.verification;
   const claimed = Number(proof.claimed_amount);
@@ -264,37 +271,46 @@ export default async function AuditorReviewDetailPage({ params }: PageProps) {
             currentStatus={proof.status}
           />
 
-          {/* Immutable Audit Trail for this Campaign */}
-          <section className="card overflow-hidden">
-            <div className="p-5 border-b border-line flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <History className="w-4 h-4 text-mute" />
-                <h2 className="text-base font-semibold tracking-tight text-ink">Campaign Audit Log</h2>
+          {/* Escrow Fund Release Governance Tracker */}
+          <section className="card p-6 space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-line pb-4">
+              <div className="flex items-center gap-2.5">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-accent/25 bg-accent-faint text-accent">
+                  <Coins className="w-4 h-4" />
+                </span>
+                <div>
+                  <h2 className="text-base font-semibold tracking-tight text-ink">
+                    Escrow Fund Release Governance (2-of-3 Multisig)
+                  </h2>
+                  <p className="text-xs text-mute">
+                    Authorize, sign, and execute on-chain escrow release once evidence review is complete.
+                  </p>
+                </div>
               </div>
-              <span className="font-mono text-[11px] text-faint">Append-only audit ledger</span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-ok/25 bg-ok-soft px-3 py-1 font-mono text-xs font-semibold text-ok shrink-0">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                Multisig Custody
+              </span>
             </div>
 
-            <div className="divide-y divide-line max-h-72 overflow-y-auto">
-              {auditLogs.slice(0, 10).map((log) => (
-                <div key={log.id} className="p-4 sm:px-5 flex items-start justify-between gap-3 text-xs transition-colors hover:bg-mist">
-                  <div className="space-y-0.5">
-                    <span className="font-semibold text-ink block">{log.action}</span>
-                    <span className="text-[11px] text-mute">
-                      By {log.actor_name || 'System'} ({log.actor_role}) • Entity: {log.entity_type} #{log.entity_id?.slice(0, 8)}
-                    </span>
-                    {log.metadata && Object.keys(log.metadata).length > 0 && (
-                      <pre className="text-[10px] text-mute font-mono bg-mist p-2 rounded mt-1 overflow-x-auto border border-line">
-                        {JSON.stringify(log.metadata)}
-                      </pre>
-                    )}
-                  </div>
-                  <span className="text-[10px] text-faint font-mono shrink-0">
-                    {new Date(log.created_at).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}
-                  </span>
-                </div>
-              ))}
-            </div>
+            {milestone ? (
+              <MilestoneReleaseTracker
+                milestone={milestone}
+                currentUser={user}
+              />
+            ) : (
+              <div className="p-4 text-center font-mono text-xs text-mute">
+                Associated milestone information unavailable.
+              </div>
+            )}
           </section>
+
+          {/* Immutable Blockchain Audit Trail for this Campaign */}
+          <BlockchainAuditViewer
+            logs={auditLogs}
+            title="Campaign Immutable Audit Trail"
+            subtitle="Verified chronological state transitions & cryptographic signatures"
+          />
         </div>
 
         {/* Side panel: verification status & AI findings */}

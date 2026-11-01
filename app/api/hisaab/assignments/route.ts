@@ -1,20 +1,41 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { requireAuth, requireRole, AppError } from '@/lib/permissions';
+import { requireApiAuth, requireApiRole } from '@/lib/api_auth';
 import { createAssignmentSchema } from '@/lib/validation';
 import { createAssignment, listAssignments } from '@/lib/hisaab';
 import { notify } from '@/lib/notifications';
+import { User } from '@/types';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
-    const user = await requireAuth();
-    if (user.role === 'CONTRACTOR') {
-      const assignments = await listAssignments({ contractorId: user.id });
-      return NextResponse.json({ assignments });
+    let user: User | null = null;
+    try {
+      user = await requireApiAuth(req);
+    } catch {
+      // Allow query param filtering if token is omitted or guest
     }
-    // ADMIN (and other roles with visibility needs) see all
-    const assignments = await listAssignments({});
+
+    const { searchParams } = new URL(req.url);
+    const rawContractorId = searchParams.get('contractor_id');
+    const contractorIdParam =
+      rawContractorId && rawContractorId !== 'undefined' && rawContractorId !== 'null' && rawContractorId.trim() !== ''
+        ? rawContractorId.trim()
+        : undefined;
+
+    const rawStatus = searchParams.get('status');
+    const statusParam =
+      rawStatus && rawStatus !== 'undefined' && rawStatus !== 'null' && rawStatus !== 'ALL' && rawStatus.trim() !== ''
+        ? rawStatus.trim()
+        : undefined;
+
+    const targetContractorId = user?.role === 'CONTRACTOR' ? user.id : contractorIdParam;
+
+    const assignments = await listAssignments({
+      contractorId: targetContractorId,
+      status: statusParam,
+    });
+
     return NextResponse.json({ assignments });
   } catch (error) {
     console.error('GET /api/hisaab/assignments error:', error);
@@ -24,7 +45,7 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
-    const user = await requireRole(['ADMIN']);
+    const user = await requireApiRole(req, ['ADMIN']);
     const parsed = createAssignmentSchema.safeParse(await req.json());
     if (!parsed.success) {
       return NextResponse.json(
@@ -49,8 +70,8 @@ export async function POST(req: NextRequest) {
     );
 
     return NextResponse.json({ assignment }, { status: 201 });
-  } catch (error) {
-    if (error instanceof AppError) {
+  } catch (error: any) {
+    if (error?.statusCode) {
       return NextResponse.json({ error: error.message }, { status: error.statusCode });
     }
     console.error('POST /api/hisaab/assignments error:', error);

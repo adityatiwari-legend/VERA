@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { SignJWT, jwtVerify } from 'jose';
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { query } from './db';
 import { User, SessionPayload, UserRole } from '../types';
 
@@ -72,6 +72,51 @@ export async function getSession(): Promise<SessionPayload | null> {
  * Get current authenticated user from database using session cookie
  */
 export async function getCurrentUser(): Promise<User | null> {
+  // 1. Check Bearer token in Authorization header (Mobile apps & API clients)
+  try {
+    const headersList = headers();
+    const authHeader = headersList.get('authorization') || '';
+    if (authHeader.toLowerCase().startsWith('bearer ')) {
+      const raw = authHeader.slice(7).trim();
+      if (raw) {
+        if (raw.startsWith('vera_')) {
+          const crypto = await import('crypto');
+          const tokenHash = crypto.createHash('sha256').update(raw).digest('hex');
+          const res = await query<User>(
+            `SELECT u.id, u.name, u.email, u.wallet_address, u.role, u.org_type, u.org_status,
+                    u.org_registration_no, u.contractor_status, u.service_area, u.solana_pubkey,
+                    u.account_status, u.created_at, u.updated_at
+             FROM api_tokens t
+             JOIN users u ON u.id = t.user_id
+             WHERE t.token_hash = $1
+               AND (t.expires_at IS NULL OR t.expires_at > NOW())
+               AND (u.account_status IS NULL OR u.account_status = 'ACTIVE')`,
+            [tokenHash]
+          );
+          if (res.rows[0]) {
+            query(`UPDATE api_tokens SET last_used_at = NOW() WHERE token_hash = $1`, [tokenHash]).catch(() => {});
+            return res.rows[0];
+          }
+        } else {
+          const session = await verifySessionToken(raw);
+          if (session?.userId) {
+            const res = await query<User>(
+              `SELECT id, name, email, wallet_address, role, org_type, org_status, org_registration_no,
+                      contractor_status, service_area, solana_pubkey, account_status, created_at, updated_at
+               FROM users
+               WHERE id = $1 AND (account_status IS NULL OR account_status = 'ACTIVE')`,
+              [session.userId]
+            );
+            if (res.rows[0]) return res.rows[0];
+          }
+        }
+      }
+    }
+  } catch {
+    // headers() may throw outside of request context
+  }
+
+  // 2. Check session cookie
   const session = await getSession();
   if (!session?.userId) {
     return null;

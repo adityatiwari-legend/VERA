@@ -61,8 +61,8 @@ export default async function SubmitProofPage({ params }: PageProps) {
 
   const milestone = msRes.rows[0];
 
-  // Milestone must be IN_PROGRESS or REJECTED
-  const isEligible = milestone.status === 'IN_PROGRESS' || milestone.status === 'REJECTED';
+  // Milestone can receive proof in LOCKED, IN_PROGRESS or REJECTED
+  const isEligible = milestone.status === 'IN_PROGRESS' || milestone.status === 'REJECTED' || milestone.status === 'LOCKED';
 
   // Check if there is an existing rejected proof to show rejection history
   const previousProofsRes = await query<Proof>(

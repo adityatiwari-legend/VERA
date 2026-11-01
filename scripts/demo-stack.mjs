@@ -141,12 +141,19 @@ async function main() {
     await waitPort(3000, 'Next dev server', 90000);
   }
 
-  console.log('\n[demo-stack] ✅ Full stack is up:');
+  console.log('\n[demo-stack] ✅ Full stack is up and active:');
   console.log('   App:            http://localhost:3000');
-  console.log('   Postgres:       localhost:5433 (docker vera-db)');
+  console.log('   Database:       TigerDB (Timescale Cloud)');
   console.log('   EVM (Ethereum): http://localhost:8545 (Hardhat, chain 31337)');
   console.log('   Solana:         http://localhost:8899 (localnet, Hisaab program deployed)');
-  console.log('   Keep this terminal open — closing it stops the stack.\n');
+  console.log('   ------------------------------------------------------------');
+  console.log('   Admin Login:    admin@vera.org');
+  console.log('   Admin Password: adminpassword123');
+  console.log('   ------------------------------------------------------------');
+  console.log('   Keep this window open — closing it stops the stack.\n');
+
+  // Keep process alive so Windows console window stays open indefinitely
+  setInterval(() => {}, 1000 * 60 * 60 * 24);
 }
 
 main().catch((err) => {

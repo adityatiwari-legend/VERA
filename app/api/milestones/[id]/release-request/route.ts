@@ -25,7 +25,7 @@ export async function GET(request: Request, { params }: RouteParams) {
 
 export async function POST(request: Request, { params }: RouteParams) {
   try {
-    const user = await requireRole(['ORGANIZATION', 'ADMIN']);
+    const user = await requireRole(['ORGANIZATION', 'ADMIN', 'AUDITOR']);
     const { id: milestoneId } = await params;
 
     let amount: number | undefined;

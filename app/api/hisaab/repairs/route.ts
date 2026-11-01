@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
-import { requireRole, AppError, NotFoundError } from '@/lib/permissions';
+import { requireApiRole } from '@/lib/api_auth';
+import { AppError, NotFoundError } from '@/lib/permissions';
 import {
   createRepairSubmission,
   getPotholeReport,
@@ -21,7 +22,7 @@ const ROUGHNESS_THRESHOLD = Number(process.env.ROUGHNESS_THRESHOLD || 3.0);
 
 export async function POST(req: NextRequest) {
   try {
-    const user = await requireRole(['CONTRACTOR', 'ADMIN']);
+    const user = await requireApiRole(req, ['CONTRACTOR', 'ADMIN']);
 
     const form = await req.formData();
     const reportId = String(form.get('report_id') || '');

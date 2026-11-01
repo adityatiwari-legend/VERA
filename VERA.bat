@@ -1,13 +1,15 @@
 @echo off
-title VERA local stack
+title VERA Full Stack
 cd /d "%~dp0"
 echo ================================================
-echo   VERA - starting the full stack
-echo   (Postgres + migrations + Hardhat + Solana + web)
+echo   VERA - Starting Full Stack
+echo   (TigerDB + Hardhat EVM + Solana + Next.js)
 echo ================================================
 echo.
-npm run demo:stack
+call npm run demo:stack
 echo.
-echo [VERA] Stack is running. Keep this window open;
-echo closing it stops the web app and local chains.
-pause >nul
+echo ================================================
+echo   [VERA] Stack has stopped or exited.
+echo   Press any key to close this terminal...
+echo ================================================
+pause

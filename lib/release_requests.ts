@@ -58,15 +58,15 @@ export async function createReleaseRequest(
 
     const milestone = msRes.rows[0];
 
-    // Check permissions: NGO owner or platform ADMIN
+    // Check permissions: NGO owner, certified AUDITOR, or platform ADMIN
     const userRes = await client.query(`SELECT id, role, name FROM users WHERE id = $1`, [userId]);
     if (userRes.rowCount === 0) {
       throw new NotFoundError('User not found');
     }
     const user = userRes.rows[0];
 
-    if (user.role !== 'ADMIN' && milestone.campaign_ngo_id !== userId) {
-      throw new ForbiddenError('Only the campaign NGO or platform admin can request fund releases.');
+    if (user.role !== 'ADMIN' && user.role !== 'AUDITOR' && milestone.campaign_ngo_id !== userId) {
+      throw new ForbiddenError('Only the campaign NGO, certified auditor, or platform admin can request fund releases.');
     }
 
     if (milestone.status === 'RELEASED') {

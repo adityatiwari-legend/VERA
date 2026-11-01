@@ -815,14 +815,31 @@ export async function listAssignments(opts: { contractorId?: string; status?: st
   const res = await query<ContractorAssignment>(
     `SELECT a.*,
             c.name AS contractor_name, c.contractor_status, c.solana_pubkey AS contractor_pubkey,
-            r.address_label AS report_address_label, r.status AS report_status,
+            r.address_label AS report_address_label,
+            r.address_label AS location,
+            COALESCE('Road Repair: ' || r.address_label, 'Road Defect Repair') AS title,
+            r.description AS scope,
+            r.status AS report_status,
+            r.latitude AS defect_latitude,
+            r.longitude AS defect_longitude,
+            r.media_file_path AS before_photo_url,
+            r.media_sha256 AS before_photo_hash,
             admin.name AS assigned_by_name,
-            (SELECT e.id::text FROM hisaab_escrows e WHERE e.report_id = a.report_id LIMIT 1) AS escrow_id
+            e.id AS escrow_id,
+            e.status AS escrow_status,
+            COALESCE(e.stage1_amount, 0) AS stage1_amount,
+            COALESCE(e.stage2_amount, 0) AS stage2_amount,
+            COALESCE(e.stage3_amount, 0) AS stage3_amount,
+            (COALESCE(e.stage1_amount, 0) + COALESCE(e.stage2_amount, 0) + COALESCE(e.stage3_amount, 0)) AS allocated_amount,
+            e.released_stage,
+            e.solana_tx_hash AS stage1_tx,
+            e.solana_escrow_pda
      FROM contractor_assignments a
      JOIN users c ON c.id = a.contractor_id
      JOIN pothole_reports r ON r.id = a.report_id
      JOIN users admin ON admin.id = a.assigned_by
-     WHERE ($1::uuid IS NULL OR a.contractor_id = $1::uuid)
+     LEFT JOIN hisaab_escrows e ON e.report_id = a.report_id
+     WHERE ($1::text IS NULL OR $1::text = '' OR a.contractor_id::text = $1::text)
        AND ($2::text IS NULL OR a.status = $2)
      ORDER BY a.offered_at DESC
      LIMIT 200`,
@@ -835,12 +852,30 @@ export async function getAssignmentById(id: string): Promise<ContractorAssignmen
   const res = await query<ContractorAssignment>(
     `SELECT a.*,
             c.name AS contractor_name, c.contractor_status, c.solana_pubkey AS contractor_pubkey,
-            r.address_label AS report_address_label, r.status AS report_status,
-            admin.name AS assigned_by_name
+            r.address_label AS report_address_label,
+            r.address_label AS location,
+            COALESCE('Road Repair: ' || r.address_label, 'Road Defect Repair') AS title,
+            r.description AS scope,
+            r.status AS report_status,
+            r.latitude AS defect_latitude,
+            r.longitude AS defect_longitude,
+            r.media_file_path AS before_photo_url,
+            r.media_sha256 AS before_photo_hash,
+            admin.name AS assigned_by_name,
+            e.id AS escrow_id,
+            e.status AS escrow_status,
+            COALESCE(e.stage1_amount, 0) AS stage1_amount,
+            COALESCE(e.stage2_amount, 0) AS stage2_amount,
+            COALESCE(e.stage3_amount, 0) AS stage3_amount,
+            (COALESCE(e.stage1_amount, 0) + COALESCE(e.stage2_amount, 0) + COALESCE(e.stage3_amount, 0)) AS allocated_amount,
+            e.released_stage,
+            e.solana_tx_hash AS stage1_tx,
+            e.solana_escrow_pda
      FROM contractor_assignments a
      JOIN users c ON c.id = a.contractor_id
      JOIN pothole_reports r ON r.id = a.report_id
      JOIN users admin ON admin.id = a.assigned_by
+     LEFT JOIN hisaab_escrows e ON e.report_id = a.report_id
      WHERE a.id = $1::uuid`,
     [id]
   );
@@ -850,7 +885,8 @@ export async function getAssignmentById(id: string): Promise<ContractorAssignmen
 export async function respondToAssignment(
   id: string,
   contractorId: string,
-  decision: 'ACCEPTED' | 'DECLINED'
+  decision: 'ACCEPTED' | 'DECLINED',
+  isAdmin = false
 ): Promise<ContractorAssignment> {
   return withTransaction(async (client) => {
     const cur = await client.query<ContractorAssignment>(
@@ -858,7 +894,7 @@ export async function respondToAssignment(
       [id]
     );
     if (!cur.rows[0]) throw new NotFoundError('Assignment not found');
-    if (cur.rows[0].contractor_id !== contractorId) {
+    if (!isAdmin && cur.rows[0].contractor_id !== contractorId) {
       throw new AppError('This assignment belongs to another contractor', 403);
     }
     if (cur.rows[0].status !== 'OFFERED') {

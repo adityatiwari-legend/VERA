@@ -11,6 +11,7 @@ import { StatusBadge } from '@/components/StatusBadge';
 import { ProgressBar } from '@/components/ProgressBar';
 import { CampaignStatusActions } from './CampaignStatusActions';
 import { MilestoneManager } from './MilestoneManager';
+import { BlockchainAuditViewer } from '@/components/BlockchainAuditViewer';
 import { formatRupees } from '@/lib/utils';
 import {
   ArrowLeft,
@@ -304,48 +305,8 @@ export default async function CampaignDetailPage({
         )}
       </div>
 
-      {/* Audit Log Trail */}
-      <div className="card overflow-hidden">
-        <div className="flex items-center justify-between border-b border-line p-5">
-          <div className="flex items-center gap-2">
-            <History className="h-4 w-4 text-mute" />
-            <h2 className="text-sm font-semibold text-ink">Immutable Audit Log</h2>
-          </div>
-          <span className="font-mono text-[11px] text-faint">
-            {auditLogs.length} events
-          </span>
-        </div>
-
-        {auditLogs.length === 0 ? (
-          <p className="p-8 font-mono text-xs text-faint">No audit log entries recorded yet.</p>
-        ) : (
-          <div className="max-h-72 divide-y divide-line overflow-y-auto">
-            {auditLogs.map((log) => (
-              <div key={log.id} className="p-4 transition-colors hover:bg-mist">
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-2">
-                    <span className="rounded border border-line bg-mist px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-mute">
-                      {log.action}
-                    </span>
-                    <span className="text-xs font-medium text-mute">
-                      by <span className="text-ink">{log.actor_name || 'System'}</span> ({log.actor_role || 'ORGANIZATION'})
-                    </span>
-                  </div>
-                  <span className="font-mono text-[10px] text-faint">
-                    {new Date(log.created_at).toLocaleString('en-IN')}
-                  </span>
-                </div>
-
-                {log.metadata && Object.keys(log.metadata).length > 0 && (
-                  <pre className="mt-2 overflow-x-auto rounded-lg border border-line bg-mist p-2 font-mono text-[10px] text-accent-deep">
-                    {JSON.stringify(log.metadata, null, 2)}
-                  </pre>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+      {/* Immutable Blockchain Audit Trail */}
+      <BlockchainAuditViewer logs={auditLogs} />
     </div>
   );
 }

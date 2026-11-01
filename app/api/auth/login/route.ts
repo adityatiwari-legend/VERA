@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { rateLimit, clientIp } from '@/lib/rate_limit';
 import { query } from '@/lib/db';
 import { verifyPassword, signSessionToken, setSessionCookie } from '@/lib/auth';
+import { issueApiToken } from '@/lib/api_auth';
 import { recordLoginEvent } from '@/lib/login_audit';
 import { loginSchema } from '@/lib/validation';
 import { UserWithPasswordHash } from '@/types';
@@ -85,8 +86,9 @@ export async function POST(request: NextRequest) {
     });
 
     const { password_hash, ...user } = userWithHash;
+    const { token: apiToken } = await issueApiToken(userWithHash.id, 'app_login');
 
-    return NextResponse.json({ user });
+    return NextResponse.json({ user, token: apiToken });
   } catch (error: any) {
     console.error('Login error:', error);
     return NextResponse.json(
