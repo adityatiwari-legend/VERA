@@ -13,11 +13,14 @@ declare global {
   var __dbPool: Pool | undefined;
 }
 
+const isSsl = connectionString.includes('sslmode=require') || connectionString.includes('tsdb.cloud.timescale.com');
+
 const pool = global.__dbPool || new Pool({
   connectionString,
+  ssl: isSsl ? { rejectUnauthorized: false } : undefined,
   max: 20,
   idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 5000,
+  connectionTimeoutMillis: 10000,
 });
 
 if (process.env.NODE_ENV !== 'production') {

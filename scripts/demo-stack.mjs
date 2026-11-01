@@ -62,7 +62,10 @@ function runAwait(cmd, args) {
 
 async function main() {
   // 1. Postgres
-  if (await portOpen(5433)) {
+  const isLocalDb = (process.env.DATABASE_URL || '').includes('5433') || (process.env.DATABASE_URL || '').includes('127.0.0.1');
+  if (!isLocalDb) {
+    console.log('[demo-stack] Using cloud database (TigerDB/Timescale) — skipping local Docker Postgres');
+  } else if (await portOpen(5433)) {
     console.log('[demo-stack] Postgres already running on :5433');
   } else {
     console.log('[demo-stack] starting Postgres (docker compose vera-db)…');

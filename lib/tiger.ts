@@ -19,11 +19,13 @@ declare global {
 
 export function getPool(): Pool | null {
   if (!TIGER_URL) return null;
+  const isSsl = TIGER_URL.includes('sslmode=require') || TIGER_URL.includes('tsdb.cloud.timescale.com');
   if (global.__tigerPool === undefined) {
     global.__tigerPool = new Pool({
       connectionString: TIGER_URL,
+      ssl: isSsl ? { rejectUnauthorized: false } : undefined,
       max: 5,
-      connectionTimeoutMillis: 5000,
+      connectionTimeoutMillis: 10000,
     });
   }
   return global.__tigerPool ?? null;
@@ -35,13 +37,26 @@ export function isTigerConfigured(): boolean {
 
 const HYPERTABLE_DDL = `
 CREATE TABLE IF NOT EXISTS roughness_readings (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  id UUID DEFAULT gen_random_uuid(),
   report_id UUID,
   device_label VARCHAR(120),
   accel_z REAL NOT NULL,
   speed_kmh REAL,
-  recorded_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+  recorded_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  PRIMARY KEY (id, recorded_at)
 );
+
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.table_constraints
+    WHERE table_name = 'roughness_readings' AND constraint_type = 'PRIMARY KEY'
+  ) THEN
+    ALTER TABLE roughness_readings DROP CONSTRAINT IF EXISTS roughness_readings_pkey;
+    ALTER TABLE roughness_readings ADD PRIMARY KEY (id, recorded_at);
+  END IF;
+END $$;
+
 SELECT create_hypertable('roughness_readings', 'recorded_at', if_not_exists => TRUE, migrate_data => TRUE);
 `;
 
