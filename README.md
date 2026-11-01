@@ -17,7 +17,7 @@
 
 | 📱 **Companion Android App** | 🎥 **Presentation** | 🌐 **Live Demo** |
 |:---:|:---:|:---:|
-| [**➡️ RoadProof Mobile Repo**](https://github.com/vineetm1204-m/MLH-RoadProofxVera) <br/> *(Flutter — click to open)* | [**▶️ View Slides**](https://YOUR_PRESENTATION_LINK) | [**🚀 Try it Live**](https://YOUR_DEMO_LINK) |
+| [**➡️ RoadProof Mobile Repo**](https://github.com/vineetm1204-m/MLH-RoadProofxVera) <br/> *(Flutter — click to open)* | [**▶️ View Slides**](https://drive.google.com/file/d/1YVqdf17rr34flARb1uczy3JVG23WRZmX/view?usp=sharing) | [**🚀 Try it Live**](https://vera-one-nu.vercel.app) |
 
 
 </div>
@@ -474,6 +474,6 @@ Distributed under the **MIT License**. See `LICENSE` for details.
 
 **Built with ❤️ for transparent, accountable public infrastructure.**
 
-[📱 Android App](https://github.com/vineetm1204-m/MLH-RoadProofxVera) · [🎥 Presentation](https://YOUR_PRESENTATION_LINK) · [🚨 Problem](#-problem-statement) · [👥 Team](#-theycalluscoders)
+[📱 Android App](https://github.com/vineetm1204-m/MLH-RoadProofxVera) · [🎥 Presentation](https://drive.google.com/file/d/1YVqdf17rr34flARb1uczy3JVG23WRZmX/view?usp=sharing) · [🚨 Problem](#-problem-statement) · [👥 Team](#-theycalluscoders)
 
 </div>
