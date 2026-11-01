@@ -1,0 +1,140 @@
+
+> vera@0.2.0 dev
+> next dev -H 0.0.0.0
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Network:      http://0.0.0.0:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 3.7s
+ ○ Compiling / ...
+ ✓ Compiled / in 4.8s (1530 modules)
+(node:4840) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ GET / 200 in 6127ms
+ GET / 200 in 188ms
+ ○ Compiling /api/nav ...
+ ✓ Compiled /api/nav in 835ms (919 modules)
+ ✓ Compiled (1112 modules)
+ GET /api/blockchain/stats 200 in 1535ms
+ GET /api/nav 401 in 1383ms
+ GET /api/blockchain/stats 200 in 51ms
+ GET /api/nav 401 in 65ms
+ GET /api/audit/ledger 401 in 1608ms
+ GET /api/auth/me 401 in 1773ms
+ GET /api/auth/me 401 in 70ms
+ GET /api/audit/ledger 401 in 79ms
+ GET /api/auth/me 401 in 58ms
+ GET /api/auth/me 401 in 44ms
+ ✓ Compiled /favicon.ico in 282ms (1141 modules)
+ GET /favicon.ico 200 in 359ms
+ GET /favicon.ico 200 in 21ms
+ GET /favicon.ico 200 in 17ms
+ GET /favicon.ico 200 in 22ms
+ GET /favicon.ico 200 in 19ms
+ GET /favicon.ico 200 in 26ms
+ GET /favicon.ico 200 in 21ms
+ GET /favicon.ico 200 in 20ms
+ GET /favicon.ico 200 in 14ms
+ GET /favicon.ico 200 in 23ms
+ GET /favicon.ico 200 in 14ms
+ GET /favicon.ico 200 in 12ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 690ms (1574 modules)
+ GET /login 200 in 834ms
+ ✓ Compiled /api/nav in 249ms (1043 modules)
+ ✓ Compiled (1145 modules)
+ GET /api/auth/me 401 in 593ms
+ GET /api/blockchain/stats 200 in 607ms
+ GET /api/blockchain/stats 200 in 39ms
+ GET /api/auth/me 401 in 82ms
+ GET /api/auth/me 401 in 92ms
+ GET /api/auth/me 401 in 50ms
+ GET /api/nav 401 in 1161ms
+ GET /api/nav 401 in 80ms
+ GET /favicon.ico 200 in 32ms
+ ○ Compiling /hisaab ...
+ ✓ Compiled /hisaab in 1407ms (2132 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /hisaab 200 in 1851ms
+ GET /api/auth/me 401 in 86ms
+ GET /api/nav 401 in 98ms
+ ✓ Compiled /api/health in 383ms (1359 modules)
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+ GET /api/health 200 in 782ms
+ GET /api/nav 401 in 748ms
+ GET /api/health 200 in 45ms
+ GET /api/auth/me 401 in 959ms
+ GET /api/auth/me 401 in 45ms
+ GET /api/auth/me 401 in 64ms
+ GET /favicon.ico 200 in 18ms
+ GET /favicon.ico 200 in 15ms
+ GET /api/blockchain/stats 200 in 81ms
+ GET /api/auth/me 401 in 308ms
+ GET /api/blockchain/stats 200 in 47ms
+ GET /api/auth/me 401 in 90ms
+ GET /api/auth/me 401 in 237ms
+ GET /api/nav 401 in 431ms
+ GET /api/nav 401 in 71ms
+ GET /api/auth/me 401 in 361ms
+ GET /api/auth/me 401 in 67ms
+ ✓ Compiled /api/audit/ledger in 471ms (1362 modules)
+ GET /api/audit/ledger 401 in 624ms
+ GET /api/audit/ledger 401 in 45ms
+ ✓ Compiled in 1216ms (1934 modules)
+ ✓ Compiled in 568ms (792 modules)
+ ✓ Compiled /api/hisaab/analyze in 487ms (1170 modules)
+POST /api/hisaab/analyze error: TypeError: Content-Type was not one of "multipart/form-data" or "application/x-www-form-urlencoded".
+    at node:internal/deps/undici/undici:6173:19
+    at successSteps (node:internal/deps/undici/undici:6202:27)
+    at readAllBytes (node:internal/deps/undici/undici:5164:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+ POST /api/hisaab/analyze 500 in 658ms
+Gemini pothole analysis failed: GoogleGenerativeAIFetchError: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent: [401 Unauthorized] API key not valid. Please pass a valid API key. [{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"method":"google.ai.generativelanguage.v1beta.GenerativeService.GenerateContent","service":"generativelanguage.googleapis.com"}}]
+    at handleResponseNotOk (webpack-internal:///(rsc)/./node_modules/@google/generative-ai/dist/index.mjs:455:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async makeRequest (webpack-internal:///(rsc)/./node_modules/@google/generative-ai/dist/index.mjs:424:9)
+    at async generateContent (webpack-internal:///(rsc)/./node_modules/@google/generative-ai/dist/index.mjs:888:22)
+    at async generateWithRetry (webpack-internal:///(rsc)/./lib/gemini.ts:24:16)
+    at async analyzePotholePhoto (webpack-internal:///(rsc)/./lib/gemini.ts:79:21)
+    at async POST (webpack-internal:///(rsc)/./app/api/hisaab/analyze/route.ts:24:31)
+    at async D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\HackXxMUJ\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\HackXxMUJ\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\HackXxMUJ\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\HackXxMUJ\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\HackXxMUJ\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\HackXxMUJ\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  status: 401,
+  statusText: 'Unauthorized',
+  errorDetails: [
+    {
+      '@type': 'type.googleapis.com/google.rpc.ErrorInfo',
+      reason: 'ACCESS_TOKEN_TYPE_UNSUPPORTED',
+      metadata: [Object]
+    }
+  ]
+}
+ POST /api/hisaab/analyze 200 in 733ms
+ ✓ Compiled in 1136ms (1962 modules)
+ ✓ Compiled in 732ms (1934 modules)

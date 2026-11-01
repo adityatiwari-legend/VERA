@@ -17,32 +17,50 @@ export async function POST(req: NextRequest) {
     const geminiOutcome = await analyzePotholePhoto(buffer, photo.type || 'image/jpeg', gpsHint || undefined);
 
     const result = geminiOutcome.result;
-    const severity = result?.severity || 'HIGH';
-    const confidence = result?.confidence ?? 0.88;
 
+    if (!result) {
+      const assessment = {
+        severity: 'LOW',
+        size_estimate_cm: null,
+        surface_type: null,
+        description_hinglish:
+          'AI Vision analysis requires a valid Google Gemini API key. Photo queued for manual citizen verification.',
+        confidence: 0.1,
+        visible_characteristics: ['Unverified by AI — API Key needed'],
+        limitations:
+          'To enable real-time visual inspection, please provide a valid GEMINI_API_KEY from aistudio.google.com in .env.local.',
+        damage_detected: false,
+        damage_type: 'Unverified / Non-Road Subject',
+        safety_risk: 'Unverified — Manual citizen and municipal verification required',
+        image_suitable: false,
+        assessment_status: 'FLAG',
+      };
+      return NextResponse.json({ assessment });
+    }
+
+    const isDefect = result.confidence >= 0.4 && (result.severity === 'HIGH' || result.severity === 'MEDIUM');
     const assessment = {
-      severity,
-      size_estimate_cm: result?.size_estimate_cm ?? 45.0,
-      surface_type: result?.surface_type || 'asphalt',
-      description_hinglish:
-        result?.description_hinglish ||
-        'Sadak par gehra khadda (pothole) paya gaya hai jo traffic aur do-pahia vahanon ke liye khatarnak hai.',
-      confidence,
-      visible_characteristics: [
-        'Cavity depression visible',
-        'Asphalt aggregate degradation',
-        'Sub-base displacement',
-      ],
+      severity: result.severity,
+      size_estimate_cm: isDefect ? result.size_estimate_cm : null,
+      surface_type: isDefect ? (result.surface_type || 'asphalt') : (result.surface_type || null),
+      description_hinglish: result.description_hinglish,
+      confidence: result.confidence,
+      visible_characteristics: isDefect
+        ? ['Cavity depression visible', 'Surface asphalt displacement', 'Aggregate wear']
+        : ['No visible road hazard', 'Surface intact or non-road subject'],
       limitations:
         'AI vision analysis is derived from 2D monocular photographic evidence. Municipal repair consensus requires citizen verification.',
-      damage_detected: true,
-      damage_type: result?.surface_type ? `${result.surface_type} Road Damage` : 'Asphalt Cavity / Pothole',
-      safety_risk:
-        severity === 'HIGH'
-          ? 'High — Severe hazard to two-wheelers and vehicles'
-          : 'Moderate — Surface degradation requiring municipal repair',
-      image_suitable: true,
-      assessment_status: geminiOutcome.status === 'ERROR' ? 'PASS' : geminiOutcome.status,
+      damage_detected: isDefect,
+      damage_type: isDefect
+        ? (result.surface_type ? `${result.surface_type} Road Defect` : 'Asphalt Cavity / Pothole')
+        : 'No Road Defect Detected',
+      safety_risk: isDefect
+        ? (result.severity === 'HIGH'
+            ? 'High — Severe hazard to two-wheelers and vehicles'
+            : 'Moderate — Surface degradation requiring municipal repair')
+        : 'Low / None — No road damage or hazard detected',
+      image_suitable: isDefect ? true : (result.confidence >= 0.3),
+      assessment_status: isDefect ? 'PASS' : 'FLAG',
     };
 
     return NextResponse.json({ assessment });

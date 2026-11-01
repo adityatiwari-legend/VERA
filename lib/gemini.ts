@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { AIStatus, GeminiPotholeResult, GeminiCompareResult } from '../types';
 
-const MODEL = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
+const MODEL = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
 
 let client: GoogleGenerativeAI | null = null;
 
@@ -55,17 +55,36 @@ function extractJson<T>(text: string): T | null {
   }
 }
 
-const POTHOLE_PROMPT = `You are a road-inspection vision model for an Indian municipal repair escrow system.
-Analyze the photo of a road defect and respond with ONLY a JSON object, no markdown, no extra text:
+const POTHOLE_PROMPT = `You are an expert civil road-inspection vision AI model for an Indian municipal repair platform.
+Analyze this photo taken by a citizen to determine if an actual road defect, pothole, cavity, or surface damage is present.
+Examine the ACTUAL visual evidence in the image carefully and objectively.
+
+Respond with ONLY a valid JSON object, no markdown fences, no extra text:
 {
   "severity": "LOW" | "MEDIUM" | "HIGH",
-  "size_estimate_cm": <number, estimated largest dimension of the pothole in centimeters, or null if unclear>,
-  "surface_type": <short string like "asphalt", "concrete", "unpaved", or null>,
-  "description_hinglish": <2-3 natural sentences in Hinglish (Roman script) describing the pothole for a public civic report>,
-  "confidence": <number between 0 and 1>
+  "size_estimate_cm": <number, estimated largest dimension in cm, or null if not a pothole>,
+  "surface_type": <"asphalt" | "concrete" | "unpaved" | null>,
+  "description_hinglish": <2-3 sentences in Hinglish (Roman script) explaining your visual inspection clearly>,
+  "confidence": <number between 0 and 1, indicating confidence that a real road defect exists>
 }
-Rules: HIGH = dangerous for two-wheelers / deep or wide; MEDIUM = needs repair soon; LOW = cosmetic.
-If the image does not clearly show a road defect, set severity "LOW", confidence <= 0.3 and say so in description_hinglish.`;
+
+Classification Rules:
+1. NON-ROAD SUBJECT (e.g. computer/laptop screen, indoor room, desk, vehicle interior, animal, person, document):
+   - Set severity: "LOW"
+   - Set confidence: 0.05
+   - Set surface_type: null
+   - Set size_estimate_cm: null
+   - Set description_hinglish: "Yeh tasveer kisi sadak ya khadde ki nahi hai (jaise screen, laptop ya kamra). Kripya vastavik sadak defect ki photo upload karein."
+2. UNDAMAGED ROAD:
+   - Set severity: "LOW"
+   - Set confidence: 0.1
+   - Set size_estimate_cm: null
+   - Set description_hinglish: "Sadak par koi visible defect ya khadda nahi dikh raha hai. Surface intact lagti hai."
+3. REAL ROAD DAMAGE / POTHOLE:
+   - HIGH: Deep or wide crater, jagged asphalt break, severe hazard to two-wheelers and traffic.
+   - MEDIUM: Developing cavity or significant crack requiring municipal patching.
+   - LOW: Minor surface wear or aggregate raveling.
+   - Set confidence between 0.70 and 0.99 based on visual clarity.`;
 
 export interface GeminiOutcome<T> {
   result: T | null;

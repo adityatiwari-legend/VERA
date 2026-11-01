@@ -19,6 +19,14 @@ Mobile action needed: <what the app must do / can now enable / must stop using>
 
 ## Change Log (newest first)
 
+### [2026-11-01] New site footer ("Doodle Crew") + VERA logo/brand icons everywhere
+Commit: uncommitted
+Backend changes:
+- **Changed — site footer replaced** on every non-dashboard route: `components/Footer.tsx` now renders the animated sketchbook-style footer (`components/ui/doodle-crew-footer.tsx`, new) stamped with the giant ink "VERA" wordmark, themed to the editorial-light palette (white paper, ink #111111, accent #2563EB). Same real links as before (campaigns, NGOs, Hisaab, explorer, auth, report) + disclosures ("all chains testnet/devnet", "SHA-256 audit architecture") + GitHub link. No API, route, or auth change — pure presentation.
+- **Added — VERA logo (`public/vera-logo.png`, 512×512)** now rendered as the brand mark in: navbar (`Navbar.tsx`), dashboard sidebar + mobile drawer (`DashboardShell.tsx`), Hisaab console sidebar (`ConsoleShell.tsx`), login/register pages, and the footer brand row (new shared `components/BrandMark.tsx`).
+- **Changed — app icons**: new `app/favicon.ico`, `public/apple-touch-icon.png`, `public/icons/icon-192.png` / `icon-512.png` generated from the logo; `manifest.webmanifest` updated (theme_color `#4F46E5` → `#2563EB`, PNG icons added); `public/icon.svg` recolored to the same accent; root layout metadata now declares icon + apple-touch-icon.
+Mobile action needed: none — no endpoint, auth, or payload change. Optional/cosmetic only: if the app shows a web-view of the site it will pick up the new footer/logo automatically; if you want the same logo inside the Flutter app, copy `public/vera-logo.png` (or `public/icons/icon-512.png`) as the app icon source.
+
 ### [2026-11-01] One-command full-stack boot (`npm run demo:stack` / VERA.bat)
 Commit: uncommitted
 Backend changes:
