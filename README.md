@@ -1,217 +1,479 @@
-# VERA — Proof-Gated Money
+<div align="center">
 
-> **Every escrow releases only against verified proof.** Whether the payer is a donor funding a classroom or a municipality fixing a road — money moves only when citizens, Gemini vision, and on-chain evidence agree.
+# 🛡️ VERA — Verifiable Evidence & Real Auditing
 
-**VERA** is a programmable trust layer with two modules on one stack:
+### *End-to-end civic accountability: from a pothole photo to a verified, on-chain payout.*
 
-| Module | Chain | What it does |
-|---|---|---|
-| **VERA Core** | Ethereum (Hardhat/Sepolia) | Donation campaigns → milestone escrow → proof verification → 2-of-3 multisig release → public audit trail |
-| **Hisaab of the Road** | Solana (devnet) | Pothole reports → Gemini vision → 3-citizen confirmation → milestone escrow for road repairs, with a 30-day durability hold |
+[![Next.js](https://img.shields.io/badge/Next.js-14-000000?logo=nextdotjs&logoColor=white)](#-tech-stack)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](#-tech-stack)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-raw%20SQL-4169E1?logo=postgresql&logoColor=white)](#-tech-stack)
+[![Solidity](https://img.shields.io/badge/Solidity-EVM%20Escrow-363636?logo=solidity&logoColor=white)](#-dual-blockchain-architecture)
+[![Solana](https://img.shields.io/badge/Solana-Anchor%20Devnet-9945FF?logo=solana&logoColor=white)](#-dual-blockchain-architecture)
+[![Gemini](https://img.shields.io/badge/Google-Gemini%20Vision-4285F4?logo=googlegemini&logoColor=white)](#-ai-verification-engine)
+[![TigerData](https://img.shields.io/badge/TigerData-Hackathon-3043C6?logo=tigerdata&logoColor=white)](#-tech-stack)
+[![Vultr](https://img.shields.io/badge/Vultr-Cloud-00B0F4?logo=vultr&logoColor=white)](#-tech-stack)
 
-```text
-                 ┌──────────────────────────────────────────┐
-                 │           VERA CONSOLE (Next.js)         │
-                 │     /hisaab  ·  /campaigns  ·  /ngos     │
-                 └──────────────────┬───────────────────────┘
-                                    │
-        ┌───────────────────────────┴────────────────────┐
-        │                                                │
-┌───────▼────────┐                             ┌─────────▼─────────┐
-│   VERA CORE    │                             │      HISAAB       │
-│  (EVM/Hardhat) │                             │  (Solana devnet)  │
-├────────────────┤                             ├───────────────────┤
-│ VERA.sol       │                             │ hisaab Anchor     │
-│ 2-of-3 multisig│                             │ program: Report + │
-│ milestone escrow│                            │ Confirmation +    │
-│ proof verify   │                             │ Escrow PDAs +     │
-│ audit hash-chain│                            │ PDA vault, oracle-│
-│ reputation idx │                             │ gated 3-stage     │
-│ NGO scores     │                             │ release + 30d hold│
-└────────────────┘                             └─────────┬─────────┘
-                                                         │
-                 ┌────────────────────────────────────────┴─────┐
-                 │  PostgreSQL (state machine, ledger, audit)   │
-                 │  Gemini Vision · Tiger Data time-series      │
-                 └──────────────────────────────────────────────┘
-```
+<br/>
+
+| 📱 **Companion Android App** | 🎥 **Presentation** | 🌐 **Live Demo** |
+|:---:|:---:|:---:|
+| [**➡️ RoadProof Mobile Repo**](https://github.com/vineetm1204-m/MLH-RoadProofxVera) <br/> *(Flutter — click to open)* | [**▶️ View Slides**](https://YOUR_PRESENTATION_LINK) | [**🚀 Try it Live**](https://YOUR_DEMO_LINK) |
+
+
+</div>
 
 ---
 
-## Current Status (2026-10-30)
+## 🧭 Quick Navigation
 
-### ✅ Built, deployed and verified end-to-end
+> Click any link to jump straight to that section.
 
-- **VERA Core** — all five phases complete: campaigns, double-entry fund ledger, escrow state machine, SHA-256 proof storage, AI-assisted verification, auditor review, 2-of-3 multisig on-chain release, tampering-tested audit hash-chain, public audit dashboard, NGO reputation index, printable reports.
-- **Hisaab** — Anchor program compiled (`hisaab.so`, program id `AUH7tYQJFXjya5wgu9APf1Q5qDs8G9jKEEzxjA1VpxMw`); report → Gemini analysis → 3 distinct citizen confirmations (on-chain dedupe via confirmation PDAs) → escrow creation → repair submission → before/after comparison → stage release, verified live through the API. Public street register with map at `/hisaab`.
-- **SaaS console UI** — dark sidebar shell, light content, stat cards, dark escrow feature panel; visually verified across all pages.
-- **Citizen accounts** — `CITIZEN` role with per-user devnet wallets; confirmations are signed by distinct keypairs and deduped on-chain.
-- **Infra** — migrations, admin bootstrap, WSL Anchor toolchain scripts (with edition2024/MSRV dependency pins), `DEPLOY_VPS.md` for Ubuntu VPS (DigitalOcean/Vultr).
-
-### ⏳ Pending — three setup steps (owner actions)
-
-| Step | How | Effect if skipped |
-|---|---|---|
-| `GEMINI_API_KEY` in `.env.local` | Free key from [aistudio.google.com/apikey](https://aistudio.google.com/apikey) | Vision falls back to `MANUAL_REVIEW` — reports still work, but automatic stage-1 release won't trigger |
-| Devnet SOL + program deploy | Fund payer + funder/oracle/contractor at [faucet.solana.com](https://faucet.solana.com), then `npm run deploy:hisaab` | Hisaab runs in PG-ledger mode with honest "ledger-only" flags; | `TIGER_DATABASE_URL` | Free TimescaleDB service at [tigerdata.com](https://tigerdata.com), then `npm run tiger:setup` | Roughness telemetry stored in local Postgres fallback tables instead of hypertables |
-
-Every integration degrades gracefully and reports its real state at `/api/health` and in the console sidebar — the demo never breaks.
+[🚨 Problem](#-problem-statement) · [💡 Solution](#-our-solution) · [🎬 Presentation](#-presentation) · [👥 Team](#-team) · [✨ Features](#-key-features) · [🏗️ Architecture](#️-system-architecture) · [⛓️ Blockchain](#-dual-blockchain-architecture) · [🤖 AI](#-ai-verification-engine) · [🔐 Roles](#-roles--access) · [⚡ Setup](#-getting-started) · [🔌 API](#-api-overview)
 
 ---
 
-## Module Deep Dives
+## 🚨 Problem Statement
 
-### VERA Core — donation escrow with teeth
+Public money and charitable donations disappear into **black boxes**.
 
-```text
-DONOR → DONATION → EARMARKED CAMPAIGN → LOCKED ESCROW → MILESTONE
-      → PROOF SUBMITTED → AI VERIFICATION → HUMAN AUDITOR
-      → 2-OF-3 MULTISIG → ON-CHAIN RELEASE → PUBLIC AUDIT TRAIL
-```
-
-Five completed, production-structured phases: RBAC foundation, donation & fund lifecycle with atomic double-entry transactions (`DONATION` / `LOCK` / `RELEASE` / `REFUND`), proof & verification engine, blockchain & multisig controls, and public audit productization. Highlights:
-
-- **Public Audit Dashboard** (`/campaigns/:id/audit`) — financial summary, milestone registry, on-chain verification with explorer links, complete chronological timeline. Open to anyone, no login.
-- **Trace My Donation** (`/donor/donations/:id/trace`) — answers "where did my money go?" step by step.
-- **Deterministic NGO Reputation** (`/ngos/:id`) — transparent 0–100 formula (base 100; −15 failed milestone, −10 rejected proof, −5 AI discrepancy, −10 refund; +10 per completed milestone capped +30, +5 clean-approval, +5 clean utilization), grades A+ → D.
-- **Hash-chained audit log** — every action appends `sha256(prev_hash + payload)`; an append-only trigger blocks deletes; `/api/audit/verify-chain` re-walks the chain and detects tampering.
-
-### Hisaab of the Road — "until the public passes the ticket, the contractor gets no money"
-
-1. **Report** — any citizen photographs a pothole; Gemini extracts severity, size and a Hinglish summary; the photo is SHA-256 fingerprinted and anchored in the public register (Postgres + Solana report PDA).
-2. **Confirm** — three *distinct* citizens confirm; each confirmation is signed by the citizen's own devnet keypair and deduped on-chain — the same wallet physically cannot confirm twice.
-3. **Escrow** — a funder locks the budget (e.g. ₹50,000) in a program-owned PDA vault on Solana. Stages: repair verified → 30-day hold passed → final sign-off.
-4. **Verify** — the contractor submits an after-photo; Gemini compares before/after; drive-by phone accelerometer readings (Tiger Data hypertables) rate road roughness. Only when AI + telemetry agree does the oracle release the next stage on-chain.
-5. **30-day hold** — the final tranche waits a month, killing the incentive for shoddy patchwork.
-
-**Honest trust model:** the escrow is neutral (vault funds can only move to the contractor stage-by-stage or back to the funder); stage releases are gated by a server-side *oracle* keypair acting on verified evidence. That oracle is the trust assumption — stated openly in the UI and pitch.
-
----
-
-## Technology Stack
-
-- **App**: Next.js 14 (App Router), Tailwind CSS, Lucide, react-leaflet (OSM tiles)
-- **Database**: PostgreSQL 16 via parameterized `pg`; Tiger Data (TimescaleDB) hypertables for time-series with local fallback
-- **Auth**: JWT HTTP-only cookies (`jose`, `bcryptjs`), 5-role RBAC (Donor, NGO, Auditor, Admin, Citizen)
-- **EVM**: Solidity 0.8.20, Hardhat, ethers v6 — `VERA.sol` (multisig escrow)
-- **Solana**: Anchor 0.30.1 (Rust), `@solana/web3.js` + `@coral-xyz/anchor` — Hisaab program with Report/Confirmation/Escrow PDAs and a PDA vault
-- **AI**: Google Gemini vision — pothole severity/size, Hinglish summaries, before/after repair comparison
-- **Deploy**: Docker Compose (web + postgres + hardhat-node), Nginx TLS; see [DEPLOY_VPS.md](DEPLOY_VPS.md)
-
----
-
-## Local Quickstart
-
-```bash
-# 1. Install & start database
-npm install
-docker compose up -d vera-db
-
-# 2. Migrations + first admin account (the app starts empty — no demo data)
-npm run db:migrate
-ADMIN_EMAIL=you@example.com ADMIN_PASSWORD=strong-password npm run admin:bootstrap
-
-# 3. EVM contract (start hardhat node first)
-npx hardhat node            # terminal 1
-npm run deploy:contract     # terminal 2 — VERA.sol
-
-# 4. Solana (one-time WSL toolchain setup; see scripts/wsl-toolchain-setup.sh)
-npm run solana:setup        # keypairs + airdrops + prints env lines
-npm run build:hisaab        # builds hisaab.so inside WSL Ubuntu
-npm run deploy:hisaab       # deploys to devnet (needs faucet SOL)
-
-# 5. Configure .env.local (see .env.example):
-#    GEMINI_API_KEY, TIGER_DATABASE_URL, HISAAB_* keypairs,
-#    NEXT_PUBLIC_HISAAB_PROGRAM_ID
-
-# 6. Run
-npm run dev                 # http://localhost:3000
-```
-
-All scripts:
-
-| Script | Purpose |
+| ❌ The Problem | 💥 The Impact |
 |---|---|
-| `db:migrate` | SQL schema migrations |
-| `admin:bootstrap` | Create/reset an ADMIN account (`ADMIN_EMAIL` / `ADMIN_PASSWORD` / `ADMIN_NAME`) |
-| `db:purge` | Wipe all data rows, keep schema (`-- --yes` to execute) |
-| `deploy:contract` | EVM deploy |
-| `solana:setup` | Oracle/funder/contractor keypairs, airdrops, prints env lines |
-| `build:hisaab` / `deploy:hisaab` | Anchor build/deploy via WSL (dependency pins handled) |
-| `tiger:setup` | Tiger Data hypertables |
-| `test:phase1..5`, `test:contracts`, `test:tampering` | 321 programmatic tests |
-| `type-check` / `build` | TypeScript + production build |
+| Road defects are reported, ignored, and never verifiably fixed | Accidents, vehicle damage, and zero citizen trust |
+| Contractors get paid without independent proof of completed work | Fraud, inflated invoices, and sub-standard repairs |
+| Donors and taxpayers can't trace where their money actually went | Eroded trust in NGOs, CSR programs, and civic bodies |
+| Audit records live in private databases that can be edited quietly | No tamper-proof history; accountability is optional |
+
+**The core question we set out to answer:**
+> *How can anyone — a citizen, a donor, an auditor — independently **prove** that a complaint was real, the work was done, and the money went to the right place?*
 
 ---
 
-## First Accounts (no demo data ships with the app)
+## 💡 Our Solution
 
-The database starts empty — you create every account and campaign. The flow:
+**VERA** combines **AI vision**, **citizen consensus**, and **dual-blockchain escrow** so that money moves **only when evidence says it should**.
 
-1. **Bootstrap the admin** (the only role that cannot self-register):
-   ```bash
-   ADMIN_EMAIL=admin@example.com ADMIN_PASSWORD=... npm run admin:bootstrap
-   ```
-2. **Register** real accounts at `/register` — `USER`, `ORGANIZATION` (needs admin
-   approval at `/admin/access` before it can publish campaigns) or `CONTRACTOR`
-   (also admin-approved). `AUDITOR` is invited by the admin from the same page.
-3. **Create content** — campaigns (`/org/campaigns/new`), donations, Hisaab
-   reports — all real data from that point on.
+1. 📸 **Citizens report** — photo + GPS + accelerometer roughness, fingerprinted with **SHA-256**.
+2. 🤖 **Gemini AI inspects** — rejects fake or irrelevant images, classifies severity.
+3. 🗳️ **3-citizen consensus** — a defect is confirmed on-chain only after 3 independent votes.
+4. 🔒 **Funds are escrowed** — locked in smart contracts, released in milestones.
+5. ✅ **Proof gates payment** — AI before/after comparison + **2-of-3 multisig** (NGO + Lead + Auditor).
+6. 🌍 **Everything is public** — an unauthenticated, hash-chained audit ledger anyone can verify.
 
----
+<div align="center">
 
-## 4-Minute Demo Script
-
-1. **Report** — photo of a pothole → Gemini severity + Hinglish summary lands on the public map (`/hisaab`).
-2. **Confirm** — two teammates confirm on their phones → 3/3 → report enters the register.
-3. **Escrow** — admin locks ₹50,000 → 3-stage timeline in the dark panel.
-4. **Repair** — contractor submits after-photo → Gemini "repaired ✓" + drive-by roughness → stage 1 releases (Solana Explorer link).
-5. **Hold** — DEMO fast-forward releases the 30-day-gated stages → full trail on Solana Explorer.
-
----
-
-## Honest Limitations & Disclosures
-
-1. **Oracle-gated Solana releases** — the escrow is neutral and trust-minimized, but stage-release decisions are pushed by our server keypair after verified evidence. Production path: a decentralized oracle set or validator committee.
-2. **No full Sybil resistance** — citizen confirmations require distinct accounts/wallets with on-chain dedupe, but identity is not proof-of-personhood. On the roadmap.
-3. **Roughness telemetry** is phone-accelerometer based and not yet normalized for vehicle/speed.
-4. **Testnet/devnet funds only** — Ethereum testnet and Solana devnet assets have zero real-world value. Government payments are not on-chain; the production path is a municipal pilot or crowdfunded civic bounties.
-5. **Offline reality boundary** — VERA guarantees money cannot move without recorded evidence and authorization; it does not claim physical omniscience over workmanship without human inspection.
-
----
-
-## Documentation
-
-- [VPS Deployment (Ubuntu)](DEPLOY_VPS.md)
-- [System Architecture](docs/architecture.md) · [Deployment](docs/deployment.md) · [Blockchain](docs/blockchain.md) · [Verification](docs/verification.md)
-- Solana program: [contracts/hisaab/](contracts/hisaab/) · EVM contract: [contracts/VERA.sol](contracts/VERA.sol)
-
-
-## Quick start (full local stack)
-
-```bash
-npm install
-cp .env.example .env.local        # fill DATABASE_URL / JWT_SECRET / GEMINI_API_KEY
-npm run db:migrate
-
-npm run demo:stack                # boots EVERYTHING: Postgres + migrations +
-                                  # Solana localnet (program deployed) + Hardhat
-                                  # node + VERA.sol (auto-redeploy) + next dev
-                                  # (Windows: just double-click VERA.bat)
-
-# in another shell — deploy the VERA contract to the local Hardhat node
-npx hardhat run scripts/deploy.js
-
-# end-to-end verification of both product loops (80 checks; the suite
-# bootstraps its own throwaway test accounts — no seeds needed)
-node scripts/e2e-check.mjs
+```mermaid
+flowchart LR
+    A[📸 Citizen Report<br/>Photo + GPS + Sensor] --> B[🤖 Gemini Vision<br/>Defect Check]
+    B --> C[🗳️ 3-Citizen<br/>Consensus]
+    C --> D[🔒 Escrow Locked<br/>On-Chain]
+    D --> E[🔧 Contractor<br/>Repairs]
+    E --> F[🤖 Before/After<br/>AI Verification]
+    F --> G[✍️ 2-of-3 Multisig<br/>Approval]
+    G --> H[💸 Milestone<br/>Payout]
+    H --> I[🌍 Public Audit<br/>Ledger]
 ```
 
-Roles: `USER` (citizen) · `ORGANIZATION` (any org type) · `CONTRACTOR` ·
-`AUDITOR` · `ADMIN` (Hisaab admin console at `/admin`).
+</div>
 
-Money model: ledger amounts are demo-labeled (`DEMO FUNDS`); real value moves
-only via user-signed wallet donations (EVM) and the on-chain escrow (Solana
-localnet). `DEMO_MODE=true` enables the demo fast-forward of the durability hold.
+---
 
-Mobile API: see [docs/api-v1.md](docs/api-v1.md).
+## 🎬 Presentation
+
+<div align="center">
+
+[![Watch the Presentation](https://img.shields.io/badge/▶_Watch_Presentation-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://YOUR_PRESENTATION_LINK)
+[![View Slides](https://img.shields.io/badge/📊_View_Slides-F4B400?style=for-the-badge)](https://YOUR_SLIDES_LINK)
+
+</div>
+
+<!-- Optional: embed a thumbnail that links to your video
+[![Demo Video](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://YOUR_PRESENTATION_LINK)
+-->
+
+---
+
+## 👥 Team
+
+<div align="center">
+
+| | Member 1 | Member 2 | Member 3 |
+|:---:|:---:|:---:|:---:|
+| **Avatar** | <img src="https://github.com/adityatiwari-legend.png" width="90" style="border-radius:50%"/> | <img src="https://github.com/vineetm1204-m.png" width="90" style="border-radius:50%"/> | <img src="https://github.com/kushbansal2005.png" width="90" style="border-radius:50%"/> |
+| **Name** | **Aditya Tiwari**         | **Vineet Mittal**           | **Kush Bansal** |
+| **Role** | Blockchain / Full-Stack     | Mobile (Flutter) / AI     | Research / Testing |
+| **GitHub** | [@adityatiwari-legend](https://github.com/adityatiwari-legend) | [@vineetm1204-m](https://github.com/vineetm1204-m) | [@kushbansal2005](https://github.com/kushbansal2005) |
+| **LinkedIn** | [Profile](https://www.linkedin.com/in/aditya-tiwari-3715a6338/) | [Profile](https://www.linkedin.com/in/vineet-mittal-52b5901b3/) | [Profile](https://www.linkedin.com/in/kush-bansal-310b08375/) |
+</div>
+
+<sub>Avatars load automatically from each member's GitHub username.</sub>
+
+---
+
+## ✨ Key Features
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🚧 RoadProof (Civic Layer)
+- Geotagged photo reports with tamper-evident SHA-256 hashes
+- Accelerometer-based road roughness telemetry
+- Real-time Gemini defect classification (Hinglish explanations 🇮🇳)
+- 3-citizen on-chain confirmation consensus
+- Contractor assignments & before/after repair proof
+
+</td>
+<td width="50%" valign="top">
+
+### 💰 VERA (Funding Layer)
+- Earmarked campaign escrow — funds can't be redirected
+- Milestone budgets with hard caps
+- **2-of-3 multisig** release (NGO + Lead + Auditor)
+- AI invoice OCR with discrepancy detection
+- Dispute freeze + automatic donor refund protection
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🔍 Transparency
+- Public, no-login audit explorer
+- SHA-256 hash-chained ledger with `verify-chain`
+- "Trace My Donation" donor journey
+- Explorer-linked on-chain transactions
+
+</td>
+<td width="50%" valign="top">
+
+### 📱 Mobile + Web
+- Flutter app with **Mock Mode** for 100% offline demos
+- Role-gated navigation (5 roles)
+- Idempotent, retry-safe financial requests
+- Dual auth: cookie (web) + Bearer token (mobile)
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🏗️ System Architecture
+
+```mermaid
+flowchart TB
+    subgraph Clients
+        W[🌐 Next.js Web Portal]
+        M[📱 Flutter Mobile App]
+    end
+
+    subgraph Backend["⚙️ Next.js API Layer"]
+        API[REST API /api & /api/v1]
+        AUTH[Auth: JWT Cookie + Bearer Token]
+        GEM[Gemini Service<br/>with Model Failover]
+    end
+
+    subgraph Data
+        PG[(PostgreSQL)]
+        LEDGER[(Hash-Chained<br/>Audit Log)]
+    end
+
+    subgraph Chains["⛓️ Blockchains"]
+        EVM[Solidity VERA.sol<br/>Campaign Escrow + Multisig]
+        SOL[Solana Anchor 'hisaab'<br/>Reports + Repair Escrow]
+    end
+
+    W --> API
+    M --> API
+    API --> AUTH
+    API --> GEM
+    API --> PG
+    API --> LEDGER
+    API --> EVM
+    API --> SOL
+```
+
+<details>
+<summary><b>📂 Repository Structure (click to expand)</b></summary>
+
+```text
+VERA/
+├── app/                  # Next.js 14 App Router
+│   ├── (public)/         # Landing, campaign discovery, audit dashboards
+│   ├── admin/            # Complaints, escrows, users, login audits
+│   ├── auditor/          # Verification queues & multisig reviews
+│   ├── contractor/       # Job portal & proof submissions
+│   ├── donor/            # Dashboard & "Trace My Donation"
+│   ├── org/              # NGO campaigns & milestone proofs
+│   └── api/              # REST endpoints
+├── components/           # React UI primitives
+├── contracts/
+│   ├── VERA.sol          # EVM multi-milestone escrow & multisig
+│   └── hisaab/           # Solana Anchor program
+├── db/migrations/        # Sequential raw SQL migrations
+├── lib/                  # db, auth, gemini, solana, hisaab services
+└── scripts/              # Admin & deployment scripts
+```
+
+</details>
+
+---
+
+## ⛓️ Dual-Blockchain Architecture
+
+Two chains, each chosen for its job.
+
+<details open>
+<summary><b>🔷 EVM — <code>VERA.sol</code> (Charity & Milestone Escrow)</b></summary>
+
+- **Earmarked escrow** — donations locked to a `campaignId`
+- **Milestone budget caps** enforced on-chain
+- **2-of-3 multisig** — NGO Admin + Project Lead + Certified Auditor
+- **Non-reentrant** release (OpenZeppelin `ReentrancyGuard` + `Pausable`)
+- **Automatic proportional refunds** if a campaign is cancelled or disputes go unresolved
+
+</details>
+
+<details open>
+<summary><b>🟣 Solana — <code>hisaab</code> Anchor Program (Civic Repairs)</b></summary>
+
+Every database report maps 1:1 to on-chain state via a deterministic 16-byte seed.
+
+| PDA | Seeds | Purpose |
+|---|---|---|
+| Report | `["report", seed16]` | GPS, severity, photo hash, confirmations, status |
+| Confirmation | `["confirm", seed16, confirmer]` | One vote per wallet — duplicates impossible |
+| Escrow | `["escrow", seed16]` | Funder, contractor, oracle, 3-stage amounts |
+| Vault | `["vault", seed16]` | Program-owned funds, released only via CPI |
+
+**3-Stage Payout Lifecycle**
+
+```mermaid
+stateDiagram-v2
+    [*] --> OPEN: init_report
+    OPEN --> CONFIRMED: 3 citizen confirmations
+    CONFIRMED --> ESCALATED: init_escrow (funds locked)
+    ESCALATED --> VERIFIED: Stage 1 · 40% · AI verifies repair
+    VERIFIED --> VERIFIED: Stage 2 · 30% · 30-day durability hold
+    VERIFIED --> PAID: Stage 3 · 30% · Final audit + community sign-off
+    PAID --> [*]
+```
+
+</details>
+
+---
+
+## 🤖 AI Verification Engine
+
+Powered by **Google Gemini** with an automatic model-failover chain (`gemini-3.5-flash → gemini-3.1-flash-lite → gemini-2.5-flash`) that survives quota (429) and not-found (404) errors.
+
+| Workflow | What it does |
+|---|---|
+| 🧾 **Invoice Auditing** | OCR extracts vendor, amount, date, invoice no.; cross-checks against the milestone claim to catch inflation |
+| 🔄 **Before / After Comparison** | Judges surface texture, fill material, edge fractures → `repaired: true/false` with confidence |
+| 🛣️ **Road Defect Inspection** | Structured JSON: damage type, severity, size estimate, safety risk, confidence |
+
+> **🚫 No Fake Reviews Rule:** a photo of a wall, a shoe, or an undamaged road returns `damage_detected: false` and is flagged — never rubber-stamped.
+
+<details>
+<summary><b>📄 Sample AI output (click to expand)</b></summary>
+
+```json
+{
+  "damage_detected": true,
+  "damage_type": "Asphalt Cavity / Pothole",
+  "severity": "HIGH",
+  "size_estimate_cm": 45.0,
+  "surface_type": "asphalt",
+  "description_hinglish": "Sadak par gehra pothole hai jisme asphalt cavity aur aggregate loss dikh raha hai.",
+  "safety_risk": "High — Severe rim damage hazard for two-wheelers",
+  "confidence": 0.94,
+  "assessment_status": "PASS"
+}
+```
+
+</details>
+
+---
+
+## 🔐 Roles & Access
+
+| Role | Who | What they can do | Registration |
+|---|---|---|---|
+| 🧑 **Citizen / Donor** | Public | Report defects, vote, donate, view audit trails | Self-signup |
+| 🏢 **Organization / NGO** | Non-profits, CSR, RWAs | Create campaigns, upload proofs, request releases | Self-signup |
+| 👷 **Contractor** | Repair vendors | Accept jobs, submit start/completion evidence | Self-signup |
+| 🕵️ **Auditor** | Certified reviewers | Review proofs, sign multisig releases | **Invite-only** |
+| 🛠️ **Admin** | Platform operators | Approve users, invite auditors, resolve disputes | **Bootstrap-only** |
+
+---
+
+## ⚡ Getting Started
+
+### Prerequisites
+`Node.js 18+` · `PostgreSQL` · `A Gemini API key` · (optional) `Solana CLI / Anchor`
+
+### 1️⃣ Clone & install
+```bash
+git clone https://github.com/YOUR_USERNAME/VERA.git
+cd VERA
+npm install
+```
+
+### 2️⃣ Configure environment
+Create `.env.local` in the project root:
+```env
+DATABASE_URL=postgres://user:pass@localhost:5432/vera
+JWT_SECRET=your-secret
+GEMINI_API_KEY=your-gemini-key
+DEMO_MODE=true
+```
+
+### 3️⃣ Set up the database & admin
+```bash
+npm run db:migrate
+ADMIN_EMAIL=admin@vera.org ADMIN_PASSWORD=ChangeMe123! npm run admin:bootstrap
+```
+
+### 4️⃣ Run the blockchain + app
+```bash
+npm run chain              # local Hardhat node
+npm run deploy:contracts   # deploy VERA.sol
+npm run dev                # http://localhost:3000
+```
+
+### 5️⃣ Verify everything
+```bash
+npm run type-check
+npm run test:all
+```
+
+<details>
+<summary><b>📱 Run the mobile app</b></summary>
+
+See the **[Android / Flutter repository](https://github.com/vineetm1204-m/MLH-RoadProofxVera)** for full instructions. Quick start:
+
+```bash
+flutter pub get
+flutter run --dart-define=VERA_USE_MOCK=true                   # offline demo
+flutter run --dart-define=VERA_API_URL=https://<host>/api      # live backend
+```
+
+</details>
+
+---
+
+## 🔌 API Overview
+
+<details>
+<summary><b>🔑 Authentication</b></summary>
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/auth/register` | Register a new user |
+| `POST` | `/api/auth/login` | Login → cookie + `vera_…` bearer token |
+| `GET` | `/api/auth/me` | Current user |
+| `POST` | `/api/auth/logout` | End session |
+
+</details>
+
+<details>
+<summary><b>🚧 RoadProof / Hisaab</b></summary>
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` / `POST` | `/api/hisaab/reports` | List / submit defect reports (multipart) |
+| `POST` | `/api/hisaab/analyze` | Run live Gemini Vision on a photo |
+| `POST` | `/api/hisaab/reports/:id/confirm` | Confirm on-chain (3rd vote escalates) |
+| `POST` | `/api/hisaab/reports/:id/vote` | `CONFIRM` / `REJECT` / `FLAG` |
+| `GET` | `/api/hisaab/assignments` | Contractor job list |
+| `POST` | `/api/hisaab/repairs/:id/submit` | Submit repair proof |
+
+</details>
+
+<details>
+<summary><b>💰 Campaigns & Multisig</b></summary>
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/campaigns` | Public campaign list |
+| `POST` | `/api/campaigns/:id/donate` | Donate into escrow |
+| `POST` | `/api/milestones/:id/proofs` | Upload invoice / proof |
+| `POST` | `/api/proofs/:id/approve` · `/reject` | Auditor decision |
+| `POST` | `/api/milestones/:id/release-request` | Request fund release |
+| `POST` | `/api/release-requests/:id/sign` | Add multisig signature |
+| `POST` | `/api/release-requests/:id/execute` | Execute at 2-of-3 |
+| `POST` | `/api/milestones/:id/dispute` | Freeze a release |
+
+</details>
+
+<details>
+<summary><b>🌍 Audit & Health</b></summary>
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/audit/ledger` | Public chronological ledger |
+| `GET` | `/api/audit/verify-chain` | Prove no record was tampered with |
+| `GET` | `/api/health` | Service health |
+
+</details>
+
+---
+
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Web** | Next.js 14 (App Router), TypeScript, Tailwind CSS |
+| **Backend** | Next.js API routes, raw parameterized SQL via `pg` |
+| **Database** | PostgreSQL (sequential migrations) |
+| **Smart Contracts** | Solidity + Hardhat + ethers v6 · Rust + Anchor (Solana Devnet) |
+| **AI** | Google Gemini (Vision + OCR) with failover |
+| **Mobile** | Flutter 3, Dart 3, Riverpod, GoRouter, Dio, Material 3 |
+
+---
+
+## 🛡️ Security Highlights
+
+- 🔒 **No blind retries** on financial mutations — uncertain timeouts trigger ledger reconciliation instead
+- 🔑 **Idempotency keys** on every mutating request
+- 🧬 **SHA-256 evidence fingerprints** for every photo and document
+- ⛓️ **Hash-chained audit log** — any edit breaks the chain and is detectable
+- 🚫 **On-chain duplicate-vote prevention** via PDA seeds
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] Mainnet-ready contract audits
+- [ ] Municipal API integrations for auto-assignment
+- [ ] iOS build of the mobile app
+- [ ] Multi-language AI explanations
+- [ ] Payment gateway integration for fiat donations
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repo
+2. Create a branch: `git checkout -b feature/amazing-idea`
+3. Commit: `git commit -m "Add amazing idea"`
+4. Push and open a Pull Request
+
+---
+
+## 📜 License
+
+Distributed under the **MIT License**. See `LICENSE` for details.
+
+---
+
+<div align="center">
+
+### 🌟 If VERA resonates with you, give us a star!
+
+**Built with ❤️ for transparent, accountable public infrastructure.**
+
+[📱 Android App](https://github.com/vineetm1204-m/MLH-RoadProofxVera) · [🎥 Presentation](https://YOUR_PRESENTATION_LINK) · [🚨 Problem](#-problem-statement) · [👥 Team](#-theycalluscoders)
+
+</div>
